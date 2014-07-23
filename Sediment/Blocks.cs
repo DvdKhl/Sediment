@@ -737,12 +737,12 @@ namespace Sediment {
 				}
 			}
 		}
-		public static class Grass {
+		public static class TallGrass {
 			private static BlockInfo Create(string type, ushort id) {
 				var blockInfo = new BlockInfo {
 					Id = id,
-					Name = "Grass (" + type + ")",
-					InternalName = "minecraft:grass",
+					Name = "TallGrass (" + type + ")",
+					InternalName = "minecraft:tallgrass",
 					BlastResistance = 10,
 					Hardness = 2,
 					FullStackCount = 64,
@@ -751,10 +751,10 @@ namespace Sediment {
 				return blockInfo;
 			}
 
-			public static readonly BlockInfo Shrub = Create("Shrub", 0x0002);
-			public static readonly BlockInfo Normal = Create("Normal", 0x1002);
-			public static readonly BlockInfo Fern = Create("Fern", 0x2002);
-			public static readonly BlockInfo BiomeShrub = Create("Biome Shrub", 0x3002);
+			public static readonly BlockInfo Shrub = Create("Shrub", 0x001F);
+			public static readonly BlockInfo Normal = Create("Normal", 0x101F);
+			public static readonly BlockInfo Fern = Create("Fern", 0x201F);
+			public static readonly BlockInfo BiomeShrub = Create("Biome Shrub", 0x301F);
 		}
 		public static class Flower {
 			private static BlockInfo Create(string type, ushort id) {
