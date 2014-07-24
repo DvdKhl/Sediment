@@ -52,7 +52,7 @@ namespace Sediment {
 					InternalName = internalName,
 					BlastResistance = 10,
 					Hardness = 2,
-					FullStackCount = 64,
+
 				};
 
 				var dataValue = (id & 0xF000) >> 12;
@@ -112,7 +112,7 @@ namespace Sediment {
 					InternalName = internalName,
 					BlastResistance = 10,
 					Hardness = 2,
-					FullStackCount = 64,
+
 				};
 
 				var dataValue = (id & 0xF000) >> 12;
@@ -169,7 +169,7 @@ namespace Sediment {
 					InternalName = "minecraft:planks",
 					BlastResistance = 10,
 					Hardness = 2,
-					FullStackCount = 64,
+
 				};
 
 				return blockInfo;
@@ -190,7 +190,7 @@ namespace Sediment {
 					InternalName = "minecraft:sapling",
 					BlastResistance = 10,
 					Hardness = 2,
-					FullStackCount = 64,
+
 				};
 
 				return blockInfo;
@@ -212,7 +212,7 @@ namespace Sediment {
 					InternalName = "minecraft:stone",
 					BlastResistance = 10,
 					Hardness = 2,
-					FullStackCount = 64,
+
 				};
 
 				return blockInfo;
@@ -235,7 +235,7 @@ namespace Sediment {
 					InternalName = "minecraft:dirt",
 					BlastResistance = 10,
 					Hardness = 2,
-					FullStackCount = 64,
+
 				};
 
 				return blockInfo;
@@ -258,7 +258,7 @@ namespace Sediment {
 					InternalName = isFlowing ? "minecraft:flowing_water" : "minecraft:water",
 					BlastResistance = 10,
 					Hardness = 2,
-					FullStackCount = 64,
+
 				};
 
 				return blockInfo;
@@ -313,7 +313,7 @@ namespace Sediment {
 					InternalName = isFlowing ? "minecraft:flowing_lava" : "minecraft:lava",
 					BlastResistance = 10,
 					Hardness = 2,
-					FullStackCount = 64,
+
 				};
 
 				return blockInfo;
@@ -364,7 +364,7 @@ namespace Sediment {
 					InternalName = "minecraft:sand",
 					BlastResistance = 10,
 					Hardness = 2,
-					FullStackCount = 64,
+
 				};
 
 				return blockInfo;
@@ -382,7 +382,7 @@ namespace Sediment {
 					InternalName = "minecraft:wool",
 					BlastResistance = 10,
 					Hardness = 2,
-					FullStackCount = 64,
+
 				};
 
 				return blockInfo;
@@ -413,7 +413,7 @@ namespace Sediment {
 					InternalName = "minecraft:stained_hardened_clay",
 					BlastResistance = 10,
 					Hardness = 2,
-					FullStackCount = 64,
+
 				};
 
 				return blockInfo;
@@ -444,7 +444,7 @@ namespace Sediment {
 					InternalName = "minecraft:stained_glass",
 					BlastResistance = 10,
 					Hardness = 2,
-					FullStackCount = 64,
+
 				};
 
 				return blockInfo;
@@ -475,7 +475,7 @@ namespace Sediment {
 					InternalName = "minecraft:stained_glass_pane",
 					BlastResistance = 10,
 					Hardness = 2,
-					FullStackCount = 64,
+
 				};
 
 				return blockInfo;
@@ -506,7 +506,7 @@ namespace Sediment {
 					InternalName = "minecraft:carpet",
 					BlastResistance = 10,
 					Hardness = 2,
-					FullStackCount = 64,
+
 				};
 
 				return blockInfo;
@@ -537,7 +537,7 @@ namespace Sediment {
 					InternalName = "minecraft:torch",
 					BlastResistance = 10,
 					Hardness = 2,
-					FullStackCount = 64,
+
 				};
 
 				return blockInfo;
@@ -559,7 +559,7 @@ namespace Sediment {
 					InternalName = isLit ? "minecraft:lit_redstone_torch" : "minecraft:unlit_redstone_torch",
 					BlastResistance = 10,
 					Hardness = 2,
-					FullStackCount = 64,
+
 				};
 
 				return blockInfo;
@@ -591,7 +591,7 @@ namespace Sediment {
 					InternalName = "minecraft:" + (isWooden ? "wooden" : "stone") + (isSingle ? "" : "_double") + "_slab",
 					BlastResistance = 10,
 					Hardness = 2,
-					FullStackCount = 64,
+
 				};
 
 				return blockInfo;
@@ -600,7 +600,7 @@ namespace Sediment {
 			public static class Stone {
 				public static class Single {
 					public static readonly BlockInfo Normal = Create("Normal", 0x002C);
-					public static readonly BlockInfo Sandstone = Create("Sandstone ", 0x102C);
+					public static readonly BlockInfo Sandstone = Create("Sandstone", 0x102C);
 					public static readonly BlockInfo Wooden = Create("Wooden", 0x202C);
 					public static readonly BlockInfo Cobblestone = Create("Cobblestone", 0x302C);
 					public static readonly BlockInfo Brick = Create("Brick", 0x402C);
@@ -649,7 +649,7 @@ namespace Sediment {
 					InternalName = "minecraft:fire",
 					BlastResistance = 10,
 					Hardness = 2,
-					FullStackCount = 64,
+
 				};
 
 				return blockInfo;
@@ -680,7 +680,7 @@ namespace Sediment {
 					InternalName = "minecraft:sandstone",
 					BlastResistance = 10,
 					Hardness = 2,
-					FullStackCount = 64,
+
 				};
 
 				return blockInfo;
@@ -702,7 +702,7 @@ namespace Sediment {
 					InternalName = "minecraft:bed",
 					BlastResistance = 10,
 					Hardness = 2,
-					FullStackCount = 64,
+
 				};
 
 				return blockInfo;
@@ -745,7 +745,7 @@ namespace Sediment {
 					InternalName = "minecraft:tallgrass",
 					BlastResistance = 10,
 					Hardness = 2,
-					FullStackCount = 64,
+
 				};
 
 				return blockInfo;
@@ -767,7 +767,7 @@ namespace Sediment {
 					InternalName = isYellowFlower ? "minecraft:yellow_flower" : (isLarge ? "minecraft:double_plant" : "minecraft:red_flower"),
 					BlastResistance = 10,
 					Hardness = 2,
-					FullStackCount = 64,
+
 				};
 
 				return blockInfo;
@@ -816,7 +816,7 @@ namespace Sediment {
 					InternalName = internalName,
 					BlastResistance = 10,
 					Hardness = 2,
-					FullStackCount = 64,
+
 				};
 
 				return blockInfo;
@@ -899,7 +899,7 @@ namespace Sediment {
 					InternalName = "minecraft:" + internalType + "_stairs",
 					BlastResistance = 10,
 					Hardness = 2,
-					FullStackCount = 64,
+
 				};
 
 				return blockInfo;
@@ -1073,8 +1073,6 @@ namespace Sediment {
 					public static readonly BlockInfo North = Create(0x70A4, "DarkOak");
 				}
 			}
-
-
 		}
 		public static class RedstoneWire {
 			private static BlockInfo Create(ushort id) {
@@ -1086,7 +1084,7 @@ namespace Sediment {
 					InternalName = "minecraft:redstone_wire",
 					BlastResistance = 10,
 					Hardness = 2,
-					FullStackCount = 64,
+
 				};
 
 				return blockInfo;
@@ -1117,7 +1115,7 @@ namespace Sediment {
 					InternalName = "minecraft:fire",
 					BlastResistance = 10,
 					Hardness = 2,
-					FullStackCount = 64,
+
 				};
 
 				return blockInfo;
@@ -1155,7 +1153,7 @@ namespace Sediment {
 					InternalName = "minecraft:farmland",
 					BlastResistance = 10,
 					Hardness = 2,
-					FullStackCount = 64,
+
 				};
 
 				return blockInfo;
@@ -1186,7 +1184,7 @@ namespace Sediment {
 					InternalName = "minecraft:standing_sign",
 					BlastResistance = 10,
 					Hardness = 2,
-					FullStackCount = 64,
+
 				};
 
 				return blockInfo;
@@ -1273,7 +1271,7 @@ namespace Sediment {
 					InternalName = id == 0x50 ? "minecraft:snow" : "minecraft:snow_layer",
 					BlastResistance = 10,
 					Hardness = 2,
-					FullStackCount = 64,
+
 				};
 
 				return blockInfo;
@@ -1351,12 +1349,10 @@ namespace Sediment {
 			public string Note { get; internal set; }
 
 			public bool UsesEntityData { get; internal set; }
-			public int Tick { get; internal set; }
 			public int Luminance { get; internal set; }
-			public int TransmitsLight { get; internal set; }
+			public int Opacity { get; internal set; }
 			public float Hardness { get; internal set; }
 			public float BlastResistance { get; internal set; }
-			public int FullStackCount { get; internal set; }
 
 
 			public BlockInfo() {

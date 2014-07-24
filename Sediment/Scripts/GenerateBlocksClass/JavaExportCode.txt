@@ -1,0 +1,99 @@
+﻿XMLOutputFactory xof = XMLOutputFactory.newInstance();        
+try {
+	XMLStreamWriter xtw = null;
+	xtw = xof.createXMLStreamWriter(new FileWriter("Blocks.xml"));
+			
+	xtw.writeStartElement("Blocks");
+			
+	Iterator var11 = Block.blockRegistry.iterator();
+	while (var11.hasNext()) {
+		Block block = (Block) var11.next();
+
+				
+		xtw.writeStartElement("Block");
+				
+		xtw.writeStartElement("Id");
+		xtw.writeCharacters(Integer.toString(Block.blockRegistry.getIDForObject(block)));
+		xtw.writeEndElement();			
+			
+		
+		xtw.writeStartElement("Name");
+		xtw.writeCharacters(block.unlocalizedNameBlock);
+		xtw.writeEndElement();			
+
+		xtw.writeStartElement("InternalName");
+		xtw.writeCharacters(Block.blockRegistry.getNameForObject(block));
+		xtw.writeEndElement();			
+				
+		xtw.writeStartElement("DisplayName");
+		xtw.writeCharacters(block.getLocalizedName());
+		xtw.writeEndElement();			
+				
+		xtw.writeStartElement("BlastResistance");
+		xtw.writeCharacters(Float.toString(block.blockResistance));
+		xtw.writeEndElement();
+				
+		xtw.writeStartElement("Hardness");
+		xtw.writeCharacters(Float.toString(block.blockHardness));
+		xtw.writeEndElement();			
+				
+		xtw.writeStartElement("ParticleGravity");
+		xtw.writeCharacters(Float.toString(block.blockParticleGravity));
+		xtw.writeEndElement();			
+				
+		xtw.writeStartElement("Slipperiness");
+		xtw.writeCharacters(Float.toString(block.slipperiness));
+		xtw.writeEndElement();			
+				
+		xtw.writeStartElement("LightOpacity");
+		xtw.writeCharacters(Integer.toString(block.lightOpacity));
+		xtw.writeEndElement();			
+				
+		xtw.writeStartElement("LightValue");
+		xtw.writeCharacters(Integer.toString(block.lightValue));
+		xtw.writeEndElement();			
+				
+		xtw.writeStartElement("CanBlockGrass");
+		xtw.writeCharacters(Boolean.toString(block.canBlockGrass));
+		xtw.writeEndElement();			
+				
+		xtw.writeStartElement("EnableStats");
+		xtw.writeCharacters(Boolean.toString(block.enableStats));
+		xtw.writeEndElement();			
+				
+		xtw.writeStartElement("IsBlockContainer");
+		xtw.writeCharacters(Boolean.toString(block.isBlockContainer));
+		xtw.writeEndElement();			
+				
+		xtw.writeStartElement("NeedsRandomTick");
+		xtw.writeCharacters(Boolean.toString(block.needsRandomTick));
+		xtw.writeEndElement();						
+				
+		xtw.writeStartElement("Opaque");
+		xtw.writeCharacters(Boolean.toString(block.opaque));
+		xtw.writeEndElement();			
+
+		xtw.writeStartElement("CanProvidePower");
+		xtw.writeCharacters(Boolean.toString(block.canProvidePower()));
+		xtw.writeEndElement();		
+				
+		xtw.writeStartElement("HasTileEntity");
+		xtw.writeCharacters(Boolean.toString(block.hasTileEntity()));
+		xtw.writeEndElement();			
+					
+				
+		xtw.writeEndElement();
+	}
+			
+			
+	xtw.writeEndElement();
+			
+	xtw.close();
+			
+} catch (XMLStreamException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+} catch (IOException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
