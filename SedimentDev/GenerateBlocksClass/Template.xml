@@ -567,57 +567,152 @@
   </Group>
   <Group Name="Door">
     <Group Name="Wood">
+      <OnBlockInfo BlockId="64"/>
       <Group Name="Top">
+        <BlockInfo Name="Left" DataValue="8"/>
+        <BlockInfo Name="Right" DataValue="9"/>
       </Group>
       <Group Name="Bottom">
+        <Group Name="Closed">
+          <DataValueRange NameList="West, North, East, South"/>
+        </Group>
+        <Group Name="Open">
+          <DataValueRange NameList="West, North, East, South" Start="4"/>
+        </Group>
       </Group>
     </Group>
     <Group Name="Iron">
+      <OnBlockInfo BlockId="71"/>
       <Group Name="Top">
+        <BlockInfo Name="Left" DataValue="8"/>
+        <BlockInfo Name="Right" DataValue="9"/>
       </Group>
       <Group Name="Bottom">
+        <Group Name="Closed">
+          <DataValueRange NameList="West, North, East, South"/>
+        </Group>
+        <Group Name="Open">
+          <DataValueRange NameList="West, North, East, South" Start="4"/>
+        </Group>
       </Group>
     </Group>
   </Group>
   <Group Name="Rail">
     <Group Name="Normal">
+      <OnBlockInfo BlockId="66" Note="blockInfoName"/>
+      <DataValueRange NameList="NorthSouth, WestEast, AscendingEast, AscendingWest, AscendingNorth, AscendingSouth, CornerNorthWest, CornerNorthEast, CornerSouthEast, SouthWest"/>
     </Group>
     <Group Name="Powered">
+      <OnBlockInfo BlockId="27" Note="blockInfoName"/>
+      <Group Name="Inactive">
+        <DataValueRange NameList="NorthSouth, WestEast, AscendingEast, AscendingWest, AscendingNorth, AscendingSouth"/>
+      </Group>
+      <Group Name="Active">
+        <DataValueRange NameList="NorthSouth, WestEast, AscendingEast, AscendingWest, AscendingNorth, AscendingSouth" Start="8"/>
+      </Group>
     </Group>
     <Group Name="Detector">
+      <OnBlockInfo BlockId="28" Note="blockInfoName"/>
+      <Group Name="Inactive">
+        <DataValueRange NameList="NorthSouth, WestEast, AscendingEast, AscendingWest, AscendingNorth, AscendingSouth"/>
+      </Group>
+      <Group Name="Active">
+        <DataValueRange NameList="NorthSouth, WestEast, AscendingEast, AscendingWest, AscendingNorth, AscendingSouth" Start="8"/>
+      </Group>
     </Group>
     <Group Name="Activator">
+      <OnBlockInfo BlockId="157" Note="blockInfoName"/>
+      <Group Name="Inactive">
+        <DataValueRange NameList="NorthSouth, WestEast, AscendingEast, AscendingWest, AscendingNorth, AscendingSouth"/>
+      </Group>
+      <Group Name="Active">
+        <DataValueRange NameList="NorthSouth, WestEast, AscendingEast, AscendingWest, AscendingNorth, AscendingSouth" Start="8"/>
+      </Group>
     </Group>
   </Group>
   <Group Name="Ladder">
+    <OnBlockInfo BlockId="65" Note="blockInfoName"/>
+    <DataValueRange NameList="North, South, West, East" Start="2"/>
   </Group>
   <Group Name="WallSign">
+    <OnBlockInfo BlockId="68" Note="blockInfoName"/>
+    <DataValueRange NameList="North, South, West, East" Start="2"/>
   </Group>
   <Group Name="Furnace">
+    <Group Name="Inactive">
+      <OnBlockInfo BlockId="61" Note="blockInfoName"/>
+      <DataValueRange NameList="North, South, West, East" Start="2"/>
+    </Group>
+    <Group Name="Active">
+      <OnBlockInfo BlockId="62" Note="blockInfoName"/>
+      <DataValueRange NameList="North, South, West, East" Start="2"/>
+    </Group>
   </Group>
   <Group Name="Chest">
     <Group Name="Normal">
+      <OnBlockInfo BlockId="54" Note="blockInfoName"/>
+      <DataValueRange NameList="North, South, West, East" Start="2"/>
     </Group>
     <Group Name="Trapped">
+      <OnBlockInfo BlockId="146" Note="blockInfoName"/>
+      <DataValueRange NameList="North, South, West, East" Start="2"/>
     </Group>
     <Group Name="Ender">
+      <OnBlockInfo BlockId="130" Note="blockInfoName"/>
+      <DataValueRange NameList="North, South, West, East" Start="2"/>
     </Group>
   </Group>
   <Group Name="Dispenser">
+    <OnBlockInfo BlockId="23" Note="blockInfoName"/>
+    <Group Name="Inactive">
+      <DataValueRange NameList="Down, Up, North, South, West, East"/>
+    </Group>
+    <Group Name="Active">
+      <DataValueRange NameList="Down, Up, North, South, West, East" Start="8"/>
+    </Group>
   </Group>
   <Group Name="Hopper">
+    <OnBlockInfo BlockId="154" Note="blockInfoName"/>
+    <Group Name="Inactive">
+      <DataValueRange NameList="Down, Up, North, South, West, East"/>
+    </Group>
+    <Group Name="Active">
+      <DataValueRange NameList="Down, Up, North, South, West, East" Start="8"/>
+    </Group>
   </Group>
   <Group Name="Dropper">
+    <OnBlockInfo BlockId="158" Note="blockInfoName"/>
+    <Group Name="Inactive">
+      <DataValueRange NameList="Down, Up, North, South, West, East"/>
+    </Group>
+    <Group Name="Active">
+      <DataValueRange NameList="Down, Up, North, South, West, East" Start="8"/>
+    </Group>
   </Group>
   <Group Name="Lever">
+    <Group Name="Inactive">
+      <OnBlockInfo BlockId="69" Note="blockInfoName"/>
+      <DataValueRange NameList="TopEast, East, West, South, North, BottomSouth, BottomEast, TopSouth"/>
+    </Group>
+    <Group Name="Active">
+      <OnBlockInfo BlockId="69" Note="blockInfoName"/>
+      <DataValueRange NameList="TopEast, East, West, South, North, BottomSouth, BottomEast, TopSouth" Start="8"/>
+    </Group>
   </Group>
   <Group Name="PressurePlate">
   </Group>
   <Group Name="Button">
   </Group>
   <Group Name="Jukebox">
+    <BlockInfo BlockId="84" Name="NoDisc" DataValue="0"/>
+    <BlockInfo BlockId="84" Name="HasDisc" DataValue="1"/>
   </Group>
   <Group Name="Cake">
+    <OnBlockInfo BlockId="92"/>
+    <For Start="0" Count="6">
+      <Name><![CDATA['Eaten' + ToString(i, 'X')]]></Name>
+      <DataValue><![CDATA[i]]></DataValue>
+    </For>
   </Group>
   <Group Name="Repeater">
     <Group Name="Active">
@@ -638,6 +733,8 @@
     </Group>
   </Group>
   <Group Name="MonsterEgg">
+    <OnBlockInfo BlockId="97"/>
+    <DataValueRange NameList="Stone, Cobblestone, StoneBrick, MossyStoneBrick, CrackedStoneBrick, ChiseledStoneBrick"/>
   </Group>
   <Group Name="StoneBrick">
   </Group>
@@ -648,6 +745,8 @@
     </Group>
   </Group>
   <Group Name="Vine">
+    <OnBlockInfo BlockId="106" Note="blockInfoName"/>
+    <DataValueRange NameList="South, West, North, East" Start="2"/>
   </Group>
   <Group Name="FenceGate">
   </Group>

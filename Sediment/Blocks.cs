@@ -40,6 +40,105 @@ namespace Sediment {
 		}
 
 
+		public static readonly BlockInfo Air = new BlockInfo { TypeId = 0, DataValue = 0, Name = "Air", InternalName = "minecraft:air", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+		public static readonly BlockInfo Grass = new BlockInfo { TypeId = 2, DataValue = 0, Name = "Grass", InternalName = "minecraft:grass", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.6f, BlastResistance = 3f };
+		public static readonly BlockInfo Cobblestone = new BlockInfo { TypeId = 4, DataValue = 0, Name = "Cobblestone", InternalName = "minecraft:cobblestone", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+		public static readonly BlockInfo Bedrock = new BlockInfo { TypeId = 7, DataValue = 0, Name = "Bedrock", InternalName = "minecraft:bedrock", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = -1f, BlastResistance = 1.8E+07f };
+		public static readonly BlockInfo Gravel = new BlockInfo { TypeId = 13, DataValue = 0, Name = "Gravel", InternalName = "minecraft:gravel", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.6f, BlastResistance = 3f };
+		public static readonly BlockInfo GoldOre = new BlockInfo { TypeId = 14, DataValue = 0, Name = "GoldOre", InternalName = "minecraft:gold_ore", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 3f, BlastResistance = 15f };
+		public static readonly BlockInfo IronOre = new BlockInfo { TypeId = 15, DataValue = 0, Name = "IronOre", InternalName = "minecraft:iron_ore", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 3f, BlastResistance = 15f };
+		public static readonly BlockInfo CoalOre = new BlockInfo { TypeId = 16, DataValue = 0, Name = "CoalOre", InternalName = "minecraft:coal_ore", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 3f, BlastResistance = 15f };
+		public static readonly BlockInfo Sponge = new BlockInfo { TypeId = 19, DataValue = 0, Name = "Sponge", InternalName = "minecraft:sponge", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.6f, BlastResistance = 3f };
+		public static readonly BlockInfo Glass = new BlockInfo { TypeId = 20, DataValue = 0, Name = "Glass", InternalName = "minecraft:glass", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+		public static readonly BlockInfo LapisOre = new BlockInfo { TypeId = 21, DataValue = 0, Name = "LapisOre", InternalName = "minecraft:lapis_ore", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 3f, BlastResistance = 15f };
+		public static readonly BlockInfo LapisBlock = new BlockInfo { TypeId = 22, DataValue = 0, Name = "LapisBlock", InternalName = "minecraft:lapis_block", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 3f, BlastResistance = 15f };
+		public static readonly BlockInfo Noteblock = new BlockInfo { TypeId = 25, DataValue = 0, Name = "Noteblock", InternalName = "minecraft:noteblock", Note = "", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 0.8f, BlastResistance = 4f };
+		public static readonly BlockInfo Web = new BlockInfo { TypeId = 30, DataValue = 0, Name = "Web", InternalName = "minecraft:web", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 1, Hardness = 4f, BlastResistance = 20f };
+		public static readonly BlockInfo Deadbush = new BlockInfo { TypeId = 32, DataValue = 0, Name = "Deadbush", InternalName = "minecraft:deadbush", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+		public static readonly BlockInfo BrownMushroom = new BlockInfo { TypeId = 39, DataValue = 0, Name = "BrownMushroom", InternalName = "minecraft:brown_mushroom", Note = "", UsesEntityData = false, Luminance = 1, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+		public static readonly BlockInfo RedMushroom = new BlockInfo { TypeId = 40, DataValue = 0, Name = "RedMushroom", InternalName = "minecraft:red_mushroom", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+		public static readonly BlockInfo GoldBlock = new BlockInfo { TypeId = 41, DataValue = 0, Name = "GoldBlock", InternalName = "minecraft:gold_block", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 3f, BlastResistance = 30f };
+		public static readonly BlockInfo IronBlock = new BlockInfo { TypeId = 42, DataValue = 0, Name = "IronBlock", InternalName = "minecraft:iron_block", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 5f, BlastResistance = 30f };
+		public static readonly BlockInfo BrickBlock = new BlockInfo { TypeId = 45, DataValue = 0, Name = "BrickBlock", InternalName = "minecraft:brick_block", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+		public static readonly BlockInfo Tnt = new BlockInfo { TypeId = 46, DataValue = 0, Name = "Tnt", InternalName = "minecraft:tnt", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0f, BlastResistance = 0f };
+		public static readonly BlockInfo Bookshelf = new BlockInfo { TypeId = 47, DataValue = 0, Name = "Bookshelf", InternalName = "minecraft:bookshelf", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.5f, BlastResistance = 7.5f };
+		public static readonly BlockInfo MossyCobblestone = new BlockInfo { TypeId = 48, DataValue = 0, Name = "MossyCobblestone", InternalName = "minecraft:mossy_cobblestone", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+		public static readonly BlockInfo Obsidian = new BlockInfo { TypeId = 49, DataValue = 0, Name = "Obsidian", InternalName = "minecraft:obsidian", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 50f, BlastResistance = 6000f };
+		public static readonly BlockInfo MobSpawner = new BlockInfo { TypeId = 52, DataValue = 0, Name = "MobSpawner", InternalName = "minecraft:mob_spawner", Note = "", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 5f, BlastResistance = 25f };
+		public static readonly BlockInfo OakStairs = new BlockInfo { TypeId = 53, DataValue = 0, Name = "OakStairs", InternalName = "minecraft:oak_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+		public static readonly BlockInfo DiamondOre = new BlockInfo { TypeId = 56, DataValue = 0, Name = "DiamondOre", InternalName = "minecraft:diamond_ore", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 3f, BlastResistance = 15f };
+		public static readonly BlockInfo DiamondBlock = new BlockInfo { TypeId = 57, DataValue = 0, Name = "DiamondBlock", InternalName = "minecraft:diamond_block", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 5f, BlastResistance = 30f };
+		public static readonly BlockInfo CraftingTable = new BlockInfo { TypeId = 58, DataValue = 0, Name = "CraftingTable", InternalName = "minecraft:crafting_table", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2.5f, BlastResistance = 12.5f };
+		public static readonly BlockInfo Wheat = new BlockInfo { TypeId = 59, DataValue = 0, Name = "Wheat", InternalName = "minecraft:wheat", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+		public static readonly BlockInfo StonePressurePlate = new BlockInfo { TypeId = 70, DataValue = 0, Name = "StonePressurePlate", InternalName = "minecraft:stone_pressure_plate", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+		public static readonly BlockInfo WoodenPressurePlate = new BlockInfo { TypeId = 72, DataValue = 0, Name = "WoodenPressurePlate", InternalName = "minecraft:wooden_pressure_plate", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+		public static readonly BlockInfo RedstoneOre = new BlockInfo { TypeId = 73, DataValue = 0, Name = "RedstoneOre", InternalName = "minecraft:redstone_ore", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 3f, BlastResistance = 15f };
+		public static readonly BlockInfo LitRedstoneOre = new BlockInfo { TypeId = 74, DataValue = 0, Name = "LitRedstoneOre", InternalName = "minecraft:lit_redstone_ore", Note = "", UsesEntityData = false, Luminance = 9, Opacity = 255, Hardness = 3f, BlastResistance = 15f };
+		public static readonly BlockInfo StoneButton = new BlockInfo { TypeId = 77, DataValue = 0, Name = "StoneButton", InternalName = "minecraft:stone_button", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+		public static readonly BlockInfo Ice = new BlockInfo { TypeId = 79, DataValue = 0, Name = "Ice", InternalName = "minecraft:ice", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 0.5f, BlastResistance = 2.5f };
+		public static readonly BlockInfo Cactus = new BlockInfo { TypeId = 81, DataValue = 0, Name = "Cactus", InternalName = "minecraft:cactus", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.4f, BlastResistance = 2f };
+		public static readonly BlockInfo Clay = new BlockInfo { TypeId = 82, DataValue = 0, Name = "Clay", InternalName = "minecraft:clay", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.6f, BlastResistance = 3f };
+		public static readonly BlockInfo Reeds = new BlockInfo { TypeId = 83, DataValue = 0, Name = "Reeds", InternalName = "minecraft:reeds", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+		public static readonly BlockInfo Fence = new BlockInfo { TypeId = 85, DataValue = 0, Name = "Fence", InternalName = "minecraft:fence", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 2f, BlastResistance = 15f };
+		public static readonly BlockInfo Pumpkin = new BlockInfo { TypeId = 86, DataValue = 0, Name = "Pumpkin", InternalName = "minecraft:pumpkin", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1f, BlastResistance = 5f };
+		public static readonly BlockInfo Netherrack = new BlockInfo { TypeId = 87, DataValue = 0, Name = "Netherrack", InternalName = "minecraft:netherrack", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.4f, BlastResistance = 2f };
+		public static readonly BlockInfo SoulSand = new BlockInfo { TypeId = 88, DataValue = 0, Name = "SoulSand", InternalName = "minecraft:soul_sand", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.5f, BlastResistance = 2.5f };
+		public static readonly BlockInfo Glowstone = new BlockInfo { TypeId = 89, DataValue = 0, Name = "Glowstone", InternalName = "minecraft:glowstone", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 255, Hardness = 0.3f, BlastResistance = 1.5f };
+		public static readonly BlockInfo Portal = new BlockInfo { TypeId = 90, DataValue = 0, Name = "Portal", InternalName = "minecraft:portal", Note = "", UsesEntityData = false, Luminance = 11, Opacity = 0, Hardness = -1f, BlastResistance = 0f };
+		public static readonly BlockInfo LitPumpkin = new BlockInfo { TypeId = 91, DataValue = 0, Name = "LitPumpkin", InternalName = "minecraft:lit_pumpkin", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 255, Hardness = 1f, BlastResistance = 5f };
+		public static readonly BlockInfo UnpoweredRepeater = new BlockInfo { TypeId = 93, DataValue = 0, Name = "UnpoweredRepeater", InternalName = "minecraft:unpowered_repeater", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+		public static readonly BlockInfo PoweredRepeater = new BlockInfo { TypeId = 94, DataValue = 0, Name = "PoweredRepeater", InternalName = "minecraft:powered_repeater", Note = "", UsesEntityData = false, Luminance = 9, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+		public static readonly BlockInfo Trapdoor = new BlockInfo { TypeId = 96, DataValue = 0, Name = "Trapdoor", InternalName = "minecraft:trapdoor", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 3f, BlastResistance = 15f };
+		public static readonly BlockInfo Stonebrick = new BlockInfo { TypeId = 98, DataValue = 0, Name = "Stonebrick", InternalName = "minecraft:stonebrick", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.5f, BlastResistance = 30f };
+		public static readonly BlockInfo BrownMushroomBlock = new BlockInfo { TypeId = 99, DataValue = 0, Name = "BrownMushroomBlock", InternalName = "minecraft:brown_mushroom_block", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.2f, BlastResistance = 1f };
+		public static readonly BlockInfo RedMushroomBlock = new BlockInfo { TypeId = 100, DataValue = 0, Name = "RedMushroomBlock", InternalName = "minecraft:red_mushroom_block", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.2f, BlastResistance = 1f };
+		public static readonly BlockInfo IronBars = new BlockInfo { TypeId = 101, DataValue = 0, Name = "IronBars", InternalName = "minecraft:iron_bars", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 5f, BlastResistance = 30f };
+		public static readonly BlockInfo GlassPane = new BlockInfo { TypeId = 102, DataValue = 0, Name = "GlassPane", InternalName = "minecraft:glass_pane", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+		public static readonly BlockInfo MelonBlock = new BlockInfo { TypeId = 103, DataValue = 0, Name = "MelonBlock", InternalName = "minecraft:melon_block", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1f, BlastResistance = 5f };
+		public static readonly BlockInfo PumpkinStem = new BlockInfo { TypeId = 104, DataValue = 0, Name = "PumpkinStem", InternalName = "minecraft:pumpkin_stem", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+		public static readonly BlockInfo MelonStem = new BlockInfo { TypeId = 105, DataValue = 0, Name = "MelonStem", InternalName = "minecraft:melon_stem", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+		public static readonly BlockInfo FenceGate = new BlockInfo { TypeId = 107, DataValue = 0, Name = "FenceGate", InternalName = "minecraft:fence_gate", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 2f, BlastResistance = 15f };
+		public static readonly BlockInfo Mycelium = new BlockInfo { TypeId = 110, DataValue = 0, Name = "Mycelium", InternalName = "minecraft:mycelium", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.6f, BlastResistance = 3f };
+		public static readonly BlockInfo Waterlily = new BlockInfo { TypeId = 111, DataValue = 0, Name = "Waterlily", InternalName = "minecraft:waterlily", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+		public static readonly BlockInfo NetherBrick = new BlockInfo { TypeId = 112, DataValue = 0, Name = "NetherBrick", InternalName = "minecraft:nether_brick", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+		public static readonly BlockInfo NetherBrickFence = new BlockInfo { TypeId = 113, DataValue = 0, Name = "NetherBrickFence", InternalName = "minecraft:nether_brick_fence", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 2f, BlastResistance = 30f };
+		public static readonly BlockInfo NetherWart = new BlockInfo { TypeId = 115, DataValue = 0, Name = "NetherWart", InternalName = "minecraft:nether_wart", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+		public static readonly BlockInfo EnchantingTable = new BlockInfo { TypeId = 116, DataValue = 0, Name = "EnchantingTable", InternalName = "minecraft:enchanting_table", Note = "", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 5f, BlastResistance = 6000f };
+		public static readonly BlockInfo BrewingStand = new BlockInfo { TypeId = 117, DataValue = 0, Name = "BrewingStand", InternalName = "minecraft:brewing_stand", Note = "", UsesEntityData = true, Luminance = 1, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+		public static readonly BlockInfo Cauldron = new BlockInfo { TypeId = 118, DataValue = 0, Name = "Cauldron", InternalName = "minecraft:cauldron", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 2f, BlastResistance = 10f };
+		public static readonly BlockInfo EndPortal = new BlockInfo { TypeId = 119, DataValue = 0, Name = "EndPortal", InternalName = "minecraft:end_portal", Note = "", UsesEntityData = true, Luminance = 15, Opacity = 0, Hardness = -1f, BlastResistance = 1.8E+07f };
+		public static readonly BlockInfo EndPortalFrame = new BlockInfo { TypeId = 120, DataValue = 0, Name = "EndPortalFrame", InternalName = "minecraft:end_portal_frame", Note = "", UsesEntityData = false, Luminance = 1, Opacity = 0, Hardness = -1f, BlastResistance = 1.8E+07f };
+		public static readonly BlockInfo EndStone = new BlockInfo { TypeId = 121, DataValue = 0, Name = "EndStone", InternalName = "minecraft:end_stone", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 3f, BlastResistance = 45f };
+		public static readonly BlockInfo DragonEgg = new BlockInfo { TypeId = 122, DataValue = 0, Name = "DragonEgg", InternalName = "minecraft:dragon_egg", Note = "", UsesEntityData = false, Luminance = 1, Opacity = 0, Hardness = 3f, BlastResistance = 45f };
+		public static readonly BlockInfo RedstoneLamp = new BlockInfo { TypeId = 123, DataValue = 0, Name = "RedstoneLamp", InternalName = "minecraft:redstone_lamp", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.3f, BlastResistance = 1.5f };
+		public static readonly BlockInfo LitRedstoneLamp = new BlockInfo { TypeId = 124, DataValue = 0, Name = "LitRedstoneLamp", InternalName = "minecraft:lit_redstone_lamp", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 255, Hardness = 0.3f, BlastResistance = 1.5f };
+		public static readonly BlockInfo Cocoa = new BlockInfo { TypeId = 127, DataValue = 0, Name = "Cocoa", InternalName = "minecraft:cocoa", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.2f, BlastResistance = 15f };
+		public static readonly BlockInfo EmeraldOre = new BlockInfo { TypeId = 129, DataValue = 0, Name = "EmeraldOre", InternalName = "minecraft:emerald_ore", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 3f, BlastResistance = 15f };
+		public static readonly BlockInfo TripwireHook = new BlockInfo { TypeId = 131, DataValue = 0, Name = "TripwireHook", InternalName = "minecraft:tripwire_hook", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+		public static readonly BlockInfo Tripwire = new BlockInfo { TypeId = 132, DataValue = 0, Name = "Tripwire", InternalName = "minecraft:tripwire", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+		public static readonly BlockInfo EmeraldBlock = new BlockInfo { TypeId = 133, DataValue = 0, Name = "EmeraldBlock", InternalName = "minecraft:emerald_block", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 5f, BlastResistance = 30f };
+		public static readonly BlockInfo CommandBlock = new BlockInfo { TypeId = 137, DataValue = 0, Name = "CommandBlock", InternalName = "minecraft:command_block", Note = "", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = -1f, BlastResistance = 1.8E+07f };
+		public static readonly BlockInfo Beacon = new BlockInfo { TypeId = 138, DataValue = 0, Name = "Beacon", InternalName = "minecraft:beacon", Note = "", UsesEntityData = true, Luminance = 15, Opacity = 0, Hardness = 3f, BlastResistance = 15f };
+		public static readonly BlockInfo CobblestoneWall = new BlockInfo { TypeId = 139, DataValue = 0, Name = "CobblestoneWall", InternalName = "minecraft:cobblestone_wall", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 2f, BlastResistance = 30f };
+		public static readonly BlockInfo FlowerPot = new BlockInfo { TypeId = 140, DataValue = 0, Name = "FlowerPot", InternalName = "minecraft:flower_pot", Note = "", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+		public static readonly BlockInfo Carrots = new BlockInfo { TypeId = 141, DataValue = 0, Name = "Carrots", InternalName = "minecraft:carrots", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+		public static readonly BlockInfo Potatoes = new BlockInfo { TypeId = 142, DataValue = 0, Name = "Potatoes", InternalName = "minecraft:potatoes", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+		public static readonly BlockInfo WoodenButton = new BlockInfo { TypeId = 143, DataValue = 0, Name = "WoodenButton", InternalName = "minecraft:wooden_button", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+		public static readonly BlockInfo Skull = new BlockInfo { TypeId = 144, DataValue = 0, Name = "Skull", InternalName = "minecraft:skull", Note = "", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 1f, BlastResistance = 5f };
+		public static readonly BlockInfo Anvil = new BlockInfo { TypeId = 145, DataValue = 0, Name = "Anvil", InternalName = "minecraft:anvil", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 5f, BlastResistance = 6000f };
+		public static readonly BlockInfo LightWeightedPressurePlate = new BlockInfo { TypeId = 147, DataValue = 0, Name = "LightWeightedPressurePlate", InternalName = "minecraft:light_weighted_pressure_plate", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+		public static readonly BlockInfo HeavyWeightedPressurePlate = new BlockInfo { TypeId = 148, DataValue = 0, Name = "HeavyWeightedPressurePlate", InternalName = "minecraft:heavy_weighted_pressure_plate", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+		public static readonly BlockInfo UnpoweredComparator = new BlockInfo { TypeId = 149, DataValue = 0, Name = "UnpoweredComparator", InternalName = "minecraft:unpowered_comparator", Note = "", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+		public static readonly BlockInfo PoweredComparator = new BlockInfo { TypeId = 150, DataValue = 0, Name = "PoweredComparator", InternalName = "minecraft:powered_comparator", Note = "", UsesEntityData = true, Luminance = 9, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+		public static readonly BlockInfo DaylightDetector = new BlockInfo { TypeId = 151, DataValue = 0, Name = "DaylightDetector", InternalName = "minecraft:daylight_detector", Note = "", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 0.2f, BlastResistance = 1f };
+		public static readonly BlockInfo RedstoneBlock = new BlockInfo { TypeId = 152, DataValue = 0, Name = "RedstoneBlock", InternalName = "minecraft:redstone_block", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 5f, BlastResistance = 30f };
+		public static readonly BlockInfo QuartzOre = new BlockInfo { TypeId = 153, DataValue = 0, Name = "QuartzOre", InternalName = "minecraft:quartz_ore", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 3f, BlastResistance = 15f };
+		public static readonly BlockInfo QuartzBlock = new BlockInfo { TypeId = 155, DataValue = 0, Name = "QuartzBlock", InternalName = "minecraft:quartz_block", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.8f, BlastResistance = 4f };
+		public static readonly BlockInfo QuartzStairs = new BlockInfo { TypeId = 156, DataValue = 0, Name = "QuartzStairs", InternalName = "minecraft:quartz_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.8f, BlastResistance = 4f };
+		public static readonly BlockInfo HayBlock = new BlockInfo { TypeId = 170, DataValue = 0, Name = "HayBlock", InternalName = "minecraft:hay_block", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.5f, BlastResistance = 2.5f };
+		public static readonly BlockInfo HardenedClay = new BlockInfo { TypeId = 172, DataValue = 0, Name = "HardenedClay", InternalName = "minecraft:hardened_clay", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.25f, BlastResistance = 21f };
+		public static readonly BlockInfo CoalBlock = new BlockInfo { TypeId = 173, DataValue = 0, Name = "CoalBlock", InternalName = "minecraft:coal_block", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 5f, BlastResistance = 30f };
+		public static readonly BlockInfo PackedIce = new BlockInfo { TypeId = 174, DataValue = 0, Name = "PackedIce", InternalName = "minecraft:packed_ice", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.5f, BlastResistance = 2.5f };
 		public static class Wood {
 			public static class Oak {
 				public static readonly BlockInfo Vertical = new BlockInfo { TypeId = 17, DataValue = 0, Name = "Vertical", InternalName = "minecraft:log", Note = "Oak, Vertical", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 10f };
@@ -732,129 +831,263 @@ namespace Sediment {
 			public static readonly BlockInfo Height7 = new BlockInfo { TypeId = 78, DataValue = 7, Name = "Height7", InternalName = "minecraft:snow_layer", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.1f, BlastResistance = 0.5f };
 			public static readonly BlockInfo Block = new BlockInfo { TypeId = 80, DataValue = 0, Name = "Block", InternalName = "minecraft:snow", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.2f, BlastResistance = 1f };
 		}
-		public static class Crop {
-			public static class Wheat {
-			}
-			public static class Carrot {
-			}
-			public static class Potato {
-			}
-			public static class PumpkinStem {
-			}
-			public static class MelonStem {
-			}
-			public static class SugarCane {
-			}
-			public static class Cactus {
-			}
-			public static class NetherWart {
-			}
-			public static class Cocoa {
-			}
-		}
 		public static class Door {
 			public static class Wood {
 				public static class Top {
+					public static readonly BlockInfo Left = new BlockInfo { TypeId = 64, DataValue = 8, Name = "Left", InternalName = "minecraft:wooden_door", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 3f, BlastResistance = 15f };
+					public static readonly BlockInfo Right = new BlockInfo { TypeId = 64, DataValue = 9, Name = "Right", InternalName = "minecraft:wooden_door", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 3f, BlastResistance = 15f };
 				}
 				public static class Bottom {
+					public static class Closed {
+						public static readonly BlockInfo West = new BlockInfo { TypeId = 64, DataValue = 0, Name = "West", InternalName = "minecraft:wooden_door", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 3f, BlastResistance = 15f };
+						public static readonly BlockInfo North = new BlockInfo { TypeId = 64, DataValue = 1, Name = "North", InternalName = "minecraft:wooden_door", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 3f, BlastResistance = 15f };
+						public static readonly BlockInfo East = new BlockInfo { TypeId = 64, DataValue = 2, Name = "East", InternalName = "minecraft:wooden_door", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 3f, BlastResistance = 15f };
+						public static readonly BlockInfo South = new BlockInfo { TypeId = 64, DataValue = 3, Name = "South", InternalName = "minecraft:wooden_door", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 3f, BlastResistance = 15f };
+					}
+					public static class Open {
+						public static readonly BlockInfo West = new BlockInfo { TypeId = 64, DataValue = 4, Name = "West", InternalName = "minecraft:wooden_door", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 3f, BlastResistance = 15f };
+						public static readonly BlockInfo North = new BlockInfo { TypeId = 64, DataValue = 5, Name = "North", InternalName = "minecraft:wooden_door", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 3f, BlastResistance = 15f };
+						public static readonly BlockInfo East = new BlockInfo { TypeId = 64, DataValue = 6, Name = "East", InternalName = "minecraft:wooden_door", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 3f, BlastResistance = 15f };
+						public static readonly BlockInfo South = new BlockInfo { TypeId = 64, DataValue = 7, Name = "South", InternalName = "minecraft:wooden_door", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 3f, BlastResistance = 15f };
+					}
 				}
 			}
 			public static class Iron {
 				public static class Top {
+					public static readonly BlockInfo Left = new BlockInfo { TypeId = 71, DataValue = 8, Name = "Left", InternalName = "minecraft:iron_door", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 5f, BlastResistance = 25f };
+					public static readonly BlockInfo Right = new BlockInfo { TypeId = 71, DataValue = 9, Name = "Right", InternalName = "minecraft:iron_door", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 5f, BlastResistance = 25f };
 				}
 				public static class Bottom {
+					public static class Closed {
+						public static readonly BlockInfo West = new BlockInfo { TypeId = 71, DataValue = 0, Name = "West", InternalName = "minecraft:iron_door", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 5f, BlastResistance = 25f };
+						public static readonly BlockInfo North = new BlockInfo { TypeId = 71, DataValue = 1, Name = "North", InternalName = "minecraft:iron_door", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 5f, BlastResistance = 25f };
+						public static readonly BlockInfo East = new BlockInfo { TypeId = 71, DataValue = 2, Name = "East", InternalName = "minecraft:iron_door", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 5f, BlastResistance = 25f };
+						public static readonly BlockInfo South = new BlockInfo { TypeId = 71, DataValue = 3, Name = "South", InternalName = "minecraft:iron_door", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 5f, BlastResistance = 25f };
+					}
+					public static class Open {
+						public static readonly BlockInfo West = new BlockInfo { TypeId = 71, DataValue = 4, Name = "West", InternalName = "minecraft:iron_door", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 5f, BlastResistance = 25f };
+						public static readonly BlockInfo North = new BlockInfo { TypeId = 71, DataValue = 5, Name = "North", InternalName = "minecraft:iron_door", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 5f, BlastResistance = 25f };
+						public static readonly BlockInfo East = new BlockInfo { TypeId = 71, DataValue = 6, Name = "East", InternalName = "minecraft:iron_door", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 5f, BlastResistance = 25f };
+						public static readonly BlockInfo South = new BlockInfo { TypeId = 71, DataValue = 7, Name = "South", InternalName = "minecraft:iron_door", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 5f, BlastResistance = 25f };
+					}
 				}
 			}
 		}
 		public static class Rail {
 			public static class Normal {
+				public static readonly BlockInfo NorthSouth = new BlockInfo { TypeId = 66, DataValue = 0, Name = "NorthSouth", InternalName = "minecraft:rail", Note = "NorthSouth", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+				public static readonly BlockInfo WestEast = new BlockInfo { TypeId = 66, DataValue = 1, Name = "WestEast", InternalName = "minecraft:rail", Note = "WestEast", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+				public static readonly BlockInfo AscendingEast = new BlockInfo { TypeId = 66, DataValue = 2, Name = "AscendingEast", InternalName = "minecraft:rail", Note = "AscendingEast", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+				public static readonly BlockInfo AscendingWest = new BlockInfo { TypeId = 66, DataValue = 3, Name = "AscendingWest", InternalName = "minecraft:rail", Note = "AscendingWest", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+				public static readonly BlockInfo AscendingNorth = new BlockInfo { TypeId = 66, DataValue = 4, Name = "AscendingNorth", InternalName = "minecraft:rail", Note = "AscendingNorth", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+				public static readonly BlockInfo AscendingSouth = new BlockInfo { TypeId = 66, DataValue = 5, Name = "AscendingSouth", InternalName = "minecraft:rail", Note = "AscendingSouth", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+				public static readonly BlockInfo CornerNorthWest = new BlockInfo { TypeId = 66, DataValue = 6, Name = "CornerNorthWest", InternalName = "minecraft:rail", Note = "CornerNorthWest", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+				public static readonly BlockInfo CornerNorthEast = new BlockInfo { TypeId = 66, DataValue = 7, Name = "CornerNorthEast", InternalName = "minecraft:rail", Note = "CornerNorthEast", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+				public static readonly BlockInfo CornerSouthEast = new BlockInfo { TypeId = 66, DataValue = 8, Name = "CornerSouthEast", InternalName = "minecraft:rail", Note = "CornerSouthEast", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+				public static readonly BlockInfo SouthWest = new BlockInfo { TypeId = 66, DataValue = 9, Name = "SouthWest", InternalName = "minecraft:rail", Note = "SouthWest", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
 			}
 			public static class Powered {
+				public static class Inactive {
+					public static readonly BlockInfo NorthSouth = new BlockInfo { TypeId = 27, DataValue = 0, Name = "NorthSouth", InternalName = "minecraft:golden_rail", Note = "NorthSouth", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+					public static readonly BlockInfo WestEast = new BlockInfo { TypeId = 27, DataValue = 1, Name = "WestEast", InternalName = "minecraft:golden_rail", Note = "WestEast", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+					public static readonly BlockInfo AscendingEast = new BlockInfo { TypeId = 27, DataValue = 2, Name = "AscendingEast", InternalName = "minecraft:golden_rail", Note = "AscendingEast", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+					public static readonly BlockInfo AscendingWest = new BlockInfo { TypeId = 27, DataValue = 3, Name = "AscendingWest", InternalName = "minecraft:golden_rail", Note = "AscendingWest", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+					public static readonly BlockInfo AscendingNorth = new BlockInfo { TypeId = 27, DataValue = 4, Name = "AscendingNorth", InternalName = "minecraft:golden_rail", Note = "AscendingNorth", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+					public static readonly BlockInfo AscendingSouth = new BlockInfo { TypeId = 27, DataValue = 5, Name = "AscendingSouth", InternalName = "minecraft:golden_rail", Note = "AscendingSouth", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+				}
+				public static class Active {
+					public static readonly BlockInfo NorthSouth = new BlockInfo { TypeId = 27, DataValue = 8, Name = "NorthSouth", InternalName = "minecraft:golden_rail", Note = "NorthSouth", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+					public static readonly BlockInfo WestEast = new BlockInfo { TypeId = 27, DataValue = 9, Name = "WestEast", InternalName = "minecraft:golden_rail", Note = "WestEast", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+					public static readonly BlockInfo AscendingEast = new BlockInfo { TypeId = 27, DataValue = 10, Name = "AscendingEast", InternalName = "minecraft:golden_rail", Note = "AscendingEast", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+					public static readonly BlockInfo AscendingWest = new BlockInfo { TypeId = 27, DataValue = 11, Name = "AscendingWest", InternalName = "minecraft:golden_rail", Note = "AscendingWest", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+					public static readonly BlockInfo AscendingNorth = new BlockInfo { TypeId = 27, DataValue = 12, Name = "AscendingNorth", InternalName = "minecraft:golden_rail", Note = "AscendingNorth", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+					public static readonly BlockInfo AscendingSouth = new BlockInfo { TypeId = 27, DataValue = 13, Name = "AscendingSouth", InternalName = "minecraft:golden_rail", Note = "AscendingSouth", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+				}
 			}
 			public static class Detector {
+				public static class Inactive {
+					public static readonly BlockInfo NorthSouth = new BlockInfo { TypeId = 28, DataValue = 0, Name = "NorthSouth", InternalName = "minecraft:detector_rail", Note = "NorthSouth", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+					public static readonly BlockInfo WestEast = new BlockInfo { TypeId = 28, DataValue = 1, Name = "WestEast", InternalName = "minecraft:detector_rail", Note = "WestEast", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+					public static readonly BlockInfo AscendingEast = new BlockInfo { TypeId = 28, DataValue = 2, Name = "AscendingEast", InternalName = "minecraft:detector_rail", Note = "AscendingEast", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+					public static readonly BlockInfo AscendingWest = new BlockInfo { TypeId = 28, DataValue = 3, Name = "AscendingWest", InternalName = "minecraft:detector_rail", Note = "AscendingWest", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+					public static readonly BlockInfo AscendingNorth = new BlockInfo { TypeId = 28, DataValue = 4, Name = "AscendingNorth", InternalName = "minecraft:detector_rail", Note = "AscendingNorth", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+					public static readonly BlockInfo AscendingSouth = new BlockInfo { TypeId = 28, DataValue = 5, Name = "AscendingSouth", InternalName = "minecraft:detector_rail", Note = "AscendingSouth", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+				}
+				public static class Active {
+					public static readonly BlockInfo NorthSouth = new BlockInfo { TypeId = 28, DataValue = 8, Name = "NorthSouth", InternalName = "minecraft:detector_rail", Note = "NorthSouth", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+					public static readonly BlockInfo WestEast = new BlockInfo { TypeId = 28, DataValue = 9, Name = "WestEast", InternalName = "minecraft:detector_rail", Note = "WestEast", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+					public static readonly BlockInfo AscendingEast = new BlockInfo { TypeId = 28, DataValue = 10, Name = "AscendingEast", InternalName = "minecraft:detector_rail", Note = "AscendingEast", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+					public static readonly BlockInfo AscendingWest = new BlockInfo { TypeId = 28, DataValue = 11, Name = "AscendingWest", InternalName = "minecraft:detector_rail", Note = "AscendingWest", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+					public static readonly BlockInfo AscendingNorth = new BlockInfo { TypeId = 28, DataValue = 12, Name = "AscendingNorth", InternalName = "minecraft:detector_rail", Note = "AscendingNorth", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+					public static readonly BlockInfo AscendingSouth = new BlockInfo { TypeId = 28, DataValue = 13, Name = "AscendingSouth", InternalName = "minecraft:detector_rail", Note = "AscendingSouth", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+				}
 			}
 			public static class Activator {
+				public static class Inactive {
+					public static readonly BlockInfo NorthSouth = new BlockInfo { TypeId = 157, DataValue = 0, Name = "NorthSouth", InternalName = "minecraft:activator_rail", Note = "NorthSouth", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+					public static readonly BlockInfo WestEast = new BlockInfo { TypeId = 157, DataValue = 1, Name = "WestEast", InternalName = "minecraft:activator_rail", Note = "WestEast", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+					public static readonly BlockInfo AscendingEast = new BlockInfo { TypeId = 157, DataValue = 2, Name = "AscendingEast", InternalName = "minecraft:activator_rail", Note = "AscendingEast", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+					public static readonly BlockInfo AscendingWest = new BlockInfo { TypeId = 157, DataValue = 3, Name = "AscendingWest", InternalName = "minecraft:activator_rail", Note = "AscendingWest", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+					public static readonly BlockInfo AscendingNorth = new BlockInfo { TypeId = 157, DataValue = 4, Name = "AscendingNorth", InternalName = "minecraft:activator_rail", Note = "AscendingNorth", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+					public static readonly BlockInfo AscendingSouth = new BlockInfo { TypeId = 157, DataValue = 5, Name = "AscendingSouth", InternalName = "minecraft:activator_rail", Note = "AscendingSouth", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+				}
+				public static class Active {
+					public static readonly BlockInfo NorthSouth = new BlockInfo { TypeId = 157, DataValue = 8, Name = "NorthSouth", InternalName = "minecraft:activator_rail", Note = "NorthSouth", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+					public static readonly BlockInfo WestEast = new BlockInfo { TypeId = 157, DataValue = 9, Name = "WestEast", InternalName = "minecraft:activator_rail", Note = "WestEast", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+					public static readonly BlockInfo AscendingEast = new BlockInfo { TypeId = 157, DataValue = 10, Name = "AscendingEast", InternalName = "minecraft:activator_rail", Note = "AscendingEast", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+					public static readonly BlockInfo AscendingWest = new BlockInfo { TypeId = 157, DataValue = 11, Name = "AscendingWest", InternalName = "minecraft:activator_rail", Note = "AscendingWest", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+					public static readonly BlockInfo AscendingNorth = new BlockInfo { TypeId = 157, DataValue = 12, Name = "AscendingNorth", InternalName = "minecraft:activator_rail", Note = "AscendingNorth", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+					public static readonly BlockInfo AscendingSouth = new BlockInfo { TypeId = 157, DataValue = 13, Name = "AscendingSouth", InternalName = "minecraft:activator_rail", Note = "AscendingSouth", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.7f, BlastResistance = 3.5f };
+				}
 			}
 		}
 		public static class Ladder {
+			public static readonly BlockInfo North = new BlockInfo { TypeId = 65, DataValue = 2, Name = "North", InternalName = "minecraft:ladder", Note = "North", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.4f, BlastResistance = 2f };
+			public static readonly BlockInfo South = new BlockInfo { TypeId = 65, DataValue = 3, Name = "South", InternalName = "minecraft:ladder", Note = "South", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.4f, BlastResistance = 2f };
+			public static readonly BlockInfo West = new BlockInfo { TypeId = 65, DataValue = 4, Name = "West", InternalName = "minecraft:ladder", Note = "West", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.4f, BlastResistance = 2f };
+			public static readonly BlockInfo East = new BlockInfo { TypeId = 65, DataValue = 5, Name = "East", InternalName = "minecraft:ladder", Note = "East", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.4f, BlastResistance = 2f };
 		}
 		public static class WallSign {
+			public static readonly BlockInfo North = new BlockInfo { TypeId = 68, DataValue = 2, Name = "North", InternalName = "minecraft:wall_sign", Note = "North", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 1f, BlastResistance = 5f };
+			public static readonly BlockInfo South = new BlockInfo { TypeId = 68, DataValue = 3, Name = "South", InternalName = "minecraft:wall_sign", Note = "South", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 1f, BlastResistance = 5f };
+			public static readonly BlockInfo West = new BlockInfo { TypeId = 68, DataValue = 4, Name = "West", InternalName = "minecraft:wall_sign", Note = "West", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 1f, BlastResistance = 5f };
+			public static readonly BlockInfo East = new BlockInfo { TypeId = 68, DataValue = 5, Name = "East", InternalName = "minecraft:wall_sign", Note = "East", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 1f, BlastResistance = 5f };
 		}
 		public static class Furnace {
+			public static class Inactive {
+				public static readonly BlockInfo North = new BlockInfo { TypeId = 61, DataValue = 2, Name = "North", InternalName = "minecraft:furnace", Note = "North", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+				public static readonly BlockInfo South = new BlockInfo { TypeId = 61, DataValue = 3, Name = "South", InternalName = "minecraft:furnace", Note = "South", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+				public static readonly BlockInfo West = new BlockInfo { TypeId = 61, DataValue = 4, Name = "West", InternalName = "minecraft:furnace", Note = "West", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+				public static readonly BlockInfo East = new BlockInfo { TypeId = 61, DataValue = 5, Name = "East", InternalName = "minecraft:furnace", Note = "East", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+			}
+			public static class Active {
+				public static readonly BlockInfo North = new BlockInfo { TypeId = 62, DataValue = 2, Name = "North", InternalName = "minecraft:lit_furnace", Note = "North", UsesEntityData = true, Luminance = 13, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+				public static readonly BlockInfo South = new BlockInfo { TypeId = 62, DataValue = 3, Name = "South", InternalName = "minecraft:lit_furnace", Note = "South", UsesEntityData = true, Luminance = 13, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+				public static readonly BlockInfo West = new BlockInfo { TypeId = 62, DataValue = 4, Name = "West", InternalName = "minecraft:lit_furnace", Note = "West", UsesEntityData = true, Luminance = 13, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+				public static readonly BlockInfo East = new BlockInfo { TypeId = 62, DataValue = 5, Name = "East", InternalName = "minecraft:lit_furnace", Note = "East", UsesEntityData = true, Luminance = 13, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+			}
 		}
 		public static class Chest {
 			public static class Normal {
+				public static readonly BlockInfo North = new BlockInfo { TypeId = 54, DataValue = 2, Name = "North", InternalName = "minecraft:chest", Note = "North", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 2.5f, BlastResistance = 12.5f };
+				public static readonly BlockInfo South = new BlockInfo { TypeId = 54, DataValue = 3, Name = "South", InternalName = "minecraft:chest", Note = "South", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 2.5f, BlastResistance = 12.5f };
+				public static readonly BlockInfo West = new BlockInfo { TypeId = 54, DataValue = 4, Name = "West", InternalName = "minecraft:chest", Note = "West", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 2.5f, BlastResistance = 12.5f };
+				public static readonly BlockInfo East = new BlockInfo { TypeId = 54, DataValue = 5, Name = "East", InternalName = "minecraft:chest", Note = "East", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 2.5f, BlastResistance = 12.5f };
 			}
 			public static class Trapped {
+				public static readonly BlockInfo North = new BlockInfo { TypeId = 146, DataValue = 2, Name = "North", InternalName = "minecraft:trapped_chest", Note = "North", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 2.5f, BlastResistance = 12.5f };
+				public static readonly BlockInfo South = new BlockInfo { TypeId = 146, DataValue = 3, Name = "South", InternalName = "minecraft:trapped_chest", Note = "South", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 2.5f, BlastResistance = 12.5f };
+				public static readonly BlockInfo West = new BlockInfo { TypeId = 146, DataValue = 4, Name = "West", InternalName = "minecraft:trapped_chest", Note = "West", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 2.5f, BlastResistance = 12.5f };
+				public static readonly BlockInfo East = new BlockInfo { TypeId = 146, DataValue = 5, Name = "East", InternalName = "minecraft:trapped_chest", Note = "East", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 2.5f, BlastResistance = 12.5f };
 			}
 			public static class Ender {
+				public static readonly BlockInfo North = new BlockInfo { TypeId = 130, DataValue = 2, Name = "North", InternalName = "minecraft:ender_chest", Note = "North", UsesEntityData = true, Luminance = 7, Opacity = 0, Hardness = 22.5f, BlastResistance = 3000f };
+				public static readonly BlockInfo South = new BlockInfo { TypeId = 130, DataValue = 3, Name = "South", InternalName = "minecraft:ender_chest", Note = "South", UsesEntityData = true, Luminance = 7, Opacity = 0, Hardness = 22.5f, BlastResistance = 3000f };
+				public static readonly BlockInfo West = new BlockInfo { TypeId = 130, DataValue = 4, Name = "West", InternalName = "minecraft:ender_chest", Note = "West", UsesEntityData = true, Luminance = 7, Opacity = 0, Hardness = 22.5f, BlastResistance = 3000f };
+				public static readonly BlockInfo East = new BlockInfo { TypeId = 130, DataValue = 5, Name = "East", InternalName = "minecraft:ender_chest", Note = "East", UsesEntityData = true, Luminance = 7, Opacity = 0, Hardness = 22.5f, BlastResistance = 3000f };
 			}
 		}
 		public static class Dispenser {
+			public static class Inactive {
+				public static readonly BlockInfo Down = new BlockInfo { TypeId = 23, DataValue = 0, Name = "Down", InternalName = "minecraft:dispenser", Note = "Down", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+				public static readonly BlockInfo Up = new BlockInfo { TypeId = 23, DataValue = 1, Name = "Up", InternalName = "minecraft:dispenser", Note = "Up", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+				public static readonly BlockInfo North = new BlockInfo { TypeId = 23, DataValue = 2, Name = "North", InternalName = "minecraft:dispenser", Note = "North", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+				public static readonly BlockInfo South = new BlockInfo { TypeId = 23, DataValue = 3, Name = "South", InternalName = "minecraft:dispenser", Note = "South", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+				public static readonly BlockInfo West = new BlockInfo { TypeId = 23, DataValue = 4, Name = "West", InternalName = "minecraft:dispenser", Note = "West", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+				public static readonly BlockInfo East = new BlockInfo { TypeId = 23, DataValue = 5, Name = "East", InternalName = "minecraft:dispenser", Note = "East", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+			}
+			public static class Active {
+				public static readonly BlockInfo Down = new BlockInfo { TypeId = 23, DataValue = 8, Name = "Down", InternalName = "minecraft:dispenser", Note = "Down", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+				public static readonly BlockInfo Up = new BlockInfo { TypeId = 23, DataValue = 9, Name = "Up", InternalName = "minecraft:dispenser", Note = "Up", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+				public static readonly BlockInfo North = new BlockInfo { TypeId = 23, DataValue = 10, Name = "North", InternalName = "minecraft:dispenser", Note = "North", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+				public static readonly BlockInfo South = new BlockInfo { TypeId = 23, DataValue = 11, Name = "South", InternalName = "minecraft:dispenser", Note = "South", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+				public static readonly BlockInfo West = new BlockInfo { TypeId = 23, DataValue = 12, Name = "West", InternalName = "minecraft:dispenser", Note = "West", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+				public static readonly BlockInfo East = new BlockInfo { TypeId = 23, DataValue = 13, Name = "East", InternalName = "minecraft:dispenser", Note = "East", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+			}
 		}
 		public static class Hopper {
+			public static class Inactive {
+				public static readonly BlockInfo Down = new BlockInfo { TypeId = 154, DataValue = 0, Name = "Down", InternalName = "minecraft:hopper", Note = "Down", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 3f, BlastResistance = 24f };
+				public static readonly BlockInfo Up = new BlockInfo { TypeId = 154, DataValue = 1, Name = "Up", InternalName = "minecraft:hopper", Note = "Up", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 3f, BlastResistance = 24f };
+				public static readonly BlockInfo North = new BlockInfo { TypeId = 154, DataValue = 2, Name = "North", InternalName = "minecraft:hopper", Note = "North", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 3f, BlastResistance = 24f };
+				public static readonly BlockInfo South = new BlockInfo { TypeId = 154, DataValue = 3, Name = "South", InternalName = "minecraft:hopper", Note = "South", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 3f, BlastResistance = 24f };
+				public static readonly BlockInfo West = new BlockInfo { TypeId = 154, DataValue = 4, Name = "West", InternalName = "minecraft:hopper", Note = "West", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 3f, BlastResistance = 24f };
+				public static readonly BlockInfo East = new BlockInfo { TypeId = 154, DataValue = 5, Name = "East", InternalName = "minecraft:hopper", Note = "East", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 3f, BlastResistance = 24f };
+			}
+			public static class Active {
+				public static readonly BlockInfo Down = new BlockInfo { TypeId = 154, DataValue = 8, Name = "Down", InternalName = "minecraft:hopper", Note = "Down", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 3f, BlastResistance = 24f };
+				public static readonly BlockInfo Up = new BlockInfo { TypeId = 154, DataValue = 9, Name = "Up", InternalName = "minecraft:hopper", Note = "Up", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 3f, BlastResistance = 24f };
+				public static readonly BlockInfo North = new BlockInfo { TypeId = 154, DataValue = 10, Name = "North", InternalName = "minecraft:hopper", Note = "North", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 3f, BlastResistance = 24f };
+				public static readonly BlockInfo South = new BlockInfo { TypeId = 154, DataValue = 11, Name = "South", InternalName = "minecraft:hopper", Note = "South", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 3f, BlastResistance = 24f };
+				public static readonly BlockInfo West = new BlockInfo { TypeId = 154, DataValue = 12, Name = "West", InternalName = "minecraft:hopper", Note = "West", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 3f, BlastResistance = 24f };
+				public static readonly BlockInfo East = new BlockInfo { TypeId = 154, DataValue = 13, Name = "East", InternalName = "minecraft:hopper", Note = "East", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 3f, BlastResistance = 24f };
+			}
 		}
 		public static class Dropper {
+			public static class Inactive {
+				public static readonly BlockInfo Down = new BlockInfo { TypeId = 158, DataValue = 0, Name = "Down", InternalName = "minecraft:dropper", Note = "Down", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+				public static readonly BlockInfo Up = new BlockInfo { TypeId = 158, DataValue = 1, Name = "Up", InternalName = "minecraft:dropper", Note = "Up", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+				public static readonly BlockInfo North = new BlockInfo { TypeId = 158, DataValue = 2, Name = "North", InternalName = "minecraft:dropper", Note = "North", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+				public static readonly BlockInfo South = new BlockInfo { TypeId = 158, DataValue = 3, Name = "South", InternalName = "minecraft:dropper", Note = "South", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+				public static readonly BlockInfo West = new BlockInfo { TypeId = 158, DataValue = 4, Name = "West", InternalName = "minecraft:dropper", Note = "West", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+				public static readonly BlockInfo East = new BlockInfo { TypeId = 158, DataValue = 5, Name = "East", InternalName = "minecraft:dropper", Note = "East", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+			}
+			public static class Active {
+				public static readonly BlockInfo Down = new BlockInfo { TypeId = 158, DataValue = 8, Name = "Down", InternalName = "minecraft:dropper", Note = "Down", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+				public static readonly BlockInfo Up = new BlockInfo { TypeId = 158, DataValue = 9, Name = "Up", InternalName = "minecraft:dropper", Note = "Up", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+				public static readonly BlockInfo North = new BlockInfo { TypeId = 158, DataValue = 10, Name = "North", InternalName = "minecraft:dropper", Note = "North", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+				public static readonly BlockInfo South = new BlockInfo { TypeId = 158, DataValue = 11, Name = "South", InternalName = "minecraft:dropper", Note = "South", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+				public static readonly BlockInfo West = new BlockInfo { TypeId = 158, DataValue = 12, Name = "West", InternalName = "minecraft:dropper", Note = "West", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+				public static readonly BlockInfo East = new BlockInfo { TypeId = 158, DataValue = 13, Name = "East", InternalName = "minecraft:dropper", Note = "East", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 3.5f, BlastResistance = 17.5f };
+			}
 		}
 		public static class Lever {
-		}
-		public static class PressurePlate {
-		}
-		public static class Button {
+			public static class Inactive {
+				public static readonly BlockInfo TopEast = new BlockInfo { TypeId = 69, DataValue = 0, Name = "TopEast", InternalName = "minecraft:lever", Note = "TopEast", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+				public static readonly BlockInfo East = new BlockInfo { TypeId = 69, DataValue = 1, Name = "East", InternalName = "minecraft:lever", Note = "East", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+				public static readonly BlockInfo West = new BlockInfo { TypeId = 69, DataValue = 2, Name = "West", InternalName = "minecraft:lever", Note = "West", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+				public static readonly BlockInfo South = new BlockInfo { TypeId = 69, DataValue = 3, Name = "South", InternalName = "minecraft:lever", Note = "South", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+				public static readonly BlockInfo North = new BlockInfo { TypeId = 69, DataValue = 4, Name = "North", InternalName = "minecraft:lever", Note = "North", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+				public static readonly BlockInfo BottomSouth = new BlockInfo { TypeId = 69, DataValue = 5, Name = "BottomSouth", InternalName = "minecraft:lever", Note = "BottomSouth", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+				public static readonly BlockInfo BottomEast = new BlockInfo { TypeId = 69, DataValue = 6, Name = "BottomEast", InternalName = "minecraft:lever", Note = "BottomEast", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+				public static readonly BlockInfo TopSouth = new BlockInfo { TypeId = 69, DataValue = 7, Name = "TopSouth", InternalName = "minecraft:lever", Note = "TopSouth", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+			}
+			public static class Active {
+				public static readonly BlockInfo TopEast = new BlockInfo { TypeId = 69, DataValue = 8, Name = "TopEast", InternalName = "minecraft:lever", Note = "TopEast", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+				public static readonly BlockInfo East = new BlockInfo { TypeId = 69, DataValue = 9, Name = "East", InternalName = "minecraft:lever", Note = "East", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+				public static readonly BlockInfo West = new BlockInfo { TypeId = 69, DataValue = 10, Name = "West", InternalName = "minecraft:lever", Note = "West", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+				public static readonly BlockInfo South = new BlockInfo { TypeId = 69, DataValue = 11, Name = "South", InternalName = "minecraft:lever", Note = "South", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+				public static readonly BlockInfo North = new BlockInfo { TypeId = 69, DataValue = 12, Name = "North", InternalName = "minecraft:lever", Note = "North", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+				public static readonly BlockInfo BottomSouth = new BlockInfo { TypeId = 69, DataValue = 13, Name = "BottomSouth", InternalName = "minecraft:lever", Note = "BottomSouth", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+				public static readonly BlockInfo BottomEast = new BlockInfo { TypeId = 69, DataValue = 14, Name = "BottomEast", InternalName = "minecraft:lever", Note = "BottomEast", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+				public static readonly BlockInfo TopSouth = new BlockInfo { TypeId = 69, DataValue = 15, Name = "TopSouth", InternalName = "minecraft:lever", Note = "TopSouth", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+			}
 		}
 		public static class Jukebox {
+			public static readonly BlockInfo NoDisc = new BlockInfo { TypeId = 84, DataValue = 0, Name = "NoDisc", InternalName = "minecraft:jukebox", Note = "", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+			public static readonly BlockInfo HasDisc = new BlockInfo { TypeId = 84, DataValue = 1, Name = "HasDisc", InternalName = "minecraft:jukebox", Note = "", UsesEntityData = true, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
 		}
 		public static class Cake {
-		}
-		public static class Repeater {
-			public static class Active {
-			}
-			public static class Inactive {
-			}
-		}
-		public static class Comparator {
-			public static class Normal {
-			}
-			public static class Active {
-			}
-		}
-		public static class Trapdoor {
-			public static class Wood {
-			}
-			public static class Iron {
-			}
+			public static readonly BlockInfo Eaten0 = new BlockInfo { TypeId = 92, DataValue = 0, Name = "Eaten0", InternalName = "minecraft:cake", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+			public static readonly BlockInfo Eaten1 = new BlockInfo { TypeId = 92, DataValue = 1, Name = "Eaten1", InternalName = "minecraft:cake", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+			public static readonly BlockInfo Eaten2 = new BlockInfo { TypeId = 92, DataValue = 2, Name = "Eaten2", InternalName = "minecraft:cake", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+			public static readonly BlockInfo Eaten3 = new BlockInfo { TypeId = 92, DataValue = 3, Name = "Eaten3", InternalName = "minecraft:cake", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+			public static readonly BlockInfo Eaten4 = new BlockInfo { TypeId = 92, DataValue = 4, Name = "Eaten4", InternalName = "minecraft:cake", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+			public static readonly BlockInfo Eaten5 = new BlockInfo { TypeId = 92, DataValue = 5, Name = "Eaten5", InternalName = "minecraft:cake", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
 		}
 		public static class MonsterEgg {
-		}
-		public static class StoneBrick {
-		}
-		public static class Mushroom {
-			public static class Brown {
-			}
-			public static class Red {
-			}
+			public static readonly BlockInfo Stone = new BlockInfo { TypeId = 97, DataValue = 0, Name = "Stone", InternalName = "minecraft:monster_egg", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.75f, BlastResistance = 3.75f };
+			public static readonly BlockInfo Cobblestone = new BlockInfo { TypeId = 97, DataValue = 1, Name = "Cobblestone", InternalName = "minecraft:monster_egg", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.75f, BlastResistance = 3.75f };
+			public static readonly BlockInfo StoneBrick = new BlockInfo { TypeId = 97, DataValue = 2, Name = "StoneBrick", InternalName = "minecraft:monster_egg", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.75f, BlastResistance = 3.75f };
+			public static readonly BlockInfo MossyStoneBrick = new BlockInfo { TypeId = 97, DataValue = 3, Name = "MossyStoneBrick", InternalName = "minecraft:monster_egg", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.75f, BlastResistance = 3.75f };
+			public static readonly BlockInfo CrackedStoneBrick = new BlockInfo { TypeId = 97, DataValue = 4, Name = "CrackedStoneBrick", InternalName = "minecraft:monster_egg", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.75f, BlastResistance = 3.75f };
+			public static readonly BlockInfo ChiseledStoneBrick = new BlockInfo { TypeId = 97, DataValue = 5, Name = "ChiseledStoneBrick", InternalName = "minecraft:monster_egg", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.75f, BlastResistance = 3.75f };
 		}
 		public static class Vine {
-		}
-		public static class FenceGate {
-		}
-		public static class BrewingStand {
-		}
-		public static class Cauldron {
-		}
-		public static class EndPortalBlock {
-		}
-		public static class Tripwire {
-		}
-		public static class Wall {
-		}
-		public static class Head {
-		}
-		public static class Quartz {
-		}
-		public static class Coal {
-		}
-		public static class Anvil {
+			public static readonly BlockInfo South = new BlockInfo { TypeId = 106, DataValue = 2, Name = "South", InternalName = "minecraft:vine", Note = "South", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.2f, BlastResistance = 1f };
+			public static readonly BlockInfo West = new BlockInfo { TypeId = 106, DataValue = 3, Name = "West", InternalName = "minecraft:vine", Note = "West", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.2f, BlastResistance = 1f };
+			public static readonly BlockInfo North = new BlockInfo { TypeId = 106, DataValue = 4, Name = "North", InternalName = "minecraft:vine", Note = "North", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.2f, BlastResistance = 1f };
+			public static readonly BlockInfo East = new BlockInfo { TypeId = 106, DataValue = 5, Name = "East", InternalName = "minecraft:vine", Note = "East", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.2f, BlastResistance = 1f };
 		}
 
 

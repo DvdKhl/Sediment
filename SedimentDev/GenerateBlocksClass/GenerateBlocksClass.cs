@@ -8,6 +8,7 @@ using System.Xml.Linq;
 
 namespace SedimentDev {
 	public class GenerateBlocksClass {
+		private HashSet<int> usedIds = new HashSet<int>();
 		private Dictionary<ushort, XElement> blocks;
 
 		public GenerateBlocksClass(XElement template, XElement blockInformation) {
@@ -29,6 +30,15 @@ namespace SedimentDev {
 			var content = File.ReadAllText("GenerateBlocksClass/FileTemplate.txt").Split(new[] { "//Body" }, StringSplitOptions.None);
 			strb.Append(content[0]);
 
+			foreach(var pair in blocks.Where(x => !usedIds.Contains(x.Key))) {
+				var blockInfo = new BlockInfo { Id = pair.Key };
+				ImportBlockInfo(blockInfo);
+				blockInfo.Name = string.Concat(blockInfo.InternalName.Substring("minecraft:".Length).Split('_').Select(x => char.ToUpper(x[0]) + x.Substring(1)));
+
+
+				BuildClassBlock(blockInfo);
+			}
+
 			foreach(var group in groups) {
 				BuildClassStaticContainer(group);
 			}
@@ -39,30 +49,31 @@ namespace SedimentDev {
 		private void BuildClassStaticContainer(TplGroup group) {
 			strb.Append("public static class ").Append(group.Name).AppendLine(" {");
 
-			foreach(var block in group.Blocks) {
-				strb.Append("public static readonly BlockInfo ")
-					.Append(block.Name)
-					.Append(" = new BlockInfo { ")
-					.Append("TypeId = ").Append(block.Id & 0xFFF).Append(", ")
-					.Append("DataValue = ").Append(block.Id >> 12).Append(", ")
-					.Append("Name = \"").Append(block.Name).Append("\", ")
-					.Append("InternalName = \"").Append(block.InternalName).Append("\", ")
-					.Append("Note = \"").Append(block.Note).Append("\", ")
-					.Append("UsesEntityData = ").Append(block.UsesEntityData ? "true" : "false").Append(", ")
-					.Append("Luminance = ").Append(block.Luminance).Append(", ")
-					.Append("Opacity = ").Append(block.Opacity).Append(", ")
-					.Append("Hardness = ").Append(block.Hardness).Append("f, ")
-					.Append("BlastResistance = ").Append(block.BlastResistance).Append("f")
-					.AppendLine(" };");
+			foreach(var block in group.Blocks) BuildClassBlock(block);
 
-
-			}
 
 			foreach(var subGroup in group.Children.OfType<TplGroup>()) {
 				BuildClassStaticContainer(subGroup);
 			}
 
 			strb.AppendLine("}");
+		}
+
+		private void BuildClassBlock(BlockInfo block) {
+			strb.Append("public static readonly BlockInfo ")
+				.Append(block.Name)
+				.Append(" = new BlockInfo { ")
+				.Append("TypeId = ").Append(block.Id & 0xFFF).Append(", ")
+				.Append("DataValue = ").Append(block.Id >> 12).Append(", ")
+				.Append("Name = \"").Append(block.Name).Append("\", ")
+				.Append("InternalName = \"").Append(block.InternalName).Append("\", ")
+				.Append("Note = \"").Append(block.Note).Append("\", ")
+				.Append("UsesEntityData = ").Append(block.UsesEntityData ? "true" : "false").Append(", ")
+				.Append("Luminance = ").Append(block.Luminance).Append(", ")
+				.Append("Opacity = ").Append(block.Opacity).Append(", ")
+				.Append("Hardness = ").Append(block.Hardness).Append("f, ")
+				.Append("BlastResistance = ").Append(block.BlastResistance).Append("f")
+				.AppendLine(" };");
 		}
 
 
@@ -142,6 +153,12 @@ namespace SedimentDev {
 				}
 			}
 
+			ImportBlockInfo(blockInfo);
+
+			usedIds.Add(blockInfo.Id & 0xFFF);
+		}
+
+		private void ImportBlockInfo(BlockInfo blockInfo) {
 			var exportBlockInfo = blocks[(ushort)(blockInfo.Id & 0xFFF)];
 			blockInfo.InternalName = (string)exportBlockInfo.Element("InternalName");
 			blockInfo.UsesEntityData = (bool)exportBlockInfo.Element("HasTileEntity");
@@ -149,8 +166,6 @@ namespace SedimentDev {
 			blockInfo.Opacity = (int)exportBlockInfo.Element("LightOpacity");
 			blockInfo.Hardness = (float)exportBlockInfo.Element("Hardness");
 			blockInfo.BlastResistance = (float)exportBlockInfo.Element("BlastResistance");
-
-
 		}
 		private void OnNCalcMethod(string name, NCalc.FunctionArgs args) {
 			switch(name) {
