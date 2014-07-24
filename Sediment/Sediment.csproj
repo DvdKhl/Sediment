@@ -43,10 +43,38 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Blocks.cs" />
+    <Compile Include="Core\Enchantments.cs" />
+    <Compile Include="Core\Entity\Entity.cs" />
+    <Compile Include="Core\Entity\Mob.cs" />
+    <Compile Include="Core\Item\Item.cs" />
+    <Compile Include="Core\Item\Tool.cs" />
+    <Compile Include="Core\Map.cs" />
+    <Compile Include="Core\MapManager.cs" />
+    <Compile Include="Internal\ChunkCache.cs" />
+    <Compile Include="Internal\IdCountsFile.cs" />
+    <Compile Include="Internal\LevelFile.cs" />
+    <Compile Include="Internal\MapFile.cs" />
+    <Compile Include="Internal\PlayerFile.cs" />
     <Compile Include="Internal\RegionFile.cs" />
+    <Compile Include="Internal\StructuresFile.cs" />
+    <Compile Include="Internal\VillagesFile.cs" />
+    <Compile Include="Internal\XYZ.cs" />
+    <Compile Include="Internal\XZ.cs" />
+    <Compile Include="Multiverse.cs" />
     <Compile Include="NBTLib\NBTReader.cs" />
     <Compile Include="NBTLib\NBTWriter.cs" />
+    <Compile Include="Core\Entities\Player.cs" />
+    <Compile Include="Core\PlayerManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Core\Region.cs" />
+    <Compile Include="Core\RegionManager.cs" />
+    <Compile Include="Core\World.cs" />
+    <Compile Include="Core\WorldManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Core\Items\" />
+    <Folder Include="Core\TileEntities\" />
+    <Folder Include="Core\TileEntity\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
