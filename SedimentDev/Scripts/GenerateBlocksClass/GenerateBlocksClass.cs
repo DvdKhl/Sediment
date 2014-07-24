@@ -5,6 +5,28 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Sediment.Scripts {
-	class GenerateBlocksClass {
+	public class GenerateBlocksClass {
+	}
+
+	class TplGroup {
+
+	}
+	class TplOnBlockInfo {
+
+	}
+	class TplBlockInfoCollection {
+
+	}
+	class TplBlockInfo {
+		
+	}
+	class TplInclude {
+		
+	}
+	class TplFor {
+
+	}
+	class TplDataValueRange {
+
 	}
 }

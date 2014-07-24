@@ -8,39 +8,39 @@
       <Note><![CDATA[getGroupName(0) + ", " + note]]></Note>
     </OnBlockInfo>
 
-    <BlockInfos Key="orientations">
+    <BlockInfoCollection Key="orientations">
       <BlockInfo Name="Vertical" DataValue="0"/>
       <BlockInfo Name="HorizontalEastWest" DataValue="4"/>
       <BlockInfo Name="HorizontalNorthSouth" DataValue="8"/>
       <BlockInfo Name="BarkOnly" DataValue="C"/>
-    </BlockInfos>
+    </BlockInfoCollection>
 
     <OnBlockInfo BlockId="0x11"/>
     <Group Name="Oak">
       <OnBlockInfo DataValue="dataValue + 0"/>
-      <IncludeBlockInfos Key="orientations"/>
+      <Include Key="orientations"/>
     </Group>
     <Group Name="Spruce">
       <OnBlockInfo DataValue="dataValue + 1"/>
-      <IncludeBlockInfos Key="orientations"/>
+      <Include Key="orientations"/>
     </Group>
     <Group Name="Birch">
       <OnBlockInfo DataValue="dataValue + 2"/>
-      <IncludeBlockInfos Key="orientations"/>
+      <Include Key="orientations"/>
     </Group>
     <Group Name="Jungle">
       <OnBlockInfo DataValue="dataValue + 3"/>
-      <IncludeBlockInfos Key="orientations"/>
+      <Include Key="orientations"/>
     </Group>
 
     <OnBlockInfo BlockId="0xA2"/>
     <Group Name="Acacia">
       <OnBlockInfo DataValue="dataValue + 0"/>
-      <IncludeBlockInfos Key="orientations"/>
+      <Include Key="orientations"/>
     </Group>
     <Group Name="DarkOak">
       <OnBlockInfo DataValue="dataValue + 1"/>
-      <IncludeBlockInfos Key="orientations"/>
+      <Include Key="orientations"/>
     </Group>
   </Group>
 
@@ -54,48 +54,45 @@
       <Note><![CDATA[getGroupName(0) + ", " + note]]></Note>
     </OnBlockInfo>
 
-    <BlockInfos Key="behaviour">
+    <BlockInfoCollection Key="behaviour">
       <BlockInfo Name="Decayable" DataValue="0"/>
       <BlockInfo Name="Permanent" DataValue="4"/>
       <BlockInfo Name="DecayableChecked" DataValue="8"/>
       <BlockInfo Name="PermanentChecked" DataValue="C"/>
-    </BlockInfos>
+    </BlockInfoCollection>
 
     <OnBlockInfo BlockId="0x12"/>
     <Group Name="Oak">
       <OnBlockInfo DataValue="dataValue + 0"/>
-      <IncludeBlockInfos Key="behaviour"/>
+      <Include Key="behaviour"/>
     </Group>
     <Group Name="Spruce">
       <OnBlockInfo DataValue="dataValue + 1"/>
-      <IncludeBlockInfos Key="behaviour"/>
+      <Include Key="behaviour"/>
     </Group>
     <Group Name="Birch">
       <OnBlockInfo DataValue="dataValue + 2"/>
-      <IncludeBlockInfos Key="behaviour"/>
+      <Include Key="behaviour"/>
     </Group>
     <Group Name="Jungle">
       <OnBlockInfo DataValue="dataValue + 3"/>
-      <IncludeBlockInfos Key="behaviour"/>
+      <Include Key="behaviour"/>
     </Group>
 
     <OnBlockInfo BlockId="0xA1"/>
     <Group Name="Acacia">
       <OnBlockInfo DataValue="dataValue + 0"/>
-      <IncludeBlockInfos Key="behaviour"/>
+      <Include Key="behaviour"/>
     </Group>
     <Group Name="DarkOak">
       <OnBlockInfo DataValue="dataValue + 1"/>
-      <IncludeBlockInfos Key="behaviour"/>
+      <Include Key="behaviour"/>
     </Group>
   </Group>
 
 
   <Group Name="Planks">
-    <OnBlockInfo>
-      <BlockId><![CDATA[0x05]]></BlockId>
-      <Note><![CDATA[blockInfoName]]></Note>
-    </OnBlockInfo>
+    <OnBlockInfo BlockId="0x05" Note="blockInfoName"/>
     <BlockInfo Name="Oak" DataValue="0"/>
     <BlockInfo Name="Spruce" DataValue="1"/>
     <BlockInfo Name="Birch" DataValue="2"/>
@@ -106,10 +103,7 @@
 
 
   <Group Name="Sapling">
-    <OnBlockInfo>
-      <BlockId><![CDATA[0x06]]></BlockId>
-      <Note><![CDATA[blockInfoName]]></Note>
-    </OnBlockInfo>
+    <OnBlockInfo BlockId="0x06" Note="blockInfoName"/>
     <BlockInfo Name="Oak" DataValue="0"/>
     <BlockInfo Name="Spruce" DataValue="1"/>
     <BlockInfo Name="Birch" DataValue="2"/>
@@ -120,10 +114,7 @@
 
 
   <Group Name="Stone">
-    <OnBlockInfo>
-      <BlockId><![CDATA[0x01]]></BlockId>
-      <Note><![CDATA[blockInfoName]]></Note>
-    </OnBlockInfo>
+    <OnBlockInfo BlockId="0x01" Note="blockInfoName"/>
     <BlockInfo Name="Normal" DataValue="0"/>
     <BlockInfo Name="Granite" DataValue="1"/>
     <BlockInfo Name="PolishedGranite" DataValue="2"/>
@@ -135,10 +126,7 @@
 
 
   <Group Name="Dirt">
-    <OnBlockInfo>
-      <BlockId><![CDATA[0x03]]></BlockId>
-      <Note><![CDATA[blockInfoName]]></Note>
-    </OnBlockInfo>
+    <OnBlockInfo BlockId="0x03" Note="blockInfoName"/>
     <BlockInfo Name="Normal" DataValue="0"/>
     <BlockInfo Name="Coarse" DataValue="1"/>
     <BlockInfo Name="Podzol" DataValue="2"/>
@@ -146,118 +134,92 @@
 
 
   <Group Name="Water">
-    <BlockInfos Key="states">
-      <BlockInfoFor Start="0" Count="8">
+    <BlockInfoCollection Key="states">
+      <For Start="0" Count="8">
         <Name><![CDATA["Horizontal" + ToString(i, "X")]]></Name>
         <DataValue><![CDATA[i]]></DataValue>
-      </BlockInfoFor>
-      <BlockInfoFor Start="8" Count="8">
+      </For>
+      <For Start="8" Count="8">
         <Name><![CDATA["Vertical" + ToString(i, "X")]]></Name>
         <DataValue><![CDATA[i]]></DataValue>
-      </BlockInfoFor>
-    </BlockInfos>
+      </For>
+    </BlockInfoCollection>
 
     <Group Name="Flowing">
       <OnBlockInfo BlockId="0x08"/>
-      <IncludeBlockInfos Key="states"/>
+      <Include Key="states"/>
     </Group>
     <Group Name="Stationary">
       <OnBlockInfo BlockId="0x09"/>
-      <IncludeBlockInfos Key="states"/>
+      <Include Key="states"/>
     </Group>
   </Group>
 
 
   <Group Name="Lava">
-    <BlockInfos Key="states">
-      <BlockInfoFor Start="0" Count="8">
+    <BlockInfoCollection Key="states">
+      <For Start="0" Count="8">
         <Name><![CDATA["Horizontal" + ToString(i, "X")]]></Name>
         <DataValue><![CDATA[i]]></DataValue>
-      </BlockInfoFor>
-      <BlockInfoFor Start="8" Count="8">
+      </For>
+      <For Start="8" Count="8">
         <Name><![CDATA["Vertical" + ToString(i, "X")]]></Name>
         <DataValue><![CDATA[i]]></DataValue>
-      </BlockInfoFor>
-    </BlockInfos>
+      </For>
+    </BlockInfoCollection>
 
     <Group Name="Flowing">
       <OnBlockInfo BlockId="0x0A"/>
-      <IncludeBlockInfos Key="states"/>
+      <Include Key="states"/>
     </Group>
     <Group Name="Stationary">
       <OnBlockInfo BlockId="0x0B"/>
-      <IncludeBlockInfos Key="states"/>
+      <Include Key="states"/>
     </Group>
   </Group>
 
 
   <Group Name="Sand">
-    <OnBlockInfo>
-      <BlockId><![CDATA[0x0C]]></BlockId>
-      <Note><![CDATA[blockInfoName]]></Note>
-    </OnBlockInfo>
+    <OnBlockInfo BlockId="0x0C" Note="blockInfoName"/>
     <BlockInfo Name="Normal" DataValue="0"/>
     <BlockInfo Name="Red" DataValue="1"/>
   </Group>
 
 
   <Group Name="Wool">
-    <OnBlockInfo>
-      <BlockId><![CDATA[0x23]]></BlockId>
-      <Note><![CDATA[blockInfoName]]></Note>
-    </OnBlockInfo>
+    <OnBlockInfo BlockId="0x23" Note="blockInfoName"/>
 
-    <BlockInfoEnum NameList="White, Orange, Magenta, LightBlue, Yellow, Lime, Pink, Gray, LightGray, Cyan, Purple, Blue, Brown, Green, Red, Black"/>
+    <DataValueRange NameList="White, Orange, Magenta, LightBlue, Yellow, Lime, Pink, Gray, LightGray, Cyan, Purple, Blue, Brown, Green, Red, Black"/>
   </Group>
 
 
   <Group Name="StainedClay">
-    <OnBlockInfo>
-      <BlockId><![CDATA[0x9F]]></BlockId>
-      <Note><![CDATA[blockInfoName]]></Note>
-    </OnBlockInfo>
-
-    <BlockInfoEnum NameList="White, Orange, Magenta, LightBlue, Yellow, Lime, Pink, Gray, LightGray, Cyan, Purple, Blue, Brown, Green, Red, Black"/>
+    <OnBlockInfo BlockId="0x9F" Note="blockInfoName"/>
+    <DataValueRange NameList="White, Orange, Magenta, LightBlue, Yellow, Lime, Pink, Gray, LightGray, Cyan, Purple, Blue, Brown, Green, Red, Black"/>
   </Group>
 
 
   <Group Name="StainedGlass">
-    <OnBlockInfo>
-      <BlockId><![CDATA[0x5F]]></BlockId>
-      <Note><![CDATA[blockInfoName]]></Note>
-    </OnBlockInfo>
-
-    <BlockInfoEnum NameList="White, Orange, Magenta, LightBlue, Yellow, Lime, Pink, Gray, LightGray, Cyan, Purple, Blue, Brown, Green, Red, Black"/>
+    <OnBlockInfo BlockId="0x5F" Note="blockInfoName"/>
+    <DataValueRange NameList="White, Orange, Magenta, LightBlue, Yellow, Lime, Pink, Gray, LightGray, Cyan, Purple, Blue, Brown, Green, Red, Black"/>
   </Group>
 
 
   <Group Name="StainedGlassPane">
-    <OnBlockInfo>
-      <BlockId><![CDATA[0xA0]]></BlockId>
-      <Note><![CDATA[blockInfoName]]></Note>
-    </OnBlockInfo>
-
-    <BlockInfoEnum NameList="White, Orange, Magenta, LightBlue, Yellow, Lime, Pink, Gray, LightGray, Cyan, Purple, Blue, Brown, Green, Red, Black"/>
+    <OnBlockInfo BlockId="0xA0" Note="blockInfoName"/>
+    <DataValueRange NameList="White, Orange, Magenta, LightBlue, Yellow, Lime, Pink, Gray, LightGray, Cyan, Purple, Blue, Brown, Green, Red, Black"/>
   </Group>
 
 
   <Group Name="Carpet">
-    <OnBlockInfo>
-      <BlockId><![CDATA[0xAB]]></BlockId>
-      <Note><![CDATA[blockInfoName]]></Note>
-    </OnBlockInfo>
-
-    <BlockInfoEnum NameList="White, Orange, Magenta, LightBlue, Yellow, Lime, Pink, Gray, LightGray, Cyan, Purple, Blue, Brown, Green, Red, Black"/>
+    <OnBlockInfo BlockId="0xAB" Note="blockInfoName"/>
+    <DataValueRange NameList="White, Orange, Magenta, LightBlue, Yellow, Lime, Pink, Gray, LightGray, Cyan, Purple, Blue, Brown, Green, Red, Black"/>
   </Group>
 
 
   <Group Name="Torch">
-    <OnBlockInfo>
-      <BlockId><![CDATA[0x32]]></BlockId>
-      <Note><![CDATA[blockInfoName]]></Note>
-    </OnBlockInfo>
-
-    <BlockInfoEnum NameList="East, West, South, North, Standing" Start="1"/>
+    <OnBlockInfo BlockId="0x32" Note="blockInfoName"/>
+    <DataValueRange NameList="East, West, South, North, Standing" Start="1"/>
   </Group>
 
 
@@ -265,11 +227,11 @@
     <OnBlockInfo Note="blockInfoName"/>
     <Group Name="Active">
       <OnBlockInfo BlockId="4C"/>
-      <BlockInfoEnum NameList="East, West, South, North, Standing" Start="1"/>
+      <DataValueRange NameList="East, West, South, North, Standing" Start="1"/>
     </Group>
     <Group Name="Inactive">
       <OnBlockInfo BlockId="4B"/>
-      <BlockInfoEnum NameList="East, West, South, North, Standing" Start="1"/>
+      <DataValueRange NameList="East, West, South, North, Standing" Start="1"/>
     </Group>
   </Group>
 
@@ -278,17 +240,17 @@
     <OnBlockInfo Note="blockInfoName"/>
 
     <Group Name="Stone">
-      <BlockInfos Key="type">
-        <BlockInfoEnum NameList="Normal, Sandstone, Wooden, Cobblestone, Brick, StoneBrick, NetherBrick, Quartz"/>
-      </BlockInfos>
+      <BlockInfoCollection Key="type">
+        <DataValueRange NameList="Normal, Sandstone, Wooden, Cobblestone, Brick, StoneBrick, NetherBrick, Quartz"/>
+      </BlockInfoCollection>
 
       <Group Name="Single">
         <OnBlockInfo BlockId="2C"/>
-        <IncludeBlockInfos Key="types"/>
+        <Include Key="types"/>
       </Group>
       <Group Name="Double">
         <OnBlockInfo BlockId="2B"/>
-        <IncludeBlockInfos Key="types"/>
+        <Include Key="types"/>
         <BlockInfo Name="SmoothStone" DataValue="8"/>
         <BlockInfo Name="SmoothSandstone" DataValue="9"/>
         <BlockInfo Name="TileQuartz" DataValue="10"/>
@@ -296,17 +258,17 @@
     </Group>
 
     <Group Name="Wood">
-      <BlockInfos Key="type">
-        <BlockInfoEnum NameList="Oak, Spruce, Birch, Jungle, Acacia, DarkOak"/>
-      </BlockInfos>
+      <BlockInfoCollection Key="type">
+        <DataValueRange NameList="Oak, Spruce, Birch, Jungle, Acacia, DarkOak"/>
+      </BlockInfoCollection>
 
       <Group Name="Single">
         <OnBlockInfo BlockId="7E"/>
-        <IncludeBlockInfos Key="types"/>
+        <Include Key="types"/>
       </Group>
       <Group Name="Double">
         <OnBlockInfo BlockId="7D"/>
-        <IncludeBlockInfos Key="types"/>
+        <Include Key="types"/>
       </Group>
     </Group>
   </Group>
@@ -314,18 +276,15 @@
 
   <Group Name="Fire">
     <OnBlockInfo BlockId="33"/>
-    <BlockInfoFor Start="0" Count="16">
+    <For Start="0" Count="16">
       <Name><![CDATA["Tick" + ToString(i, "X")]]></Name>
       <DataValue><![CDATA[i]]></DataValue>
-    </BlockInfoFor>
+    </For>
   </Group>
 
 
   <Group Name="Sandstone">
-    <OnBlockInfo>
-      <BlockId><![CDATA[0x18]]></BlockId>
-      <Note><![CDATA[blockInfoName]]></Note>
-    </OnBlockInfo>
+    <OnBlockInfo BlockId="0x18" Note="blockInfoName"/>
     <BlockInfo Name="Normal" DataValue="0"/>
     <BlockInfo Name="Chiseled" DataValue="1"/>
     <BlockInfo Name="Smooth" DataValue="2"/>
@@ -333,29 +292,29 @@
 
 
   <Group Name="Bed">
-    <BlockInfos Key="directions">
-      <BlockInfoEnum NameList="East, West, South, North"/>
-    </BlockInfos>
+    <BlockInfoCollection Key="directions">
+      <DataValueRange NameList="East, West, South, North"/>
+    </BlockInfoCollection>
 
     <OnBlockInfo BlockId="1A"/>
     <Group Name="Foot">
       <Group Name="Unoccupied">
         <OnBlockInfo DataValue="dataValue + 0"/>
-        <IncludeBlockInfos Key="directions"/>
+        <Include Key="directions"/>
       </Group>
       <Group Name="Occupied">
         <OnBlockInfo DataValue="dataValue + 4"/>
-        <IncludeBlockInfos Key="directions"/>
+        <Include Key="directions"/>
       </Group>
     </Group>
     <Group Name="Head">
       <Group Name="Unoccupied">
         <OnBlockInfo DataValue="dataValue + 8"/>
-        <IncludeBlockInfos Key="directions"/>
+        <Include Key="directions"/>
       </Group>
       <Group Name="Occupied">
         <OnBlockInfo DataValue="dataValue + 12"/>
-        <IncludeBlockInfos Key="directions"/>
+        <Include Key="directions"/>
       </Group>
     </Group>
   </Group>
@@ -363,7 +322,7 @@
 
   <Group Name="TallGrass">
     <OnBlockInfo BlockId="1F"/>
-    <BlockInfoEnum NameList="Shrub, Normal, Fern, BiomeShrub"/>
+    <DataValueRange NameList="Shrub, Normal, Fern, BiomeShrub"/>
   </Group>
 
 
@@ -371,11 +330,11 @@
     <Group Name="Small">
       <BlockInfo Name="Dandelion" BlockId="25" DataValue="0"/>
       <OnBlockInfo BlockId="26"/>
-      <BlockInfoEnum NameList="Poppy, BlueOrchid, Allium, AzureBluet, RedTulip, OrangeTulip, WhiteTulip, PinkTulip, OxeyeDaisy"/>
+      <DataValueRange NameList="Poppy, BlueOrchid, Allium, AzureBluet, RedTulip, OrangeTulip, WhiteTulip, PinkTulip, OxeyeDaisy"/>
     </Group>
     <Group Name="Large">
       <OnBlockInfo BlockId="AF"/>
-      <BlockInfoEnum NameList="Sunflower, Lilac, DoubleTallgrass, LargeFern, RoseBush, Peony"/>
+      <DataValueRange NameList="Sunflower, Lilac, DoubleTallgrass, LargeFern, RoseBush, Peony"/>
       <BlockInfo Name="Top" DataValue="8"/>
     </Group>
     <Group Name="Pot">
@@ -386,19 +345,19 @@
   <Group Name="Piston">
     <OnBlockInfo Note="getGroupName(0) + ' ' + blockInfoName"/>
 
-    <BlockInfos Key="directions">
-      <BlockInfoEnum NameList="Down, Up, North, South, West, East"/>
-    </BlockInfos>
+    <BlockInfoCollection Key="directions">
+      <DataValueRange NameList="Down, Up, North, South, West, East"/>
+    </BlockInfoCollection>
 
     <Group Name="Normal">
       <OnBlockInfo BlockId="21"/>
       <Group Name="Retracted">
         <OnBlockInfo DataValue="dataValue + 0"/>
-        <IncludeBlockInfos Key="directions"/>
+        <Include Key="directions"/>
       </Group>
       <Group Name="Extended">
         <OnBlockInfo DataValue="dataValue + 8"/>
-        <IncludeBlockInfos Key="directions"/>
+        <Include Key="directions"/>
       </Group>
     </Group>
 
@@ -406,11 +365,11 @@
       <OnBlockInfo BlockId="1D"/>
       <Group Name="Retracted">
         <OnBlockInfo DataValue="dataValue + 0"/>
-        <IncludeBlockInfos Key="directions"/>
+        <Include Key="directions"/>
       </Group>
       <Group Name="Extended">
         <OnBlockInfo DataValue="dataValue + 8"/>
-        <IncludeBlockInfos Key="directions"/>
+        <Include Key="directions"/>
       </Group>
     </Group>
 
@@ -418,11 +377,11 @@
       <OnBlockInfo BlockId="22"/>
       <Group Name="Normal">
         <OnBlockInfo DataValue="dataValue + 0"/>
-        <IncludeBlockInfos Key="directions"/>
+        <Include Key="directions"/>
       </Group>
       <Group Name="Sticky">
         <OnBlockInfo DataValue="dataValue + 8"/>
-        <IncludeBlockInfos Key="directions"/>
+        <Include Key="directions"/>
       </Group>
     </Group>
 
@@ -431,118 +390,118 @@
 
 
   <Group Name="Stairs">
-    <BlockInfos Key="orientations">
-      <BlockInfoEnum NameList="East, West, South, North"/>
-    </BlockInfos>
+    <BlockInfoCollection Key="orientations">
+      <DataValueRange NameList="East, West, South, North"/>
+    </BlockInfoCollection>
 
     <Group Name="Oak">
       <OnBlockInfo BlockId="0x43"/>
       <Group Name="Normal">
         <OnBlockInfo DataValue="dataValue + 0"/>
-        <IncludeBlockInfos Key="orientations"/>
+        <Include Key="orientations"/>
       </Group>
       <Group Name="UpsideDown">
         <OnBlockInfo DataValue="dataValue + 4"/>
-        <IncludeBlockInfos Key="orientations"/>
+        <Include Key="orientations"/>
       </Group>
     </Group>
     <Group Name="Brick">
       <OnBlockInfo BlockId="0x6C"/>
       <Group Name="Normal">
         <OnBlockInfo DataValue="dataValue + 0"/>
-        <IncludeBlockInfos Key="orientations"/>
+        <Include Key="orientations"/>
       </Group>
       <Group Name="UpsideDown">
         <OnBlockInfo DataValue="dataValue + 4"/>
-        <IncludeBlockInfos Key="orientations"/>
+        <Include Key="orientations"/>
       </Group>
     </Group>
     <Group Name="StoneBrick">
       <OnBlockInfo BlockId="0x6D"/>
       <Group Name="Normal">
         <OnBlockInfo DataValue="dataValue + 0"/>
-        <IncludeBlockInfos Key="orientations"/>
+        <Include Key="orientations"/>
       </Group>
       <Group Name="UpsideDown">
         <OnBlockInfo DataValue="dataValue + 4"/>
-        <IncludeBlockInfos Key="orientations"/>
+        <Include Key="orientations"/>
       </Group>
     </Group>
     <Group Name="NetherBrick">
       <OnBlockInfo BlockId="0x72"/>
       <Group Name="Normal">
         <OnBlockInfo DataValue="dataValue + 0"/>
-        <IncludeBlockInfos Key="orientations"/>
+        <Include Key="orientations"/>
       </Group>
       <Group Name="UpsideDown">
         <OnBlockInfo DataValue="dataValue + 4"/>
-        <IncludeBlockInfos Key="orientations"/>
+        <Include Key="orientations"/>
       </Group>
     </Group>
     <Group Name="Sandstone">
       <OnBlockInfo BlockId="0x80"/>
       <Group Name="Normal">
         <OnBlockInfo DataValue="dataValue + 0"/>
-        <IncludeBlockInfos Key="orientations"/>
+        <Include Key="orientations"/>
       </Group>
       <Group Name="UpsideDown">
         <OnBlockInfo DataValue="dataValue + 4"/>
-        <IncludeBlockInfos Key="orientations"/>
+        <Include Key="orientations"/>
       </Group>
     </Group>
     <Group Name="Spruce">
       <OnBlockInfo BlockId="0x86"/>
       <Group Name="Normal">
         <OnBlockInfo DataValue="dataValue + 0"/>
-        <IncludeBlockInfos Key="orientations"/>
+        <Include Key="orientations"/>
       </Group>
       <Group Name="UpsideDown">
         <OnBlockInfo DataValue="dataValue + 4"/>
-        <IncludeBlockInfos Key="orientations"/>
+        <Include Key="orientations"/>
       </Group>
     </Group>
     <Group Name="Birch">
       <OnBlockInfo BlockId="0x87"/>
       <Group Name="Normal">
         <OnBlockInfo DataValue="dataValue + 0"/>
-        <IncludeBlockInfos Key="orientations"/>
+        <Include Key="orientations"/>
       </Group>
       <Group Name="UpsideDown">
         <OnBlockInfo DataValue="dataValue + 4"/>
-        <IncludeBlockInfos Key="orientations"/>
+        <Include Key="orientations"/>
       </Group>
     </Group>
     <Group Name="Jungle">
       <OnBlockInfo BlockId="0x88"/>
       <Group Name="Normal">
         <OnBlockInfo DataValue="dataValue + 0"/>
-        <IncludeBlockInfos Key="orientations"/>
+        <Include Key="orientations"/>
       </Group>
       <Group Name="UpsideDown">
         <OnBlockInfo DataValue="dataValue + 4"/>
-        <IncludeBlockInfos Key="orientations"/>
+        <Include Key="orientations"/>
       </Group>
     </Group>
     <Group Name="Acacia">
       <OnBlockInfo BlockId="0xA3"/>
       <Group Name="Normal">
         <OnBlockInfo DataValue="dataValue + 0"/>
-        <IncludeBlockInfos Key="orientations"/>
+        <Include Key="orientations"/>
       </Group>
       <Group Name="UpsideDown">
         <OnBlockInfo DataValue="dataValue + 4"/>
-        <IncludeBlockInfos Key="orientations"/>
+        <Include Key="orientations"/>
       </Group>
     </Group>
     <Group Name="DarkOak">
       <OnBlockInfo BlockId="0xA4"/>
       <Group Name="Normal">
         <OnBlockInfo DataValue="dataValue + 0"/>
-        <IncludeBlockInfos Key="orientations"/>
+        <Include Key="orientations"/>
       </Group>
       <Group Name="UpsideDown">
         <OnBlockInfo DataValue="dataValue + 4"/>
-        <IncludeBlockInfos Key="orientations"/>
+        <Include Key="orientations"/>
       </Group>
     </Group>
   </Group>
@@ -550,38 +509,34 @@
 
   <Group Name="RedstoneWire">
     <OnBlockInfo BlockId="37"/>
-    <BlockInfoFor Start="0" Count="16">
+    <For Start="0" Count="16">
       <Name><![CDATA["Power" + ToString(i, "X")]]></Name>
       <DataValue><![CDATA[i]]></DataValue>
-    </BlockInfoFor>
+    </For>
   </Group>
 
 
   <Group Name="Farmland">
     <OnBlockInfo BlockId="0x3C"/>
-    <BlockInfoFor Start="0" Count="16">
+    <For Start="0" Count="16">
       <Name><![CDATA["Wetness" + ToString(i, "X")]]></Name>
       <DataValue><![CDATA[i]]></DataValue>
-    </BlockInfoFor>
+    </For>
   </Group>
 
   
   <Group Name="SignPost">
-    <OnBlockInfo>
-      <BlockId><![CDATA[0x3F]]></BlockId>
-      <Note><![CDATA[blockInfoName]]></Note>
-    </OnBlockInfo>
-
-    <BlockInfoEnum NameList="S, SSW, SW, SWW, W, NWW, NW, NNW, N, NNE, NE, NEE, E, SEE, SE, SSE"/>
+    <OnBlockInfo BlockId="0x3F" Note="blockInfoName"/>
+    <DataValueRange NameList="S, SSW, SW, SWW, W, NWW, NW, NNW, N, NNE, NE, NEE, E, SEE, SE, SSE"/>
   </Group>
 
   
   <Group Name="Snow">
     <OnBlockInfo BlockId="0x4E"/>
-    <BlockInfoFor Start="0" Count="8">
+    <For Start="0" Count="8">
       <Name><![CDATA["Wetness" + ToString(i, "X")]]></Name>
       <DataValue><![CDATA[i]]></DataValue>
-    </BlockInfoFor>
+    </For>
     <OnBlockInfo BlockId="0x50"/>
     <BlockInfo Name="Block"/>
   </Group>
