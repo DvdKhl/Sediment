@@ -80,8 +80,8 @@ namespace SedimentDev {
 
 					switch(pair.VarName) {
 						case "Name": blockInfo.Name = (string)pair.Expression.Evaluate(); break;
-						case "BlockId": blockInfo.Id = (ushort)(blockInfo.Id & 0xF000 | (ushort)pair.Expression.Evaluate()); break;
-						case "DataValue": blockInfo.Id = (ushort)(blockInfo.Id & 0x0FFF | ((byte)pair.Expression.Evaluate() << 12)); break;
+						case "BlockId": blockInfo.Id = (ushort)(blockInfo.Id & 0xF000 | (ushort)(int)pair.Expression.Evaluate()); break;
+						case "DataValue": blockInfo.Id = (ushort)(blockInfo.Id & 0x0FFF | ((byte)(int)pair.Expression.Evaluate() << 12)); break;
 						case "Note": blockInfo.Note = (string)pair.Expression.Evaluate(); break;
 
 						default: throw new InvalidOperationException();
@@ -91,9 +91,9 @@ namespace SedimentDev {
 
 			var exportBlockInfo = blocks[(ushort)(blockInfo.Id & 0xFFF)];
 			blockInfo.InternalName = (string)exportBlockInfo.Element("InternalName");
-			blockInfo.UsesEntityData = (bool)exportBlockInfo.Element("UsesEntityData");
-			blockInfo.Luminance = (int)exportBlockInfo.Element("Luminance");
-			blockInfo.Opacity = (int)exportBlockInfo.Element("Opacity");
+			blockInfo.UsesEntityData = (bool)exportBlockInfo.Element("HasTileEntity");
+			blockInfo.Luminance = (int)exportBlockInfo.Element("LightValue");
+			blockInfo.Opacity = (int)exportBlockInfo.Element("LightOpacity");
 			blockInfo.Hardness = (float)exportBlockInfo.Element("Hardness");
 			blockInfo.BlastResistance = (float)exportBlockInfo.Element("BlastResistance");
 
