@@ -1,18 +1,18 @@
 ﻿<Template>
   <Group Name="Wood">
     <OnBlockInfo>
-      <Note><![CDATA["Bark Only"]]></Note>
-      <Note><![CDATA[if(dataValue < 12), "Horizontal North/South", null)]]></Note>
-      <Note><![CDATA[if(dataValue < 8), "Horizontal East/West", null)]]></Note>
-      <Note><![CDATA[if(dataValue < 4), "Vertical", null)]]></Note>
-      <Note><![CDATA[getGroupName(0) + ", " + note]]></Note>
+      <Note><![CDATA['Bark Only']]></Note>
+      <Note><![CDATA[if(dataValue < 12, 'Horizontal North/South', null)]]></Note>
+      <Note><![CDATA[if(dataValue < 8, 'Horizontal East/West', null)]]></Note>
+      <Note><![CDATA[if(dataValue < 4, 'Vertical', null)]]></Note>
+      <Note><![CDATA[GetGroupName(0) + ', ' + note]]></Note>
     </OnBlockInfo>
 
     <BlockInfoCollection Key="orientations">
       <BlockInfo Name="Vertical" DataValue="0"/>
       <BlockInfo Name="HorizontalEastWest" DataValue="4"/>
       <BlockInfo Name="HorizontalNorthSouth" DataValue="8"/>
-      <BlockInfo Name="BarkOnly" DataValue="C"/>
+      <BlockInfo Name="BarkOnly" DataValue="12"/>
     </BlockInfoCollection>
 
     <OnBlockInfo BlockId="0x11"/>
@@ -47,18 +47,18 @@
 
   <Group Name="Leaves">
     <OnBlockInfo>
-      <Note><![CDATA["Permanent with checks"]]></Note>
-      <Note><![CDATA[if(dataValue < 12), "Decaying with checks", null)]]></Note>
-      <Note><![CDATA[if(dataValue < 8), "Permanent with no checks", null)]]></Note>
-      <Note><![CDATA[if(dataValue < 4), "Decaying with no checks", null)]]></Note>
-      <Note><![CDATA[getGroupName(0) + ", " + note]]></Note>
+      <Note><![CDATA['Permanent with checks']]></Note>
+      <Note><![CDATA[if(dataValue < 12, 'Decaying with checks', null)]]></Note>
+      <Note><![CDATA[if(dataValue < 8, 'Permanent with no checks', null)]]></Note>
+      <Note><![CDATA[if(dataValue < 4, 'Decaying with no checks', null)]]></Note>
+      <Note><![CDATA[GetGroupName(0) + ', ' + note]]></Note>
     </OnBlockInfo>
 
     <BlockInfoCollection Key="behaviour">
       <BlockInfo Name="Decayable" DataValue="0"/>
       <BlockInfo Name="Permanent" DataValue="4"/>
       <BlockInfo Name="DecayableChecked" DataValue="8"/>
-      <BlockInfo Name="PermanentChecked" DataValue="C"/>
+      <BlockInfo Name="PermanentChecked" DataValue="12"/>
     </BlockInfoCollection>
 
     <OnBlockInfo BlockId="0x12"/>
@@ -136,11 +136,11 @@
   <Group Name="Water">
     <BlockInfoCollection Key="states">
       <For Start="0" Count="8">
-        <Name><![CDATA["Horizontal" + ToString(i, "X")]]></Name>
+        <Name><![CDATA['Horizontal' + ToString(i, 'X')]]></Name>
         <DataValue><![CDATA[i]]></DataValue>
       </For>
       <For Start="8" Count="8">
-        <Name><![CDATA["Vertical" + ToString(i, "X")]]></Name>
+        <Name><![CDATA['Vertical' + ToString(i, 'X')]]></Name>
         <DataValue><![CDATA[i]]></DataValue>
       </For>
     </BlockInfoCollection>
@@ -159,11 +159,11 @@
   <Group Name="Lava">
     <BlockInfoCollection Key="states">
       <For Start="0" Count="8">
-        <Name><![CDATA["Horizontal" + ToString(i, "X")]]></Name>
+        <Name><![CDATA['Horizontal' + ToString(i, 'X')]]></Name>
         <DataValue><![CDATA[i]]></DataValue>
       </For>
       <For Start="8" Count="8">
-        <Name><![CDATA["Vertical" + ToString(i, "X")]]></Name>
+        <Name><![CDATA['Vertical' + ToString(i, 'X')]]></Name>
         <DataValue><![CDATA[i]]></DataValue>
       </For>
     </BlockInfoCollection>
@@ -245,11 +245,11 @@
       </BlockInfoCollection>
 
       <Group Name="Single">
-        <OnBlockInfo BlockId="2C"/>
+        <OnBlockInfo BlockId="0x2C"/>
         <Include Key="types"/>
       </Group>
       <Group Name="Double">
-        <OnBlockInfo BlockId="2B"/>
+        <OnBlockInfo BlockId="0x2B"/>
         <Include Key="types"/>
         <BlockInfo Name="SmoothStone" DataValue="8"/>
         <BlockInfo Name="SmoothSandstone" DataValue="9"/>
@@ -263,11 +263,11 @@
       </BlockInfoCollection>
 
       <Group Name="Single">
-        <OnBlockInfo BlockId="7E"/>
+        <OnBlockInfo BlockId="0x7E"/>
         <Include Key="types"/>
       </Group>
       <Group Name="Double">
-        <OnBlockInfo BlockId="7D"/>
+        <OnBlockInfo BlockId="0x7D"/>
         <Include Key="types"/>
       </Group>
     </Group>
@@ -275,9 +275,9 @@
 
 
   <Group Name="Fire">
-    <OnBlockInfo BlockId="33"/>
+    <OnBlockInfo BlockId="0x33"/>
     <For Start="0" Count="16">
-      <Name><![CDATA["Tick" + ToString(i, "X")]]></Name>
+      <Name><![CDATA['Tick' + ToString(i, 'X')]]></Name>
       <DataValue><![CDATA[i]]></DataValue>
     </For>
   </Group>
@@ -296,7 +296,7 @@
       <DataValueRange NameList="East, West, South, North"/>
     </BlockInfoCollection>
 
-    <OnBlockInfo BlockId="1A"/>
+    <OnBlockInfo BlockId="0x1A"/>
     <Group Name="Foot">
       <Group Name="Unoccupied">
         <OnBlockInfo DataValue="dataValue + 0"/>
@@ -321,19 +321,19 @@
 
 
   <Group Name="TallGrass">
-    <OnBlockInfo BlockId="1F"/>
+    <OnBlockInfo BlockId="0x1F"/>
     <DataValueRange NameList="Shrub, Normal, Fern, BiomeShrub"/>
   </Group>
 
 
   <Group Name="Flower">
     <Group Name="Small">
-      <BlockInfo Name="Dandelion" BlockId="25" DataValue="0"/>
-      <OnBlockInfo BlockId="26"/>
+      <BlockInfo Name="Dandelion" BlockId="0x25" DataValue="0"/>
+      <OnBlockInfo BlockId="0x26"/>
       <DataValueRange NameList="Poppy, BlueOrchid, Allium, AzureBluet, RedTulip, OrangeTulip, WhiteTulip, PinkTulip, OxeyeDaisy"/>
     </Group>
     <Group Name="Large">
-      <OnBlockInfo BlockId="AF"/>
+      <OnBlockInfo BlockId="0xAF"/>
       <DataValueRange NameList="Sunflower, Lilac, DoubleTallgrass, LargeFern, RoseBush, Peony"/>
       <BlockInfo Name="Top" DataValue="8"/>
     </Group>
@@ -343,14 +343,14 @@
 
 
   <Group Name="Piston">
-    <OnBlockInfo Note="getGroupName(0) + ' ' + blockInfoName"/>
+    <OnBlockInfo Note="GetGroupName(0) + ' ' + blockInfoName"/>
 
     <BlockInfoCollection Key="directions">
       <DataValueRange NameList="Down, Up, North, South, West, East"/>
     </BlockInfoCollection>
 
     <Group Name="Normal">
-      <OnBlockInfo BlockId="21"/>
+      <OnBlockInfo BlockId="0x21"/>
       <Group Name="Retracted">
         <OnBlockInfo DataValue="dataValue + 0"/>
         <Include Key="directions"/>
@@ -362,7 +362,7 @@
     </Group>
 
     <Group Name="Sticky">
-      <OnBlockInfo BlockId="1D"/>
+      <OnBlockInfo BlockId="0x1D"/>
       <Group Name="Retracted">
         <OnBlockInfo DataValue="dataValue + 0"/>
         <Include Key="directions"/>
@@ -374,7 +374,7 @@
     </Group>
 
     <Group Name="Head">
-      <OnBlockInfo BlockId="22"/>
+      <OnBlockInfo BlockId="0x22"/>
       <Group Name="Normal">
         <OnBlockInfo DataValue="dataValue + 0"/>
         <Include Key="directions"/>
@@ -385,7 +385,7 @@
       </Group>
     </Group>
 
-    <BlockInfo Name="Extension" BlockId="24"/>
+    <BlockInfo Name="Extension" BlockId="0x24"/>
   </Group>
 
 
@@ -508,9 +508,9 @@
 
 
   <Group Name="RedstoneWire">
-    <OnBlockInfo BlockId="37"/>
+    <OnBlockInfo BlockId="0x37"/>
     <For Start="0" Count="16">
-      <Name><![CDATA["Power" + ToString(i, "X")]]></Name>
+      <Name><![CDATA['Power' + ToString(i, 'X')]]></Name>
       <DataValue><![CDATA[i]]></DataValue>
     </For>
   </Group>
@@ -519,7 +519,7 @@
   <Group Name="Farmland">
     <OnBlockInfo BlockId="0x3C"/>
     <For Start="0" Count="16">
-      <Name><![CDATA["Wetness" + ToString(i, "X")]]></Name>
+      <Name><![CDATA['Wetness' + ToString(i, 'X')]]></Name>
       <DataValue><![CDATA[i]]></DataValue>
     </For>
   </Group>
@@ -534,7 +534,7 @@
   <Group Name="Snow">
     <OnBlockInfo BlockId="0x4E"/>
     <For Start="0" Count="8">
-      <Name><![CDATA["Wetness" + ToString(i, "X")]]></Name>
+      <Name><![CDATA['Height' + ToString(i, 'X')]]></Name>
       <DataValue><![CDATA[i]]></DataValue>
     </For>
     <OnBlockInfo BlockId="0x50"/>
