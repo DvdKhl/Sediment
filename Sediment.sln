@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sediment", "Sediment\Sedime
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SedimentExample", "SedimentExample\SedimentExample.csproj", "{29DF2F10-EDB9-4313-BD47-45CCD4C0ACF3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SedimentDev", "SedimentDev\SedimentDev.csproj", "{93DB5DA3-0474-400A-9C7F-AEF7DB7D5841}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{29DF2F10-EDB9-4313-BD47-45CCD4C0ACF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29DF2F10-EDB9-4313-BD47-45CCD4C0ACF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29DF2F10-EDB9-4313-BD47-45CCD4C0ACF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93DB5DA3-0474-400A-9C7F-AEF7DB7D5841}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93DB5DA3-0474-400A-9C7F-AEF7DB7D5841}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93DB5DA3-0474-400A-9C7F-AEF7DB7D5841}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93DB5DA3-0474-400A-9C7F-AEF7DB7D5841}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

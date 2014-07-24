@@ -4,15 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{52F1A15C-9015-4057-BC64-CCA76BC4CA09}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{93DB5DA3-0474-400A-9C7F-AEF7DB7D5841}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Sediment</RootNamespace>
-    <AssemblyName>Sediment</AssemblyName>
+    <RootNamespace>SedimentDev</RootNamespace>
+    <AssemblyName>SedimentDev</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -30,8 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ionic.Zlib">
-      <HintPath>C:\Users\Arokh\Projects\Visual Studio 2013\Projects\Sediment\Libs\Ionic.Zlib\Ionic.Zlib.dll</HintPath>
+    <Reference Include="NCalc">
+      <HintPath>C:\Users\Arokh\Projects\Visual Studio 2013\Projects\Sediment\SedimentDev\Libs\NCalc.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -42,11 +45,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Blocks.cs" />
-    <Compile Include="Internal\RegionFile.cs" />
-    <Compile Include="NBTLib\NBTReader.cs" />
-    <Compile Include="NBTLib\NBTWriter.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scripts\GenerateBlocksClass\GenerateBlocksClass.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\GenerateBlocksClass\JavaExportCode.txt" />
+    <Content Include="Scripts\GenerateBlocksClass\MinecraftExport.xml" />
+    <Content Include="Scripts\GenerateBlocksClass\Template.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
