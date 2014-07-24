@@ -1,0 +1,66 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+
+namespace Sediment {
+	public static class Blocks {
+		public static Dictionary<ushort, BlockInfo> ById { get; private set; }
+		public static Dictionary<ushort, BlockInfo[]> ByPartialId { get; private set; }
+		public static Dictionary<string, BlockInfo[]> ByName { get; private set; }
+
+		static Blocks() {
+			ById = new Dictionary<ushort, BlockInfo>();
+
+			Action<Type, List<BlockInfo>> getBlockInfos = null;
+			getBlockInfos = (type, items) => {
+				items.AddRange(
+					type.GetFields(BindingFlags.Public | BindingFlags.Static)
+					  .Where(x => x.FieldType == typeof(BlockInfo))
+					  .Select(x => (BlockInfo)x.GetValue(null))
+				);
+
+				foreach(var nestedClass in type.GetNestedTypes(BindingFlags.Public | BindingFlags.Static)) {
+					getBlockInfos(nestedClass, items);
+				}
+			};
+
+			var blockInfos = new List<BlockInfo>();
+			getBlockInfos(typeof(Blocks), blockInfos);
+			foreach(var blockInfo in blockInfos) {
+				ById.Add(blockInfo.Id, blockInfo);
+			}
+
+			ByPartialId = blockInfos.GroupBy(x => (ushort)(x.Id & 0x0FFF)).ToDictionary(x => x.Key, x => x.ToArray());
+
+			ByName = new Dictionary<string, BlockInfo[]>();
+			foreach(var items in ByPartialId.Values) {
+				ByName.Add(items[0].InternalName, items);
+			}
+		}
+
+
+//Body
+
+
+		public class BlockInfo {
+			public ushort Id { get; internal set; }
+			public string Name { get; internal set; }
+			public string InternalName { get; internal set; }
+			public string Note { get; internal set; }
+
+			public bool UsesEntityData { get; internal set; }
+			public int Luminance { get; internal set; }
+			public int Opacity { get; internal set; }
+			public float Hardness { get; internal set; }
+			public float BlastResistance { get; internal set; }
+
+			public int TypeId { get { return Id & 0xFFF; } internal set { Id = (ushort)((Id & 0xF000) | value); } }
+			public int DataValue { get { return Id >> 12; } internal set { Id = (ushort)((Id & 0x0FFF) | (value << 12)); } }
+
+			public BlockInfo() {
+
+			}
+		}
+	}
+}

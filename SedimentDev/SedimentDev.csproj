@@ -53,6 +53,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="GenerateBlocksClass\FileTemplate.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="GenerateBlocksClass\JavaExportCode.txt" />
     <Content Include="GenerateBlocksClass\MinecraftExport.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

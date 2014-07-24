@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,31 +18,80 @@ namespace SedimentDev {
 			foreach(var group in groups) {
 				Evaluate(group);
 			}
+
+			BuildClass(groups);
+			var classCode = strb.ToString();
 		}
+
+		private StringBuilder strb = new StringBuilder();
+		private void BuildClass(TplGroup[] groups) {
+
+			var content = File.ReadAllText("GenerateBlocksClass/FileTemplate.txt").Split(new[] { "//Body" }, StringSplitOptions.None);
+			strb.Append(content[0]);
+
+			foreach(var group in groups) {
+				BuildClassStaticContainer(group);
+			}
+
+			strb.Append(content[1]);
+		}
+
+		private void BuildClassStaticContainer(TplGroup group) {
+			strb.Append("public static class ").Append(group.Name).AppendLine(" {");
+
+			foreach(var block in group.Blocks) {
+				strb.Append("public static readonly BlockInfo ")
+					.Append(block.Name)
+					.Append(" = new BlockInfo { ")
+					.Append("TypeId = ").Append(block.Id & 0xFFF).Append(", ")
+					.Append("DataValue = ").Append(block.Id >> 12).Append(", ")
+					.Append("Name = \"").Append(block.Name).Append("\", ")
+					.Append("InternalName = \"").Append(block.InternalName).Append("\", ")
+					.Append("Note = \"").Append(block.Note).Append("\", ")
+					.Append("UsesEntityData = ").Append(block.UsesEntityData ? "true" : "false").Append(", ")
+					.Append("Luminance = ").Append(block.Luminance).Append(", ")
+					.Append("Opacity = ").Append(block.Opacity).Append(", ")
+					.Append("Hardness = ").Append(block.Hardness).Append("f, ")
+					.Append("BlastResistance = ").Append(block.BlastResistance).Append("f")
+					.AppendLine(" };");
+
+
+			}
+
+			foreach(var subGroup in group.Children.OfType<TplGroup>()) {
+				BuildClassStaticContainer(subGroup);
+			}
+
+			strb.AppendLine("}");
+		}
+
 
 		private Stack<TplGroup> parents = new Stack<TplGroup>();
 
+		private void Evaluate(TplNode node) {
+			if(node is TplGroup) Evaluate((TplGroup)node);
+			else if(node is TplOnBlockInfo) Evaluate((TplOnBlockInfo)node);
+			else if(node is TplBlockInfoCollection) Evaluate((TplBlockInfoCollection)node);
+			else if(node is TplBlockInfo) Evaluate((TplBlockInfo)node);
+			else if(node is TplInclude) Evaluate((TplInclude)node);
+			else if(node is TplFor) Evaluate((TplFor)node);
+			else if(node is TplDataValueRange) Evaluate((TplDataValueRange)node);
+		}
+
 		private void Evaluate(TplGroup node) {
 			parents.Push(node);
-
-			foreach(var child in node.Children) {
-				if(child is TplGroup) Evaluate((TplGroup)child);
-				else if(child is TplOnBlockInfo) Evaluate((TplOnBlockInfo)child);
-				else if(child is TplBlockInfoCollection) Evaluate((TplBlockInfoCollection)child);
-				else if(child is TplBlockInfo) Evaluate((TplBlockInfo)child);
-				else if(child is TplInclude) Evaluate((TplInclude)child);
-				else if(child is TplFor) Evaluate((TplFor)child);
-				else if(child is TplDataValueRange) Evaluate((TplDataValueRange)child);
-			}
+			foreach(var child in node.Children) Evaluate(child);
+			parents.Pop();
 		}
 		private void Evaluate(TplOnBlockInfo node) {
 			parents.Peek().Expressions.AddRange(node.Expressions);
 		}
 		private void Evaluate(TplBlockInfoCollection node) {
-			parents.Peek().Collections[node.Key] = node.Items;
+			parents.Peek().Collections[node.Key] = node.Items.Children;
 		}
 		private void Evaluate(TplInclude node) {
 			var collection = parents.First(x => x.Collections.ContainsKey(node.Key)).Collections[node.Key];
+
 			foreach(var item in collection) Evaluate(item);
 		}
 		private void Evaluate(TplDataValueRange node) {
@@ -55,7 +105,7 @@ namespace SedimentDev {
 
 			parents.Peek().Expressions.AddRange(node.Body.Expressions);
 			for(byte i = 0; i < (byte)node.Count; i++) {
-				parents.Peek().forIndex = i;
+				parents.Peek().forIndex = i + node.Start;
 				Evaluate(new TplBlockInfo());
 			}
 			parents.Peek().forIndex = null;
@@ -69,7 +119,10 @@ namespace SedimentDev {
 			if(node.BlockId.HasValue) blockInfo.Id = node.BlockId.Value;
 			if(node.DataValue.HasValue) blockInfo.Id |= (ushort)(node.DataValue.Value << 12);
 
+			parents.Peek().Blocks.Add(blockInfo);
+
 			foreach(var parent in parents.Reverse()) {
+
 				foreach(var pair in parent.Expressions) {
 					pair.Expression.EvaluateFunction += OnNCalcMethod;
 
@@ -97,8 +150,8 @@ namespace SedimentDev {
 			blockInfo.Hardness = (float)exportBlockInfo.Element("Hardness");
 			blockInfo.BlastResistance = (float)exportBlockInfo.Element("BlastResistance");
 
-		}
 
+		}
 		private void OnNCalcMethod(string name, NCalc.FunctionArgs args) {
 			switch(name) {
 				case "ToString":
@@ -127,130 +180,124 @@ namespace SedimentDev {
 				//default: throw new InvalidOperationException();
 			}
 		}
-	}
 
-	class BlockInfo {
-		public ushort Id;
-		public string Name;
-		public string Note;
+		class BlockInfo {
+			public ushort Id;
+			public string Name;
+			public string Note = "";
 
-		public string InternalName;
-		public bool UsesEntityData;
-		public int Luminance;
-		public int Opacity;
-		public float Hardness;
-		public float BlastResistance;
-	}
+			public string InternalName;
+			public bool UsesEntityData;
+			public int Luminance;
+			public int Opacity;
+			public float Hardness;
+			public float BlastResistance;
+		}
+		abstract class TplNode { }
+		class TplGroup : TplNode {
 
+			public Dictionary<string, List<TplNode>> Collections = new Dictionary<string, List<TplNode>>();
+			public List<TplOnBlockInfo.Pair> Expressions = new List<TplOnBlockInfo.Pair>();
+			public List<BlockInfo> Blocks = new List<BlockInfo>();
+			public int? forIndex = null;
 
-	abstract class TplNode { }
+			public List<TplNode> Children = new List<TplNode>();
+			public string Name;
 
-	class TplGroup : TplNode {
+			public TplGroup(XElement root) {
+				Name = root.Attribute("Name").Value;
 
-		public Dictionary<string, List<TplBlockInfo>> Collections = new Dictionary<string, List<TplBlockInfo>>();
-		public List<TplOnBlockInfo.Pair> Expressions = new List<TplOnBlockInfo.Pair>();
-		public List<BlockInfo> Blocks = new List<BlockInfo>();
-		public int? forIndex = null;
-
-		public List<TplNode> Children = new List<TplNode>();
-		public string Name;
-
-		public TplGroup(XElement root) {
-			Name = root.Attribute("Name").Value;
-
-			foreach(var elem in root.Elements()) {
-				switch(elem.Name.LocalName) {
-					case "Group": Children.Add(new TplGroup(elem)); break;
-					case "OnBlockInfo": Children.Add(new TplOnBlockInfo(elem)); break;
-					case "BlockInfoCollection": Children.Add(new TplBlockInfoCollection(elem)); break;
-					case "BlockInfo": Children.Add(new TplBlockInfo(elem)); break;
-					case "Include": Children.Add(new TplInclude(elem)); break;
-					case "For": Children.Add(new TplFor(elem)); break;
-					case "DataValueRange": Children.Add(new TplDataValueRange(elem)); break;
-					default: throw new InvalidOperationException();
+				foreach(var elem in root.Elements()) {
+					switch(elem.Name.LocalName) {
+						case "Group": Children.Add(new TplGroup(elem)); break;
+						case "OnBlockInfo": Children.Add(new TplOnBlockInfo(elem)); break;
+						case "BlockInfoCollection": Children.Add(new TplBlockInfoCollection(elem)); break;
+						case "BlockInfo": Children.Add(new TplBlockInfo(elem)); break;
+						case "Include": Children.Add(new TplInclude(elem)); break;
+						case "For": Children.Add(new TplFor(elem)); break;
+						case "DataValueRange": Children.Add(new TplDataValueRange(elem)); break;
+						default: throw new InvalidOperationException();
+					}
 				}
 			}
 		}
-	}
-
-	class TplOnBlockInfo : TplNode {
-		public class Pair {
-			public string VarName;
-			public NCalc.Expression Expression;
-		}
-
-		public List<Pair> Expressions = new List<Pair>();
-
-		public TplOnBlockInfo(XElement root) {
-			foreach(var attribute in root.Attributes()) {
-				Expressions.Add(new Pair {
-					VarName = attribute.Name.LocalName,
-					Expression = new NCalc.Expression(attribute.Value)
-				});
-			}
-			foreach(var elem in root.Elements()) {
-				Expressions.Add(new Pair {
-					VarName = elem.Name.LocalName,
-					Expression = new NCalc.Expression(elem.Value)
-				});
-			}
-		}
-	}
-	class TplBlockInfoCollection : TplNode {
-		public string Key;
-		public List<TplBlockInfo> Items = new List<TplBlockInfo>();
-
-		public TplBlockInfoCollection(XElement root) {
-			Key = root.Attribute("Key").Value;
-
-			foreach(var elem in root.Elements()) {
-				Items.Add(new TplBlockInfo(elem));
-			}
-		}
-	}
-	class TplBlockInfo : TplNode {
-		public string Name;
-		public ushort? BlockId;
-		public byte? DataValue;
-		public string Note;
-
-		public TplBlockInfo() { }
-		public TplBlockInfo(XElement root) {
-			var tmp = (string)root.Attribute("BlockId"); //TODO
-			if(tmp != null && tmp.StartsWith("0x")) {
-				tmp = ushort.Parse(tmp.Substring(2), System.Globalization.NumberStyles.HexNumber).ToString();
+		class TplOnBlockInfo : TplNode {
+			public class Pair {
+				public string VarName;
+				public NCalc.Expression Expression;
 			}
 
-			Name = (string)root.Attribute("Name");
-			BlockId = tmp != null ? ushort.Parse(tmp) : (ushort?)null;
-			DataValue = (byte?)(int?)root.Attribute("DataValue") ?? 0;
-			Note = (string)root.Attribute("Note");
-		}
-	}
-	class TplInclude : TplNode {
-		public string Key;
-		public TplInclude(XElement root) {
-			Key = root.Attribute("Key").Value;
-		}
-	}
-	class TplFor : TplNode {
-		public int Start, Count;
-		public TplOnBlockInfo Body;
+			public List<Pair> Expressions = new List<Pair>();
 
-		public TplFor() { }
-		public TplFor(XElement root) {
-			Start = (int?)root.Attribute("Start") ?? 0;
-			Count = (int?)root.Attribute("Count") ?? 0;
-			Body = new TplOnBlockInfo(new XElement("OnBlockInfo", root.Elements()));
+			public TplOnBlockInfo(XElement root) {
+				foreach(var attribute in root.Attributes()) {
+					Expressions.Add(new Pair {
+						VarName = attribute.Name.LocalName,
+						Expression = new NCalc.Expression(attribute.Value)
+					});
+				}
+				foreach(var elem in root.Elements()) {
+					Expressions.Add(new Pair {
+						VarName = elem.Name.LocalName,
+						Expression = new NCalc.Expression(elem.Value)
+					});
+				}
+			}
 		}
-	}
-	class TplDataValueRange : TplNode {
-		public int Start;
-		public List<string> Names;
+		class TplBlockInfoCollection : TplNode {
+			public string Key;
+			public TplGroup Items;
 
-		public TplDataValueRange(XElement root) {
-			Start = (int?)root.Attribute("Start") ?? 0;
-			Names = root.Attribute("NameList").Value.Split(',').Select(x => x.Trim()).ToList();
+			public TplBlockInfoCollection(XElement root) {
+				Key = root.Attribute("Key").Value;
+
+				Items = new TplGroup(new XElement("Group", new XAttribute("Name", "Dummy"), root.Elements()));
+			}
+		}
+		class TplBlockInfo : TplNode {
+			public string Name;
+			public ushort? BlockId;
+			public byte? DataValue;
+			public string Note;
+
+			public TplBlockInfo() { }
+			public TplBlockInfo(XElement root) {
+				var tmp = (string)root.Attribute("BlockId"); //TODO
+				if(tmp != null && tmp.StartsWith("0x")) {
+					tmp = ushort.Parse(tmp.Substring(2), System.Globalization.NumberStyles.HexNumber).ToString();
+				}
+
+				Name = (string)root.Attribute("Name");
+				BlockId = tmp != null ? ushort.Parse(tmp) : (ushort?)null;
+				DataValue = (byte?)(int?)root.Attribute("DataValue") ?? 0;
+				Note = (string)root.Attribute("Note");
+			}
+		}
+		class TplInclude : TplNode {
+			public string Key;
+			public TplInclude(XElement root) {
+				Key = root.Attribute("Key").Value;
+			}
+		}
+		class TplFor : TplNode {
+			public int Start, Count;
+			public TplOnBlockInfo Body;
+
+			public TplFor() { }
+			public TplFor(XElement root) {
+				Start = (int?)root.Attribute("Start") ?? 0;
+				Count = (int?)root.Attribute("Count") ?? 0;
+				Body = new TplOnBlockInfo(new XElement("OnBlockInfo", root.Elements()));
+			}
+		}
+		class TplDataValueRange : TplNode {
+			public int Start;
+			public List<string> Names;
+
+			public TplDataValueRange(XElement root) {
+				Start = (int?)root.Attribute("Start") ?? 0;
+				Names = root.Attribute("NameList").Value.Split(',').Select(x => x.Trim()).ToList();
+			}
 		}
 	}
 }

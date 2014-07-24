@@ -2,9 +2,9 @@
   <Group Name="Wood">
     <OnBlockInfo>
       <Note><![CDATA['Bark Only']]></Note>
-      <Note><![CDATA[if(dataValue < 12, 'Horizontal North/South', '')]]></Note>
-      <Note><![CDATA[if(dataValue < 8, 'Horizontal East/West', '')]]></Note>
-      <Note><![CDATA[if(dataValue < 4, 'Vertical', '')]]></Note>
+      <Note><![CDATA[if(dataValue < 12, 'Horizontal North/South', note)]]></Note>
+      <Note><![CDATA[if(dataValue < 8, 'Horizontal East/West', note)]]></Note>
+      <Note><![CDATA[if(dataValue < 4, 'Vertical', note)]]></Note>
       <Note><![CDATA[GetGroupName(0) + ', ' + note]]></Note>
     </OnBlockInfo>
 
@@ -48,9 +48,9 @@
   <Group Name="Leaves">
     <OnBlockInfo>
       <Note><![CDATA['Permanent with checks']]></Note>
-      <Note><![CDATA[if(dataValue < 12, 'Decaying with checks', '')]]></Note>
-      <Note><![CDATA[if(dataValue < 8, 'Permanent with no checks', '')]]></Note>
-      <Note><![CDATA[if(dataValue < 4, 'Decaying with no checks', '')]]></Note>
+      <Note><![CDATA[if(dataValue < 12, 'Decaying with checks', note)]]></Note>
+      <Note><![CDATA[if(dataValue < 8, 'Permanent with no checks', note)]]></Note>
+      <Note><![CDATA[if(dataValue < 4, 'Decaying with no checks', note)]]></Note>
       <Note><![CDATA[GetGroupName(0) + ', ' + note]]></Note>
     </OnBlockInfo>
 
@@ -240,7 +240,7 @@
     <OnBlockInfo Note="blockInfoName"/>
 
     <Group Name="Stone">
-      <BlockInfoCollection Key="type">
+      <BlockInfoCollection Key="types">
         <DataValueRange NameList="Normal, Sandstone, Wooden, Cobblestone, Brick, StoneBrick, NetherBrick, Quartz"/>
       </BlockInfoCollection>
 
@@ -258,7 +258,7 @@
     </Group>
 
     <Group Name="Wood">
-      <BlockInfoCollection Key="type">
+      <BlockInfoCollection Key="types">
         <DataValueRange NameList="Oak, Spruce, Birch, Jungle, Acacia, DarkOak"/>
       </BlockInfoCollection>
 

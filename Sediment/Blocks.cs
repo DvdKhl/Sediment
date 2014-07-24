@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Sediment {
 	public static class Blocks {
@@ -41,1086 +39,700 @@ namespace Sediment {
 			}
 		}
 
+
 		public static class Wood {
-			internal static readonly string InternalName = "minecraft:log";
-			internal static readonly string InternalName2 = "minecraft:log2";
-
-			private static BlockInfo Create(string species, ushort id, string internalName) {
-				var blockInfo = new BlockInfo {
-					Id = id,
-					Name = "Wood (" + species + ")",
-					InternalName = internalName,
-					BlastResistance = 10,
-					Hardness = 2,
-
-				};
-
-				var dataValue = (id & 0xF000) >> 12;
-				if(dataValue < 4) blockInfo.Note = "Vertical";
-				else if(dataValue < 8) blockInfo.Note = "Horizontal East/West";
-				else if(dataValue < 12) blockInfo.Note = "Horizontal North/South";
-				else blockInfo.Note = "Bark Only";
-
-				return blockInfo;
-			}
-
 			public static class Oak {
-				public static readonly BlockInfo Vertical = Create("Oak", 0x0011, InternalName);
-				public static readonly BlockInfo HorizontalEastWest = Create("Oak", 0x4011, InternalName);
-				public static readonly BlockInfo HorizontalNorthSouth = Create("Oak", 0x8011, InternalName);
-				public static readonly BlockInfo BarkOnly = Create("Oak", 0xC011, InternalName);
+				public static readonly BlockInfo Vertical = new BlockInfo { TypeId = 17, DataValue = 0, Name = "Vertical", InternalName = "minecraft:log", Note = "Oak, Vertical", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 10f };
+				public static readonly BlockInfo HorizontalEastWest = new BlockInfo { TypeId = 17, DataValue = 4, Name = "HorizontalEastWest", InternalName = "minecraft:log", Note = "Oak, Horizontal East/West", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 10f };
+				public static readonly BlockInfo HorizontalNorthSouth = new BlockInfo { TypeId = 17, DataValue = 8, Name = "HorizontalNorthSouth", InternalName = "minecraft:log", Note = "Oak, Horizontal North/South", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 10f };
+				public static readonly BlockInfo BarkOnly = new BlockInfo { TypeId = 17, DataValue = 12, Name = "BarkOnly", InternalName = "minecraft:log", Note = "Oak, Bark Only", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 10f };
 			}
 			public static class Spruce {
-				public static readonly BlockInfo Vertical = Create("Spruce", 0x1011, InternalName);
-				public static readonly BlockInfo HorizontalEastWest = Create("Spruce", 0x5011, InternalName);
-				public static readonly BlockInfo HorizontalNorthSouth = Create("Spruce", 0x9011, InternalName);
-				public static readonly BlockInfo BarkOnly = Create("Spruce", 0xD011, InternalName);
+				public static readonly BlockInfo Vertical = new BlockInfo { TypeId = 17, DataValue = 1, Name = "Vertical", InternalName = "minecraft:log", Note = "Spruce, Vertical", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 10f };
+				public static readonly BlockInfo HorizontalEastWest = new BlockInfo { TypeId = 17, DataValue = 5, Name = "HorizontalEastWest", InternalName = "minecraft:log", Note = "Spruce, Horizontal East/West", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 10f };
+				public static readonly BlockInfo HorizontalNorthSouth = new BlockInfo { TypeId = 17, DataValue = 9, Name = "HorizontalNorthSouth", InternalName = "minecraft:log", Note = "Spruce, Horizontal North/South", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 10f };
+				public static readonly BlockInfo BarkOnly = new BlockInfo { TypeId = 17, DataValue = 13, Name = "BarkOnly", InternalName = "minecraft:log", Note = "Spruce, Bark Only", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 10f };
 			}
 			public static class Birch {
-				public static readonly BlockInfo Vertical = Create("Birch", 0x2011, InternalName);
-				public static readonly BlockInfo HorizontalEastWest = Create("Birch", 0x6011, InternalName);
-				public static readonly BlockInfo HorizontalNorthSouth = Create("Birch", 0xA011, InternalName);
-				public static readonly BlockInfo BarkOnly = Create("Birch", 0xE011, InternalName);
+				public static readonly BlockInfo Vertical = new BlockInfo { TypeId = 17, DataValue = 2, Name = "Vertical", InternalName = "minecraft:log", Note = "Birch, Vertical", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 10f };
+				public static readonly BlockInfo HorizontalEastWest = new BlockInfo { TypeId = 17, DataValue = 6, Name = "HorizontalEastWest", InternalName = "minecraft:log", Note = "Birch, Horizontal East/West", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 10f };
+				public static readonly BlockInfo HorizontalNorthSouth = new BlockInfo { TypeId = 17, DataValue = 10, Name = "HorizontalNorthSouth", InternalName = "minecraft:log", Note = "Birch, Horizontal North/South", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 10f };
+				public static readonly BlockInfo BarkOnly = new BlockInfo { TypeId = 17, DataValue = 14, Name = "BarkOnly", InternalName = "minecraft:log", Note = "Birch, Bark Only", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 10f };
 			}
 			public static class Jungle {
-				public static readonly BlockInfo Vertical = Create("Jungle", 0x3011, InternalName);
-				public static readonly BlockInfo HorizontalEastWest = Create("Jungle", 0x7011, InternalName);
-				public static readonly BlockInfo HorizontalNorthSouth = Create("Jungle", 0xB011, InternalName);
-				public static readonly BlockInfo BarkOnly = Create("Jungle", 0xF011, InternalName);
+				public static readonly BlockInfo Vertical = new BlockInfo { TypeId = 17, DataValue = 3, Name = "Vertical", InternalName = "minecraft:log", Note = "Jungle, Vertical", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 10f };
+				public static readonly BlockInfo HorizontalEastWest = new BlockInfo { TypeId = 17, DataValue = 7, Name = "HorizontalEastWest", InternalName = "minecraft:log", Note = "Jungle, Horizontal East/West", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 10f };
+				public static readonly BlockInfo HorizontalNorthSouth = new BlockInfo { TypeId = 17, DataValue = 11, Name = "HorizontalNorthSouth", InternalName = "minecraft:log", Note = "Jungle, Horizontal North/South", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 10f };
+				public static readonly BlockInfo BarkOnly = new BlockInfo { TypeId = 17, DataValue = 15, Name = "BarkOnly", InternalName = "minecraft:log", Note = "Jungle, Bark Only", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 10f };
 			}
 			public static class Acacia {
-				public static readonly BlockInfo Vertical = Create("Acacia", 0x00A2, InternalName2);
-				public static readonly BlockInfo HorizontalEastWest = Create("Acacia", 0x40A2, InternalName2);
-				public static readonly BlockInfo HorizontalNorthSouth = Create("Acacia", 0x80A2, InternalName2);
-				public static readonly BlockInfo BarkOnly = Create("Acacia", 0xC0A2, InternalName2);
+				public static readonly BlockInfo Vertical = new BlockInfo { TypeId = 162, DataValue = 0, Name = "Vertical", InternalName = "minecraft:log2", Note = "Acacia, Vertical", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 10f };
+				public static readonly BlockInfo HorizontalEastWest = new BlockInfo { TypeId = 162, DataValue = 4, Name = "HorizontalEastWest", InternalName = "minecraft:log2", Note = "Acacia, Horizontal East/West", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 10f };
+				public static readonly BlockInfo HorizontalNorthSouth = new BlockInfo { TypeId = 162, DataValue = 8, Name = "HorizontalNorthSouth", InternalName = "minecraft:log2", Note = "Acacia, Horizontal North/South", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 10f };
+				public static readonly BlockInfo BarkOnly = new BlockInfo { TypeId = 162, DataValue = 12, Name = "BarkOnly", InternalName = "minecraft:log2", Note = "Acacia, Bark Only", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 10f };
 			}
 			public static class DarkOak {
-				public static readonly BlockInfo Vertical = Create("DarkOak", 0x10A2, InternalName2);
-				public static readonly BlockInfo HorizontalEastWest = Create("DarkOak", 0x50A2, InternalName2);
-				public static readonly BlockInfo HorizontalNorthSouth = Create("DarkOak", 0x90A2, InternalName2);
-				public static readonly BlockInfo BarkOnly = Create("DarkOak", 0xD0A2, InternalName2);
+				public static readonly BlockInfo Vertical = new BlockInfo { TypeId = 162, DataValue = 1, Name = "Vertical", InternalName = "minecraft:log2", Note = "DarkOak, Vertical", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 10f };
+				public static readonly BlockInfo HorizontalEastWest = new BlockInfo { TypeId = 162, DataValue = 5, Name = "HorizontalEastWest", InternalName = "minecraft:log2", Note = "DarkOak, Horizontal East/West", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 10f };
+				public static readonly BlockInfo HorizontalNorthSouth = new BlockInfo { TypeId = 162, DataValue = 9, Name = "HorizontalNorthSouth", InternalName = "minecraft:log2", Note = "DarkOak, Horizontal North/South", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 10f };
+				public static readonly BlockInfo BarkOnly = new BlockInfo { TypeId = 162, DataValue = 13, Name = "BarkOnly", InternalName = "minecraft:log2", Note = "DarkOak, Bark Only", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 10f };
 			}
 		}
 		public static class Leaves {
-			internal static readonly string InternalName = "minecraft:leaves";
-			internal static readonly string InternalName2 = "minecraft:leaves2";
-
-			private static BlockInfo Create(string species, ushort id, string internalName) {
-				var blockInfo = new BlockInfo {
-					Id = id,
-					Name = "Leaves (" + species + ")",
-					InternalName = internalName,
-					BlastResistance = 10,
-					Hardness = 2,
-
-				};
-
-				var dataValue = (id & 0xF000) >> 12;
-				if(dataValue < 4) blockInfo.Note = "Decaying with no checks";
-				else if(dataValue < 8) blockInfo.Note = "Permanent with no checks";
-				else if(dataValue < 12) blockInfo.Note = "Decaying with checks";
-				else blockInfo.Note = "Permanent with checks";
-
-				return blockInfo;
-			}
-
 			public static class Oak {
-				public static readonly BlockInfo Decayable = Create("Oak", 0x0012, InternalName);
-				public static readonly BlockInfo Permanent = Create("Oak", 0x4012, InternalName);
-				public static readonly BlockInfo DecayableChecked = Create("Oak", 0x8012, InternalName);
-				public static readonly BlockInfo PermanentChecked = Create("Oak", 0xC012, InternalName);
+				public static readonly BlockInfo Decayable = new BlockInfo { TypeId = 18, DataValue = 0, Name = "Decayable", InternalName = "minecraft:leaves", Note = "Oak, Decaying with no checks", UsesEntityData = false, Luminance = 0, Opacity = 1, Hardness = 0.2f, BlastResistance = 1f };
+				public static readonly BlockInfo Permanent = new BlockInfo { TypeId = 18, DataValue = 4, Name = "Permanent", InternalName = "minecraft:leaves", Note = "Oak, Permanent with no checks", UsesEntityData = false, Luminance = 0, Opacity = 1, Hardness = 0.2f, BlastResistance = 1f };
+				public static readonly BlockInfo DecayableChecked = new BlockInfo { TypeId = 18, DataValue = 8, Name = "DecayableChecked", InternalName = "minecraft:leaves", Note = "Oak, Decaying with checks", UsesEntityData = false, Luminance = 0, Opacity = 1, Hardness = 0.2f, BlastResistance = 1f };
+				public static readonly BlockInfo PermanentChecked = new BlockInfo { TypeId = 18, DataValue = 12, Name = "PermanentChecked", InternalName = "minecraft:leaves", Note = "Oak, Permanent with checks", UsesEntityData = false, Luminance = 0, Opacity = 1, Hardness = 0.2f, BlastResistance = 1f };
 			}
 			public static class Spruce {
-				public static readonly BlockInfo Decayable = Create("Spruce", 0x1012, InternalName);
-				public static readonly BlockInfo Permanent = Create("Spruce", 0x5012, InternalName);
-				public static readonly BlockInfo DecayableChecked = Create("Spruce", 0x9012, InternalName);
-				public static readonly BlockInfo PermanentChecked = Create("Spruce", 0xD012, InternalName);
+				public static readonly BlockInfo Decayable = new BlockInfo { TypeId = 18, DataValue = 1, Name = "Decayable", InternalName = "minecraft:leaves", Note = "Spruce, Decaying with no checks", UsesEntityData = false, Luminance = 0, Opacity = 1, Hardness = 0.2f, BlastResistance = 1f };
+				public static readonly BlockInfo Permanent = new BlockInfo { TypeId = 18, DataValue = 5, Name = "Permanent", InternalName = "minecraft:leaves", Note = "Spruce, Permanent with no checks", UsesEntityData = false, Luminance = 0, Opacity = 1, Hardness = 0.2f, BlastResistance = 1f };
+				public static readonly BlockInfo DecayableChecked = new BlockInfo { TypeId = 18, DataValue = 9, Name = "DecayableChecked", InternalName = "minecraft:leaves", Note = "Spruce, Decaying with checks", UsesEntityData = false, Luminance = 0, Opacity = 1, Hardness = 0.2f, BlastResistance = 1f };
+				public static readonly BlockInfo PermanentChecked = new BlockInfo { TypeId = 18, DataValue = 13, Name = "PermanentChecked", InternalName = "minecraft:leaves", Note = "Spruce, Permanent with checks", UsesEntityData = false, Luminance = 0, Opacity = 1, Hardness = 0.2f, BlastResistance = 1f };
 			}
 			public static class Birch {
-				public static readonly BlockInfo Decayable = Create("Birch", 0x2012, InternalName);
-				public static readonly BlockInfo Permanent = Create("Birch", 0x6012, InternalName);
-				public static readonly BlockInfo DecayableChecked = Create("Birch", 0xA012, InternalName);
-				public static readonly BlockInfo PermanentChecked = Create("Birch", 0xE012, InternalName);
+				public static readonly BlockInfo Decayable = new BlockInfo { TypeId = 18, DataValue = 2, Name = "Decayable", InternalName = "minecraft:leaves", Note = "Birch, Decaying with no checks", UsesEntityData = false, Luminance = 0, Opacity = 1, Hardness = 0.2f, BlastResistance = 1f };
+				public static readonly BlockInfo Permanent = new BlockInfo { TypeId = 18, DataValue = 6, Name = "Permanent", InternalName = "minecraft:leaves", Note = "Birch, Permanent with no checks", UsesEntityData = false, Luminance = 0, Opacity = 1, Hardness = 0.2f, BlastResistance = 1f };
+				public static readonly BlockInfo DecayableChecked = new BlockInfo { TypeId = 18, DataValue = 10, Name = "DecayableChecked", InternalName = "minecraft:leaves", Note = "Birch, Decaying with checks", UsesEntityData = false, Luminance = 0, Opacity = 1, Hardness = 0.2f, BlastResistance = 1f };
+				public static readonly BlockInfo PermanentChecked = new BlockInfo { TypeId = 18, DataValue = 14, Name = "PermanentChecked", InternalName = "minecraft:leaves", Note = "Birch, Permanent with checks", UsesEntityData = false, Luminance = 0, Opacity = 1, Hardness = 0.2f, BlastResistance = 1f };
 			}
 			public static class Jungle {
-				public static readonly BlockInfo Decayable = Create("Jungle", 0x3012, InternalName);
-				public static readonly BlockInfo Permanent = Create("Jungle", 0x7012, InternalName);
-				public static readonly BlockInfo DecayableChecked = Create("Jungle", 0xB012, InternalName);
-				public static readonly BlockInfo PermanentChecked = Create("Jungle", 0xF012, InternalName);
+				public static readonly BlockInfo Decayable = new BlockInfo { TypeId = 18, DataValue = 3, Name = "Decayable", InternalName = "minecraft:leaves", Note = "Jungle, Decaying with no checks", UsesEntityData = false, Luminance = 0, Opacity = 1, Hardness = 0.2f, BlastResistance = 1f };
+				public static readonly BlockInfo Permanent = new BlockInfo { TypeId = 18, DataValue = 7, Name = "Permanent", InternalName = "minecraft:leaves", Note = "Jungle, Permanent with no checks", UsesEntityData = false, Luminance = 0, Opacity = 1, Hardness = 0.2f, BlastResistance = 1f };
+				public static readonly BlockInfo DecayableChecked = new BlockInfo { TypeId = 18, DataValue = 11, Name = "DecayableChecked", InternalName = "minecraft:leaves", Note = "Jungle, Decaying with checks", UsesEntityData = false, Luminance = 0, Opacity = 1, Hardness = 0.2f, BlastResistance = 1f };
+				public static readonly BlockInfo PermanentChecked = new BlockInfo { TypeId = 18, DataValue = 15, Name = "PermanentChecked", InternalName = "minecraft:leaves", Note = "Jungle, Permanent with checks", UsesEntityData = false, Luminance = 0, Opacity = 1, Hardness = 0.2f, BlastResistance = 1f };
 			}
 			public static class Acacia {
-				public static readonly BlockInfo Decayable = Create("Acacia", 0x00A1, InternalName2);
-				public static readonly BlockInfo Permanent = Create("Acacia", 0x40A1, InternalName2);
-				public static readonly BlockInfo DecayableChecked = Create("Acacia", 0x80A1, InternalName2);
-				public static readonly BlockInfo PermanentChecked = Create("Acacia", 0xC0A1, InternalName2);
+				public static readonly BlockInfo Decayable = new BlockInfo { TypeId = 161, DataValue = 0, Name = "Decayable", InternalName = "minecraft:leaves2", Note = "Acacia, Decaying with no checks", UsesEntityData = false, Luminance = 0, Opacity = 1, Hardness = 0.2f, BlastResistance = 1f };
+				public static readonly BlockInfo Permanent = new BlockInfo { TypeId = 161, DataValue = 4, Name = "Permanent", InternalName = "minecraft:leaves2", Note = "Acacia, Permanent with no checks", UsesEntityData = false, Luminance = 0, Opacity = 1, Hardness = 0.2f, BlastResistance = 1f };
+				public static readonly BlockInfo DecayableChecked = new BlockInfo { TypeId = 161, DataValue = 8, Name = "DecayableChecked", InternalName = "minecraft:leaves2", Note = "Acacia, Decaying with checks", UsesEntityData = false, Luminance = 0, Opacity = 1, Hardness = 0.2f, BlastResistance = 1f };
+				public static readonly BlockInfo PermanentChecked = new BlockInfo { TypeId = 161, DataValue = 12, Name = "PermanentChecked", InternalName = "minecraft:leaves2", Note = "Acacia, Permanent with checks", UsesEntityData = false, Luminance = 0, Opacity = 1, Hardness = 0.2f, BlastResistance = 1f };
 			}
 			public static class DarkOak {
-				public static readonly BlockInfo Decayable = Create("DarkOak", 0x10A1, InternalName2);
-				public static readonly BlockInfo Permanent = Create("DarkOak", 0x50A1, InternalName2);
-				public static readonly BlockInfo DecayableChecked = Create("DarkOak", 0x90A1, InternalName2);
-				public static readonly BlockInfo PermanentChecked = Create("DarkOak", 0xD0A1, InternalName2);
+				public static readonly BlockInfo Decayable = new BlockInfo { TypeId = 161, DataValue = 1, Name = "Decayable", InternalName = "minecraft:leaves2", Note = "DarkOak, Decaying with no checks", UsesEntityData = false, Luminance = 0, Opacity = 1, Hardness = 0.2f, BlastResistance = 1f };
+				public static readonly BlockInfo Permanent = new BlockInfo { TypeId = 161, DataValue = 5, Name = "Permanent", InternalName = "minecraft:leaves2", Note = "DarkOak, Permanent with no checks", UsesEntityData = false, Luminance = 0, Opacity = 1, Hardness = 0.2f, BlastResistance = 1f };
+				public static readonly BlockInfo DecayableChecked = new BlockInfo { TypeId = 161, DataValue = 9, Name = "DecayableChecked", InternalName = "minecraft:leaves2", Note = "DarkOak, Decaying with checks", UsesEntityData = false, Luminance = 0, Opacity = 1, Hardness = 0.2f, BlastResistance = 1f };
+				public static readonly BlockInfo PermanentChecked = new BlockInfo { TypeId = 161, DataValue = 13, Name = "PermanentChecked", InternalName = "minecraft:leaves2", Note = "DarkOak, Permanent with checks", UsesEntityData = false, Luminance = 0, Opacity = 1, Hardness = 0.2f, BlastResistance = 1f };
 			}
 		}
 		public static class Planks {
-			private static BlockInfo Create(string woodType, ushort id) {
-				var blockInfo = new BlockInfo {
-					Id = id,
-					Name = "Planks (" + woodType + ")",
-					InternalName = "minecraft:planks",
-					BlastResistance = 10,
-					Hardness = 2,
-
-				};
-
-				return blockInfo;
-			}
-
-			public static readonly BlockInfo Oak = Create("Oak", 0x0005);
-			public static readonly BlockInfo Spruce = Create("Spruce ", 0x1005);
-			public static readonly BlockInfo Birch = Create("Birch", 0x2005);
-			public static readonly BlockInfo Jungle = Create("Jungle", 0x3005);
-			public static readonly BlockInfo Acacia = Create("Acacia", 0x4005);
-			public static readonly BlockInfo DarkOak = Create("DarkOak", 0x5005);
+			public static readonly BlockInfo Oak = new BlockInfo { TypeId = 5, DataValue = 0, Name = "Oak", InternalName = "minecraft:planks", Note = "Oak", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+			public static readonly BlockInfo Spruce = new BlockInfo { TypeId = 5, DataValue = 1, Name = "Spruce", InternalName = "minecraft:planks", Note = "Spruce", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+			public static readonly BlockInfo Birch = new BlockInfo { TypeId = 5, DataValue = 2, Name = "Birch", InternalName = "minecraft:planks", Note = "Birch", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+			public static readonly BlockInfo Jungle = new BlockInfo { TypeId = 5, DataValue = 3, Name = "Jungle", InternalName = "minecraft:planks", Note = "Jungle", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+			public static readonly BlockInfo Acacia = new BlockInfo { TypeId = 5, DataValue = 4, Name = "Acacia", InternalName = "minecraft:planks", Note = "Acacia", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+			public static readonly BlockInfo DarkOak = new BlockInfo { TypeId = 5, DataValue = 5, Name = "DarkOak", InternalName = "minecraft:planks", Note = "DarkOak", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
 		}
 		public static class Sapling {
-			private static BlockInfo Create(string species, ushort id) {
-				var blockInfo = new BlockInfo {
-					Id = id,
-					Name = "Sapling (" + species + ")",
-					InternalName = "minecraft:sapling",
-					BlastResistance = 10,
-					Hardness = 2,
-
-				};
-
-				return blockInfo;
-			}
-
-			public static readonly BlockInfo Oak = Create("Oak", 0x0006);
-			public static readonly BlockInfo Spruce = Create("Spruce ", 0x1006);
-			public static readonly BlockInfo Birch = Create("Birch", 0x2006);
-			public static readonly BlockInfo Jungle = Create("Jungle", 0x3006);
-			public static readonly BlockInfo Acacia = Create("Acacia", 0x4006);
-			public static readonly BlockInfo DarkOak = Create("DarkOak", 0x5006);
-
+			public static readonly BlockInfo Oak = new BlockInfo { TypeId = 6, DataValue = 0, Name = "Oak", InternalName = "minecraft:sapling", Note = "Oak", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo Spruce = new BlockInfo { TypeId = 6, DataValue = 1, Name = "Spruce", InternalName = "minecraft:sapling", Note = "Spruce", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo Birch = new BlockInfo { TypeId = 6, DataValue = 2, Name = "Birch", InternalName = "minecraft:sapling", Note = "Birch", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo Jungle = new BlockInfo { TypeId = 6, DataValue = 3, Name = "Jungle", InternalName = "minecraft:sapling", Note = "Jungle", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo Acacia = new BlockInfo { TypeId = 6, DataValue = 4, Name = "Acacia", InternalName = "minecraft:sapling", Note = "Acacia", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo DarkOak = new BlockInfo { TypeId = 6, DataValue = 5, Name = "DarkOak", InternalName = "minecraft:sapling", Note = "DarkOak", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
 		}
 		public static class Stone {
-			private static BlockInfo Create(string stoneType, ushort id) {
-				var blockInfo = new BlockInfo {
-					Id = id,
-					Name = "Stone (" + stoneType + ")",
-					InternalName = "minecraft:stone",
-					BlastResistance = 10,
-					Hardness = 2,
-
-				};
-
-				return blockInfo;
-			}
-
-			public static readonly BlockInfo Normal = Create("Normal", 0x0001);
-			public static readonly BlockInfo Granite = Create("Granite", 0x1001);
-			public static readonly BlockInfo PolishedGranite = Create("Polished Granite", 0x2001);
-			public static readonly BlockInfo Diorite = Create("Diorite", 0x3001);
-			public static readonly BlockInfo PolishedDiorite = Create("Polished Diorite", 0x4001);
-			public static readonly BlockInfo Andesite = Create("Andesite", 0x5001);
-			public static readonly BlockInfo PolishedAndesite = Create("Polished Andesite", 0x6001);
-
+			public static readonly BlockInfo Normal = new BlockInfo { TypeId = 1, DataValue = 0, Name = "Normal", InternalName = "minecraft:stone", Note = "Normal", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.5f, BlastResistance = 30f };
+			public static readonly BlockInfo Granite = new BlockInfo { TypeId = 1, DataValue = 1, Name = "Granite", InternalName = "minecraft:stone", Note = "Granite", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.5f, BlastResistance = 30f };
+			public static readonly BlockInfo PolishedGranite = new BlockInfo { TypeId = 1, DataValue = 2, Name = "PolishedGranite", InternalName = "minecraft:stone", Note = "PolishedGranite", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.5f, BlastResistance = 30f };
+			public static readonly BlockInfo Diorite = new BlockInfo { TypeId = 1, DataValue = 3, Name = "Diorite", InternalName = "minecraft:stone", Note = "Diorite", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.5f, BlastResistance = 30f };
+			public static readonly BlockInfo PolishedDiorite = new BlockInfo { TypeId = 1, DataValue = 4, Name = "PolishedDiorite", InternalName = "minecraft:stone", Note = "PolishedDiorite", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.5f, BlastResistance = 30f };
+			public static readonly BlockInfo Andesite = new BlockInfo { TypeId = 1, DataValue = 5, Name = "Andesite", InternalName = "minecraft:stone", Note = "Andesite", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.5f, BlastResistance = 30f };
+			public static readonly BlockInfo PolishedAndesite = new BlockInfo { TypeId = 1, DataValue = 6, Name = "PolishedAndesite", InternalName = "minecraft:stone", Note = "PolishedAndesite", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.5f, BlastResistance = 30f };
 		}
 		public static class Dirt {
-			private static BlockInfo Create(string dirtType, ushort id) {
-				var blockInfo = new BlockInfo {
-					Id = id,
-					Name = "Dirt (" + dirtType + ")",
-					InternalName = "minecraft:dirt",
-					BlastResistance = 10,
-					Hardness = 2,
-
-				};
-
-				return blockInfo;
-			}
-
-			public static readonly BlockInfo Normal = Create("Normal", 0x0003);
-			public static readonly BlockInfo CoarseDirt = Create("Coarse Dirt", 0x1003);
-			public static readonly BlockInfo Podzol = Create("Podzol", 0x2003);
-
+			public static readonly BlockInfo Normal = new BlockInfo { TypeId = 3, DataValue = 0, Name = "Normal", InternalName = "minecraft:dirt", Note = "Normal", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.5f, BlastResistance = 2.5f };
+			public static readonly BlockInfo Coarse = new BlockInfo { TypeId = 3, DataValue = 1, Name = "Coarse", InternalName = "minecraft:dirt", Note = "Coarse", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.5f, BlastResistance = 2.5f };
+			public static readonly BlockInfo Podzol = new BlockInfo { TypeId = 3, DataValue = 2, Name = "Podzol", InternalName = "minecraft:dirt", Note = "Podzol", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.5f, BlastResistance = 2.5f };
 		}
 		public static class Water {
-			private static BlockInfo Create(ushort id) {
-				var isFlowing = (id & 0xF) == 8;
-				var isFalling = (id & 0x800) != 0;
-				var level = (id & 0x700) >> 12;
-
-				var blockInfo = new BlockInfo {
-					Id = id,
-					Name = (isFlowing ? "Flowing Water" : "Stationary Water") + " (" + (isFalling ? "Falling" : level.ToString()) + ")",
-					InternalName = isFlowing ? "minecraft:flowing_water" : "minecraft:water",
-					BlastResistance = 10,
-					Hardness = 2,
-
-				};
-
-				return blockInfo;
-			}
-
 			public static class Flowing {
-				public static readonly BlockInfo Horizontal0 = Create(0x0008);
-				public static readonly BlockInfo Horizontal1 = Create(0x1008);
-				public static readonly BlockInfo Horizontal2 = Create(0x2008);
-				public static readonly BlockInfo Horizontal3 = Create(0x3008);
-				public static readonly BlockInfo Horizontal4 = Create(0x4008);
-				public static readonly BlockInfo Horizontal5 = Create(0x5008);
-				public static readonly BlockInfo Horizontal6 = Create(0x6008);
-				public static readonly BlockInfo Horizontal7 = Create(0x7008);
-				public static readonly BlockInfo Vertical0 = Create(0x8008);
-				public static readonly BlockInfo Vertical1 = Create(0x9008);
-				public static readonly BlockInfo Vertical2 = Create(0xA008);
-				public static readonly BlockInfo Vertical3 = Create(0xB008);
-				public static readonly BlockInfo Vertical4 = Create(0xC008);
-				public static readonly BlockInfo Vertical5 = Create(0xD008);
-				public static readonly BlockInfo Vertical6 = Create(0xE008);
-				public static readonly BlockInfo Vertical7 = Create(0xF008);
+				public static readonly BlockInfo Horizontal0 = new BlockInfo { TypeId = 8, DataValue = 0, Name = "Horizontal0", InternalName = "minecraft:flowing_water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Horizontal1 = new BlockInfo { TypeId = 8, DataValue = 1, Name = "Horizontal1", InternalName = "minecraft:flowing_water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Horizontal2 = new BlockInfo { TypeId = 8, DataValue = 2, Name = "Horizontal2", InternalName = "minecraft:flowing_water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Horizontal3 = new BlockInfo { TypeId = 8, DataValue = 3, Name = "Horizontal3", InternalName = "minecraft:flowing_water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Horizontal4 = new BlockInfo { TypeId = 8, DataValue = 4, Name = "Horizontal4", InternalName = "minecraft:flowing_water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Horizontal5 = new BlockInfo { TypeId = 8, DataValue = 5, Name = "Horizontal5", InternalName = "minecraft:flowing_water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Horizontal6 = new BlockInfo { TypeId = 8, DataValue = 6, Name = "Horizontal6", InternalName = "minecraft:flowing_water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Horizontal7 = new BlockInfo { TypeId = 8, DataValue = 7, Name = "Horizontal7", InternalName = "minecraft:flowing_water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Vertical8 = new BlockInfo { TypeId = 8, DataValue = 8, Name = "Vertical8", InternalName = "minecraft:flowing_water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Vertical9 = new BlockInfo { TypeId = 8, DataValue = 9, Name = "Vertical9", InternalName = "minecraft:flowing_water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo VerticalA = new BlockInfo { TypeId = 8, DataValue = 10, Name = "VerticalA", InternalName = "minecraft:flowing_water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo VerticalB = new BlockInfo { TypeId = 8, DataValue = 11, Name = "VerticalB", InternalName = "minecraft:flowing_water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo VerticalC = new BlockInfo { TypeId = 8, DataValue = 12, Name = "VerticalC", InternalName = "minecraft:flowing_water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo VerticalD = new BlockInfo { TypeId = 8, DataValue = 13, Name = "VerticalD", InternalName = "minecraft:flowing_water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo VerticalE = new BlockInfo { TypeId = 8, DataValue = 14, Name = "VerticalE", InternalName = "minecraft:flowing_water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo VerticalF = new BlockInfo { TypeId = 8, DataValue = 15, Name = "VerticalF", InternalName = "minecraft:flowing_water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
 			}
 			public static class Stationary {
-				public static readonly BlockInfo Horizontal0 = Create(0x0009);
-				public static readonly BlockInfo Horizontal1 = Create(0x1009);
-				public static readonly BlockInfo Horizontal2 = Create(0x2009);
-				public static readonly BlockInfo Horizontal3 = Create(0x3009);
-				public static readonly BlockInfo Horizontal4 = Create(0x4009);
-				public static readonly BlockInfo Horizontal5 = Create(0x5009);
-				public static readonly BlockInfo Horizontal6 = Create(0x6009);
-				public static readonly BlockInfo Horizontal7 = Create(0x7009);
-				public static readonly BlockInfo Vertical0 = Create(0x8009);
-				public static readonly BlockInfo Vertical1 = Create(0x9009);
-				public static readonly BlockInfo Vertical2 = Create(0xA009);
-				public static readonly BlockInfo Vertical3 = Create(0xB009);
-				public static readonly BlockInfo Vertical4 = Create(0xC009);
-				public static readonly BlockInfo Vertical5 = Create(0xD009);
-				public static readonly BlockInfo Vertical6 = Create(0xE009);
-				public static readonly BlockInfo Vertical7 = Create(0xF009);
+				public static readonly BlockInfo Horizontal0 = new BlockInfo { TypeId = 9, DataValue = 0, Name = "Horizontal0", InternalName = "minecraft:water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Horizontal1 = new BlockInfo { TypeId = 9, DataValue = 1, Name = "Horizontal1", InternalName = "minecraft:water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Horizontal2 = new BlockInfo { TypeId = 9, DataValue = 2, Name = "Horizontal2", InternalName = "minecraft:water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Horizontal3 = new BlockInfo { TypeId = 9, DataValue = 3, Name = "Horizontal3", InternalName = "minecraft:water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Horizontal4 = new BlockInfo { TypeId = 9, DataValue = 4, Name = "Horizontal4", InternalName = "minecraft:water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Horizontal5 = new BlockInfo { TypeId = 9, DataValue = 5, Name = "Horizontal5", InternalName = "minecraft:water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Horizontal6 = new BlockInfo { TypeId = 9, DataValue = 6, Name = "Horizontal6", InternalName = "minecraft:water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Horizontal7 = new BlockInfo { TypeId = 9, DataValue = 7, Name = "Horizontal7", InternalName = "minecraft:water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Vertical8 = new BlockInfo { TypeId = 9, DataValue = 8, Name = "Vertical8", InternalName = "minecraft:water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Vertical9 = new BlockInfo { TypeId = 9, DataValue = 9, Name = "Vertical9", InternalName = "minecraft:water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo VerticalA = new BlockInfo { TypeId = 9, DataValue = 10, Name = "VerticalA", InternalName = "minecraft:water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo VerticalB = new BlockInfo { TypeId = 9, DataValue = 11, Name = "VerticalB", InternalName = "minecraft:water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo VerticalC = new BlockInfo { TypeId = 9, DataValue = 12, Name = "VerticalC", InternalName = "minecraft:water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo VerticalD = new BlockInfo { TypeId = 9, DataValue = 13, Name = "VerticalD", InternalName = "minecraft:water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo VerticalE = new BlockInfo { TypeId = 9, DataValue = 14, Name = "VerticalE", InternalName = "minecraft:water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo VerticalF = new BlockInfo { TypeId = 9, DataValue = 15, Name = "VerticalF", InternalName = "minecraft:water", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 3, Hardness = 100f, BlastResistance = 500f };
 			}
 		}
 		public static class Lava {
-			private static BlockInfo Create(ushort id) {
-				var isFlowing = (id & 0xF) == 0xA;
-				var isFalling = (id & 0x800) != 0;
-				var level = (id & 0x700) >> 12;
-
-				var blockInfo = new BlockInfo {
-					Id = id,
-					Name = (isFlowing ? "Flowing Lava" : "Stationary Lava") + " (" + (isFalling ? "Falling" : level.ToString()) + ")",
-					InternalName = isFlowing ? "minecraft:flowing_lava" : "minecraft:lava",
-					BlastResistance = 10,
-					Hardness = 2,
-
-				};
-
-				return blockInfo;
-			}
-
 			public static class Flowing {
-				public static readonly BlockInfo Horizontal0 = Create(0x000A);
-				public static readonly BlockInfo Horizontal1 = Create(0x100A);
-				public static readonly BlockInfo Horizontal2 = Create(0x200A);
-				public static readonly BlockInfo Horizontal3 = Create(0x300A);
-				public static readonly BlockInfo Horizontal4 = Create(0x400A);
-				public static readonly BlockInfo Horizontal5 = Create(0x500A);
-				public static readonly BlockInfo Horizontal6 = Create(0x600A);
-				public static readonly BlockInfo Horizontal7 = Create(0x700A);
-				public static readonly BlockInfo Vertical0 = Create(0x800A);
-				public static readonly BlockInfo Vertical1 = Create(0x900A);
-				public static readonly BlockInfo Vertical2 = Create(0xA00A);
-				public static readonly BlockInfo Vertical3 = Create(0xB00A);
-				public static readonly BlockInfo Vertical4 = Create(0xC00A);
-				public static readonly BlockInfo Vertical5 = Create(0xD00A);
-				public static readonly BlockInfo Vertical6 = Create(0xE00A);
-				public static readonly BlockInfo Vertical7 = Create(0xF00A);
+				public static readonly BlockInfo Horizontal0 = new BlockInfo { TypeId = 10, DataValue = 0, Name = "Horizontal0", InternalName = "minecraft:flowing_lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Horizontal1 = new BlockInfo { TypeId = 10, DataValue = 1, Name = "Horizontal1", InternalName = "minecraft:flowing_lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Horizontal2 = new BlockInfo { TypeId = 10, DataValue = 2, Name = "Horizontal2", InternalName = "minecraft:flowing_lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Horizontal3 = new BlockInfo { TypeId = 10, DataValue = 3, Name = "Horizontal3", InternalName = "minecraft:flowing_lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Horizontal4 = new BlockInfo { TypeId = 10, DataValue = 4, Name = "Horizontal4", InternalName = "minecraft:flowing_lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Horizontal5 = new BlockInfo { TypeId = 10, DataValue = 5, Name = "Horizontal5", InternalName = "minecraft:flowing_lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Horizontal6 = new BlockInfo { TypeId = 10, DataValue = 6, Name = "Horizontal6", InternalName = "minecraft:flowing_lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Horizontal7 = new BlockInfo { TypeId = 10, DataValue = 7, Name = "Horizontal7", InternalName = "minecraft:flowing_lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Vertical8 = new BlockInfo { TypeId = 10, DataValue = 8, Name = "Vertical8", InternalName = "minecraft:flowing_lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Vertical9 = new BlockInfo { TypeId = 10, DataValue = 9, Name = "Vertical9", InternalName = "minecraft:flowing_lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo VerticalA = new BlockInfo { TypeId = 10, DataValue = 10, Name = "VerticalA", InternalName = "minecraft:flowing_lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo VerticalB = new BlockInfo { TypeId = 10, DataValue = 11, Name = "VerticalB", InternalName = "minecraft:flowing_lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo VerticalC = new BlockInfo { TypeId = 10, DataValue = 12, Name = "VerticalC", InternalName = "minecraft:flowing_lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo VerticalD = new BlockInfo { TypeId = 10, DataValue = 13, Name = "VerticalD", InternalName = "minecraft:flowing_lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo VerticalE = new BlockInfo { TypeId = 10, DataValue = 14, Name = "VerticalE", InternalName = "minecraft:flowing_lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo VerticalF = new BlockInfo { TypeId = 10, DataValue = 15, Name = "VerticalF", InternalName = "minecraft:flowing_lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
 			}
 			public static class Stationary {
-				public static readonly BlockInfo Horizontal0 = Create(0x000B);
-				public static readonly BlockInfo Horizontal1 = Create(0x100B);
-				public static readonly BlockInfo Horizontal2 = Create(0x200B);
-				public static readonly BlockInfo Horizontal3 = Create(0x300B);
-				public static readonly BlockInfo Horizontal4 = Create(0x400B);
-				public static readonly BlockInfo Horizontal5 = Create(0x500B);
-				public static readonly BlockInfo Horizontal6 = Create(0x600B);
-				public static readonly BlockInfo Horizontal7 = Create(0x700B);
-				public static readonly BlockInfo Vertical0 = Create(0x800B);
-				public static readonly BlockInfo Vertical1 = Create(0x900B);
-				public static readonly BlockInfo Vertical2 = Create(0xA00B);
-				public static readonly BlockInfo Vertical3 = Create(0xB00B);
-				public static readonly BlockInfo Vertical4 = Create(0xC00B);
-				public static readonly BlockInfo Vertical5 = Create(0xD00B);
-				public static readonly BlockInfo Vertical6 = Create(0xE00B);
-				public static readonly BlockInfo Vertical7 = Create(0xF00B);
+				public static readonly BlockInfo Horizontal0 = new BlockInfo { TypeId = 11, DataValue = 0, Name = "Horizontal0", InternalName = "minecraft:lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Horizontal1 = new BlockInfo { TypeId = 11, DataValue = 1, Name = "Horizontal1", InternalName = "minecraft:lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Horizontal2 = new BlockInfo { TypeId = 11, DataValue = 2, Name = "Horizontal2", InternalName = "minecraft:lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Horizontal3 = new BlockInfo { TypeId = 11, DataValue = 3, Name = "Horizontal3", InternalName = "minecraft:lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Horizontal4 = new BlockInfo { TypeId = 11, DataValue = 4, Name = "Horizontal4", InternalName = "minecraft:lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Horizontal5 = new BlockInfo { TypeId = 11, DataValue = 5, Name = "Horizontal5", InternalName = "minecraft:lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Horizontal6 = new BlockInfo { TypeId = 11, DataValue = 6, Name = "Horizontal6", InternalName = "minecraft:lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Horizontal7 = new BlockInfo { TypeId = 11, DataValue = 7, Name = "Horizontal7", InternalName = "minecraft:lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Vertical8 = new BlockInfo { TypeId = 11, DataValue = 8, Name = "Vertical8", InternalName = "minecraft:lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo Vertical9 = new BlockInfo { TypeId = 11, DataValue = 9, Name = "Vertical9", InternalName = "minecraft:lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo VerticalA = new BlockInfo { TypeId = 11, DataValue = 10, Name = "VerticalA", InternalName = "minecraft:lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo VerticalB = new BlockInfo { TypeId = 11, DataValue = 11, Name = "VerticalB", InternalName = "minecraft:lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo VerticalC = new BlockInfo { TypeId = 11, DataValue = 12, Name = "VerticalC", InternalName = "minecraft:lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo VerticalD = new BlockInfo { TypeId = 11, DataValue = 13, Name = "VerticalD", InternalName = "minecraft:lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo VerticalE = new BlockInfo { TypeId = 11, DataValue = 14, Name = "VerticalE", InternalName = "minecraft:lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
+				public static readonly BlockInfo VerticalF = new BlockInfo { TypeId = 11, DataValue = 15, Name = "VerticalF", InternalName = "minecraft:lava", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 100f, BlastResistance = 500f };
 			}
 		}
 		public static class Sand {
-			private static BlockInfo Create(string sandType, ushort id) {
-				var blockInfo = new BlockInfo {
-					Id = id,
-					Name = "Sand (" + sandType + ")",
-					InternalName = "minecraft:sand",
-					BlastResistance = 10,
-					Hardness = 2,
-
-				};
-
-				return blockInfo;
-			}
-
-			public static readonly BlockInfo Normal = Create("Normal", 0x000C);
-			public static readonly BlockInfo Red = Create("Red", 0x100C);
-
+			public static readonly BlockInfo Normal = new BlockInfo { TypeId = 12, DataValue = 0, Name = "Normal", InternalName = "minecraft:sand", Note = "Normal", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.5f, BlastResistance = 2.5f };
+			public static readonly BlockInfo Red = new BlockInfo { TypeId = 12, DataValue = 1, Name = "Red", InternalName = "minecraft:sand", Note = "Red", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.5f, BlastResistance = 2.5f };
 		}
 		public static class Wool {
-			private static BlockInfo Create(string color, ushort id) {
-				var blockInfo = new BlockInfo {
-					Id = id,
-					Name = "Wool (" + color + ")",
-					InternalName = "minecraft:wool",
-					BlastResistance = 10,
-					Hardness = 2,
-
-				};
-
-				return blockInfo;
-			}
-
-			public static readonly BlockInfo White = Create("White", 0x0023);
-			public static readonly BlockInfo Orange = Create("Orange", 0x1023);
-			public static readonly BlockInfo Magenta = Create("Magenta", 0x2023);
-			public static readonly BlockInfo LightBlue = Create("Light Blue", 0x3023);
-			public static readonly BlockInfo Yellow = Create("Yellow", 0x4023);
-			public static readonly BlockInfo Lime = Create("Lime", 0x5023);
-			public static readonly BlockInfo Pink = Create("Pink", 0x6023);
-			public static readonly BlockInfo Gray = Create("Gray", 0x7023);
-			public static readonly BlockInfo LightGray = Create("Light Gray", 0x8023);
-			public static readonly BlockInfo Cyan = Create("Cyan", 0x9023);
-			public static readonly BlockInfo Purple = Create("Purple", 0xA023);
-			public static readonly BlockInfo Blue = Create("Blue", 0xB023);
-			public static readonly BlockInfo Brown = Create("Brown", 0xC023);
-			public static readonly BlockInfo Green = Create("Green", 0xD023);
-			public static readonly BlockInfo Red = Create("Red", 0xE023);
-			public static readonly BlockInfo Black = Create("Black", 0xF023);
+			public static readonly BlockInfo White = new BlockInfo { TypeId = 35, DataValue = 0, Name = "White", InternalName = "minecraft:wool", Note = "White", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.8f, BlastResistance = 4f };
+			public static readonly BlockInfo Orange = new BlockInfo { TypeId = 35, DataValue = 1, Name = "Orange", InternalName = "minecraft:wool", Note = "Orange", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.8f, BlastResistance = 4f };
+			public static readonly BlockInfo Magenta = new BlockInfo { TypeId = 35, DataValue = 2, Name = "Magenta", InternalName = "minecraft:wool", Note = "Magenta", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.8f, BlastResistance = 4f };
+			public static readonly BlockInfo LightBlue = new BlockInfo { TypeId = 35, DataValue = 3, Name = "LightBlue", InternalName = "minecraft:wool", Note = "LightBlue", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.8f, BlastResistance = 4f };
+			public static readonly BlockInfo Yellow = new BlockInfo { TypeId = 35, DataValue = 4, Name = "Yellow", InternalName = "minecraft:wool", Note = "Yellow", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.8f, BlastResistance = 4f };
+			public static readonly BlockInfo Lime = new BlockInfo { TypeId = 35, DataValue = 5, Name = "Lime", InternalName = "minecraft:wool", Note = "Lime", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.8f, BlastResistance = 4f };
+			public static readonly BlockInfo Pink = new BlockInfo { TypeId = 35, DataValue = 6, Name = "Pink", InternalName = "minecraft:wool", Note = "Pink", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.8f, BlastResistance = 4f };
+			public static readonly BlockInfo Gray = new BlockInfo { TypeId = 35, DataValue = 7, Name = "Gray", InternalName = "minecraft:wool", Note = "Gray", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.8f, BlastResistance = 4f };
+			public static readonly BlockInfo LightGray = new BlockInfo { TypeId = 35, DataValue = 8, Name = "LightGray", InternalName = "minecraft:wool", Note = "LightGray", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.8f, BlastResistance = 4f };
+			public static readonly BlockInfo Cyan = new BlockInfo { TypeId = 35, DataValue = 9, Name = "Cyan", InternalName = "minecraft:wool", Note = "Cyan", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.8f, BlastResistance = 4f };
+			public static readonly BlockInfo Purple = new BlockInfo { TypeId = 35, DataValue = 10, Name = "Purple", InternalName = "minecraft:wool", Note = "Purple", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.8f, BlastResistance = 4f };
+			public static readonly BlockInfo Blue = new BlockInfo { TypeId = 35, DataValue = 11, Name = "Blue", InternalName = "minecraft:wool", Note = "Blue", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.8f, BlastResistance = 4f };
+			public static readonly BlockInfo Brown = new BlockInfo { TypeId = 35, DataValue = 12, Name = "Brown", InternalName = "minecraft:wool", Note = "Brown", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.8f, BlastResistance = 4f };
+			public static readonly BlockInfo Green = new BlockInfo { TypeId = 35, DataValue = 13, Name = "Green", InternalName = "minecraft:wool", Note = "Green", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.8f, BlastResistance = 4f };
+			public static readonly BlockInfo Red = new BlockInfo { TypeId = 35, DataValue = 14, Name = "Red", InternalName = "minecraft:wool", Note = "Red", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.8f, BlastResistance = 4f };
+			public static readonly BlockInfo Black = new BlockInfo { TypeId = 35, DataValue = 15, Name = "Black", InternalName = "minecraft:wool", Note = "Black", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.8f, BlastResistance = 4f };
 		}
 		public static class StainedClay {
-			private static BlockInfo Create(string color, ushort id) {
-				var blockInfo = new BlockInfo {
-					Id = id,
-					Name = "Stained Clay (" + color + ")",
-					InternalName = "minecraft:stained_hardened_clay",
-					BlastResistance = 10,
-					Hardness = 2,
-
-				};
-
-				return blockInfo;
-			}
-
-			public static readonly BlockInfo White = Create("White", 0x009F);
-			public static readonly BlockInfo Orange = Create("Orange", 0x109F);
-			public static readonly BlockInfo Magenta = Create("Magenta", 0x209F);
-			public static readonly BlockInfo LightBlue = Create("Light Blue", 0x309F);
-			public static readonly BlockInfo Yellow = Create("Yellow", 0x409F);
-			public static readonly BlockInfo Lime = Create("Lime", 0x509F);
-			public static readonly BlockInfo Pink = Create("Pink", 0x609F);
-			public static readonly BlockInfo Gray = Create("Gray", 0x709F);
-			public static readonly BlockInfo LightGray = Create("Light Gray", 0x809F);
-			public static readonly BlockInfo Cyan = Create("Cyan", 0x909F);
-			public static readonly BlockInfo Purple = Create("Purple", 0xA09F);
-			public static readonly BlockInfo Blue = Create("Blue", 0xB09F);
-			public static readonly BlockInfo Brown = Create("Brown", 0xC09F);
-			public static readonly BlockInfo Green = Create("Green", 0xD09F);
-			public static readonly BlockInfo Red = Create("Red", 0xE09F);
-			public static readonly BlockInfo Black = Create("Black", 0xF09F);
+			public static readonly BlockInfo White = new BlockInfo { TypeId = 159, DataValue = 0, Name = "White", InternalName = "minecraft:stained_hardened_clay", Note = "White", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.25f, BlastResistance = 21f };
+			public static readonly BlockInfo Orange = new BlockInfo { TypeId = 159, DataValue = 1, Name = "Orange", InternalName = "minecraft:stained_hardened_clay", Note = "Orange", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.25f, BlastResistance = 21f };
+			public static readonly BlockInfo Magenta = new BlockInfo { TypeId = 159, DataValue = 2, Name = "Magenta", InternalName = "minecraft:stained_hardened_clay", Note = "Magenta", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.25f, BlastResistance = 21f };
+			public static readonly BlockInfo LightBlue = new BlockInfo { TypeId = 159, DataValue = 3, Name = "LightBlue", InternalName = "minecraft:stained_hardened_clay", Note = "LightBlue", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.25f, BlastResistance = 21f };
+			public static readonly BlockInfo Yellow = new BlockInfo { TypeId = 159, DataValue = 4, Name = "Yellow", InternalName = "minecraft:stained_hardened_clay", Note = "Yellow", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.25f, BlastResistance = 21f };
+			public static readonly BlockInfo Lime = new BlockInfo { TypeId = 159, DataValue = 5, Name = "Lime", InternalName = "minecraft:stained_hardened_clay", Note = "Lime", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.25f, BlastResistance = 21f };
+			public static readonly BlockInfo Pink = new BlockInfo { TypeId = 159, DataValue = 6, Name = "Pink", InternalName = "minecraft:stained_hardened_clay", Note = "Pink", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.25f, BlastResistance = 21f };
+			public static readonly BlockInfo Gray = new BlockInfo { TypeId = 159, DataValue = 7, Name = "Gray", InternalName = "minecraft:stained_hardened_clay", Note = "Gray", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.25f, BlastResistance = 21f };
+			public static readonly BlockInfo LightGray = new BlockInfo { TypeId = 159, DataValue = 8, Name = "LightGray", InternalName = "minecraft:stained_hardened_clay", Note = "LightGray", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.25f, BlastResistance = 21f };
+			public static readonly BlockInfo Cyan = new BlockInfo { TypeId = 159, DataValue = 9, Name = "Cyan", InternalName = "minecraft:stained_hardened_clay", Note = "Cyan", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.25f, BlastResistance = 21f };
+			public static readonly BlockInfo Purple = new BlockInfo { TypeId = 159, DataValue = 10, Name = "Purple", InternalName = "minecraft:stained_hardened_clay", Note = "Purple", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.25f, BlastResistance = 21f };
+			public static readonly BlockInfo Blue = new BlockInfo { TypeId = 159, DataValue = 11, Name = "Blue", InternalName = "minecraft:stained_hardened_clay", Note = "Blue", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.25f, BlastResistance = 21f };
+			public static readonly BlockInfo Brown = new BlockInfo { TypeId = 159, DataValue = 12, Name = "Brown", InternalName = "minecraft:stained_hardened_clay", Note = "Brown", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.25f, BlastResistance = 21f };
+			public static readonly BlockInfo Green = new BlockInfo { TypeId = 159, DataValue = 13, Name = "Green", InternalName = "minecraft:stained_hardened_clay", Note = "Green", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.25f, BlastResistance = 21f };
+			public static readonly BlockInfo Red = new BlockInfo { TypeId = 159, DataValue = 14, Name = "Red", InternalName = "minecraft:stained_hardened_clay", Note = "Red", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.25f, BlastResistance = 21f };
+			public static readonly BlockInfo Black = new BlockInfo { TypeId = 159, DataValue = 15, Name = "Black", InternalName = "minecraft:stained_hardened_clay", Note = "Black", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.25f, BlastResistance = 21f };
 		}
 		public static class StainedGlass {
-			private static BlockInfo Create(string color, ushort id) {
-				var blockInfo = new BlockInfo {
-					Id = id,
-					Name = "Stained Glass (" + color + ")",
-					InternalName = "minecraft:stained_glass",
-					BlastResistance = 10,
-					Hardness = 2,
-
-				};
-
-				return blockInfo;
-			}
-
-			public static readonly BlockInfo White = Create("White", 0x005F);
-			public static readonly BlockInfo Orange = Create("Orange", 0x105F);
-			public static readonly BlockInfo Magenta = Create("Magenta", 0x205F);
-			public static readonly BlockInfo LightBlue = Create("Light Blue", 0x305F);
-			public static readonly BlockInfo Yellow = Create("Yellow", 0x405F);
-			public static readonly BlockInfo Lime = Create("Lime", 0x505F);
-			public static readonly BlockInfo Pink = Create("Pink", 0x605F);
-			public static readonly BlockInfo Gray = Create("Gray", 0x705F);
-			public static readonly BlockInfo LightGray = Create("Light Gray", 0x805F);
-			public static readonly BlockInfo Cyan = Create("Cyan", 0x905F);
-			public static readonly BlockInfo Purple = Create("Purple", 0xA05F);
-			public static readonly BlockInfo Blue = Create("Blue", 0xB05F);
-			public static readonly BlockInfo Brown = Create("Brown", 0xC05F);
-			public static readonly BlockInfo Green = Create("Green", 0xD05F);
-			public static readonly BlockInfo Red = Create("Red", 0xE05F);
-			public static readonly BlockInfo Black = Create("Black", 0xF05F);
+			public static readonly BlockInfo White = new BlockInfo { TypeId = 95, DataValue = 0, Name = "White", InternalName = "minecraft:stained_glass", Note = "White", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+			public static readonly BlockInfo Orange = new BlockInfo { TypeId = 95, DataValue = 1, Name = "Orange", InternalName = "minecraft:stained_glass", Note = "Orange", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+			public static readonly BlockInfo Magenta = new BlockInfo { TypeId = 95, DataValue = 2, Name = "Magenta", InternalName = "minecraft:stained_glass", Note = "Magenta", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+			public static readonly BlockInfo LightBlue = new BlockInfo { TypeId = 95, DataValue = 3, Name = "LightBlue", InternalName = "minecraft:stained_glass", Note = "LightBlue", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+			public static readonly BlockInfo Yellow = new BlockInfo { TypeId = 95, DataValue = 4, Name = "Yellow", InternalName = "minecraft:stained_glass", Note = "Yellow", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+			public static readonly BlockInfo Lime = new BlockInfo { TypeId = 95, DataValue = 5, Name = "Lime", InternalName = "minecraft:stained_glass", Note = "Lime", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+			public static readonly BlockInfo Pink = new BlockInfo { TypeId = 95, DataValue = 6, Name = "Pink", InternalName = "minecraft:stained_glass", Note = "Pink", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+			public static readonly BlockInfo Gray = new BlockInfo { TypeId = 95, DataValue = 7, Name = "Gray", InternalName = "minecraft:stained_glass", Note = "Gray", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+			public static readonly BlockInfo LightGray = new BlockInfo { TypeId = 95, DataValue = 8, Name = "LightGray", InternalName = "minecraft:stained_glass", Note = "LightGray", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+			public static readonly BlockInfo Cyan = new BlockInfo { TypeId = 95, DataValue = 9, Name = "Cyan", InternalName = "minecraft:stained_glass", Note = "Cyan", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+			public static readonly BlockInfo Purple = new BlockInfo { TypeId = 95, DataValue = 10, Name = "Purple", InternalName = "minecraft:stained_glass", Note = "Purple", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+			public static readonly BlockInfo Blue = new BlockInfo { TypeId = 95, DataValue = 11, Name = "Blue", InternalName = "minecraft:stained_glass", Note = "Blue", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+			public static readonly BlockInfo Brown = new BlockInfo { TypeId = 95, DataValue = 12, Name = "Brown", InternalName = "minecraft:stained_glass", Note = "Brown", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+			public static readonly BlockInfo Green = new BlockInfo { TypeId = 95, DataValue = 13, Name = "Green", InternalName = "minecraft:stained_glass", Note = "Green", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+			public static readonly BlockInfo Red = new BlockInfo { TypeId = 95, DataValue = 14, Name = "Red", InternalName = "minecraft:stained_glass", Note = "Red", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+			public static readonly BlockInfo Black = new BlockInfo { TypeId = 95, DataValue = 15, Name = "Black", InternalName = "minecraft:stained_glass", Note = "Black", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
 		}
 		public static class StainedGlassPane {
-			private static BlockInfo Create(string color, ushort id) {
-				var blockInfo = new BlockInfo {
-					Id = id,
-					Name = "Stained Glass Pane (" + color + ")",
-					InternalName = "minecraft:stained_glass_pane",
-					BlastResistance = 10,
-					Hardness = 2,
-
-				};
-
-				return blockInfo;
-			}
-
-			public static readonly BlockInfo White = Create("White", 0x00A0);
-			public static readonly BlockInfo Orange = Create("Orange", 0x10A0);
-			public static readonly BlockInfo Magenta = Create("Magenta", 0x20A0);
-			public static readonly BlockInfo LightBlue = Create("Light Blue", 0x30A0);
-			public static readonly BlockInfo Yellow = Create("Yellow", 0x40A0);
-			public static readonly BlockInfo Lime = Create("Lime", 0x50A0);
-			public static readonly BlockInfo Pink = Create("Pink", 0x60A0);
-			public static readonly BlockInfo Gray = Create("Gray", 0x70A0);
-			public static readonly BlockInfo LightGray = Create("Light Gray", 0x80A0);
-			public static readonly BlockInfo Cyan = Create("Cyan", 0x90A0);
-			public static readonly BlockInfo Purple = Create("Purple", 0xA0A0);
-			public static readonly BlockInfo Blue = Create("Blue", 0xB0A0);
-			public static readonly BlockInfo Brown = Create("Brown", 0xC0A0);
-			public static readonly BlockInfo Green = Create("Green", 0xD0A0);
-			public static readonly BlockInfo Red = Create("Red", 0xE0A0);
-			public static readonly BlockInfo Black = Create("Black", 0xF0A0);
+			public static readonly BlockInfo White = new BlockInfo { TypeId = 160, DataValue = 0, Name = "White", InternalName = "minecraft:stained_glass_pane", Note = "White", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+			public static readonly BlockInfo Orange = new BlockInfo { TypeId = 160, DataValue = 1, Name = "Orange", InternalName = "minecraft:stained_glass_pane", Note = "Orange", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+			public static readonly BlockInfo Magenta = new BlockInfo { TypeId = 160, DataValue = 2, Name = "Magenta", InternalName = "minecraft:stained_glass_pane", Note = "Magenta", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+			public static readonly BlockInfo LightBlue = new BlockInfo { TypeId = 160, DataValue = 3, Name = "LightBlue", InternalName = "minecraft:stained_glass_pane", Note = "LightBlue", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+			public static readonly BlockInfo Yellow = new BlockInfo { TypeId = 160, DataValue = 4, Name = "Yellow", InternalName = "minecraft:stained_glass_pane", Note = "Yellow", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+			public static readonly BlockInfo Lime = new BlockInfo { TypeId = 160, DataValue = 5, Name = "Lime", InternalName = "minecraft:stained_glass_pane", Note = "Lime", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+			public static readonly BlockInfo Pink = new BlockInfo { TypeId = 160, DataValue = 6, Name = "Pink", InternalName = "minecraft:stained_glass_pane", Note = "Pink", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+			public static readonly BlockInfo Gray = new BlockInfo { TypeId = 160, DataValue = 7, Name = "Gray", InternalName = "minecraft:stained_glass_pane", Note = "Gray", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+			public static readonly BlockInfo LightGray = new BlockInfo { TypeId = 160, DataValue = 8, Name = "LightGray", InternalName = "minecraft:stained_glass_pane", Note = "LightGray", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+			public static readonly BlockInfo Cyan = new BlockInfo { TypeId = 160, DataValue = 9, Name = "Cyan", InternalName = "minecraft:stained_glass_pane", Note = "Cyan", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+			public static readonly BlockInfo Purple = new BlockInfo { TypeId = 160, DataValue = 10, Name = "Purple", InternalName = "minecraft:stained_glass_pane", Note = "Purple", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+			public static readonly BlockInfo Blue = new BlockInfo { TypeId = 160, DataValue = 11, Name = "Blue", InternalName = "minecraft:stained_glass_pane", Note = "Blue", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+			public static readonly BlockInfo Brown = new BlockInfo { TypeId = 160, DataValue = 12, Name = "Brown", InternalName = "minecraft:stained_glass_pane", Note = "Brown", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+			public static readonly BlockInfo Green = new BlockInfo { TypeId = 160, DataValue = 13, Name = "Green", InternalName = "minecraft:stained_glass_pane", Note = "Green", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+			public static readonly BlockInfo Red = new BlockInfo { TypeId = 160, DataValue = 14, Name = "Red", InternalName = "minecraft:stained_glass_pane", Note = "Red", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
+			public static readonly BlockInfo Black = new BlockInfo { TypeId = 160, DataValue = 15, Name = "Black", InternalName = "minecraft:stained_glass_pane", Note = "Black", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.3f, BlastResistance = 1.5f };
 		}
 		public static class Carpet {
-			private static BlockInfo Create(string color, ushort id) {
-				var blockInfo = new BlockInfo {
-					Id = id,
-					Name = "Carpet (" + color + ")",
-					InternalName = "minecraft:carpet",
-					BlastResistance = 10,
-					Hardness = 2,
-
-				};
-
-				return blockInfo;
-			}
-
-			public static readonly BlockInfo White = Create("White", 0x00AB);
-			public static readonly BlockInfo Orange = Create("Orange", 0x10AB);
-			public static readonly BlockInfo Magenta = Create("Magenta", 0x20AB);
-			public static readonly BlockInfo LightBlue = Create("Light Blue", 0x30AB);
-			public static readonly BlockInfo Yellow = Create("Yellow", 0x40AB);
-			public static readonly BlockInfo Lime = Create("Lime", 0x50AB);
-			public static readonly BlockInfo Pink = Create("Pink", 0x60AB);
-			public static readonly BlockInfo Gray = Create("Gray", 0x70AB);
-			public static readonly BlockInfo LightGray = Create("Light Gray", 0x80AB);
-			public static readonly BlockInfo Cyan = Create("Cyan", 0x90AB);
-			public static readonly BlockInfo Purple = Create("Purple", 0xA0AB);
-			public static readonly BlockInfo Blue = Create("Blue", 0xB0AB);
-			public static readonly BlockInfo Brown = Create("Brown", 0xC0AB);
-			public static readonly BlockInfo Green = Create("Green", 0xD0AB);
-			public static readonly BlockInfo Red = Create("Red", 0xE0AB);
-			public static readonly BlockInfo Black = Create("Black", 0xF0AB);
+			public static readonly BlockInfo White = new BlockInfo { TypeId = 171, DataValue = 0, Name = "White", InternalName = "minecraft:carpet", Note = "White", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.1f, BlastResistance = 0.5f };
+			public static readonly BlockInfo Orange = new BlockInfo { TypeId = 171, DataValue = 1, Name = "Orange", InternalName = "minecraft:carpet", Note = "Orange", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.1f, BlastResistance = 0.5f };
+			public static readonly BlockInfo Magenta = new BlockInfo { TypeId = 171, DataValue = 2, Name = "Magenta", InternalName = "minecraft:carpet", Note = "Magenta", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.1f, BlastResistance = 0.5f };
+			public static readonly BlockInfo LightBlue = new BlockInfo { TypeId = 171, DataValue = 3, Name = "LightBlue", InternalName = "minecraft:carpet", Note = "LightBlue", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.1f, BlastResistance = 0.5f };
+			public static readonly BlockInfo Yellow = new BlockInfo { TypeId = 171, DataValue = 4, Name = "Yellow", InternalName = "minecraft:carpet", Note = "Yellow", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.1f, BlastResistance = 0.5f };
+			public static readonly BlockInfo Lime = new BlockInfo { TypeId = 171, DataValue = 5, Name = "Lime", InternalName = "minecraft:carpet", Note = "Lime", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.1f, BlastResistance = 0.5f };
+			public static readonly BlockInfo Pink = new BlockInfo { TypeId = 171, DataValue = 6, Name = "Pink", InternalName = "minecraft:carpet", Note = "Pink", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.1f, BlastResistance = 0.5f };
+			public static readonly BlockInfo Gray = new BlockInfo { TypeId = 171, DataValue = 7, Name = "Gray", InternalName = "minecraft:carpet", Note = "Gray", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.1f, BlastResistance = 0.5f };
+			public static readonly BlockInfo LightGray = new BlockInfo { TypeId = 171, DataValue = 8, Name = "LightGray", InternalName = "minecraft:carpet", Note = "LightGray", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.1f, BlastResistance = 0.5f };
+			public static readonly BlockInfo Cyan = new BlockInfo { TypeId = 171, DataValue = 9, Name = "Cyan", InternalName = "minecraft:carpet", Note = "Cyan", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.1f, BlastResistance = 0.5f };
+			public static readonly BlockInfo Purple = new BlockInfo { TypeId = 171, DataValue = 10, Name = "Purple", InternalName = "minecraft:carpet", Note = "Purple", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.1f, BlastResistance = 0.5f };
+			public static readonly BlockInfo Blue = new BlockInfo { TypeId = 171, DataValue = 11, Name = "Blue", InternalName = "minecraft:carpet", Note = "Blue", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.1f, BlastResistance = 0.5f };
+			public static readonly BlockInfo Brown = new BlockInfo { TypeId = 171, DataValue = 12, Name = "Brown", InternalName = "minecraft:carpet", Note = "Brown", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.1f, BlastResistance = 0.5f };
+			public static readonly BlockInfo Green = new BlockInfo { TypeId = 171, DataValue = 13, Name = "Green", InternalName = "minecraft:carpet", Note = "Green", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.1f, BlastResistance = 0.5f };
+			public static readonly BlockInfo Red = new BlockInfo { TypeId = 171, DataValue = 14, Name = "Red", InternalName = "minecraft:carpet", Note = "Red", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.1f, BlastResistance = 0.5f };
+			public static readonly BlockInfo Black = new BlockInfo { TypeId = 171, DataValue = 15, Name = "Black", InternalName = "minecraft:carpet", Note = "Black", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.1f, BlastResistance = 0.5f };
 		}
 		public static class Torch {
-			private static BlockInfo Create(ushort id) {
-				var blockInfo = new BlockInfo {
-					Id = id,
-					Name = "Torch",
-					InternalName = "minecraft:torch",
-					BlastResistance = 10,
-					Hardness = 2,
-
-				};
-
-				return blockInfo;
-			}
-
-			public static readonly BlockInfo East = Create(0x1032);
-			public static readonly BlockInfo West = Create(0x2032);
-			public static readonly BlockInfo South = Create(0x3032);
-			public static readonly BlockInfo North = Create(0x4032);
-			public static readonly BlockInfo Standing = Create(0x5032);
-
+			public static readonly BlockInfo East = new BlockInfo { TypeId = 50, DataValue = 1, Name = "East", InternalName = "minecraft:torch", Note = "East", UsesEntityData = false, Luminance = 14, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo West = new BlockInfo { TypeId = 50, DataValue = 2, Name = "West", InternalName = "minecraft:torch", Note = "West", UsesEntityData = false, Luminance = 14, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo South = new BlockInfo { TypeId = 50, DataValue = 3, Name = "South", InternalName = "minecraft:torch", Note = "South", UsesEntityData = false, Luminance = 14, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo North = new BlockInfo { TypeId = 50, DataValue = 4, Name = "North", InternalName = "minecraft:torch", Note = "North", UsesEntityData = false, Luminance = 14, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo Standing = new BlockInfo { TypeId = 50, DataValue = 5, Name = "Standing", InternalName = "minecraft:torch", Note = "Standing", UsesEntityData = false, Luminance = 14, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
 		}
 		public static class RedstoneTorch {
-			private static BlockInfo Create(ushort id) {
-				var isLit = (id & 0xFFF) == 0x4C;
-				var blockInfo = new BlockInfo {
-					Id = id,
-					Name = "Redstone Torch " + (isLit ? "(Active)" : "(Inactive)"),
-					InternalName = isLit ? "minecraft:lit_redstone_torch" : "minecraft:unlit_redstone_torch",
-					BlastResistance = 10,
-					Hardness = 2,
-
-				};
-
-				return blockInfo;
+			public static class Active {
+				public static readonly BlockInfo East = new BlockInfo { TypeId = 76, DataValue = 1, Name = "East", InternalName = "minecraft:redstone_torch", Note = "East", UsesEntityData = false, Luminance = 7, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+				public static readonly BlockInfo West = new BlockInfo { TypeId = 76, DataValue = 2, Name = "West", InternalName = "minecraft:redstone_torch", Note = "West", UsesEntityData = false, Luminance = 7, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+				public static readonly BlockInfo South = new BlockInfo { TypeId = 76, DataValue = 3, Name = "South", InternalName = "minecraft:redstone_torch", Note = "South", UsesEntityData = false, Luminance = 7, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+				public static readonly BlockInfo North = new BlockInfo { TypeId = 76, DataValue = 4, Name = "North", InternalName = "minecraft:redstone_torch", Note = "North", UsesEntityData = false, Luminance = 7, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+				public static readonly BlockInfo Standing = new BlockInfo { TypeId = 76, DataValue = 5, Name = "Standing", InternalName = "minecraft:redstone_torch", Note = "Standing", UsesEntityData = false, Luminance = 7, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
 			}
-
-			public static class Lit {
-				public static readonly BlockInfo East = Create(0x104C);
-				public static readonly BlockInfo West = Create(0x204C);
-				public static readonly BlockInfo South = Create(0x304C);
-				public static readonly BlockInfo North = Create(0x404C);
-				public static readonly BlockInfo Standing = Create(0x504C);
-			}
-			public static class Unlit {
-				public static readonly BlockInfo East = Create(0x104B);
-				public static readonly BlockInfo West = Create(0x204B);
-				public static readonly BlockInfo South = Create(0x304B);
-				public static readonly BlockInfo North = Create(0x404B);
-				public static readonly BlockInfo Standing = Create(0x504B);
+			public static class Inactive {
+				public static readonly BlockInfo East = new BlockInfo { TypeId = 75, DataValue = 1, Name = "East", InternalName = "minecraft:unlit_redstone_torch", Note = "East", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+				public static readonly BlockInfo West = new BlockInfo { TypeId = 75, DataValue = 2, Name = "West", InternalName = "minecraft:unlit_redstone_torch", Note = "West", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+				public static readonly BlockInfo South = new BlockInfo { TypeId = 75, DataValue = 3, Name = "South", InternalName = "minecraft:unlit_redstone_torch", Note = "South", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+				public static readonly BlockInfo North = new BlockInfo { TypeId = 75, DataValue = 4, Name = "North", InternalName = "minecraft:unlit_redstone_torch", Note = "North", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+				public static readonly BlockInfo Standing = new BlockInfo { TypeId = 75, DataValue = 5, Name = "Standing", InternalName = "minecraft:unlit_redstone_torch", Note = "Standing", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
 			}
 		}
 		public static class Slab {
-			private static BlockInfo Create(string type, ushort id) {
-				var isSingle = (id & 0xFFF) == 0x7E || (id & 0xFFF) == 0x2C;
-				var isWooden = (id & 0xFFF) == 0x7D || (id & 0xFFF) == 0x7E;
-
-				var blockInfo = new BlockInfo {
-					Id = id,
-					Name = (isWooden ? "Wooden " : "Stone ") + (isSingle ? "" : "Double ") + "Slab (" + type + ")",
-					InternalName = "minecraft:" + (isWooden ? "wooden" : "stone") + (isSingle ? "" : "_double") + "_slab",
-					BlastResistance = 10,
-					Hardness = 2,
-
-				};
-
-				return blockInfo;
-			}
-
 			public static class Stone {
 				public static class Single {
-					public static readonly BlockInfo Normal = Create("Normal", 0x002C);
-					public static readonly BlockInfo Sandstone = Create("Sandstone", 0x102C);
-					public static readonly BlockInfo Wooden = Create("Wooden", 0x202C);
-					public static readonly BlockInfo Cobblestone = Create("Cobblestone", 0x302C);
-					public static readonly BlockInfo Brick = Create("Brick", 0x402C);
-					public static readonly BlockInfo StoneBrick = Create("Stone Brick", 0x502C);
-					public static readonly BlockInfo NetherBrick = Create("Nether Brick", 0x602C);
-					public static readonly BlockInfo Quartz = Create("Quartz", 0x702C);
+					public static readonly BlockInfo Normal = new BlockInfo { TypeId = 44, DataValue = 0, Name = "Normal", InternalName = "minecraft:stone_slab", Note = "Normal", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo Sandstone = new BlockInfo { TypeId = 44, DataValue = 1, Name = "Sandstone", InternalName = "minecraft:stone_slab", Note = "Sandstone", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo Wooden = new BlockInfo { TypeId = 44, DataValue = 2, Name = "Wooden", InternalName = "minecraft:stone_slab", Note = "Wooden", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo Cobblestone = new BlockInfo { TypeId = 44, DataValue = 3, Name = "Cobblestone", InternalName = "minecraft:stone_slab", Note = "Cobblestone", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo Brick = new BlockInfo { TypeId = 44, DataValue = 4, Name = "Brick", InternalName = "minecraft:stone_slab", Note = "Brick", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo StoneBrick = new BlockInfo { TypeId = 44, DataValue = 5, Name = "StoneBrick", InternalName = "minecraft:stone_slab", Note = "StoneBrick", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo NetherBrick = new BlockInfo { TypeId = 44, DataValue = 6, Name = "NetherBrick", InternalName = "minecraft:stone_slab", Note = "NetherBrick", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo Quartz = new BlockInfo { TypeId = 44, DataValue = 7, Name = "Quartz", InternalName = "minecraft:stone_slab", Note = "Quartz", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
 				}
 				public static class Double {
-					public static readonly BlockInfo Normal = Create("Normal", 0x002B);
-					public static readonly BlockInfo Sandstone = Create("Sandstone ", 0x102B);
-					public static readonly BlockInfo Wooden = Create("Wooden", 0x202B);
-					public static readonly BlockInfo Cobblestone = Create("Cobblestone", 0x302B);
-					public static readonly BlockInfo Brick = Create("Brick", 0x402B);
-					public static readonly BlockInfo StoneBrick = Create("Stone Brick", 0x502B);
-					public static readonly BlockInfo NetherBrick = Create("Nether Brick", 0x602B);
-					public static readonly BlockInfo Quartz = Create("Quartz", 0x702B);
-					public static readonly BlockInfo SmoothStone = Create("Quartz", 0x802B);
-					public static readonly BlockInfo SmoothSandstone = Create("Quartz", 0x902B);
-					public static readonly BlockInfo TileQuartz = Create("Quartz", 0xA02B);
+					public static readonly BlockInfo Normal = new BlockInfo { TypeId = 43, DataValue = 0, Name = "Normal", InternalName = "minecraft:double_stone_slab", Note = "Normal", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo Sandstone = new BlockInfo { TypeId = 43, DataValue = 1, Name = "Sandstone", InternalName = "minecraft:double_stone_slab", Note = "Sandstone", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo Wooden = new BlockInfo { TypeId = 43, DataValue = 2, Name = "Wooden", InternalName = "minecraft:double_stone_slab", Note = "Wooden", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo Cobblestone = new BlockInfo { TypeId = 43, DataValue = 3, Name = "Cobblestone", InternalName = "minecraft:double_stone_slab", Note = "Cobblestone", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo Brick = new BlockInfo { TypeId = 43, DataValue = 4, Name = "Brick", InternalName = "minecraft:double_stone_slab", Note = "Brick", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo StoneBrick = new BlockInfo { TypeId = 43, DataValue = 5, Name = "StoneBrick", InternalName = "minecraft:double_stone_slab", Note = "StoneBrick", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo NetherBrick = new BlockInfo { TypeId = 43, DataValue = 6, Name = "NetherBrick", InternalName = "minecraft:double_stone_slab", Note = "NetherBrick", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo Quartz = new BlockInfo { TypeId = 43, DataValue = 7, Name = "Quartz", InternalName = "minecraft:double_stone_slab", Note = "Quartz", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo SmoothStone = new BlockInfo { TypeId = 43, DataValue = 8, Name = "SmoothStone", InternalName = "minecraft:double_stone_slab", Note = "SmoothStone", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo SmoothSandstone = new BlockInfo { TypeId = 43, DataValue = 9, Name = "SmoothSandstone", InternalName = "minecraft:double_stone_slab", Note = "SmoothSandstone", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo TileQuartz = new BlockInfo { TypeId = 43, DataValue = 10, Name = "TileQuartz", InternalName = "minecraft:double_stone_slab", Note = "TileQuartz", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
 				}
 			}
 			public static class Wood {
 				public static class Single {
-					public static readonly BlockInfo Oak = Create("Oak", 0x007E);
-					public static readonly BlockInfo Spruce = Create("Spruce ", 0x107E);
-					public static readonly BlockInfo Birch = Create("Birch", 0x207E);
-					public static readonly BlockInfo Jungle = Create("Jungle", 0x307E);
-					public static readonly BlockInfo Acacia = Create("Acacia", 0x407E);
-					public static readonly BlockInfo DarkOak = Create("DarkOak", 0x507E);
+					public static readonly BlockInfo Oak = new BlockInfo { TypeId = 126, DataValue = 0, Name = "Oak", InternalName = "minecraft:wooden_slab", Note = "Oak", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo Spruce = new BlockInfo { TypeId = 126, DataValue = 1, Name = "Spruce", InternalName = "minecraft:wooden_slab", Note = "Spruce", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo Birch = new BlockInfo { TypeId = 126, DataValue = 2, Name = "Birch", InternalName = "minecraft:wooden_slab", Note = "Birch", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo Jungle = new BlockInfo { TypeId = 126, DataValue = 3, Name = "Jungle", InternalName = "minecraft:wooden_slab", Note = "Jungle", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo Acacia = new BlockInfo { TypeId = 126, DataValue = 4, Name = "Acacia", InternalName = "minecraft:wooden_slab", Note = "Acacia", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo DarkOak = new BlockInfo { TypeId = 126, DataValue = 5, Name = "DarkOak", InternalName = "minecraft:wooden_slab", Note = "DarkOak", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
 				}
 				public static class Double {
-					public static readonly BlockInfo Oak = Create("Oak", 0x007D);
-					public static readonly BlockInfo Spruce = Create("Spruce ", 0x107D);
-					public static readonly BlockInfo Birch = Create("Birch", 0x207D);
-					public static readonly BlockInfo Jungle = Create("Jungle", 0x307D);
-					public static readonly BlockInfo Acacia = Create("Acacia", 0x407D);
-					public static readonly BlockInfo DarkOak = Create("DarkOak", 0x507D);
+					public static readonly BlockInfo Oak = new BlockInfo { TypeId = 125, DataValue = 0, Name = "Oak", InternalName = "minecraft:double_wooden_slab", Note = "Oak", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo Spruce = new BlockInfo { TypeId = 125, DataValue = 1, Name = "Spruce", InternalName = "minecraft:double_wooden_slab", Note = "Spruce", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo Birch = new BlockInfo { TypeId = 125, DataValue = 2, Name = "Birch", InternalName = "minecraft:double_wooden_slab", Note = "Birch", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo Jungle = new BlockInfo { TypeId = 125, DataValue = 3, Name = "Jungle", InternalName = "minecraft:double_wooden_slab", Note = "Jungle", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo Acacia = new BlockInfo { TypeId = 125, DataValue = 4, Name = "Acacia", InternalName = "minecraft:double_wooden_slab", Note = "Acacia", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo DarkOak = new BlockInfo { TypeId = 125, DataValue = 5, Name = "DarkOak", InternalName = "minecraft:double_wooden_slab", Note = "DarkOak", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
 				}
 			}
 		}
 		public static class Fire {
-			private static BlockInfo Create(ushort id) {
-				var blockInfo = new BlockInfo {
-					Id = id,
-					Name = "Fire",
-					InternalName = "minecraft:fire",
-					BlastResistance = 10,
-					Hardness = 2,
-
-				};
-
-				return blockInfo;
-			}
-
-			public static readonly BlockInfo Tick0 = Create(0x0033);
-			public static readonly BlockInfo Tick1 = Create(0x1033);
-			public static readonly BlockInfo Tick2 = Create(0x2033);
-			public static readonly BlockInfo Tick3 = Create(0x3033);
-			public static readonly BlockInfo Tick4 = Create(0x4033);
-			public static readonly BlockInfo Tick5 = Create(0x5033);
-			public static readonly BlockInfo Tick6 = Create(0x6033);
-			public static readonly BlockInfo Tick7 = Create(0x7033);
-			public static readonly BlockInfo Tick8 = Create(0x8033);
-			public static readonly BlockInfo Tick9 = Create(0x9033);
-			public static readonly BlockInfo TickA = Create(0xA033);
-			public static readonly BlockInfo TickB = Create(0xB033);
-			public static readonly BlockInfo TickC = Create(0xC033);
-			public static readonly BlockInfo TickD = Create(0xD033);
-			public static readonly BlockInfo TickE = Create(0xE033);
-			public static readonly BlockInfo TickF = Create(0xF033);
+			public static readonly BlockInfo Tick0 = new BlockInfo { TypeId = 51, DataValue = 0, Name = "Tick0", InternalName = "minecraft:fire", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo Tick1 = new BlockInfo { TypeId = 51, DataValue = 1, Name = "Tick1", InternalName = "minecraft:fire", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo Tick2 = new BlockInfo { TypeId = 51, DataValue = 2, Name = "Tick2", InternalName = "minecraft:fire", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo Tick3 = new BlockInfo { TypeId = 51, DataValue = 3, Name = "Tick3", InternalName = "minecraft:fire", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo Tick4 = new BlockInfo { TypeId = 51, DataValue = 4, Name = "Tick4", InternalName = "minecraft:fire", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo Tick5 = new BlockInfo { TypeId = 51, DataValue = 5, Name = "Tick5", InternalName = "minecraft:fire", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo Tick6 = new BlockInfo { TypeId = 51, DataValue = 6, Name = "Tick6", InternalName = "minecraft:fire", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo Tick7 = new BlockInfo { TypeId = 51, DataValue = 7, Name = "Tick7", InternalName = "minecraft:fire", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo Tick8 = new BlockInfo { TypeId = 51, DataValue = 8, Name = "Tick8", InternalName = "minecraft:fire", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo Tick9 = new BlockInfo { TypeId = 51, DataValue = 9, Name = "Tick9", InternalName = "minecraft:fire", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo TickA = new BlockInfo { TypeId = 51, DataValue = 10, Name = "TickA", InternalName = "minecraft:fire", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo TickB = new BlockInfo { TypeId = 51, DataValue = 11, Name = "TickB", InternalName = "minecraft:fire", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo TickC = new BlockInfo { TypeId = 51, DataValue = 12, Name = "TickC", InternalName = "minecraft:fire", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo TickD = new BlockInfo { TypeId = 51, DataValue = 13, Name = "TickD", InternalName = "minecraft:fire", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo TickE = new BlockInfo { TypeId = 51, DataValue = 14, Name = "TickE", InternalName = "minecraft:fire", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo TickF = new BlockInfo { TypeId = 51, DataValue = 15, Name = "TickF", InternalName = "minecraft:fire", Note = "", UsesEntityData = false, Luminance = 15, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
 		}
 		public static class Sandstone {
-			private static BlockInfo Create(string type, ushort id) {
-				var blockInfo = new BlockInfo {
-					Id = id,
-					Name = "Sandstone (" + type + ")",
-					InternalName = "minecraft:sandstone",
-					BlastResistance = 10,
-					Hardness = 2,
-
-				};
-
-				return blockInfo;
-			}
-
-			public static readonly BlockInfo Normal = Create("Normal", 0x0018);
-			public static readonly BlockInfo Chiseled = Create("Chiseled", 0x1018);
-			public static readonly BlockInfo Smooth = Create("Smooth", 0x2018);
+			public static readonly BlockInfo Normal = new BlockInfo { TypeId = 24, DataValue = 0, Name = "Normal", InternalName = "minecraft:sandstone", Note = "Normal", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.8f, BlastResistance = 4f };
+			public static readonly BlockInfo Chiseled = new BlockInfo { TypeId = 24, DataValue = 1, Name = "Chiseled", InternalName = "minecraft:sandstone", Note = "Chiseled", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.8f, BlastResistance = 4f };
+			public static readonly BlockInfo Smooth = new BlockInfo { TypeId = 24, DataValue = 2, Name = "Smooth", InternalName = "minecraft:sandstone", Note = "Smooth", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.8f, BlastResistance = 4f };
 		}
 		public static class Bed {
-			private static BlockInfo Create(string type, ushort id) {
-				var isOccupied = (id & 0x4000) != 0;
-				var isHead = (id & 0x8000) != 0;
-
-
-				var blockInfo = new BlockInfo {
-					Id = id,
-					Name = "Bed (" + type + (isHead ? " Head" : " Foot") + (isOccupied ? " Occupied" : " Unoccupied") + ")",
-					InternalName = "minecraft:bed",
-					BlastResistance = 10,
-					Hardness = 2,
-
-				};
-
-				return blockInfo;
-			}
-
 			public static class Foot {
 				public static class Unoccupied {
-					public static readonly BlockInfo South = Create("South", 0x001A);
-					public static readonly BlockInfo West = Create("West", 0x101A);
-					public static readonly BlockInfo North = Create("North", 0x201A);
-					public static readonly BlockInfo East = Create("East", 0x301A);
+					public static readonly BlockInfo East = new BlockInfo { TypeId = 26, DataValue = 0, Name = "East", InternalName = "minecraft:bed", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.2f, BlastResistance = 1f };
+					public static readonly BlockInfo West = new BlockInfo { TypeId = 26, DataValue = 1, Name = "West", InternalName = "minecraft:bed", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.2f, BlastResistance = 1f };
+					public static readonly BlockInfo South = new BlockInfo { TypeId = 26, DataValue = 2, Name = "South", InternalName = "minecraft:bed", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.2f, BlastResistance = 1f };
+					public static readonly BlockInfo North = new BlockInfo { TypeId = 26, DataValue = 3, Name = "North", InternalName = "minecraft:bed", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.2f, BlastResistance = 1f };
 				}
 				public static class Occupied {
-					public static readonly BlockInfo South = Create("South", 0x401A);
-					public static readonly BlockInfo West = Create("West", 0x501A);
-					public static readonly BlockInfo North = Create("North", 0x601A);
-					public static readonly BlockInfo East = Create("East", 0x701A);
+					public static readonly BlockInfo East = new BlockInfo { TypeId = 26, DataValue = 4, Name = "East", InternalName = "minecraft:bed", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.2f, BlastResistance = 1f };
+					public static readonly BlockInfo West = new BlockInfo { TypeId = 26, DataValue = 5, Name = "West", InternalName = "minecraft:bed", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.2f, BlastResistance = 1f };
+					public static readonly BlockInfo South = new BlockInfo { TypeId = 26, DataValue = 6, Name = "South", InternalName = "minecraft:bed", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.2f, BlastResistance = 1f };
+					public static readonly BlockInfo North = new BlockInfo { TypeId = 26, DataValue = 7, Name = "North", InternalName = "minecraft:bed", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.2f, BlastResistance = 1f };
 				}
 			}
 			public static class Head {
 				public static class Unoccupied {
-					public static readonly BlockInfo South = Create("South", 0x801A);
-					public static readonly BlockInfo West = Create("West", 0x901A);
-					public static readonly BlockInfo North = Create("North", 0xA01A);
-					public static readonly BlockInfo East = Create("East", 0xB01A);
+					public static readonly BlockInfo East = new BlockInfo { TypeId = 26, DataValue = 8, Name = "East", InternalName = "minecraft:bed", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.2f, BlastResistance = 1f };
+					public static readonly BlockInfo West = new BlockInfo { TypeId = 26, DataValue = 9, Name = "West", InternalName = "minecraft:bed", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.2f, BlastResistance = 1f };
+					public static readonly BlockInfo South = new BlockInfo { TypeId = 26, DataValue = 10, Name = "South", InternalName = "minecraft:bed", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.2f, BlastResistance = 1f };
+					public static readonly BlockInfo North = new BlockInfo { TypeId = 26, DataValue = 11, Name = "North", InternalName = "minecraft:bed", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.2f, BlastResistance = 1f };
 				}
 				public static class Occupied {
-					public static readonly BlockInfo South = Create("South", 0xC01A);
-					public static readonly BlockInfo West = Create("West", 0xD01A);
-					public static readonly BlockInfo North = Create("North", 0xE01A);
-					public static readonly BlockInfo East = Create("East", 0xF01A);
+					public static readonly BlockInfo East = new BlockInfo { TypeId = 26, DataValue = 12, Name = "East", InternalName = "minecraft:bed", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.2f, BlastResistance = 1f };
+					public static readonly BlockInfo West = new BlockInfo { TypeId = 26, DataValue = 13, Name = "West", InternalName = "minecraft:bed", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.2f, BlastResistance = 1f };
+					public static readonly BlockInfo South = new BlockInfo { TypeId = 26, DataValue = 14, Name = "South", InternalName = "minecraft:bed", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.2f, BlastResistance = 1f };
+					public static readonly BlockInfo North = new BlockInfo { TypeId = 26, DataValue = 15, Name = "North", InternalName = "minecraft:bed", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.2f, BlastResistance = 1f };
 				}
 			}
 		}
 		public static class TallGrass {
-			private static BlockInfo Create(string type, ushort id) {
-				var blockInfo = new BlockInfo {
-					Id = id,
-					Name = "TallGrass (" + type + ")",
-					InternalName = "minecraft:tallgrass",
-					BlastResistance = 10,
-					Hardness = 2,
-
-				};
-
-				return blockInfo;
-			}
-
-			public static readonly BlockInfo Shrub = Create("Shrub", 0x001F);
-			public static readonly BlockInfo Normal = Create("Normal", 0x101F);
-			public static readonly BlockInfo Fern = Create("Fern", 0x201F);
-			public static readonly BlockInfo BiomeShrub = Create("Biome Shrub", 0x301F);
+			public static readonly BlockInfo Shrub = new BlockInfo { TypeId = 31, DataValue = 0, Name = "Shrub", InternalName = "minecraft:tallgrass", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo Normal = new BlockInfo { TypeId = 31, DataValue = 1, Name = "Normal", InternalName = "minecraft:tallgrass", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo Fern = new BlockInfo { TypeId = 31, DataValue = 2, Name = "Fern", InternalName = "minecraft:tallgrass", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo BiomeShrub = new BlockInfo { TypeId = 31, DataValue = 3, Name = "BiomeShrub", InternalName = "minecraft:tallgrass", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
 		}
 		public static class Flower {
-			private static BlockInfo Create(string type, ushort id) {
-				var isYellowFlower = (id & 0xFFF) == 0x25;
-				var isLarge = (id & 0xFFF) == 0xAF;
-
-				var blockInfo = new BlockInfo {
-					Id = id,
-					Name = "Flower (" + type + ")",
-					InternalName = isYellowFlower ? "minecraft:yellow_flower" : (isLarge ? "minecraft:double_plant" : "minecraft:red_flower"),
-					BlastResistance = 10,
-					Hardness = 2,
-
-				};
-
-				return blockInfo;
-			}
 			public static class Small {
-				public static readonly BlockInfo Dandelion = Create("Dandelion", 0x0025);
-				public static readonly BlockInfo Poppy = Create("Poppy", 0x0026);
-				public static readonly BlockInfo BlueOrchid = Create("Blue Orchid", 0x1026);
-				public static readonly BlockInfo Allium = Create("Allium", 0x2026);
-				public static readonly BlockInfo AzureBluet = Create("Azure Bluet", 0x3026);
-				public static readonly BlockInfo RedTulip = Create("Red Tulip", 0x4026);
-				public static readonly BlockInfo OrangeTulip = Create("Orange Tulip", 0x5026);
-				public static readonly BlockInfo WhiteTulip = Create("White Tulip", 0x6026);
-				public static readonly BlockInfo PinkTulip = Create("Pink Tulip", 0x7026);
-				public static readonly BlockInfo OxeyeDaisy = Create("Oxeye Daisy", 0x8026);
+				public static readonly BlockInfo Dandelion = new BlockInfo { TypeId = 37, DataValue = 0, Name = "Dandelion", InternalName = "minecraft:yellow_flower", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+				public static readonly BlockInfo Poppy = new BlockInfo { TypeId = 38, DataValue = 0, Name = "Poppy", InternalName = "minecraft:red_flower", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+				public static readonly BlockInfo BlueOrchid = new BlockInfo { TypeId = 38, DataValue = 1, Name = "BlueOrchid", InternalName = "minecraft:red_flower", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+				public static readonly BlockInfo Allium = new BlockInfo { TypeId = 38, DataValue = 2, Name = "Allium", InternalName = "minecraft:red_flower", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+				public static readonly BlockInfo AzureBluet = new BlockInfo { TypeId = 38, DataValue = 3, Name = "AzureBluet", InternalName = "minecraft:red_flower", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+				public static readonly BlockInfo RedTulip = new BlockInfo { TypeId = 38, DataValue = 4, Name = "RedTulip", InternalName = "minecraft:red_flower", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+				public static readonly BlockInfo OrangeTulip = new BlockInfo { TypeId = 38, DataValue = 5, Name = "OrangeTulip", InternalName = "minecraft:red_flower", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+				public static readonly BlockInfo WhiteTulip = new BlockInfo { TypeId = 38, DataValue = 6, Name = "WhiteTulip", InternalName = "minecraft:red_flower", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+				public static readonly BlockInfo PinkTulip = new BlockInfo { TypeId = 38, DataValue = 7, Name = "PinkTulip", InternalName = "minecraft:red_flower", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+				public static readonly BlockInfo OxeyeDaisy = new BlockInfo { TypeId = 38, DataValue = 8, Name = "OxeyeDaisy", InternalName = "minecraft:red_flower", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
 			}
 			public static class Large {
-				public static readonly BlockInfo Sunflower = Create("Sunflower", 0x00AF);
-				public static readonly BlockInfo Lilac = Create("Lilac", 0x10AF);
-				public static readonly BlockInfo DoubleTallgrass = Create("Double Tallgrass", 0x20AF);
-				public static readonly BlockInfo LargeFern = Create("Large Fern", 0x30AF);
-				public static readonly BlockInfo RoseBush = Create("Rose Bush", 0x40AF);
-				public static readonly BlockInfo Peony = Create("Peony", 0x50AF);
-				public static readonly BlockInfo Top = Create("Top", 0x80AF);
+				public static readonly BlockInfo Sunflower = new BlockInfo { TypeId = 175, DataValue = 0, Name = "Sunflower", InternalName = "minecraft:double_plant", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+				public static readonly BlockInfo Lilac = new BlockInfo { TypeId = 175, DataValue = 1, Name = "Lilac", InternalName = "minecraft:double_plant", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+				public static readonly BlockInfo DoubleTallgrass = new BlockInfo { TypeId = 175, DataValue = 2, Name = "DoubleTallgrass", InternalName = "minecraft:double_plant", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+				public static readonly BlockInfo LargeFern = new BlockInfo { TypeId = 175, DataValue = 3, Name = "LargeFern", InternalName = "minecraft:double_plant", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+				public static readonly BlockInfo RoseBush = new BlockInfo { TypeId = 175, DataValue = 4, Name = "RoseBush", InternalName = "minecraft:double_plant", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+				public static readonly BlockInfo Peony = new BlockInfo { TypeId = 175, DataValue = 5, Name = "Peony", InternalName = "minecraft:double_plant", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+				public static readonly BlockInfo Top = new BlockInfo { TypeId = 175, DataValue = 8, Name = "Top", InternalName = "minecraft:double_plant", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
 			}
 			public static class Pot {
 			}
 		}
 		public static class Piston {
-			private static BlockInfo Create(string type, ushort id) {
-				var internalName = "";
-				var isSticky = false;
-				var isHead = false;
-				var isExtension = false;
-
-				switch(id & 0xFFF) {
-					case 0x1D: internalName = "minecraft:sticky_piston"; isSticky = true; break;
-					case 0x21: internalName = "minecraft:piston"; break;
-					case 0x22: internalName = "minecraft:piston_head"; isHead = true; isSticky = (id & 0x800) != 0; break;
-					case 0x24: internalName = "minecraft:piston_extension"; isExtension = true; break;
-				}
-
-				var blockInfo = new BlockInfo {
-					Id = id,
-					Name = isExtension ? "Piston Extension" : "Piston (" + type + (isHead ? " Head" : " Body") + (isSticky ? " Sticky" : "") + ")",
-					InternalName = internalName,
-					BlastResistance = 10,
-					Hardness = 2,
-
-				};
-
-				return blockInfo;
-			}
-
+			public static readonly BlockInfo Extension = new BlockInfo { TypeId = 36, DataValue = 0, Name = "Extension", InternalName = "minecraft:piston_extension", Note = "Piston Extension", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = -1f, BlastResistance = 0f };
 			public static class Normal {
 				public static class Retracted {
-					public static readonly BlockInfo Down = Create("Down", 0x0021);
-					public static readonly BlockInfo Up = Create("Up", 0x1021);
-					public static readonly BlockInfo North = Create("North", 0x2021);
-					public static readonly BlockInfo South = Create("South", 0x3021);
-					public static readonly BlockInfo West = Create("West", 0x4021);
-					public static readonly BlockInfo East = Create("East", 0x5021);
+					public static readonly BlockInfo Down = new BlockInfo { TypeId = 33, DataValue = 0, Name = "Down", InternalName = "minecraft:piston", Note = "Retracted Down", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+					public static readonly BlockInfo Up = new BlockInfo { TypeId = 33, DataValue = 1, Name = "Up", InternalName = "minecraft:piston", Note = "Retracted Up", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+					public static readonly BlockInfo North = new BlockInfo { TypeId = 33, DataValue = 2, Name = "North", InternalName = "minecraft:piston", Note = "Retracted North", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+					public static readonly BlockInfo South = new BlockInfo { TypeId = 33, DataValue = 3, Name = "South", InternalName = "minecraft:piston", Note = "Retracted South", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+					public static readonly BlockInfo West = new BlockInfo { TypeId = 33, DataValue = 4, Name = "West", InternalName = "minecraft:piston", Note = "Retracted West", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+					public static readonly BlockInfo East = new BlockInfo { TypeId = 33, DataValue = 5, Name = "East", InternalName = "minecraft:piston", Note = "Retracted East", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
 				}
 				public static class Extended {
-					public static readonly BlockInfo Down = Create("Down", 0x8021);
-					public static readonly BlockInfo Up = Create("Up", 0x9021);
-					public static readonly BlockInfo North = Create("North", 0xA021);
-					public static readonly BlockInfo South = Create("South", 0xB021);
-					public static readonly BlockInfo West = Create("West", 0xC021);
-					public static readonly BlockInfo East = Create("East", 0xD021);
+					public static readonly BlockInfo Down = new BlockInfo { TypeId = 33, DataValue = 8, Name = "Down", InternalName = "minecraft:piston", Note = "Extended Down", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+					public static readonly BlockInfo Up = new BlockInfo { TypeId = 33, DataValue = 9, Name = "Up", InternalName = "minecraft:piston", Note = "Extended Up", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+					public static readonly BlockInfo North = new BlockInfo { TypeId = 33, DataValue = 10, Name = "North", InternalName = "minecraft:piston", Note = "Extended North", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+					public static readonly BlockInfo South = new BlockInfo { TypeId = 33, DataValue = 11, Name = "South", InternalName = "minecraft:piston", Note = "Extended South", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+					public static readonly BlockInfo West = new BlockInfo { TypeId = 33, DataValue = 12, Name = "West", InternalName = "minecraft:piston", Note = "Extended West", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+					public static readonly BlockInfo East = new BlockInfo { TypeId = 33, DataValue = 13, Name = "East", InternalName = "minecraft:piston", Note = "Extended East", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
 				}
 			}
 			public static class Sticky {
 				public static class Retracted {
-					public static readonly BlockInfo Down = Create("Down", 0x001D);
-					public static readonly BlockInfo Up = Create("Up", 0x101D);
-					public static readonly BlockInfo North = Create("North", 0x201D);
-					public static readonly BlockInfo South = Create("South", 0x301D);
-					public static readonly BlockInfo West = Create("West", 0x401D);
-					public static readonly BlockInfo East = Create("East", 0x501D);
+					public static readonly BlockInfo Down = new BlockInfo { TypeId = 29, DataValue = 0, Name = "Down", InternalName = "minecraft:sticky_piston", Note = "Retracted Down", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+					public static readonly BlockInfo Up = new BlockInfo { TypeId = 29, DataValue = 1, Name = "Up", InternalName = "minecraft:sticky_piston", Note = "Retracted Up", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+					public static readonly BlockInfo North = new BlockInfo { TypeId = 29, DataValue = 2, Name = "North", InternalName = "minecraft:sticky_piston", Note = "Retracted North", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+					public static readonly BlockInfo South = new BlockInfo { TypeId = 29, DataValue = 3, Name = "South", InternalName = "minecraft:sticky_piston", Note = "Retracted South", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+					public static readonly BlockInfo West = new BlockInfo { TypeId = 29, DataValue = 4, Name = "West", InternalName = "minecraft:sticky_piston", Note = "Retracted West", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+					public static readonly BlockInfo East = new BlockInfo { TypeId = 29, DataValue = 5, Name = "East", InternalName = "minecraft:sticky_piston", Note = "Retracted East", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
 				}
 				public static class Extended {
-					public static readonly BlockInfo Down = Create("Down", 0x801D);
-					public static readonly BlockInfo Up = Create("Up", 0x901D);
-					public static readonly BlockInfo North = Create("North", 0xA01D);
-					public static readonly BlockInfo South = Create("South", 0xB01D);
-					public static readonly BlockInfo West = Create("West", 0xC01D);
-					public static readonly BlockInfo East = Create("East", 0xD01D);
+					public static readonly BlockInfo Down = new BlockInfo { TypeId = 29, DataValue = 8, Name = "Down", InternalName = "minecraft:sticky_piston", Note = "Extended Down", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+					public static readonly BlockInfo Up = new BlockInfo { TypeId = 29, DataValue = 9, Name = "Up", InternalName = "minecraft:sticky_piston", Note = "Extended Up", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+					public static readonly BlockInfo North = new BlockInfo { TypeId = 29, DataValue = 10, Name = "North", InternalName = "minecraft:sticky_piston", Note = "Extended North", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+					public static readonly BlockInfo South = new BlockInfo { TypeId = 29, DataValue = 11, Name = "South", InternalName = "minecraft:sticky_piston", Note = "Extended South", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+					public static readonly BlockInfo West = new BlockInfo { TypeId = 29, DataValue = 12, Name = "West", InternalName = "minecraft:sticky_piston", Note = "Extended West", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+					public static readonly BlockInfo East = new BlockInfo { TypeId = 29, DataValue = 13, Name = "East", InternalName = "minecraft:sticky_piston", Note = "Extended East", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
 				}
 			}
 			public static class Head {
 				public static class Normal {
-					public static readonly BlockInfo Down = Create("Down", 0x0022);
-					public static readonly BlockInfo Up = Create("Up", 0x1022);
-					public static readonly BlockInfo North = Create("North", 0x2022);
-					public static readonly BlockInfo South = Create("South", 0x3022);
-					public static readonly BlockInfo West = Create("West", 0x4022);
-					public static readonly BlockInfo East = Create("East", 0x5022);
+					public static readonly BlockInfo Down = new BlockInfo { TypeId = 34, DataValue = 0, Name = "Down", InternalName = "minecraft:piston_head", Note = "Normal Down", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+					public static readonly BlockInfo Up = new BlockInfo { TypeId = 34, DataValue = 1, Name = "Up", InternalName = "minecraft:piston_head", Note = "Normal Up", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+					public static readonly BlockInfo North = new BlockInfo { TypeId = 34, DataValue = 2, Name = "North", InternalName = "minecraft:piston_head", Note = "Normal North", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+					public static readonly BlockInfo South = new BlockInfo { TypeId = 34, DataValue = 3, Name = "South", InternalName = "minecraft:piston_head", Note = "Normal South", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+					public static readonly BlockInfo West = new BlockInfo { TypeId = 34, DataValue = 4, Name = "West", InternalName = "minecraft:piston_head", Note = "Normal West", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+					public static readonly BlockInfo East = new BlockInfo { TypeId = 34, DataValue = 5, Name = "East", InternalName = "minecraft:piston_head", Note = "Normal East", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
 				}
 				public static class Sticky {
-					public static readonly BlockInfo Down = Create("Down", 0x8022);
-					public static readonly BlockInfo Up = Create("Up", 0x9022);
-					public static readonly BlockInfo North = Create("North", 0xA022);
-					public static readonly BlockInfo South = Create("South", 0xB022);
-					public static readonly BlockInfo West = Create("West", 0xC022);
-					public static readonly BlockInfo East = Create("East", 0xD022);
+					public static readonly BlockInfo Down = new BlockInfo { TypeId = 34, DataValue = 8, Name = "Down", InternalName = "minecraft:piston_head", Note = "Sticky Down", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+					public static readonly BlockInfo Up = new BlockInfo { TypeId = 34, DataValue = 9, Name = "Up", InternalName = "minecraft:piston_head", Note = "Sticky Up", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+					public static readonly BlockInfo North = new BlockInfo { TypeId = 34, DataValue = 10, Name = "North", InternalName = "minecraft:piston_head", Note = "Sticky North", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+					public static readonly BlockInfo South = new BlockInfo { TypeId = 34, DataValue = 11, Name = "South", InternalName = "minecraft:piston_head", Note = "Sticky South", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+					public static readonly BlockInfo West = new BlockInfo { TypeId = 34, DataValue = 12, Name = "West", InternalName = "minecraft:piston_head", Note = "Sticky West", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
+					public static readonly BlockInfo East = new BlockInfo { TypeId = 34, DataValue = 13, Name = "East", InternalName = "minecraft:piston_head", Note = "Sticky East", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.5f, BlastResistance = 2.5f };
 				}
-
 			}
-
-			public static readonly BlockInfo Extension = Create(null, 0x0024);
 		}
 		public static class Stairs {
-			private static BlockInfo Create(ushort id, string type) {
-				var isUpsideDown = (id & 0x8000) != 0;
-				string direction = "";
-				switch((id >> 12) & 3) {
-					case 0: direction = "East"; break;
-					case 1: direction = "West"; break;
-					case 2: direction = "South"; break;
-					case 3: direction = "North"; break;
-				}
-
-				string internalType = string.Concat(type.Select((x, i) => (i > 0 && char.IsUpper(x) ? "_" + x.ToString() : x.ToString()).ToLowerInvariant()));
-
-				var blockInfo = new BlockInfo {
-					Id = id,
-					Name = "Stairs (" + direction + (isUpsideDown ? " Upright " : " UpsideDown ") + type + ")",
-					InternalName = "minecraft:" + internalType + "_stairs",
-					BlastResistance = 10,
-					Hardness = 2,
-
-				};
-
-				return blockInfo;
-			}
-
 			public static class Oak {
 				public static class Normal {
-					public static readonly BlockInfo East = Create(0x0035, "Oak");
-					public static readonly BlockInfo West = Create(0x1035, "Oak");
-					public static readonly BlockInfo South = Create(0x2035, "Oak");
-					public static readonly BlockInfo North = Create(0x3035, "Oak");
+					public static readonly BlockInfo East = new BlockInfo { TypeId = 67, DataValue = 0, Name = "East", InternalName = "minecraft:stone_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo West = new BlockInfo { TypeId = 67, DataValue = 1, Name = "West", InternalName = "minecraft:stone_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo South = new BlockInfo { TypeId = 67, DataValue = 2, Name = "South", InternalName = "minecraft:stone_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo North = new BlockInfo { TypeId = 67, DataValue = 3, Name = "North", InternalName = "minecraft:stone_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
 				}
 				public static class UpsideDown {
-					public static readonly BlockInfo East = Create(0x4035, "Oak");
-					public static readonly BlockInfo West = Create(0x5035, "Oak");
-					public static readonly BlockInfo South = Create(0x6035, "Oak");
-					public static readonly BlockInfo North = Create(0x7035, "Oak");
-				}
-			}
-			public static class Stone {
-				public static class Normal {
-					public static readonly BlockInfo East = Create(0x0043, "Stone");
-					public static readonly BlockInfo West = Create(0x1043, "Stone");
-					public static readonly BlockInfo South = Create(0x2043, "Stone");
-					public static readonly BlockInfo North = Create(0x3043, "Stone");
-				}
-				public static class UpsideDown {
-					public static readonly BlockInfo East = Create(0x4043, "Stone");
-					public static readonly BlockInfo West = Create(0x5043, "Stone");
-					public static readonly BlockInfo South = Create(0x6043, "Stone");
-					public static readonly BlockInfo North = Create(0x7043, "Stone");
+					public static readonly BlockInfo East = new BlockInfo { TypeId = 67, DataValue = 4, Name = "East", InternalName = "minecraft:stone_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo West = new BlockInfo { TypeId = 67, DataValue = 5, Name = "West", InternalName = "minecraft:stone_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo South = new BlockInfo { TypeId = 67, DataValue = 6, Name = "South", InternalName = "minecraft:stone_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo North = new BlockInfo { TypeId = 67, DataValue = 7, Name = "North", InternalName = "minecraft:stone_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
 				}
 			}
 			public static class Brick {
 				public static class Normal {
-					public static readonly BlockInfo East = Create(0x006C, "Brick");
-					public static readonly BlockInfo West = Create(0x106C, "Brick");
-					public static readonly BlockInfo South = Create(0x206C, "Brick");
-					public static readonly BlockInfo North = Create(0x306C, "Brick");
+					public static readonly BlockInfo East = new BlockInfo { TypeId = 108, DataValue = 0, Name = "East", InternalName = "minecraft:brick_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo West = new BlockInfo { TypeId = 108, DataValue = 1, Name = "West", InternalName = "minecraft:brick_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo South = new BlockInfo { TypeId = 108, DataValue = 2, Name = "South", InternalName = "minecraft:brick_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo North = new BlockInfo { TypeId = 108, DataValue = 3, Name = "North", InternalName = "minecraft:brick_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
 				}
 				public static class UpsideDown {
-					public static readonly BlockInfo East = Create(0x406C, "Brick");
-					public static readonly BlockInfo West = Create(0x506C, "Brick");
-					public static readonly BlockInfo South = Create(0x606C, "Brick");
-					public static readonly BlockInfo North = Create(0x706C, "Brick");
+					public static readonly BlockInfo East = new BlockInfo { TypeId = 108, DataValue = 4, Name = "East", InternalName = "minecraft:brick_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo West = new BlockInfo { TypeId = 108, DataValue = 5, Name = "West", InternalName = "minecraft:brick_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo South = new BlockInfo { TypeId = 108, DataValue = 6, Name = "South", InternalName = "minecraft:brick_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo North = new BlockInfo { TypeId = 108, DataValue = 7, Name = "North", InternalName = "minecraft:brick_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
 				}
 			}
 			public static class StoneBrick {
 				public static class Normal {
-					public static readonly BlockInfo East = Create(0x006D, "StoneBrick");
-					public static readonly BlockInfo West = Create(0x106D, "StoneBrick");
-					public static readonly BlockInfo South = Create(0x206D, "StoneBrick");
-					public static readonly BlockInfo North = Create(0x306D, "StoneBrick");
+					public static readonly BlockInfo East = new BlockInfo { TypeId = 109, DataValue = 0, Name = "East", InternalName = "minecraft:stone_brick_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.5f, BlastResistance = 30f };
+					public static readonly BlockInfo West = new BlockInfo { TypeId = 109, DataValue = 1, Name = "West", InternalName = "minecraft:stone_brick_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.5f, BlastResistance = 30f };
+					public static readonly BlockInfo South = new BlockInfo { TypeId = 109, DataValue = 2, Name = "South", InternalName = "minecraft:stone_brick_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.5f, BlastResistance = 30f };
+					public static readonly BlockInfo North = new BlockInfo { TypeId = 109, DataValue = 3, Name = "North", InternalName = "minecraft:stone_brick_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.5f, BlastResistance = 30f };
 				}
 				public static class UpsideDown {
-					public static readonly BlockInfo East = Create(0x406D, "StoneBrick");
-					public static readonly BlockInfo West = Create(0x506D, "StoneBrick");
-					public static readonly BlockInfo South = Create(0x606D, "StoneBrick");
-					public static readonly BlockInfo North = Create(0x706D, "StoneBrick");
+					public static readonly BlockInfo East = new BlockInfo { TypeId = 109, DataValue = 4, Name = "East", InternalName = "minecraft:stone_brick_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.5f, BlastResistance = 30f };
+					public static readonly BlockInfo West = new BlockInfo { TypeId = 109, DataValue = 5, Name = "West", InternalName = "minecraft:stone_brick_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.5f, BlastResistance = 30f };
+					public static readonly BlockInfo South = new BlockInfo { TypeId = 109, DataValue = 6, Name = "South", InternalName = "minecraft:stone_brick_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.5f, BlastResistance = 30f };
+					public static readonly BlockInfo North = new BlockInfo { TypeId = 109, DataValue = 7, Name = "North", InternalName = "minecraft:stone_brick_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 1.5f, BlastResistance = 30f };
 				}
 			}
 			public static class NetherBrick {
 				public static class Normal {
-					public static readonly BlockInfo East = Create(0x0072, "NetherBrick");
-					public static readonly BlockInfo West = Create(0x1072, "NetherBrick");
-					public static readonly BlockInfo South = Create(0x2072, "NetherBrick");
-					public static readonly BlockInfo North = Create(0x3072, "NetherBrick");
+					public static readonly BlockInfo East = new BlockInfo { TypeId = 114, DataValue = 0, Name = "East", InternalName = "minecraft:nether_brick_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo West = new BlockInfo { TypeId = 114, DataValue = 1, Name = "West", InternalName = "minecraft:nether_brick_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo South = new BlockInfo { TypeId = 114, DataValue = 2, Name = "South", InternalName = "minecraft:nether_brick_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo North = new BlockInfo { TypeId = 114, DataValue = 3, Name = "North", InternalName = "minecraft:nether_brick_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
 				}
 				public static class UpsideDown {
-					public static readonly BlockInfo East = Create(0x4072, "NetherBrick");
-					public static readonly BlockInfo West = Create(0x5072, "NetherBrick");
-					public static readonly BlockInfo South = Create(0x6072, "NetherBrick");
-					public static readonly BlockInfo North = Create(0x7072, "NetherBrick");
+					public static readonly BlockInfo East = new BlockInfo { TypeId = 114, DataValue = 4, Name = "East", InternalName = "minecraft:nether_brick_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo West = new BlockInfo { TypeId = 114, DataValue = 5, Name = "West", InternalName = "minecraft:nether_brick_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo South = new BlockInfo { TypeId = 114, DataValue = 6, Name = "South", InternalName = "minecraft:nether_brick_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
+					public static readonly BlockInfo North = new BlockInfo { TypeId = 114, DataValue = 7, Name = "North", InternalName = "minecraft:nether_brick_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 30f };
 				}
 			}
 			public static class Sandstone {
 				public static class Normal {
-					public static readonly BlockInfo East = Create(0x0080, "Sandstone");
-					public static readonly BlockInfo West = Create(0x1080, "Sandstone");
-					public static readonly BlockInfo South = Create(0x2080, "Sandstone");
-					public static readonly BlockInfo North = Create(0x3080, "Sandstone");
+					public static readonly BlockInfo East = new BlockInfo { TypeId = 128, DataValue = 0, Name = "East", InternalName = "minecraft:sandstone_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.8f, BlastResistance = 4f };
+					public static readonly BlockInfo West = new BlockInfo { TypeId = 128, DataValue = 1, Name = "West", InternalName = "minecraft:sandstone_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.8f, BlastResistance = 4f };
+					public static readonly BlockInfo South = new BlockInfo { TypeId = 128, DataValue = 2, Name = "South", InternalName = "minecraft:sandstone_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.8f, BlastResistance = 4f };
+					public static readonly BlockInfo North = new BlockInfo { TypeId = 128, DataValue = 3, Name = "North", InternalName = "minecraft:sandstone_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.8f, BlastResistance = 4f };
 				}
 				public static class UpsideDown {
-					public static readonly BlockInfo East = Create(0x4080, "Sandstone");
-					public static readonly BlockInfo West = Create(0x5080, "Sandstone");
-					public static readonly BlockInfo South = Create(0x6080, "Sandstone");
-					public static readonly BlockInfo North = Create(0x7080, "Sandstone");
+					public static readonly BlockInfo East = new BlockInfo { TypeId = 128, DataValue = 4, Name = "East", InternalName = "minecraft:sandstone_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.8f, BlastResistance = 4f };
+					public static readonly BlockInfo West = new BlockInfo { TypeId = 128, DataValue = 5, Name = "West", InternalName = "minecraft:sandstone_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.8f, BlastResistance = 4f };
+					public static readonly BlockInfo South = new BlockInfo { TypeId = 128, DataValue = 6, Name = "South", InternalName = "minecraft:sandstone_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.8f, BlastResistance = 4f };
+					public static readonly BlockInfo North = new BlockInfo { TypeId = 128, DataValue = 7, Name = "North", InternalName = "minecraft:sandstone_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.8f, BlastResistance = 4f };
 				}
 			}
 			public static class Spruce {
 				public static class Normal {
-					public static readonly BlockInfo East = Create(0x0086, "Spruce");
-					public static readonly BlockInfo West = Create(0x1086, "Spruce");
-					public static readonly BlockInfo South = Create(0x2086, "Spruce");
-					public static readonly BlockInfo North = Create(0x3086, "Spruce");
+					public static readonly BlockInfo East = new BlockInfo { TypeId = 134, DataValue = 0, Name = "East", InternalName = "minecraft:spruce_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo West = new BlockInfo { TypeId = 134, DataValue = 1, Name = "West", InternalName = "minecraft:spruce_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo South = new BlockInfo { TypeId = 134, DataValue = 2, Name = "South", InternalName = "minecraft:spruce_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo North = new BlockInfo { TypeId = 134, DataValue = 3, Name = "North", InternalName = "minecraft:spruce_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
 				}
 				public static class UpsideDown {
-					public static readonly BlockInfo East = Create(0x4086, "Spruce");
-					public static readonly BlockInfo West = Create(0x5086, "Spruce");
-					public static readonly BlockInfo South = Create(0x6086, "Spruce");
-					public static readonly BlockInfo North = Create(0x7086, "Spruce");
+					public static readonly BlockInfo East = new BlockInfo { TypeId = 134, DataValue = 4, Name = "East", InternalName = "minecraft:spruce_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo West = new BlockInfo { TypeId = 134, DataValue = 5, Name = "West", InternalName = "minecraft:spruce_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo South = new BlockInfo { TypeId = 134, DataValue = 6, Name = "South", InternalName = "minecraft:spruce_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo North = new BlockInfo { TypeId = 134, DataValue = 7, Name = "North", InternalName = "minecraft:spruce_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
 				}
 			}
 			public static class Birch {
 				public static class Normal {
-					public static readonly BlockInfo East = Create(0x0087, "Birch");
-					public static readonly BlockInfo West = Create(0x1087, "Birch");
-					public static readonly BlockInfo South = Create(0x2087, "Birch");
-					public static readonly BlockInfo North = Create(0x3087, "Birch");
+					public static readonly BlockInfo East = new BlockInfo { TypeId = 135, DataValue = 0, Name = "East", InternalName = "minecraft:birch_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo West = new BlockInfo { TypeId = 135, DataValue = 1, Name = "West", InternalName = "minecraft:birch_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo South = new BlockInfo { TypeId = 135, DataValue = 2, Name = "South", InternalName = "minecraft:birch_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo North = new BlockInfo { TypeId = 135, DataValue = 3, Name = "North", InternalName = "minecraft:birch_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
 				}
 				public static class UpsideDown {
-					public static readonly BlockInfo East = Create(0x4087, "Birch");
-					public static readonly BlockInfo West = Create(0x5087, "Birch");
-					public static readonly BlockInfo South = Create(0x6087, "Birch");
-					public static readonly BlockInfo North = Create(0x7087, "Birch");
+					public static readonly BlockInfo East = new BlockInfo { TypeId = 135, DataValue = 4, Name = "East", InternalName = "minecraft:birch_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo West = new BlockInfo { TypeId = 135, DataValue = 5, Name = "West", InternalName = "minecraft:birch_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo South = new BlockInfo { TypeId = 135, DataValue = 6, Name = "South", InternalName = "minecraft:birch_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo North = new BlockInfo { TypeId = 135, DataValue = 7, Name = "North", InternalName = "minecraft:birch_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
 				}
 			}
 			public static class Jungle {
 				public static class Normal {
-					public static readonly BlockInfo East = Create(0x0088, "Jungle");
-					public static readonly BlockInfo West = Create(0x1088, "Jungle");
-					public static readonly BlockInfo South = Create(0x2088, "Jungle");
-					public static readonly BlockInfo North = Create(0x3088, "Jungle");
+					public static readonly BlockInfo East = new BlockInfo { TypeId = 136, DataValue = 0, Name = "East", InternalName = "minecraft:jungle_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo West = new BlockInfo { TypeId = 136, DataValue = 1, Name = "West", InternalName = "minecraft:jungle_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo South = new BlockInfo { TypeId = 136, DataValue = 2, Name = "South", InternalName = "minecraft:jungle_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo North = new BlockInfo { TypeId = 136, DataValue = 3, Name = "North", InternalName = "minecraft:jungle_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
 				}
 				public static class UpsideDown {
-					public static readonly BlockInfo East = Create(0x4088, "Jungle");
-					public static readonly BlockInfo West = Create(0x5088, "Jungle");
-					public static readonly BlockInfo South = Create(0x6088, "Jungle");
-					public static readonly BlockInfo North = Create(0x7088, "Jungle");
-				}
-			}
-			public static class Quartz {
-				public static class Normal {
-					public static readonly BlockInfo East = Create(0x009C, "Quartz");
-					public static readonly BlockInfo West = Create(0x109C, "Quartz");
-					public static readonly BlockInfo South = Create(0x209C, "Quartz");
-					public static readonly BlockInfo North = Create(0x309C, "Quartz");
-				}
-				public static class UpsideDown {
-					public static readonly BlockInfo East = Create(0x409C, "Quartz");
-					public static readonly BlockInfo West = Create(0x509C, "Quartz");
-					public static readonly BlockInfo South = Create(0x609C, "Quartz");
-					public static readonly BlockInfo North = Create(0x709C, "Quartz");
+					public static readonly BlockInfo East = new BlockInfo { TypeId = 136, DataValue = 4, Name = "East", InternalName = "minecraft:jungle_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo West = new BlockInfo { TypeId = 136, DataValue = 5, Name = "West", InternalName = "minecraft:jungle_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo South = new BlockInfo { TypeId = 136, DataValue = 6, Name = "South", InternalName = "minecraft:jungle_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo North = new BlockInfo { TypeId = 136, DataValue = 7, Name = "North", InternalName = "minecraft:jungle_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
 				}
 			}
 			public static class Acacia {
 				public static class Normal {
-					public static readonly BlockInfo East = Create(0x00A3, "Acacia");
-					public static readonly BlockInfo West = Create(0x10A3, "Acacia");
-					public static readonly BlockInfo South = Create(0x20A3, "Acacia");
-					public static readonly BlockInfo North = Create(0x30A3, "Acacia");
+					public static readonly BlockInfo East = new BlockInfo { TypeId = 163, DataValue = 0, Name = "East", InternalName = "minecraft:acacia_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo West = new BlockInfo { TypeId = 163, DataValue = 1, Name = "West", InternalName = "minecraft:acacia_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo South = new BlockInfo { TypeId = 163, DataValue = 2, Name = "South", InternalName = "minecraft:acacia_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo North = new BlockInfo { TypeId = 163, DataValue = 3, Name = "North", InternalName = "minecraft:acacia_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
 				}
 				public static class UpsideDown {
-					public static readonly BlockInfo East = Create(0x40A3, "Acacia");
-					public static readonly BlockInfo West = Create(0x50A3, "Acacia");
-					public static readonly BlockInfo South = Create(0x60A3, "Acacia");
-					public static readonly BlockInfo North = Create(0x70A3, "Acacia");
+					public static readonly BlockInfo East = new BlockInfo { TypeId = 163, DataValue = 4, Name = "East", InternalName = "minecraft:acacia_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo West = new BlockInfo { TypeId = 163, DataValue = 5, Name = "West", InternalName = "minecraft:acacia_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo South = new BlockInfo { TypeId = 163, DataValue = 6, Name = "South", InternalName = "minecraft:acacia_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo North = new BlockInfo { TypeId = 163, DataValue = 7, Name = "North", InternalName = "minecraft:acacia_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
 				}
 			}
 			public static class DarkOak {
 				public static class Normal {
-					public static readonly BlockInfo East = Create(0x00A4, "DarkOak");
-					public static readonly BlockInfo West = Create(0x10A4, "DarkOak");
-					public static readonly BlockInfo South = Create(0x20A4, "DarkOak");
-					public static readonly BlockInfo North = Create(0x30A4, "DarkOak");
+					public static readonly BlockInfo East = new BlockInfo { TypeId = 164, DataValue = 0, Name = "East", InternalName = "minecraft:dark_oak_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo West = new BlockInfo { TypeId = 164, DataValue = 1, Name = "West", InternalName = "minecraft:dark_oak_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo South = new BlockInfo { TypeId = 164, DataValue = 2, Name = "South", InternalName = "minecraft:dark_oak_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo North = new BlockInfo { TypeId = 164, DataValue = 3, Name = "North", InternalName = "minecraft:dark_oak_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
 				}
 				public static class UpsideDown {
-					public static readonly BlockInfo East = Create(0x40A4, "DarkOak");
-					public static readonly BlockInfo West = Create(0x50A4, "DarkOak");
-					public static readonly BlockInfo South = Create(0x60A4, "DarkOak");
-					public static readonly BlockInfo North = Create(0x70A4, "DarkOak");
+					public static readonly BlockInfo East = new BlockInfo { TypeId = 164, DataValue = 4, Name = "East", InternalName = "minecraft:dark_oak_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo West = new BlockInfo { TypeId = 164, DataValue = 5, Name = "West", InternalName = "minecraft:dark_oak_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo South = new BlockInfo { TypeId = 164, DataValue = 6, Name = "South", InternalName = "minecraft:dark_oak_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
+					public static readonly BlockInfo North = new BlockInfo { TypeId = 164, DataValue = 7, Name = "North", InternalName = "minecraft:dark_oak_stairs", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 2f, BlastResistance = 15f };
 				}
 			}
 		}
 		public static class RedstoneWire {
-			private static BlockInfo Create(ushort id) {
-				var power = id >> 12;
-
-				var blockInfo = new BlockInfo {
-					Id = id,
-					Name = "Redstone Wire (" + power + ")",
-					InternalName = "minecraft:redstone_wire",
-					BlastResistance = 10,
-					Hardness = 2,
-
-				};
-
-				return blockInfo;
-			}
-
-			public static readonly BlockInfo Power0 = Create(0x0037);
-			public static readonly BlockInfo Power1 = Create(0x1037);
-			public static readonly BlockInfo Power2 = Create(0x2037);
-			public static readonly BlockInfo Power3 = Create(0x3037);
-			public static readonly BlockInfo Power4 = Create(0x4037);
-			public static readonly BlockInfo Power5 = Create(0x5037);
-			public static readonly BlockInfo Power6 = Create(0x6037);
-			public static readonly BlockInfo Power7 = Create(0x7037);
-			public static readonly BlockInfo Power8 = Create(0x8037);
-			public static readonly BlockInfo Power9 = Create(0x9037);
-			public static readonly BlockInfo PowerA = Create(0xA037);
-			public static readonly BlockInfo PowerB = Create(0xB037);
-			public static readonly BlockInfo PowerC = Create(0xC037);
-			public static readonly BlockInfo PowerD = Create(0xD037);
-			public static readonly BlockInfo PowerE = Create(0xE037);
-			public static readonly BlockInfo PowerF = Create(0xF037);
+			public static readonly BlockInfo Power0 = new BlockInfo { TypeId = 55, DataValue = 0, Name = "Power0", InternalName = "minecraft:redstone_wire", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo Power1 = new BlockInfo { TypeId = 55, DataValue = 1, Name = "Power1", InternalName = "minecraft:redstone_wire", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo Power2 = new BlockInfo { TypeId = 55, DataValue = 2, Name = "Power2", InternalName = "minecraft:redstone_wire", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo Power3 = new BlockInfo { TypeId = 55, DataValue = 3, Name = "Power3", InternalName = "minecraft:redstone_wire", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo Power4 = new BlockInfo { TypeId = 55, DataValue = 4, Name = "Power4", InternalName = "minecraft:redstone_wire", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo Power5 = new BlockInfo { TypeId = 55, DataValue = 5, Name = "Power5", InternalName = "minecraft:redstone_wire", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo Power6 = new BlockInfo { TypeId = 55, DataValue = 6, Name = "Power6", InternalName = "minecraft:redstone_wire", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo Power7 = new BlockInfo { TypeId = 55, DataValue = 7, Name = "Power7", InternalName = "minecraft:redstone_wire", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo Power8 = new BlockInfo { TypeId = 55, DataValue = 8, Name = "Power8", InternalName = "minecraft:redstone_wire", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo Power9 = new BlockInfo { TypeId = 55, DataValue = 9, Name = "Power9", InternalName = "minecraft:redstone_wire", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo PowerA = new BlockInfo { TypeId = 55, DataValue = 10, Name = "PowerA", InternalName = "minecraft:redstone_wire", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo PowerB = new BlockInfo { TypeId = 55, DataValue = 11, Name = "PowerB", InternalName = "minecraft:redstone_wire", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo PowerC = new BlockInfo { TypeId = 55, DataValue = 12, Name = "PowerC", InternalName = "minecraft:redstone_wire", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo PowerD = new BlockInfo { TypeId = 55, DataValue = 13, Name = "PowerD", InternalName = "minecraft:redstone_wire", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo PowerE = new BlockInfo { TypeId = 55, DataValue = 14, Name = "PowerE", InternalName = "minecraft:redstone_wire", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+			public static readonly BlockInfo PowerF = new BlockInfo { TypeId = 55, DataValue = 15, Name = "PowerF", InternalName = "minecraft:redstone_wire", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0f, BlastResistance = 0f };
+		}
+		public static class Farmland {
+			public static readonly BlockInfo Wetness0 = new BlockInfo { TypeId = 60, DataValue = 0, Name = "Wetness0", InternalName = "minecraft:farmland", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.6f, BlastResistance = 3f };
+			public static readonly BlockInfo Wetness1 = new BlockInfo { TypeId = 60, DataValue = 1, Name = "Wetness1", InternalName = "minecraft:farmland", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.6f, BlastResistance = 3f };
+			public static readonly BlockInfo Wetness2 = new BlockInfo { TypeId = 60, DataValue = 2, Name = "Wetness2", InternalName = "minecraft:farmland", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.6f, BlastResistance = 3f };
+			public static readonly BlockInfo Wetness3 = new BlockInfo { TypeId = 60, DataValue = 3, Name = "Wetness3", InternalName = "minecraft:farmland", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.6f, BlastResistance = 3f };
+			public static readonly BlockInfo Wetness4 = new BlockInfo { TypeId = 60, DataValue = 4, Name = "Wetness4", InternalName = "minecraft:farmland", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.6f, BlastResistance = 3f };
+			public static readonly BlockInfo Wetness5 = new BlockInfo { TypeId = 60, DataValue = 5, Name = "Wetness5", InternalName = "minecraft:farmland", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.6f, BlastResistance = 3f };
+			public static readonly BlockInfo Wetness6 = new BlockInfo { TypeId = 60, DataValue = 6, Name = "Wetness6", InternalName = "minecraft:farmland", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.6f, BlastResistance = 3f };
+			public static readonly BlockInfo Wetness7 = new BlockInfo { TypeId = 60, DataValue = 7, Name = "Wetness7", InternalName = "minecraft:farmland", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.6f, BlastResistance = 3f };
+			public static readonly BlockInfo Wetness8 = new BlockInfo { TypeId = 60, DataValue = 8, Name = "Wetness8", InternalName = "minecraft:farmland", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.6f, BlastResistance = 3f };
+			public static readonly BlockInfo Wetness9 = new BlockInfo { TypeId = 60, DataValue = 9, Name = "Wetness9", InternalName = "minecraft:farmland", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.6f, BlastResistance = 3f };
+			public static readonly BlockInfo WetnessA = new BlockInfo { TypeId = 60, DataValue = 10, Name = "WetnessA", InternalName = "minecraft:farmland", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.6f, BlastResistance = 3f };
+			public static readonly BlockInfo WetnessB = new BlockInfo { TypeId = 60, DataValue = 11, Name = "WetnessB", InternalName = "minecraft:farmland", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.6f, BlastResistance = 3f };
+			public static readonly BlockInfo WetnessC = new BlockInfo { TypeId = 60, DataValue = 12, Name = "WetnessC", InternalName = "minecraft:farmland", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.6f, BlastResistance = 3f };
+			public static readonly BlockInfo WetnessD = new BlockInfo { TypeId = 60, DataValue = 13, Name = "WetnessD", InternalName = "minecraft:farmland", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.6f, BlastResistance = 3f };
+			public static readonly BlockInfo WetnessE = new BlockInfo { TypeId = 60, DataValue = 14, Name = "WetnessE", InternalName = "minecraft:farmland", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.6f, BlastResistance = 3f };
+			public static readonly BlockInfo WetnessF = new BlockInfo { TypeId = 60, DataValue = 15, Name = "WetnessF", InternalName = "minecraft:farmland", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.6f, BlastResistance = 3f };
+		}
+		public static class SignPost {
+			public static readonly BlockInfo S = new BlockInfo { TypeId = 63, DataValue = 0, Name = "S", InternalName = "minecraft:standing_sign", Note = "S", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 1f, BlastResistance = 5f };
+			public static readonly BlockInfo SSW = new BlockInfo { TypeId = 63, DataValue = 1, Name = "SSW", InternalName = "minecraft:standing_sign", Note = "SSW", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 1f, BlastResistance = 5f };
+			public static readonly BlockInfo SW = new BlockInfo { TypeId = 63, DataValue = 2, Name = "SW", InternalName = "minecraft:standing_sign", Note = "SW", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 1f, BlastResistance = 5f };
+			public static readonly BlockInfo SWW = new BlockInfo { TypeId = 63, DataValue = 3, Name = "SWW", InternalName = "minecraft:standing_sign", Note = "SWW", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 1f, BlastResistance = 5f };
+			public static readonly BlockInfo W = new BlockInfo { TypeId = 63, DataValue = 4, Name = "W", InternalName = "minecraft:standing_sign", Note = "W", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 1f, BlastResistance = 5f };
+			public static readonly BlockInfo NWW = new BlockInfo { TypeId = 63, DataValue = 5, Name = "NWW", InternalName = "minecraft:standing_sign", Note = "NWW", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 1f, BlastResistance = 5f };
+			public static readonly BlockInfo NW = new BlockInfo { TypeId = 63, DataValue = 6, Name = "NW", InternalName = "minecraft:standing_sign", Note = "NW", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 1f, BlastResistance = 5f };
+			public static readonly BlockInfo NNW = new BlockInfo { TypeId = 63, DataValue = 7, Name = "NNW", InternalName = "minecraft:standing_sign", Note = "NNW", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 1f, BlastResistance = 5f };
+			public static readonly BlockInfo N = new BlockInfo { TypeId = 63, DataValue = 8, Name = "N", InternalName = "minecraft:standing_sign", Note = "N", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 1f, BlastResistance = 5f };
+			public static readonly BlockInfo NNE = new BlockInfo { TypeId = 63, DataValue = 9, Name = "NNE", InternalName = "minecraft:standing_sign", Note = "NNE", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 1f, BlastResistance = 5f };
+			public static readonly BlockInfo NE = new BlockInfo { TypeId = 63, DataValue = 10, Name = "NE", InternalName = "minecraft:standing_sign", Note = "NE", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 1f, BlastResistance = 5f };
+			public static readonly BlockInfo NEE = new BlockInfo { TypeId = 63, DataValue = 11, Name = "NEE", InternalName = "minecraft:standing_sign", Note = "NEE", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 1f, BlastResistance = 5f };
+			public static readonly BlockInfo E = new BlockInfo { TypeId = 63, DataValue = 12, Name = "E", InternalName = "minecraft:standing_sign", Note = "E", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 1f, BlastResistance = 5f };
+			public static readonly BlockInfo SEE = new BlockInfo { TypeId = 63, DataValue = 13, Name = "SEE", InternalName = "minecraft:standing_sign", Note = "SEE", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 1f, BlastResistance = 5f };
+			public static readonly BlockInfo SE = new BlockInfo { TypeId = 63, DataValue = 14, Name = "SE", InternalName = "minecraft:standing_sign", Note = "SE", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 1f, BlastResistance = 5f };
+			public static readonly BlockInfo SSE = new BlockInfo { TypeId = 63, DataValue = 15, Name = "SSE", InternalName = "minecraft:standing_sign", Note = "SSE", UsesEntityData = true, Luminance = 0, Opacity = 0, Hardness = 1f, BlastResistance = 5f };
+		}
+		public static class Snow {
+			public static readonly BlockInfo Height0 = new BlockInfo { TypeId = 78, DataValue = 0, Name = "Height0", InternalName = "minecraft:snow_layer", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.1f, BlastResistance = 0.5f };
+			public static readonly BlockInfo Height1 = new BlockInfo { TypeId = 78, DataValue = 1, Name = "Height1", InternalName = "minecraft:snow_layer", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.1f, BlastResistance = 0.5f };
+			public static readonly BlockInfo Height2 = new BlockInfo { TypeId = 78, DataValue = 2, Name = "Height2", InternalName = "minecraft:snow_layer", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.1f, BlastResistance = 0.5f };
+			public static readonly BlockInfo Height3 = new BlockInfo { TypeId = 78, DataValue = 3, Name = "Height3", InternalName = "minecraft:snow_layer", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.1f, BlastResistance = 0.5f };
+			public static readonly BlockInfo Height4 = new BlockInfo { TypeId = 78, DataValue = 4, Name = "Height4", InternalName = "minecraft:snow_layer", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.1f, BlastResistance = 0.5f };
+			public static readonly BlockInfo Height5 = new BlockInfo { TypeId = 78, DataValue = 5, Name = "Height5", InternalName = "minecraft:snow_layer", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.1f, BlastResistance = 0.5f };
+			public static readonly BlockInfo Height6 = new BlockInfo { TypeId = 78, DataValue = 6, Name = "Height6", InternalName = "minecraft:snow_layer", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.1f, BlastResistance = 0.5f };
+			public static readonly BlockInfo Height7 = new BlockInfo { TypeId = 78, DataValue = 7, Name = "Height7", InternalName = "minecraft:snow_layer", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 0, Hardness = 0.1f, BlastResistance = 0.5f };
+			public static readonly BlockInfo Block = new BlockInfo { TypeId = 80, DataValue = 0, Name = "Block", InternalName = "minecraft:snow", Note = "", UsesEntityData = false, Luminance = 0, Opacity = 255, Hardness = 0.2f, BlastResistance = 1f };
 		}
 		public static class Crop {
-			private static BlockInfo Create(ushort id, string type) {
-				var blockInfo = new BlockInfo {
-					Id = id,
-					Name = "Fire",
-					InternalName = "minecraft:fire",
-					BlastResistance = 10,
-					Hardness = 2,
-
-				};
-
-				return blockInfo;
-			}
-
 			public static class Wheat {
 			}
 			public static class Carrot {
@@ -1139,73 +751,6 @@ namespace Sediment {
 			}
 			public static class Cocoa {
 			}
-			//public static readonly BlockInfo Melon = Create(0xF033, "Melon");
-			//public static readonly BlockInfo Pumkin = Create(0xF033, "Pumkin");
-			//public static readonly BlockInfo JackoLanters = Create(0xF033, "Pumkin");
-		}
-		public static class Farmland {
-			private static BlockInfo Create(ushort id) {
-				var wetness = id >> 12;
-
-				var blockInfo = new BlockInfo {
-					Id = id,
-					Name = "Farmland (" + wetness + ")",
-					InternalName = "minecraft:farmland",
-					BlastResistance = 10,
-					Hardness = 2,
-
-				};
-
-				return blockInfo;
-			}
-
-			public static readonly BlockInfo Wetness0 = Create(0x003C);
-			public static readonly BlockInfo Wetness1 = Create(0x103C);
-			public static readonly BlockInfo Wetness2 = Create(0x203C);
-			public static readonly BlockInfo Wetness3 = Create(0x303C);
-			public static readonly BlockInfo Wetness4 = Create(0x403C);
-			public static readonly BlockInfo Wetness5 = Create(0x503C);
-			public static readonly BlockInfo Wetness6 = Create(0x603C);
-			public static readonly BlockInfo Wetness7 = Create(0x703C);
-			public static readonly BlockInfo Wetness8 = Create(0x803C);
-			public static readonly BlockInfo Wetness9 = Create(0x903C);
-			public static readonly BlockInfo WetnessA = Create(0xA03C);
-			public static readonly BlockInfo WetnessB = Create(0xB03C);
-			public static readonly BlockInfo WetnessC = Create(0xC03C);
-			public static readonly BlockInfo WetnessD = Create(0xD03C);
-			public static readonly BlockInfo WetnessE = Create(0xE03C);
-			public static readonly BlockInfo WetnessF = Create(0xF03C);
-		}
-		public static class SignPost {
-			private static BlockInfo Create(ushort id, string direction) {
-				var blockInfo = new BlockInfo {
-					Id = id,
-					Name = "Sign Post (" + direction + ")",
-					InternalName = "minecraft:standing_sign",
-					BlastResistance = 10,
-					Hardness = 2,
-
-				};
-
-				return blockInfo;
-			}
-
-			public static readonly BlockInfo S = Create(0x003F, "S");
-			public static readonly BlockInfo SSW = Create(0x103F, "SSW");
-			public static readonly BlockInfo SW = Create(0x203F, "SW");
-			public static readonly BlockInfo SWW = Create(0x303F, "SWW");
-			public static readonly BlockInfo W = Create(0x403F, "W");
-			public static readonly BlockInfo NWW = Create(0x503F, "NWW");
-			public static readonly BlockInfo NW = Create(0x603F, "NW");
-			public static readonly BlockInfo NNW = Create(0x703F, "NNW");
-			public static readonly BlockInfo N = Create(0x803F, "N");
-			public static readonly BlockInfo NNE = Create(0x903F, "NNE");
-			public static readonly BlockInfo NE = Create(0xA03F, "NE");
-			public static readonly BlockInfo NEE = Create(0xB03F, "NEE");
-			public static readonly BlockInfo E = Create(0xC03F, "E");
-			public static readonly BlockInfo SEE = Create(0xD03F, "SEE");
-			public static readonly BlockInfo SE = Create(0xE03F, "SE");
-			public static readonly BlockInfo SSE = Create(0xF03F, "SSE");
 		}
 		public static class Door {
 			public static class Wood {
@@ -1239,15 +784,11 @@ namespace Sediment {
 		}
 		public static class Chest {
 			public static class Normal {
-
 			}
 			public static class Trapped {
-
 			}
 			public static class Ender {
-
 			}
-
 		}
 		public static class Dispenser {
 		}
@@ -1260,32 +801,6 @@ namespace Sediment {
 		public static class PressurePlate {
 		}
 		public static class Button {
-		}
-		public static class Snow {
-			private static BlockInfo Create(ushort id) {
-				var height = id >> 12;
-
-				var blockInfo = new BlockInfo {
-					Id = id,
-					Name = id == 0x50 ? "Snow Block" : "Snow (" + height + ")",
-					InternalName = id == 0x50 ? "minecraft:snow" : "minecraft:snow_layer",
-					BlastResistance = 10,
-					Hardness = 2,
-
-				};
-
-				return blockInfo;
-			}
-
-			public static readonly BlockInfo Height0 = Create(0x004E);
-			public static readonly BlockInfo Height1 = Create(0x104E);
-			public static readonly BlockInfo Height2 = Create(0x204E);
-			public static readonly BlockInfo Height3 = Create(0x304E);
-			public static readonly BlockInfo Height4 = Create(0x404E);
-			public static readonly BlockInfo Height5 = Create(0x504E);
-			public static readonly BlockInfo Height6 = Create(0x604E);
-			public static readonly BlockInfo Height7 = Create(0x704E);
-			public static readonly BlockInfo Block = Create(0x0050);
 		}
 		public static class Jukebox {
 		}
@@ -1342,6 +857,8 @@ namespace Sediment {
 		public static class Anvil {
 		}
 
+
+
 		public class BlockInfo {
 			public ushort Id { get; internal set; }
 			public string Name { get; internal set; }
@@ -1354,6 +871,8 @@ namespace Sediment {
 			public float Hardness { get; internal set; }
 			public float BlastResistance { get; internal set; }
 
+			public int TypeId { get { return Id & 0xFFF; } internal set { Id = (ushort)((Id & 0xF000) | value); } }
+			public int DataValue { get { return Id >> 12; } internal set { Id = (ushort)((Id & 0x0FFF) | (value << 12)); } }
 
 			public BlockInfo() {
 
