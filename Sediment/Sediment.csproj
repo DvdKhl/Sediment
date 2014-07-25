@@ -43,6 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Blocks.cs" />
+    <Compile Include="Core\BlockManager.cs" />
+    <Compile Include="Core\Chunk.cs" />
+    <Compile Include="Core\ChunkManager.cs" />
     <Compile Include="Core\Enchantments.cs" />
     <Compile Include="Core\Entity\Entity.cs" />
     <Compile Include="Core\Entity\Mob.cs" />
@@ -51,15 +54,16 @@
     <Compile Include="Core\Map.cs" />
     <Compile Include="Core\MapManager.cs" />
     <Compile Include="Internal\ChunkCache.cs" />
+    <Compile Include="Internal\DateTimeEx.cs" />
     <Compile Include="Internal\IdCountsFile.cs" />
     <Compile Include="Internal\LevelFile.cs" />
+    <Compile Include="Internal\Lighting.cs" />
     <Compile Include="Internal\MapFile.cs" />
     <Compile Include="Internal\PlayerFile.cs" />
     <Compile Include="Internal\RegionFile.cs" />
     <Compile Include="Internal\StructureGenFile.cs" />
     <Compile Include="Internal\VillagesFile.cs" />
-    <Compile Include="Internal\XYZ.cs" />
-    <Compile Include="Internal\XZ.cs" />
+    <Compile Include="Internal\XZInt.cs" />
     <Compile Include="Multiverse.cs" />
     <Compile Include="NBTLib\NBTReader.cs" />
     <Compile Include="NBTLib\NBTWriter.cs" />
