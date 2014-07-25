@@ -40,12 +40,8 @@ namespace Sediment.Internal {
 
 		public FileStream BaseStream { get; private set; }
 
-		public int X { get; private set; }
-		public int Z { get; private set; }
-
-		public RegionFile(string regionsPath, int regionX, int regionZ) {
-			var filePath = Path.Combine(regionsPath, "r." + regionX + "." + regionZ + ".mca");
-			BaseStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite);
+		public RegionFile(string regionsPath) {
+			BaseStream = new FileStream(regionsPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite);
 
 			table = new TableEntry[ChunkXCount * ChunkZCount];
 

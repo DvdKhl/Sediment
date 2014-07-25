@@ -5,6 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Sediment.Core {
-	class ChunkManager {
+	public class ChunkManager {
+		private World world;
+
+		public ChunkManager(World world) {
+			this.world = world;
+		}
 	}
 }

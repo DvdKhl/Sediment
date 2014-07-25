@@ -5,6 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Sediment.Core {
-	class BlockManager {
+	public class BlockManager {
+		private World world;
+
+		public BlockManager(World world) {
+			this.world = world;
+		}
 	}
 }

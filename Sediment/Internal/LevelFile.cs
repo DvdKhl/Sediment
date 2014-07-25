@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Sediment.Internal {
-	class LevelFile {
+	public class LevelFile {
+
+		public LevelFile(string path) {
+		}
 	}
 }
