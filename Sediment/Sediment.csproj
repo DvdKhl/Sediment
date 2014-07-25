@@ -64,7 +64,7 @@
     <Compile Include="Internal\StructureGenFile.cs" />
     <Compile Include="Internal\VillagesFile.cs" />
     <Compile Include="Internal\XZInt.cs" />
-    <Compile Include="Multiverse.cs" />
+    <Compile Include="Level.cs" />
     <Compile Include="NBTLib\NBTReader.cs" />
     <Compile Include="NBTLib\NBTWriter.cs" />
     <Compile Include="Core\Entities\Player.cs" />

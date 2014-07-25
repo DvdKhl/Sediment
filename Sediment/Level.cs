@@ -8,10 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Sediment {
-	public class Multiverse {
-		private static Dictionary<string, Multiverse> openMultiverses = new Dictionary<string, Multiverse>();
+	public class Level {
+		private static Dictionary<string, Level> openLevels = new Dictionary<string, Level>();
 
-		public MultiverseInfo Info { get; private set; }
+		public LevelInfo Info { get; private set; }
 		public string RootPath { get; private set; }
 
 		public WorldManager WorldManager { get; private set; }
@@ -21,7 +21,7 @@ namespace Sediment {
 		private LevelFile levelFile;
 
 
-		private Multiverse(string rootPath, MultiverseInfo info) {
+		private Level(string rootPath, LevelInfo info) {
 			this.RootPath = rootPath;
 			this.Info = info;
 
@@ -32,21 +32,21 @@ namespace Sediment {
 		}
 
 
-		public Multiverse Load(string rootPath) {
-			if(openMultiverses.ContainsKey(Path.GetFullPath(rootPath))) {
+		public Level Load(string rootPath) {
+			if(openLevels.ContainsKey(Path.GetFullPath(rootPath))) {
 				throw new InvalidOperationException("Already loaded");
 			}
 
-			var multiverse = new Multiverse(rootPath, MultiverseInfo.Default);
+			var level = new Level(rootPath, LevelInfo.Default);
 
-			openMultiverses.Add(multiverse.RootPath, multiverse);
+			openLevels.Add(level.RootPath, level);
 
-			return multiverse;
+			return level;
 		}
 	}
 
-	public class MultiverseInfo {
-		public static readonly MultiverseInfo Default = new MultiverseInfo {
+	public class LevelInfo {
+		public static readonly LevelInfo Default = new LevelInfo {
 			LevelPath = "level.dat",
 			PlayerDataPath = "playerdata",
 			StatisticsDataPath = "stats",

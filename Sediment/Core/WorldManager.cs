@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Sediment.Core {
 	public class WorldManager {
-		public Multiverse Multiverse { get; private set; }
+		public Level Level { get; private set; }
 
 		public World this[WorldInfo type] {
 			get { throw new NotImplementedException(); }
 			set { throw new NotImplementedException(); }
 		}
 
-		public WorldManager(Multiverse multiverse) {
-			Multiverse = multiverse;
+		public WorldManager(Level level) {
+			Level = level;
 		}
 	}
 

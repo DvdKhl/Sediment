@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Sediment.Core {
 	public class PlayerManager {
-		private Multiverse multiverse;
+		private Level level;
 
-		public PlayerManager(Multiverse multiverse) {
-			this.multiverse = multiverse;
+		public PlayerManager(Level level) {
+			this.level = level;
 		}
 	}
 }
