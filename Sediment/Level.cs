@@ -32,7 +32,7 @@ namespace Sediment {
 		}
 
 
-		public Level Load(string rootPath) {
+		public static Level Load(string rootPath) {
 			if(openLevels.ContainsKey(Path.GetFullPath(rootPath))) {
 				throw new InvalidOperationException("Already loaded");
 			}

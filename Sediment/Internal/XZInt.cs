@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Sediment.Internal {
-	class XZInt {
+	internal class XZInt {
 		public int X { get; private set; }
 		public int Z { get; private set; }
 
@@ -13,5 +13,10 @@ namespace Sediment.Internal {
 		public bool Equals(XZInt obj) { return obj != null && obj.X == X && obj.Z == Z; }
 
 		public override int GetHashCode() { return unchecked(X ^ (Z << 16)); }
+
+		public XZInt(int x, int z) {
+			this.X = x;
+			this.Z = z;
+		}
 	}
 }

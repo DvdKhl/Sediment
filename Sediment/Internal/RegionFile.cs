@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Ionic.Zlib;
+using NBTLib;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Sediment.Internal {
-	internal class RegionFile : IDisposable {
+	internal class RegionFile {
 		private const int SectorSize = 4 * 1024;
 		private static readonly byte[] ZeroSector = new byte[SectorSize];
 		private const int ChunkCount = ChunkXCount * ChunkZCount;
@@ -38,26 +40,28 @@ namespace Sediment.Internal {
 			}
 		}
 
-		public FileStream BaseStream { get; private set; }
+		private string path;
 
-		public RegionFile(string regionsPath) {
-			BaseStream = new FileStream(regionsPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite);
+		public RegionFile(string regionPath) {
+			this.path = regionPath;
 
-			table = new TableEntry[ChunkXCount * ChunkZCount];
+			using(var fileStream = new FileStream(regionPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite)) {
+				table = new TableEntry[ChunkXCount * ChunkZCount];
 
-			if(BaseStream.Length < SectorSize) {
-				throw new InvalidOperationException();
-				BaseStream.Write(ZeroSector, 0, SectorSize); //Locations
-				BaseStream.Write(ZeroSector, 0, SectorSize); //Timestamps
+				if(fileStream.Length < SectorSize) {
+					throw new InvalidOperationException();
+					fileStream.Write(ZeroSector, 0, SectorSize); //Locations
+					fileStream.Write(ZeroSector, 0, SectorSize); //Timestamps
 
-			} else {
-				ReadTable();
-				BuildLinks();
+				} else {
+					ReadTable(fileStream);
+					BuildLinks();
+				}
 			}
 		}
-		private void ReadTable() {
+		private void ReadTable(FileStream fileStream) {
 			var tableBin = new byte[SectorSize * 2];
-			BaseStream.Read(tableBin, 0, tableBin.Length);
+			fileStream.Read(tableBin, 0, tableBin.Length);
 
 			var chunkHeader = new byte[5];
 			for(int i = 0; i < ChunkCount; i++) {
@@ -72,8 +76,8 @@ namespace Sediment.Internal {
 					(tableBin[SectorSize + i * 4 + 3] << 0)
 				);
 
-				BaseStream.Position = entry.SectorOffset << 12;
-				BaseStream.Read(chunkHeader, 0, 5);
+				fileStream.Position = entry.SectorOffset << 12;
+				fileStream.Read(chunkHeader, 0, 5);
 
 				entry.Length =
 					(chunkHeader[0] << 24) |
@@ -121,7 +125,7 @@ namespace Sediment.Internal {
 			var sectorsNeeded = (byte)((ChunkHeaderLength + length) / SectorSize + 1);
 
 			if(entry.SectorCount <= sectorsNeeded) {
-				StoreChunk(localChunkX, localChunkZ, data, offset, length, timestamp, entry.SectorOffset);
+				StoreChunk(data, offset, length, timestamp, entry.SectorOffset);
 
 			} else {
 				var prev = firstLocationTableEntry;
@@ -134,7 +138,7 @@ namespace Sediment.Internal {
 					cur = cur.Next;
 				}
 
-				StoreChunk(localChunkX, localChunkZ, data, offset, length, timestamp, prev.SectorOffset + prev.SectorCount);
+				StoreChunk(data, offset, length, timestamp, prev.SectorOffset + prev.SectorCount);
 
 				entry.SectorOffset = prev.SectorOffset + prev.SectorCount;
 
@@ -149,14 +153,16 @@ namespace Sediment.Internal {
 			entry.CompressionType = 2;
 			entry.Length = length;
 		}
-		private void StoreChunk(int localChunkX, int localChunkZ, byte[] data, int offset, int length, DateTime timestamp, int sectorOffset) {
+		private void StoreChunk(byte[] data, int offset, int length, DateTime timestamp, int sectorOffset) {
 			var lengthBin = BitConverter.GetBytes(length);
 			if(BitConverter.IsLittleEndian) Array.Reverse(lengthBin);
 
-			BaseStream.Position = sectorOffset << 12;
-			BaseStream.Write(lengthBin, 0, 4);
-			BaseStream.WriteByte(2);
-			BaseStream.Write(data, offset, length);
+			using(var fileStream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite)) {
+				fileStream.Position = sectorOffset << 12;
+				fileStream.Write(lengthBin, 0, 4);
+				fileStream.WriteByte(2);
+				fileStream.Write(data, offset, length);
+			}
 		}
 
 		public void DeleteChunk(int localChunkX, int localChunkZ) {
@@ -167,18 +173,11 @@ namespace Sediment.Internal {
 			entry.Reset();
 		}
 
-		public void Dispose() {
-			Dispose(true);
-			GC.SuppressFinalize(this);
+		public NBTReader CreateChunkReader(int localChunkX, int localChunkZ) {
+			var fileStream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite);
+			var dataStream = new GZipStream(fileStream, CompressionMode.Decompress, false);
+			return new NBTReader(dataStream);
 		}
-		protected virtual void Dispose(bool disposing) {
-			if(!disposed) {
-				BaseStream.Close();
-				BaseStream = null;
-				disposed = true;
-			}
-		}
-
 
 		private class TableEntryOffsetComparer : IComparer<TableEntry> {
 			public static readonly TableEntryOffsetComparer Instance = new TableEntryOffsetComparer();
