@@ -154,4 +154,40 @@ namespace NBTLib {
 		End = 0, Byte = 1, Short = 2, Int = 3, Long = 4, Float = 5, Double = 6, Binary = 7, String = 8, Compound = 10,
 		List = 16, ShortList = 18, IntList = 19, LongList = 20, FloatList = 21, DoubleList = 22, BinaryList = 23, StringList = 24, CompoundList = 26
 	}
+
+	public static class NBTReaderEx {
+		public static NBTNode TreeToStructure(this NBTReader reader) {
+			var node = new NBTNode {
+				Name = reader.Name,
+				Type = reader.Type
+			};
+
+			node.Value = reader.Value;
+
+			if(reader.Type == NBTType.Compound) {
+				var nodes = new List<NBTNode>();
+				while(reader.MoveNext() && reader.Type != NBTType.End) {
+					nodes.Add(TreeToStructure(reader));
+				}
+				node.Value = nodes;
+
+			} else if(reader.Type == NBTType.CompoundList) {
+				var nodes = new List<NBTNode>();
+				var length = (int)reader.Value;
+				for(int i = 0; i < length; i++) {
+					while(reader.MoveNext() && reader.Type != NBTType.End) {
+						nodes.Add(TreeToStructure(reader));
+					}
+				}
+			}
+
+			return node;
+		}
+	}
+
+	public class NBTNode {
+		public string Name;
+		public NBTType Type;
+		public object Value;
+	}
 }
