@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace NBTLib {
-	public class NBTReader {
+	public class NBTReader : IDisposable {
 		public Stream BaseStream { get; private set; }
 
 		public NBTReader(Stream stream) {
@@ -148,6 +148,17 @@ namespace NBTLib {
 			return Encoding.UTF8.GetString(bStr);
 		}
 
+		private bool disposed;
+		public void Dispose() {
+			Dispose(true);
+			GC.SuppressFinalize(this);
+		}
+		protected virtual void Dispose(bool disposing) {
+			if(!disposed) {
+				disposed = true;
+				if(BaseStream != null) BaseStream.Dispose();
+			}
+		}
 	}
 
 	public enum NBTType {
