@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Sediment.Internal {
-	class XYZ {
+	internal static class DateTimeEx {
+		public static readonly DateTime UnixTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
 	}
 }

@@ -9,7 +9,6 @@ namespace Sediment.Internal {
 	internal class RegionFile : IDisposable {
 		private const int SectorSize = 4 * 1024;
 		private static readonly byte[] ZeroSector = new byte[SectorSize];
-		private static readonly DateTime UnixTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
 		private const int ChunkCount = ChunkXCount * ChunkZCount;
 		private const int ChunkXCount = 32;
 		private const int ChunkZCount = 32;
@@ -70,7 +69,7 @@ namespace Sediment.Internal {
 				entry.SectorOffset = (tableBin[i * 4 + 0] << 16) | (tableBin[i * 4 + 1] << 8) | tableBin[i * 4 + 2];
 				entry.SectorCount = tableBin[i * 4 + 3];
 
-				entry.Timestamp = UnixTime.AddSeconds(
+				entry.Timestamp = DateTimeEx.UnixTime.AddSeconds(
 					(tableBin[SectorSize + i * 4 + 0] << 24) |
 					(tableBin[SectorSize + i * 4 + 1] << 16) |
 					(tableBin[SectorSize + i * 4 + 2] << 8) |
