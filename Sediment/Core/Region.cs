@@ -10,9 +10,15 @@ namespace Sediment.Core {
 		private World world;
 		private RegionFile regionFile;
 
-		private Region(World world, int x, int z) {
+		public int X { get; private set; }
+		public int Z { get; private set; }
 
-			regionFile = new RegionFile(string.Format(world.Info.RegionFilePathFormat, x, z));
+		internal Region(World world, int regionX, int regionZ) {
+			this.world = world;
+			this.X = regionX;
+			this.Z = regionZ;
+
+			regionFile = new RegionFile(string.Format(world.Info.RegionFilePathFormat, regionX, regionZ));
 		}
 	}
 }

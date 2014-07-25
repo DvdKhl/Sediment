@@ -8,13 +8,25 @@ namespace Sediment.Core {
 	public class WorldManager {
 		public Level Level { get; private set; }
 
-		public World this[WorldInfo type] {
-			get { throw new NotImplementedException(); }
+		private Dictionary<WorldInfo, World> openWorlds;
+
+		public World this[WorldInfo info] {
+			get {
+				World world;
+				if(!openWorlds.TryGetValue(info, out world)) {
+					world = new World(Level, info);
+					openWorlds.Add(info, world);
+				}
+				return world;
+			}
+
 			set { throw new NotImplementedException(); }
 		}
 
 		public WorldManager(Level level) {
 			Level = level;
+
+			openWorlds = new Dictionary<WorldInfo, World>();
 		}
 	}
 
