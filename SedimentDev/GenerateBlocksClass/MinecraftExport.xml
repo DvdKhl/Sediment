@@ -1,5 +1,6 @@
 ﻿<Blocks>
   <Block>
+    <Heirarchy>Block.BlockAir</Heirarchy>
     <Id>0</Id>
     <Name>air</Name>
     <InternalName>minecraft:air</InternalName>
@@ -19,6 +20,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockStone</Heirarchy>
     <Id>1</Id>
     <Name>stone</Name>
     <InternalName>minecraft:stone</InternalName>
@@ -38,6 +40,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockGrass</Heirarchy>
     <Id>2</Id>
     <Name>grass</Name>
     <InternalName>minecraft:grass</InternalName>
@@ -57,6 +60,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockDirt</Heirarchy>
     <Id>3</Id>
     <Name>dirt</Name>
     <InternalName>minecraft:dirt</InternalName>
@@ -76,6 +80,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block</Heirarchy>
     <Id>4</Id>
     <Name>stonebrick</Name>
     <InternalName>minecraft:cobblestone</InternalName>
@@ -95,6 +100,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockWood</Heirarchy>
     <Id>5</Id>
     <Name>wood</Name>
     <InternalName>minecraft:planks</InternalName>
@@ -114,6 +120,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockBush.BlockSapling</Heirarchy>
     <Id>6</Id>
     <Name>sapling</Name>
     <InternalName>minecraft:sapling</InternalName>
@@ -133,6 +140,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block</Heirarchy>
     <Id>7</Id>
     <Name>bedrock</Name>
     <InternalName>minecraft:bedrock</InternalName>
@@ -152,6 +160,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockLiquid.BlockDynamicLiquid</Heirarchy>
     <Id>8</Id>
     <Name>water</Name>
     <InternalName>minecraft:flowing_water</InternalName>
@@ -171,6 +180,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockLiquid.BlockStaticLiquid</Heirarchy>
     <Id>9</Id>
     <Name>water</Name>
     <InternalName>minecraft:water</InternalName>
@@ -190,6 +200,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockLiquid.BlockDynamicLiquid</Heirarchy>
     <Id>10</Id>
     <Name>lava</Name>
     <InternalName>minecraft:flowing_lava</InternalName>
@@ -209,6 +220,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockLiquid.BlockStaticLiquid</Heirarchy>
     <Id>11</Id>
     <Name>lava</Name>
     <InternalName>minecraft:lava</InternalName>
@@ -228,6 +240,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockFalling.BlockSand</Heirarchy>
     <Id>12</Id>
     <Name>sand</Name>
     <InternalName>minecraft:sand</InternalName>
@@ -247,6 +260,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockFalling.BlockGravel</Heirarchy>
     <Id>13</Id>
     <Name>gravel</Name>
     <InternalName>minecraft:gravel</InternalName>
@@ -266,6 +280,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockOre</Heirarchy>
     <Id>14</Id>
     <Name>oreGold</Name>
     <InternalName>minecraft:gold_ore</InternalName>
@@ -285,6 +300,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockOre</Heirarchy>
     <Id>15</Id>
     <Name>oreIron</Name>
     <InternalName>minecraft:iron_ore</InternalName>
@@ -304,6 +320,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockOre</Heirarchy>
     <Id>16</Id>
     <Name>oreCoal</Name>
     <InternalName>minecraft:coal_ore</InternalName>
@@ -323,6 +340,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockRotatedPillar.BlockLog.BlockOldLog</Heirarchy>
     <Id>17</Id>
     <Name>log</Name>
     <InternalName>minecraft:log</InternalName>
@@ -342,6 +360,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockLeavesBase.BlockLeaves.BlockOldLeaf</Heirarchy>
     <Id>18</Id>
     <Name>leaves</Name>
     <InternalName>minecraft:leaves</InternalName>
@@ -361,6 +380,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockSponge</Heirarchy>
     <Id>19</Id>
     <Name>sponge</Name>
     <InternalName>minecraft:sponge</InternalName>
@@ -380,6 +400,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockBreakable.BlockGlass</Heirarchy>
     <Id>20</Id>
     <Name>glass</Name>
     <InternalName>minecraft:glass</InternalName>
@@ -399,6 +420,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockOre</Heirarchy>
     <Id>21</Id>
     <Name>oreLapis</Name>
     <InternalName>minecraft:lapis_ore</InternalName>
@@ -418,6 +440,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockCompressed</Heirarchy>
     <Id>22</Id>
     <Name>blockLapis</Name>
     <InternalName>minecraft:lapis_block</InternalName>
@@ -437,6 +460,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockContainer.BlockDispenser</Heirarchy>
     <Id>23</Id>
     <Name>dispenser</Name>
     <InternalName>minecraft:dispenser</InternalName>
@@ -456,6 +480,7 @@
     <HasTileEntity>true</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockSandStone</Heirarchy>
     <Id>24</Id>
     <Name>sandStone</Name>
     <InternalName>minecraft:sandstone</InternalName>
@@ -475,6 +500,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockContainer.BlockNote</Heirarchy>
     <Id>25</Id>
     <Name>musicBlock</Name>
     <InternalName>minecraft:noteblock</InternalName>
@@ -494,6 +520,7 @@
     <HasTileEntity>true</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockDirectional.BlockBed</Heirarchy>
     <Id>26</Id>
     <Name>bed</Name>
     <InternalName>minecraft:bed</InternalName>
@@ -513,6 +540,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockRailBase.BlockRailPowered</Heirarchy>
     <Id>27</Id>
     <Name>goldenRail</Name>
     <InternalName>minecraft:golden_rail</InternalName>
@@ -532,6 +560,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockRailBase.BlockRailDetector</Heirarchy>
     <Id>28</Id>
     <Name>detectorRail</Name>
     <InternalName>minecraft:detector_rail</InternalName>
@@ -551,6 +580,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockPistonBase</Heirarchy>
     <Id>29</Id>
     <Name>pistonStickyBase</Name>
     <InternalName>minecraft:sticky_piston</InternalName>
@@ -570,6 +600,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockWeb</Heirarchy>
     <Id>30</Id>
     <Name>web</Name>
     <InternalName>minecraft:web</InternalName>
@@ -589,6 +620,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockBush.BlockTallGrass</Heirarchy>
     <Id>31</Id>
     <Name>tallgrass</Name>
     <InternalName>minecraft:tallgrass</InternalName>
@@ -608,6 +640,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockBush.BlockDeadBush</Heirarchy>
     <Id>32</Id>
     <Name>deadbush</Name>
     <InternalName>minecraft:deadbush</InternalName>
@@ -627,6 +660,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockPistonBase</Heirarchy>
     <Id>33</Id>
     <Name>pistonBase</Name>
     <InternalName>minecraft:piston</InternalName>
@@ -646,6 +680,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockPistonExtension</Heirarchy>
     <Id>34</Id>
     <Name></Name>
     <InternalName>minecraft:piston_head</InternalName>
@@ -665,6 +700,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockColored</Heirarchy>
     <Id>35</Id>
     <Name>cloth</Name>
     <InternalName>minecraft:wool</InternalName>
@@ -684,6 +720,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockContainer.BlockPistonMoving</Heirarchy>
     <Id>36</Id>
     <Name></Name>
     <InternalName>minecraft:piston_extension</InternalName>
@@ -703,6 +740,7 @@
     <HasTileEntity>true</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockBush.BlockFlower</Heirarchy>
     <Id>37</Id>
     <Name>flower1</Name>
     <InternalName>minecraft:yellow_flower</InternalName>
@@ -722,6 +760,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockBush.BlockFlower</Heirarchy>
     <Id>38</Id>
     <Name>flower2</Name>
     <InternalName>minecraft:red_flower</InternalName>
@@ -741,6 +780,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockBush.BlockMushroom</Heirarchy>
     <Id>39</Id>
     <Name>mushroom</Name>
     <InternalName>minecraft:brown_mushroom</InternalName>
@@ -760,6 +800,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockBush.BlockMushroom</Heirarchy>
     <Id>40</Id>
     <Name>mushroom</Name>
     <InternalName>minecraft:red_mushroom</InternalName>
@@ -779,6 +820,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockCompressed</Heirarchy>
     <Id>41</Id>
     <Name>blockGold</Name>
     <InternalName>minecraft:gold_block</InternalName>
@@ -798,6 +840,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockCompressed</Heirarchy>
     <Id>42</Id>
     <Name>blockIron</Name>
     <InternalName>minecraft:iron_block</InternalName>
@@ -817,6 +860,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockSlab.BlockStoneSlab</Heirarchy>
     <Id>43</Id>
     <Name>stoneSlab</Name>
     <InternalName>minecraft:double_stone_slab</InternalName>
@@ -836,6 +880,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockSlab.BlockStoneSlab</Heirarchy>
     <Id>44</Id>
     <Name>stoneSlab</Name>
     <InternalName>minecraft:stone_slab</InternalName>
@@ -855,6 +900,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block</Heirarchy>
     <Id>45</Id>
     <Name>brick</Name>
     <InternalName>minecraft:brick_block</InternalName>
@@ -874,6 +920,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockTNT</Heirarchy>
     <Id>46</Id>
     <Name>tnt</Name>
     <InternalName>minecraft:tnt</InternalName>
@@ -893,6 +940,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockBookshelf</Heirarchy>
     <Id>47</Id>
     <Name>bookshelf</Name>
     <InternalName>minecraft:bookshelf</InternalName>
@@ -912,6 +960,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block</Heirarchy>
     <Id>48</Id>
     <Name>stoneMoss</Name>
     <InternalName>minecraft:mossy_cobblestone</InternalName>
@@ -931,6 +980,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockStone.BlockObsidian</Heirarchy>
     <Id>49</Id>
     <Name>obsidian</Name>
     <InternalName>minecraft:obsidian</InternalName>
@@ -950,6 +1000,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockTorch</Heirarchy>
     <Id>50</Id>
     <Name>torch</Name>
     <InternalName>minecraft:torch</InternalName>
@@ -969,6 +1020,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockFire</Heirarchy>
     <Id>51</Id>
     <Name>fire</Name>
     <InternalName>minecraft:fire</InternalName>
@@ -988,6 +1040,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockContainer.BlockMobSpawner</Heirarchy>
     <Id>52</Id>
     <Name>mobSpawner</Name>
     <InternalName>minecraft:mob_spawner</InternalName>
@@ -1007,6 +1060,7 @@
     <HasTileEntity>true</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockStairs</Heirarchy>
     <Id>53</Id>
     <Name>stairsWood</Name>
     <InternalName>minecraft:oak_stairs</InternalName>
@@ -1026,6 +1080,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockContainer.BlockChest</Heirarchy>
     <Id>54</Id>
     <Name>chest</Name>
     <InternalName>minecraft:chest</InternalName>
@@ -1045,6 +1100,7 @@
     <HasTileEntity>true</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockRedstoneWire</Heirarchy>
     <Id>55</Id>
     <Name>redstoneDust</Name>
     <InternalName>minecraft:redstone_wire</InternalName>
@@ -1064,6 +1120,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockOre</Heirarchy>
     <Id>56</Id>
     <Name>oreDiamond</Name>
     <InternalName>minecraft:diamond_ore</InternalName>
@@ -1083,6 +1140,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockCompressed</Heirarchy>
     <Id>57</Id>
     <Name>blockDiamond</Name>
     <InternalName>minecraft:diamond_block</InternalName>
@@ -1102,6 +1160,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockWorkbench</Heirarchy>
     <Id>58</Id>
     <Name>workbench</Name>
     <InternalName>minecraft:crafting_table</InternalName>
@@ -1121,6 +1180,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockBush.BlockCrops</Heirarchy>
     <Id>59</Id>
     <Name>crops</Name>
     <InternalName>minecraft:wheat</InternalName>
@@ -1140,6 +1200,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockFarmland</Heirarchy>
     <Id>60</Id>
     <Name>farmland</Name>
     <InternalName>minecraft:farmland</InternalName>
@@ -1159,6 +1220,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockContainer.BlockFurnace</Heirarchy>
     <Id>61</Id>
     <Name>furnace</Name>
     <InternalName>minecraft:furnace</InternalName>
@@ -1178,6 +1240,7 @@
     <HasTileEntity>true</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockContainer.BlockFurnace</Heirarchy>
     <Id>62</Id>
     <Name>furnace</Name>
     <InternalName>minecraft:lit_furnace</InternalName>
@@ -1197,6 +1260,7 @@
     <HasTileEntity>true</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockContainer.BlockSign</Heirarchy>
     <Id>63</Id>
     <Name>sign</Name>
     <InternalName>minecraft:standing_sign</InternalName>
@@ -1216,6 +1280,7 @@
     <HasTileEntity>true</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockDoor</Heirarchy>
     <Id>64</Id>
     <Name>doorWood</Name>
     <InternalName>minecraft:wooden_door</InternalName>
@@ -1235,6 +1300,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockLadder</Heirarchy>
     <Id>65</Id>
     <Name>ladder</Name>
     <InternalName>minecraft:ladder</InternalName>
@@ -1254,6 +1320,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockRailBase.BlockRail</Heirarchy>
     <Id>66</Id>
     <Name>rail</Name>
     <InternalName>minecraft:rail</InternalName>
@@ -1273,6 +1340,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockStairs</Heirarchy>
     <Id>67</Id>
     <Name>stairsStone</Name>
     <InternalName>minecraft:stone_stairs</InternalName>
@@ -1292,6 +1360,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockContainer.BlockSign</Heirarchy>
     <Id>68</Id>
     <Name>sign</Name>
     <InternalName>minecraft:wall_sign</InternalName>
@@ -1311,6 +1380,7 @@
     <HasTileEntity>true</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockLever</Heirarchy>
     <Id>69</Id>
     <Name>lever</Name>
     <InternalName>minecraft:lever</InternalName>
@@ -1330,6 +1400,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockBasePressurePlate.BlockPressurePlate</Heirarchy>
     <Id>70</Id>
     <Name>pressurePlate</Name>
     <InternalName>minecraft:stone_pressure_plate</InternalName>
@@ -1349,6 +1420,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockDoor</Heirarchy>
     <Id>71</Id>
     <Name>doorIron</Name>
     <InternalName>minecraft:iron_door</InternalName>
@@ -1368,6 +1440,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockBasePressurePlate.BlockPressurePlate</Heirarchy>
     <Id>72</Id>
     <Name>pressurePlate</Name>
     <InternalName>minecraft:wooden_pressure_plate</InternalName>
@@ -1387,6 +1460,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockRedstoneOre</Heirarchy>
     <Id>73</Id>
     <Name>oreRedstone</Name>
     <InternalName>minecraft:redstone_ore</InternalName>
@@ -1406,6 +1480,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockRedstoneOre</Heirarchy>
     <Id>74</Id>
     <Name>oreRedstone</Name>
     <InternalName>minecraft:lit_redstone_ore</InternalName>
@@ -1425,6 +1500,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockTorch.BlockRedstoneTorch</Heirarchy>
     <Id>75</Id>
     <Name>notGate</Name>
     <InternalName>minecraft:unlit_redstone_torch</InternalName>
@@ -1444,6 +1520,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockTorch.BlockRedstoneTorch</Heirarchy>
     <Id>76</Id>
     <Name>notGate</Name>
     <InternalName>minecraft:redstone_torch</InternalName>
@@ -1463,6 +1540,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockButton.BlockButtonStone</Heirarchy>
     <Id>77</Id>
     <Name>button</Name>
     <InternalName>minecraft:stone_button</InternalName>
@@ -1482,6 +1560,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockSnow</Heirarchy>
     <Id>78</Id>
     <Name>snow</Name>
     <InternalName>minecraft:snow_layer</InternalName>
@@ -1501,6 +1580,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockBreakable.BlockIce</Heirarchy>
     <Id>79</Id>
     <Name>ice</Name>
     <InternalName>minecraft:ice</InternalName>
@@ -1520,6 +1600,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockSnowBlock</Heirarchy>
     <Id>80</Id>
     <Name>snow</Name>
     <InternalName>minecraft:snow</InternalName>
@@ -1539,6 +1620,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockCactus</Heirarchy>
     <Id>81</Id>
     <Name>cactus</Name>
     <InternalName>minecraft:cactus</InternalName>
@@ -1558,6 +1640,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockClay</Heirarchy>
     <Id>82</Id>
     <Name>clay</Name>
     <InternalName>minecraft:clay</InternalName>
@@ -1577,6 +1660,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockReed</Heirarchy>
     <Id>83</Id>
     <Name>reeds</Name>
     <InternalName>minecraft:reeds</InternalName>
@@ -1596,6 +1680,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockContainer.BlockJukebox</Heirarchy>
     <Id>84</Id>
     <Name>jukebox</Name>
     <InternalName>minecraft:jukebox</InternalName>
@@ -1615,6 +1700,7 @@
     <HasTileEntity>true</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockFence</Heirarchy>
     <Id>85</Id>
     <Name>fence</Name>
     <InternalName>minecraft:fence</InternalName>
@@ -1634,6 +1720,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockDirectional.BlockPumpkin</Heirarchy>
     <Id>86</Id>
     <Name>pumpkin</Name>
     <InternalName>minecraft:pumpkin</InternalName>
@@ -1653,6 +1740,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockNetherrack</Heirarchy>
     <Id>87</Id>
     <Name>hellrock</Name>
     <InternalName>minecraft:netherrack</InternalName>
@@ -1672,6 +1760,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockSoulSand</Heirarchy>
     <Id>88</Id>
     <Name>hellsand</Name>
     <InternalName>minecraft:soul_sand</InternalName>
@@ -1691,6 +1780,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockGlowstone</Heirarchy>
     <Id>89</Id>
     <Name>lightgem</Name>
     <InternalName>minecraft:glowstone</InternalName>
@@ -1710,6 +1800,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockBreakable.BlockPortal</Heirarchy>
     <Id>90</Id>
     <Name>portal</Name>
     <InternalName>minecraft:portal</InternalName>
@@ -1729,6 +1820,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockDirectional.BlockPumpkin</Heirarchy>
     <Id>91</Id>
     <Name>litpumpkin</Name>
     <InternalName>minecraft:lit_pumpkin</InternalName>
@@ -1748,6 +1840,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockCake</Heirarchy>
     <Id>92</Id>
     <Name>cake</Name>
     <InternalName>minecraft:cake</InternalName>
@@ -1767,6 +1860,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockDirectional.BlockRedstoneDiode.BlockRedstoneRepeater</Heirarchy>
     <Id>93</Id>
     <Name>diode</Name>
     <InternalName>minecraft:unpowered_repeater</InternalName>
@@ -1786,6 +1880,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockDirectional.BlockRedstoneDiode.BlockRedstoneRepeater</Heirarchy>
     <Id>94</Id>
     <Name>diode</Name>
     <InternalName>minecraft:powered_repeater</InternalName>
@@ -1805,6 +1900,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockBreakable.BlockStainedGlass</Heirarchy>
     <Id>95</Id>
     <Name>stainedGlass</Name>
     <InternalName>minecraft:stained_glass</InternalName>
@@ -1824,6 +1920,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockTrapDoor</Heirarchy>
     <Id>96</Id>
     <Name>trapdoor</Name>
     <InternalName>minecraft:trapdoor</InternalName>
@@ -1843,6 +1940,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockSilverfish</Heirarchy>
     <Id>97</Id>
     <Name>monsterStoneEgg</Name>
     <InternalName>minecraft:monster_egg</InternalName>
@@ -1862,6 +1960,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockStoneBrick</Heirarchy>
     <Id>98</Id>
     <Name>stonebricksmooth</Name>
     <InternalName>minecraft:stonebrick</InternalName>
@@ -1881,6 +1980,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockHugeMushroom</Heirarchy>
     <Id>99</Id>
     <Name>mushroom</Name>
     <InternalName>minecraft:brown_mushroom_block</InternalName>
@@ -1900,6 +2000,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockHugeMushroom</Heirarchy>
     <Id>100</Id>
     <Name>mushroom</Name>
     <InternalName>minecraft:red_mushroom_block</InternalName>
@@ -1919,6 +2020,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockPane</Heirarchy>
     <Id>101</Id>
     <Name>fenceIron</Name>
     <InternalName>minecraft:iron_bars</InternalName>
@@ -1938,6 +2040,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockPane</Heirarchy>
     <Id>102</Id>
     <Name>thinGlass</Name>
     <InternalName>minecraft:glass_pane</InternalName>
@@ -1957,6 +2060,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockMelon</Heirarchy>
     <Id>103</Id>
     <Name>melon</Name>
     <InternalName>minecraft:melon_block</InternalName>
@@ -1976,6 +2080,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockBush.BlockStem</Heirarchy>
     <Id>104</Id>
     <Name>pumpkinStem</Name>
     <InternalName>minecraft:pumpkin_stem</InternalName>
@@ -1995,6 +2100,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockBush.BlockStem</Heirarchy>
     <Id>105</Id>
     <Name>pumpkinStem</Name>
     <InternalName>minecraft:melon_stem</InternalName>
@@ -2014,6 +2120,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockVine</Heirarchy>
     <Id>106</Id>
     <Name>vine</Name>
     <InternalName>minecraft:vine</InternalName>
@@ -2033,6 +2140,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockDirectional.BlockFenceGate</Heirarchy>
     <Id>107</Id>
     <Name>fenceGate</Name>
     <InternalName>minecraft:fence_gate</InternalName>
@@ -2052,6 +2160,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockStairs</Heirarchy>
     <Id>108</Id>
     <Name>stairsBrick</Name>
     <InternalName>minecraft:brick_stairs</InternalName>
@@ -2071,6 +2180,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockStairs</Heirarchy>
     <Id>109</Id>
     <Name>stairsStoneBrickSmooth</Name>
     <InternalName>minecraft:stone_brick_stairs</InternalName>
@@ -2090,6 +2200,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockMycelium</Heirarchy>
     <Id>110</Id>
     <Name>mycel</Name>
     <InternalName>minecraft:mycelium</InternalName>
@@ -2109,6 +2220,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockBush.BlockLilyPad</Heirarchy>
     <Id>111</Id>
     <Name>waterlily</Name>
     <InternalName>minecraft:waterlily</InternalName>
@@ -2128,6 +2240,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block</Heirarchy>
     <Id>112</Id>
     <Name>netherBrick</Name>
     <InternalName>minecraft:nether_brick</InternalName>
@@ -2147,6 +2260,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockFence</Heirarchy>
     <Id>113</Id>
     <Name>netherFence</Name>
     <InternalName>minecraft:nether_brick_fence</InternalName>
@@ -2166,6 +2280,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockStairs</Heirarchy>
     <Id>114</Id>
     <Name>stairsNetherBrick</Name>
     <InternalName>minecraft:nether_brick_stairs</InternalName>
@@ -2185,6 +2300,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockBush.BlockNetherWart</Heirarchy>
     <Id>115</Id>
     <Name>netherStalk</Name>
     <InternalName>minecraft:nether_wart</InternalName>
@@ -2204,6 +2320,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockContainer.BlockEnchantmentTable</Heirarchy>
     <Id>116</Id>
     <Name>enchantmentTable</Name>
     <InternalName>minecraft:enchanting_table</InternalName>
@@ -2223,6 +2340,7 @@
     <HasTileEntity>true</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockContainer.BlockBrewingStand</Heirarchy>
     <Id>117</Id>
     <Name>brewingStand</Name>
     <InternalName>minecraft:brewing_stand</InternalName>
@@ -2242,6 +2360,7 @@
     <HasTileEntity>true</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockCauldron</Heirarchy>
     <Id>118</Id>
     <Name>cauldron</Name>
     <InternalName>minecraft:cauldron</InternalName>
@@ -2261,6 +2380,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockContainer.BlockEndPortal</Heirarchy>
     <Id>119</Id>
     <Name></Name>
     <InternalName>minecraft:end_portal</InternalName>
@@ -2280,6 +2400,7 @@
     <HasTileEntity>true</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockEndPortalFrame</Heirarchy>
     <Id>120</Id>
     <Name>endPortalFrame</Name>
     <InternalName>minecraft:end_portal_frame</InternalName>
@@ -2299,6 +2420,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block</Heirarchy>
     <Id>121</Id>
     <Name>whiteStone</Name>
     <InternalName>minecraft:end_stone</InternalName>
@@ -2318,6 +2440,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockDragonEgg</Heirarchy>
     <Id>122</Id>
     <Name>dragonEgg</Name>
     <InternalName>minecraft:dragon_egg</InternalName>
@@ -2337,6 +2460,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockRedstoneLight</Heirarchy>
     <Id>123</Id>
     <Name>redstoneLight</Name>
     <InternalName>minecraft:redstone_lamp</InternalName>
@@ -2356,6 +2480,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockRedstoneLight</Heirarchy>
     <Id>124</Id>
     <Name>redstoneLight</Name>
     <InternalName>minecraft:lit_redstone_lamp</InternalName>
@@ -2375,6 +2500,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockSlab.BlockWoodSlab</Heirarchy>
     <Id>125</Id>
     <Name>woodSlab</Name>
     <InternalName>minecraft:double_wooden_slab</InternalName>
@@ -2394,6 +2520,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockSlab.BlockWoodSlab</Heirarchy>
     <Id>126</Id>
     <Name>woodSlab</Name>
     <InternalName>minecraft:wooden_slab</InternalName>
@@ -2413,6 +2540,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockDirectional.BlockCocoa</Heirarchy>
     <Id>127</Id>
     <Name>cocoa</Name>
     <InternalName>minecraft:cocoa</InternalName>
@@ -2432,6 +2560,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockStairs</Heirarchy>
     <Id>128</Id>
     <Name>stairsSandStone</Name>
     <InternalName>minecraft:sandstone_stairs</InternalName>
@@ -2451,6 +2580,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockOre</Heirarchy>
     <Id>129</Id>
     <Name>oreEmerald</Name>
     <InternalName>minecraft:emerald_ore</InternalName>
@@ -2470,6 +2600,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockContainer.BlockEnderChest</Heirarchy>
     <Id>130</Id>
     <Name>enderChest</Name>
     <InternalName>minecraft:ender_chest</InternalName>
@@ -2489,6 +2620,7 @@
     <HasTileEntity>true</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockTripWireHook</Heirarchy>
     <Id>131</Id>
     <Name>tripWireSource</Name>
     <InternalName>minecraft:tripwire_hook</InternalName>
@@ -2508,6 +2640,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockTripWire</Heirarchy>
     <Id>132</Id>
     <Name>tripWire</Name>
     <InternalName>minecraft:tripwire</InternalName>
@@ -2527,6 +2660,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockCompressed</Heirarchy>
     <Id>133</Id>
     <Name>blockEmerald</Name>
     <InternalName>minecraft:emerald_block</InternalName>
@@ -2546,6 +2680,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockStairs</Heirarchy>
     <Id>134</Id>
     <Name>stairsWoodSpruce</Name>
     <InternalName>minecraft:spruce_stairs</InternalName>
@@ -2565,6 +2700,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockStairs</Heirarchy>
     <Id>135</Id>
     <Name>stairsWoodBirch</Name>
     <InternalName>minecraft:birch_stairs</InternalName>
@@ -2584,6 +2720,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockStairs</Heirarchy>
     <Id>136</Id>
     <Name>stairsWoodJungle</Name>
     <InternalName>minecraft:jungle_stairs</InternalName>
@@ -2603,6 +2740,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockContainer.BlockCommandBlock</Heirarchy>
     <Id>137</Id>
     <Name>commandBlock</Name>
     <InternalName>minecraft:command_block</InternalName>
@@ -2622,6 +2760,7 @@
     <HasTileEntity>true</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockContainer.BlockBeacon</Heirarchy>
     <Id>138</Id>
     <Name>beacon</Name>
     <InternalName>minecraft:beacon</InternalName>
@@ -2641,6 +2780,7 @@
     <HasTileEntity>true</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockWall</Heirarchy>
     <Id>139</Id>
     <Name>cobbleWall</Name>
     <InternalName>minecraft:cobblestone_wall</InternalName>
@@ -2660,6 +2800,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockContainer.BlockFlowerPot</Heirarchy>
     <Id>140</Id>
     <Name>flowerPot</Name>
     <InternalName>minecraft:flower_pot</InternalName>
@@ -2679,6 +2820,7 @@
     <HasTileEntity>true</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockBush.BlockCrops.BlockCarrot</Heirarchy>
     <Id>141</Id>
     <Name>carrots</Name>
     <InternalName>minecraft:carrots</InternalName>
@@ -2698,6 +2840,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockBush.BlockCrops.BlockPotato</Heirarchy>
     <Id>142</Id>
     <Name>potatoes</Name>
     <InternalName>minecraft:potatoes</InternalName>
@@ -2717,6 +2860,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockButton.BlockButtonWood</Heirarchy>
     <Id>143</Id>
     <Name>button</Name>
     <InternalName>minecraft:wooden_button</InternalName>
@@ -2736,6 +2880,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockContainer.BlockSkull</Heirarchy>
     <Id>144</Id>
     <Name>skull</Name>
     <InternalName>minecraft:skull</InternalName>
@@ -2755,6 +2900,7 @@
     <HasTileEntity>true</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockFalling.BlockAnvil</Heirarchy>
     <Id>145</Id>
     <Name>anvil</Name>
     <InternalName>minecraft:anvil</InternalName>
@@ -2774,6 +2920,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockContainer.BlockChest</Heirarchy>
     <Id>146</Id>
     <Name>chestTrap</Name>
     <InternalName>minecraft:trapped_chest</InternalName>
@@ -2793,6 +2940,7 @@
     <HasTileEntity>true</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockBasePressurePlate.BlockPressurePlateWeighted</Heirarchy>
     <Id>147</Id>
     <Name>weightedPlate_light</Name>
     <InternalName>minecraft:light_weighted_pressure_plate</InternalName>
@@ -2812,6 +2960,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockBasePressurePlate.BlockPressurePlateWeighted</Heirarchy>
     <Id>148</Id>
     <Name>weightedPlate_heavy</Name>
     <InternalName>minecraft:heavy_weighted_pressure_plate</InternalName>
@@ -2831,6 +2980,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockDirectional.BlockRedstoneDiode.BlockRedstoneComparator</Heirarchy>
     <Id>149</Id>
     <Name>comparator</Name>
     <InternalName>minecraft:unpowered_comparator</InternalName>
@@ -2850,6 +3000,7 @@
     <HasTileEntity>true</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockDirectional.BlockRedstoneDiode.BlockRedstoneComparator</Heirarchy>
     <Id>150</Id>
     <Name>comparator</Name>
     <InternalName>minecraft:powered_comparator</InternalName>
@@ -2869,6 +3020,7 @@
     <HasTileEntity>true</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockContainer.BlockDaylightDetector</Heirarchy>
     <Id>151</Id>
     <Name>daylightDetector</Name>
     <InternalName>minecraft:daylight_detector</InternalName>
@@ -2888,6 +3040,7 @@
     <HasTileEntity>true</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockCompressed.BlockCompressedPowered</Heirarchy>
     <Id>152</Id>
     <Name>blockRedstone</Name>
     <InternalName>minecraft:redstone_block</InternalName>
@@ -2907,6 +3060,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockOre</Heirarchy>
     <Id>153</Id>
     <Name>netherquartz</Name>
     <InternalName>minecraft:quartz_ore</InternalName>
@@ -2926,6 +3080,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockContainer.BlockHopper</Heirarchy>
     <Id>154</Id>
     <Name>hopper</Name>
     <InternalName>minecraft:hopper</InternalName>
@@ -2945,6 +3100,7 @@
     <HasTileEntity>true</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockQuartz</Heirarchy>
     <Id>155</Id>
     <Name>quartzBlock</Name>
     <InternalName>minecraft:quartz_block</InternalName>
@@ -2964,6 +3120,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockStairs</Heirarchy>
     <Id>156</Id>
     <Name>stairsQuartz</Name>
     <InternalName>minecraft:quartz_stairs</InternalName>
@@ -2983,6 +3140,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockRailBase.BlockRailPowered</Heirarchy>
     <Id>157</Id>
     <Name>activatorRail</Name>
     <InternalName>minecraft:activator_rail</InternalName>
@@ -3002,6 +3160,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockContainer.BlockDispenser.BlockDropper</Heirarchy>
     <Id>158</Id>
     <Name>dropper</Name>
     <InternalName>minecraft:dropper</InternalName>
@@ -3021,6 +3180,7 @@
     <HasTileEntity>true</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockColored</Heirarchy>
     <Id>159</Id>
     <Name>clayHardenedStained</Name>
     <InternalName>minecraft:stained_hardened_clay</InternalName>
@@ -3040,6 +3200,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockPane.BlockStainedGlassPane</Heirarchy>
     <Id>160</Id>
     <Name>thinStainedGlass</Name>
     <InternalName>minecraft:stained_glass_pane</InternalName>
@@ -3059,6 +3220,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockLeavesBase.BlockLeaves.BlockNewLeaf</Heirarchy>
     <Id>161</Id>
     <Name>leaves</Name>
     <InternalName>minecraft:leaves2</InternalName>
@@ -3078,6 +3240,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockRotatedPillar.BlockLog.BlockNewLog</Heirarchy>
     <Id>162</Id>
     <Name>log</Name>
     <InternalName>minecraft:log2</InternalName>
@@ -3097,6 +3260,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockStairs</Heirarchy>
     <Id>163</Id>
     <Name>stairsWoodAcacia</Name>
     <InternalName>minecraft:acacia_stairs</InternalName>
@@ -3116,6 +3280,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockStairs</Heirarchy>
     <Id>164</Id>
     <Name>stairsWoodDarkOak</Name>
     <InternalName>minecraft:dark_oak_stairs</InternalName>
@@ -3135,6 +3300,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockRotatedPillar.BlockHay</Heirarchy>
     <Id>170</Id>
     <Name>hayBlock</Name>
     <InternalName>minecraft:hay_block</InternalName>
@@ -3154,6 +3320,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockCarpet</Heirarchy>
     <Id>171</Id>
     <Name>woolCarpet</Name>
     <InternalName>minecraft:carpet</InternalName>
@@ -3173,6 +3340,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockHardenedClay</Heirarchy>
     <Id>172</Id>
     <Name>clayHardened</Name>
     <InternalName>minecraft:hardened_clay</InternalName>
@@ -3192,6 +3360,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block</Heirarchy>
     <Id>173</Id>
     <Name>blockCoal</Name>
     <InternalName>minecraft:coal_block</InternalName>
@@ -3211,6 +3380,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockPackedIce</Heirarchy>
     <Id>174</Id>
     <Name>icePacked</Name>
     <InternalName>minecraft:packed_ice</InternalName>
@@ -3230,6 +3400,7 @@
     <HasTileEntity>false</HasTileEntity>
   </Block>
   <Block>
+    <Heirarchy>Block.BlockBush.BlockDoublePlant</Heirarchy>
     <Id>175</Id>
     <Name>doublePlant</Name>
     <InternalName>minecraft:double_plant</InternalName>

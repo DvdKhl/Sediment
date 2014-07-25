@@ -11,11 +11,14 @@ try {
 
 				
 		xtw.writeStartElement("Block");
-				
+
+		xtw.writeStartElement("Heirarchy");
+		xtw.writeCharacters(block.getClass().getName().replaceFirst("net.minecraft.", ""));
+		xtw.writeEndElement();	
+								
 		xtw.writeStartElement("Id");
 		xtw.writeCharacters(Integer.toString(Block.blockRegistry.getIDForObject(block)));
-		xtw.writeEndElement();			
-			
+		xtw.writeEndElement();					
 		
 		xtw.writeStartElement("Name");
 		xtw.writeCharacters(block.unlocalizedNameBlock);

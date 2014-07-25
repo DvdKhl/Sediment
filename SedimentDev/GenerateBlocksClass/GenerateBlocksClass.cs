@@ -12,7 +12,7 @@ namespace SedimentDev {
 		private Dictionary<ushort, XElement> blocks;
 
 		public GenerateBlocksClass(XElement template, XElement blockInformation) {
-			var groups = template.Elements().Select(e => new TplGroup(e)).ToArray();
+			var groups = template.Elements().Select(e => new TplGroup(e)).ToList();
 
 			blocks = blockInformation.Elements().ToDictionary(x => (ushort)(int)x.Element("Id"));
 
@@ -25,19 +25,38 @@ namespace SedimentDev {
 		}
 
 		private StringBuilder strb = new StringBuilder();
-		private void BuildClass(TplGroup[] groups) {
+		private void BuildClass(List<TplGroup> groups) {
 
 			var content = File.ReadAllText("GenerateBlocksClass/FileTemplate.txt").Split(new[] { "//Body" }, StringSplitOptions.None);
 			strb.Append(content[0]);
 
+
+			var implicitGroups = blocks.Where(x => !usedIds.Contains(x.Key)).GroupBy(x => (string)x.Value.Element("Heirarchy"));
+			foreach(var implicitGroup in implicitGroups) {
+				if(implicitGroup.Key.Equals("Block")) continue;
+				if(implicitGroup.Count() <= 1) continue;
+
+				var group = new TplGroup() {
+					Name = implicitGroup.Key.Split('.').Last().Substring(5)
+				};
+				foreach(var item in implicitGroup) {
+					usedIds.Add(item.Key);
+
+					group.Blocks.Add(new BlockInfo {
+						Id = item.Key
+					});
+				}
+
+				groups.Add(group);
+			}
+
+
+
 			foreach(var pair in blocks.Where(x => !usedIds.Contains(x.Key))) {
 				var blockInfo = new BlockInfo { Id = pair.Key };
-				ImportBlockInfo(blockInfo);
-				blockInfo.Name = string.Concat(blockInfo.InternalName.Substring("minecraft:".Length).Split('_').Select(x => char.ToUpper(x[0]) + x.Substring(1)));
-
-
 				BuildClassBlock(blockInfo);
 			}
+
 
 			foreach(var group in groups) {
 				BuildClassStaticContainer(group);
@@ -60,6 +79,7 @@ namespace SedimentDev {
 		}
 
 		private void BuildClassBlock(BlockInfo block) {
+			ImportBlockInfo(block);
 			strb.Append("public static readonly BlockInfo ")
 				.Append(block.Name)
 				.Append(" = new BlockInfo { ")
@@ -74,6 +94,20 @@ namespace SedimentDev {
 				.Append("Hardness = ").Append(block.Hardness).Append("f, ")
 				.Append("BlastResistance = ").Append(block.BlastResistance).Append("f")
 				.AppendLine(" };");
+		}
+		private void ImportBlockInfo(BlockInfo blockInfo) {
+			var exportBlockInfo = blocks[(ushort)(blockInfo.Id & 0xFFF)];
+			blockInfo.InternalName = (string)exportBlockInfo.Element("InternalName");
+			blockInfo.UsesEntityData = (bool)exportBlockInfo.Element("HasTileEntity");
+			blockInfo.Luminance = (int)exportBlockInfo.Element("LightValue");
+			blockInfo.Opacity = (int)exportBlockInfo.Element("LightOpacity");
+			blockInfo.Hardness = (float)exportBlockInfo.Element("Hardness");
+			blockInfo.BlastResistance = (float)exportBlockInfo.Element("BlastResistance");
+
+			if(blockInfo.Name == null) {
+				blockInfo.Name = string.Concat(blockInfo.InternalName.Substring("minecraft:".Length).Split('_').Select(x => char.ToUpper(x[0]) + x.Substring(1)));
+				if(blockInfo.Name.StartsWith("Block")) blockInfo.Name = blockInfo.Name.Substring(5);
+			}
 		}
 
 
@@ -153,19 +187,7 @@ namespace SedimentDev {
 				}
 			}
 
-			ImportBlockInfo(blockInfo);
-
 			usedIds.Add(blockInfo.Id & 0xFFF);
-		}
-
-		private void ImportBlockInfo(BlockInfo blockInfo) {
-			var exportBlockInfo = blocks[(ushort)(blockInfo.Id & 0xFFF)];
-			blockInfo.InternalName = (string)exportBlockInfo.Element("InternalName");
-			blockInfo.UsesEntityData = (bool)exportBlockInfo.Element("HasTileEntity");
-			blockInfo.Luminance = (int)exportBlockInfo.Element("LightValue");
-			blockInfo.Opacity = (int)exportBlockInfo.Element("LightOpacity");
-			blockInfo.Hardness = (float)exportBlockInfo.Element("Hardness");
-			blockInfo.BlastResistance = (float)exportBlockInfo.Element("BlastResistance");
 		}
 		private void OnNCalcMethod(string name, NCalc.FunctionArgs args) {
 			switch(name) {
@@ -219,6 +241,7 @@ namespace SedimentDev {
 			public List<TplNode> Children = new List<TplNode>();
 			public string Name;
 
+			public TplGroup() { }
 			public TplGroup(XElement root) {
 				Name = root.Attribute("Name").Value;
 

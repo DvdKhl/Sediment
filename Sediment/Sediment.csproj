@@ -56,7 +56,7 @@
     <Compile Include="Internal\MapFile.cs" />
     <Compile Include="Internal\PlayerFile.cs" />
     <Compile Include="Internal\RegionFile.cs" />
-    <Compile Include="Internal\StructuresFile.cs" />
+    <Compile Include="Internal\StructureGenFile.cs" />
     <Compile Include="Internal\VillagesFile.cs" />
     <Compile Include="Internal\XYZ.cs" />
     <Compile Include="Internal\XZ.cs" />

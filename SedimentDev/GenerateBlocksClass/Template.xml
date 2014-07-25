@@ -395,6 +395,17 @@
     </BlockInfoCollection>
 
     <Group Name="Oak">
+      <OnBlockInfo BlockId="53"/>
+      <Group Name="Normal">
+        <OnBlockInfo DataValue="dataValue + 0"/>
+        <Include Key="orientations"/>
+      </Group>
+      <Group Name="UpsideDown">
+        <OnBlockInfo DataValue="dataValue + 4"/>
+        <Include Key="orientations"/>
+      </Group>
+    </Group>
+    <Group Name="Stone">
       <OnBlockInfo BlockId="67"/>
       <Group Name="Normal">
         <OnBlockInfo DataValue="dataValue + 0"/>
@@ -482,6 +493,17 @@
         <Include Key="orientations"/>
       </Group>
     </Group>
+    <Group Name="Quartz">
+      <OnBlockInfo BlockId="156"/>
+      <Group Name="Normal">
+        <OnBlockInfo DataValue="dataValue + 0"/>
+        <Include Key="orientations"/>
+      </Group>
+      <Group Name="UpsideDown">
+        <OnBlockInfo DataValue="dataValue + 4"/>
+        <Include Key="orientations"/>
+      </Group>
+    </Group>
     <Group Name="Acacia">
       <OnBlockInfo BlockId="163"/>
       <Group Name="Normal">
@@ -540,31 +562,8 @@
     <OnBlockInfo BlockId="80"/>
     <BlockInfo Name="Block"/>
   </Group>
-
-
-  <Group Name="Crop">
-    <Group Name="Wheat">
-    </Group>
-    <Group Name="Carrot">
-    </Group>
-    <Group Name="Potato">
-    </Group>
-    <Group Name="PumpkinStem">
-    </Group>
-    <Group Name="MelonStem">
-    </Group>
-    <Group Name="SugarCane">
-    </Group>
-    <Group Name="Cactus">
-    </Group>
-    <Group Name="NetherWart">
-    </Group>
-    <Group Name="Cocoa">
-    </Group>
-    <!--public static readonly BlockInfo Melon = Create(61491, "Melon");          -->
-    <!--public static readonly BlockInfo Pumkin = Create(61491, "Pumkin");        -->
-    <!--public static readonly BlockInfo JackoLanters = Create(61491, "Pumkin");  -->
-  </Group>
+  
+  
   <Group Name="Door">
     <Group Name="Wood">
       <OnBlockInfo BlockId="64"/>
@@ -699,10 +698,6 @@
       <DataValueRange NameList="TopEast, East, West, South, North, BottomSouth, BottomEast, TopSouth" Start="8"/>
     </Group>
   </Group>
-  <Group Name="PressurePlate">
-  </Group>
-  <Group Name="Button">
-  </Group>
   <Group Name="Jukebox">
     <BlockInfo BlockId="84" Name="NoDisc" DataValue="0"/>
     <BlockInfo BlockId="84" Name="HasDisc" DataValue="1"/>
@@ -714,39 +709,39 @@
       <DataValue><![CDATA[i]]></DataValue>
     </For>
   </Group>
-  <Group Name="Repeater">
-    <Group Name="Active">
-    </Group>
-    <Group Name="Inactive">
-    </Group>
-  </Group>
-  <Group Name="Comparator">
-    <Group Name="Normal">
-    </Group>
-    <Group Name="Active">
-    </Group>
-  </Group>
-  <Group Name="Trapdoor">
-    <Group Name="Wood">
-    </Group>
-    <Group Name="Iron">
-    </Group>
-  </Group>
   <Group Name="MonsterEgg">
     <OnBlockInfo BlockId="97"/>
     <DataValueRange NameList="Stone, Cobblestone, StoneBrick, MossyStoneBrick, CrackedStoneBrick, ChiseledStoneBrick"/>
   </Group>
-  <Group Name="StoneBrick">
-  </Group>
-  <Group Name="Mushroom">
-    <Group Name="Brown">
-    </Group>
-    <Group Name="Red">
-    </Group>
-  </Group>
+
   <Group Name="Vine">
     <OnBlockInfo BlockId="106" Note="blockInfoName"/>
     <DataValueRange NameList="South, West, North, East" Start="2"/>
+  </Group>
+
+  <!--
+  <Group Name="Crop">
+    <Group Name="Wheat">
+    </Group>
+    <Group Name="Carrot">
+    </Group>
+    <Group Name="Potato">
+    </Group>
+    <Group Name="PumpkinStem">
+    </Group>
+    <Group Name="MelonStem">
+    </Group>
+    <Group Name="SugarCane">
+    </Group>
+    <Group Name="Cactus">
+    </Group>
+    <Group Name="NetherWart">
+    </Group>
+    <Group Name="Cocoa">
+    </Group>
+    public static readonly BlockInfo Melon = Create(61491, "Melon");          
+    public static readonly BlockInfo Pumkin = Create(61491, "Pumkin");        
+    public static readonly BlockInfo JackoLanters = Create(61491, "Pumkin");  
   </Group>
   <Group Name="FenceGate">
   </Group>
@@ -768,4 +763,34 @@
   </Group>
   <Group Name="Anvil">
   </Group>
+  <Group Name="StoneBrick">
+  </Group>
+  <Group Name="Mushroom">
+    <Group Name="Brown">
+    </Group>
+    <Group Name="Red">
+    </Group>
+  </Group>
+  <Group Name="PressurePlate">
+  </Group>
+  <Group Name="Button">
+  </Group>
+  <Group Name="Repeater">
+    <Group Name="Active">
+    </Group>
+    <Group Name="Inactive">
+    </Group>
+  </Group>
+  <Group Name="Comparator">
+    <Group Name="Normal">
+    </Group>
+    <Group Name="Active">
+    </Group>
+  </Group>
+  <Group Name="Trapdoor">
+    <Group Name="Wood">
+    </Group>
+    <Group Name="Iron">
+    </Group>
+  </Group>-->
 </Template>
