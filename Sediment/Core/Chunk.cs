@@ -60,7 +60,9 @@ namespace Sediment.Core {
 
 
 		private ushort[] blockIds;
-
+		private byte[] lighting, biomeIds;
+		private int[] heightMapData;
+		private bool[] hasSection;
 
 		public void Reload() { throw new NotImplementedException(); }
 		public void Discard() { throw new NotImplementedException(); }
@@ -69,58 +71,67 @@ namespace Sediment.Core {
 
 		internal Chunk(NBTLib.NBTReader reader) {
 			blockIds = new ushort[BlockCount];
+			lighting = new byte[BlockCount];
+			hasSection = new bool[SectionCount];
 
-			byte[] biomeIds, heightMapData;
 			byte[][] blocks = new byte[SectionCount][];
 			byte[][] add = new byte[SectionCount][];
 			byte[][] data = new byte[SectionCount][];
 			byte[][] blockLight = new byte[SectionCount][];
 			byte[][] skyLight = new byte[SectionCount][];
 
+			using(reader) {
+				reader.MoveNext();
+				reader.MoveNext();
 
-			while(reader.MoveNext() && reader.Type != NBTType.End) {
-				switch(reader.Name) {
-					case "xPos": X = (int)reader.Value; break;
-					case "zPos": Z = (int)reader.Value; break;
-					case "LastUpdate": LastSaveOn = lastEditOn = DateTimeEx.UnixTime.AddSeconds((long)reader.Value); break;
-					case "LightPopulated": isLightPopulated = (bool)reader.Value; break;
-					case "TerrainPopulated": isTerrainPopulated = (bool)reader.Value; break;
-					case "V": Version = (byte)reader.Value; break;
-					case "InhabitedTime": inhabitedTime = (long)reader.Value; break;
-					case "Biomes": biomeIds = (byte[])reader.Value; break;
-					case "HeightMap": heightMapData = (byte[])reader.Value; break;
+				while(reader.MoveNext() && reader.Type != NBTType.End) {
+					switch(reader.Name) {
+						case "xPos": X = (int)reader.Value; break;
+						case "zPos": Z = (int)reader.Value; break;
+						case "LastUpdate": LastSaveOn = lastEditOn = DateTimeEx.UnixTime.AddSeconds((long)reader.Value); break;
+						case "LightPopulated": isLightPopulated = (byte)reader.Value != 0; break;
+						case "TerrainPopulated": isTerrainPopulated = (byte)reader.Value != 0; break;
+						case "V": Version = (byte)reader.Value; break;
+						case "InhabitedTime": inhabitedTime = (long)reader.Value; break;
+						case "Biomes": biomeIds = (byte[])reader.Value; break;
+						case "HeightMap": heightMapData = (int[])reader.Value; break;
 
-					case "Sections":
-						var length = (int)reader.Value;
-						for(int i = 0; i < length; i++) {
-							byte y = 0;
-							byte[] secBlocks = null, secAdd = null, secData = null, secBlockLight = null, secSkyLight = null;
-							while(reader.MoveNext() && reader.Type != NBTType.End) {
-								switch(reader.Name) {
-									case "Y": y = (byte)reader.Value; break;
-									case "Blocks": secBlocks = (byte[])reader.Value; break;
-									case "Add": secAdd = (byte[])reader.Value; break;
-									case "Data": secData = (byte[])reader.Value; break;
-									case "BlockLight": secBlockLight = (byte[])reader.Value; break;
-									case "SkyLight": secSkyLight = (byte[])reader.Value; break;
-									default: reader.TreeToStructure(); break; //TODO: keep unknown nbt tags
+						case "Sections":
+							var length = (int)reader.Value;
+							for(int i = 0; i < length; i++) {
+								byte y = 0;
+								byte[] secBlocks = null, secAdd = null, secData = null, secBlockLight = null, secSkyLight = null;
+								while(reader.MoveNext() && reader.Type != NBTType.End) {
+									switch(reader.Name) {
+										case "Y": y = (byte)reader.Value; break;
+										case "Blocks": secBlocks = (byte[])reader.Value; break;
+										case "Add": secAdd = (byte[])reader.Value; break;
+										case "Data": secData = (byte[])reader.Value; break;
+										case "BlockLight": secBlockLight = (byte[])reader.Value; break;
+										case "SkyLight": secSkyLight = (byte[])reader.Value; break;
+										default: reader.TreeToStructure(); break; //TODO: keep unknown nbt tags
+									}
 								}
+								blocks[y] = secBlocks;
+								add[y] = secAdd;
+								data[y] = secData;
+								blockLight[y] = secBlockLight;
+								skyLight[y] = secSkyLight;
 							}
-							blocks[y] = secBlocks;
-							add[y] = secAdd;
-							data[y] = secData;
-							blockLight[y] = secBlockLight;
-							skyLight[y] = secSkyLight;
-						}
-						break;
+							break;
 
 
-					default: reader.TreeToStructure(); break; //TODO: keep unknown nbt tags
+						default: reader.TreeToStructure(); break; //TODO: keep unknown nbt tags
+					}
 				}
+				reader.MoveNext();
 			}
+
 
 			for(int y = 0; y < SectionCount; y++) {
 				if(blocks[y] != null) {
+					hasSection[y] = true;
+
 					for(int i = 0; i < SectionBlockCount; i++) {
 						blockIds[(y << 12) | i] = blocks[y][i];
 					}
@@ -129,6 +140,18 @@ namespace Sediment.Core {
 					for(int i = 0; i < add.Length; i++) {
 						blockIds[(y << 12) | (i + 0)] |= (ushort)((add[y][i] & 0x0F) << 16);
 						blockIds[(y << 12) | (i + 1)] |= (ushort)((add[y][i] & 0xF0) << 12);
+					}
+				}
+				if(skyLight[y] != null) {
+					for(int i = 0; i < skyLight.Length; i++) {
+						lighting[(y << 12) | (i + 0)] = (byte)(skyLight[y][i] & 0x0F);
+						lighting[(y << 12) | (i + 1)] = (byte)((skyLight[y][i] & 0xF0) >> 4);
+					}
+				}
+				if(blockLight[y] != null) {
+					for(int i = 0; i < blockLight.Length; i++) {
+						lighting[(y << 12) | (i + 0)] |= (byte)((blockLight[y][i] & 0x0F) << 4);
+						lighting[(y << 12) | (i + 1)] |= (byte)(blockLight[y][i] & 0xF0);
 					}
 				}
 			}
