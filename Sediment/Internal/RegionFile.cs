@@ -93,7 +93,7 @@ namespace Sediment.Internal {
 		private void BuildLinks() {
 			var map = new int[ChunkCount];
 			for(int i = 0; i < ChunkCount; i++) map[i] = i;
-			Array.Sort(table, map, TableEntryOffsetComparer.Instance);
+			Array.Sort(map, (a, b) => table[a].SectorOffset.CompareTo(table[b].SectorOffset));
 
 			for(int i = ChunkCount - 2; i >= 1; i--) { //Set all links except first and last; break when we encounter an unused entry
 				var entry = table[map[i]];
@@ -175,13 +175,18 @@ namespace Sediment.Internal {
 
 		public NBTReader CreateChunkReader(int localChunkX, int localChunkZ) {
 			var fileStream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite);
-			var dataStream = new GZipStream(fileStream, CompressionMode.Decompress, false);
-			return new NBTReader(dataStream);
-		}
 
-		private class TableEntryOffsetComparer : IComparer<TableEntry> {
-			public static readonly TableEntryOffsetComparer Instance = new TableEntryOffsetComparer();
-			public int Compare(TableEntry x, TableEntry y) { return x.SectorOffset.CompareTo(y.SectorOffset); }
+			var entry = table[localChunkX + localChunkZ * ChunkXCount];
+			fileStream.Position = (entry.SectorOffset << 12) + 5;
+
+			Stream dataStream;
+			switch(entry.CompressionType) {
+				case 1: dataStream = new GZipStream(fileStream, CompressionMode.Decompress, false); break;
+				case 2: dataStream = new ZlibStream(fileStream, CompressionMode.Decompress, false); break;
+				default: throw new InvalidOperationException();
+			}
+
+			return new NBTReader(dataStream);
 		}
 	}
 }
