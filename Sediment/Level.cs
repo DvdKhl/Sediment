@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Sediment {
 	public class Level {
-		private static Dictionary<string, Level> openLevels = new Dictionary<string, Level>();
+		private static Dictionary<string, Level> levels = new Dictionary<string, Level>();
 
 		public LevelInfo Info { get; private set; }
 		public string RootPath { get; private set; }
@@ -33,13 +33,13 @@ namespace Sediment {
 
 
 		public static Level Load(string rootPath) {
-			if(openLevels.ContainsKey(Path.GetFullPath(rootPath))) {
+			if(levels.ContainsKey(Path.GetFullPath(rootPath))) {
 				throw new InvalidOperationException("Already loaded");
 			}
 
 			var level = new Level(rootPath, LevelInfo.Default);
 
-			openLevels.Add(level.RootPath, level);
+			levels.Add(level.RootPath, level);
 
 			return level;
 		}
