@@ -12,6 +12,8 @@ namespace SedimentExample {
 			var level = Level.Load(@"C:\Users\Arokh\AppData\Roaming\.minecraft\saves\Test");
 			var world = level.WorldManager[WorldInfo.Overworld];
 			var chunk = world.ChunkManager[0, 0];
+			chunk.UpdateHeightMap();
+			chunk.UpdateLighting();
 		}
 	}
 }

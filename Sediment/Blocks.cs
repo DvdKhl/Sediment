@@ -8,9 +8,11 @@ namespace Sediment {
 		public static Dictionary<ushort, BlockInfo> ById { get; private set; }
 		public static Dictionary<ushort, BlockInfo[]> ByPartialId { get; private set; }
 		public static Dictionary<string, BlockInfo[]> ByName { get; private set; }
+		public static HashSet<ushort> ZeroOpacityBlockIds { get; private set; }
 
 		static Blocks() {
 			ById = new Dictionary<ushort, BlockInfo>();
+			ZeroOpacityBlockIds = new HashSet<ushort>();
 
 			Action<Type, List<BlockInfo>> getBlockInfos = null;
 			getBlockInfos = (type, items) => {
@@ -25,10 +27,16 @@ namespace Sediment {
 				}
 			};
 
+
 			var blockInfos = new List<BlockInfo>();
 			getBlockInfos(typeof(Blocks), blockInfos);
 			foreach(var blockInfo in blockInfos) {
 				ById.Add(blockInfo.Id, blockInfo);
+
+				if(blockInfo.Opacity == 0) {
+					ZeroOpacityBlockIds.Add(blockInfo.Id);
+					ZeroOpacityBlockIds.Add((ushort)(blockInfo.Id & 0x0FFF));
+				}
 			}
 
 			ByPartialId = blockInfos.GroupBy(x => (ushort)(x.Id & 0x0FFF)).ToDictionary(x => x.Key, x => x.ToArray());
@@ -37,6 +45,8 @@ namespace Sediment {
 			foreach(var items in ByPartialId.Values) {
 				ByName.Add(items[0].InternalName, items);
 			}
+
+
 		}
 
 
