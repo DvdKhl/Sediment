@@ -14,6 +14,8 @@ namespace Sediment.Internal {
 
 		static Lighting() {
 			maxLookup = new byte[256 * 256];
+			subtractLookup = new byte[256 * 256];
+			greaterThanLookup = new bool[256 * 256];
 
 			int i = 0;
 			for(int a1 = 0; a1 < 16; a1++) {
@@ -37,13 +39,13 @@ namespace Sediment.Internal {
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		private static bool IsGreater(byte a, byte b) { return greaterThanLookup[a | (b << 8)]; }
 
-
+		int[] heightMap;
 		ushort[] blockIds;
-		byte[] heightMap, lighting, opacity;
+		byte[] lighting, opacity;
 		List<int> pendingBlocks = new List<int>(1024);
 		LightingOptions options;
 
-		public void LightChunk(ushort[] blockIds, byte[] heightMap, LightingOptions options, byte[] lighting) {
+		public void LightChunk(ushort[] blockIds, int[] heightMap, LightingOptions options, byte[] lighting) {
 			if(heightMap == null) throw new ArgumentNullException("heightMap");
 			if(blockIds == null) throw new ArgumentNullException("blockIds");
 			if(lighting == null) throw new ArgumentNullException("lighting");
@@ -68,6 +70,8 @@ namespace Sediment.Internal {
 					}
 				}
 			}
+
+			opacity = new byte[Chunk.BlockCount];
 
 			//Set light emitting blocks and store opacity values
 			for(int x = 0; x < Chunk.BlockXCount; x++) {
@@ -172,8 +176,7 @@ namespace Sediment.Internal {
 				}
 			}
 		}
-
-
 	}
+
 	public enum LightingOptions { None, OnlyVerticalSkylight, NoStiching }
 }
