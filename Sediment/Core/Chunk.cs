@@ -19,8 +19,6 @@ namespace Sediment.Core {
 		public static readonly int SectionBlockZCount = 16;
 		public static readonly int SectionBlockCount = SectionBlockXCount * SectionBlockYCount * SectionBlockZCount;
 
-		public World World { get; private set; }
-
 		public int X { get; private set; }
 		public int Z { get; private set; }
 
@@ -60,7 +58,7 @@ namespace Sediment.Core {
 
 
 		private ushort[] blockIds;
-		private byte[] lighting, biomeIds;
+		private byte[] lightingData, biomeIds;
 		private int[] heightMapData;
 		private bool[] hasSection;
 
@@ -71,7 +69,7 @@ namespace Sediment.Core {
 
 		internal Chunk(NBTLib.NBTReader reader) {
 			blockIds = new ushort[BlockCount];
-			lighting = new byte[BlockCount];
+			lightingData = new byte[BlockCount];
 			hasSection = new bool[SectionCount];
 
 			byte[][] blocks = new byte[SectionCount][];
@@ -131,7 +129,6 @@ namespace Sediment.Core {
 			for(int y = 0; y < SectionCount; y++) {
 				if(blocks[y] != null) {
 					hasSection[y] = true;
-
 					for(int i = 0; i < SectionBlockCount; i++) {
 						blockIds[(y << 12) | i] = blocks[y][i];
 					}
@@ -144,20 +141,38 @@ namespace Sediment.Core {
 				}
 				if(skyLight[y] != null) {
 					for(int i = 0; i < skyLight.Length; i++) {
-						lighting[(y << 12) | (i + 0)] = (byte)(skyLight[y][i] & 0x0F);
-						lighting[(y << 12) | (i + 1)] = (byte)((skyLight[y][i] & 0xF0) >> 4);
+						lightingData[(y << 12) | (i + 0)] = (byte)(skyLight[y][i] & 0x0F);
+						lightingData[(y << 12) | (i + 1)] = (byte)((skyLight[y][i] & 0xF0) >> 4);
 					}
 				}
 				if(blockLight[y] != null) {
 					for(int i = 0; i < blockLight.Length; i++) {
-						lighting[(y << 12) | (i + 0)] |= (byte)((blockLight[y][i] & 0x0F) << 4);
-						lighting[(y << 12) | (i + 1)] |= (byte)(blockLight[y][i] & 0xF0);
+						lightingData[(y << 12) | (i + 0)] |= (byte)((blockLight[y][i] & 0x0F) << 4);
+						lightingData[(y << 12) | (i + 1)] |= (byte)(blockLight[y][i] & 0xF0);
 					}
 				}
 			}
+		}
 
+		public void UpdateHeightMap() {
+			for(int x = 0; x < Chunk.BlockXCount; x++) {
+				for(int z = 0; z < Chunk.BlockZCount; z++) {
+					for(int y = Chunk.BlockYCount - 1; y >= 0; y--) {
 
-			throw new NotImplementedException();
+						var bla = blockIds[Chunk.ToIndex(x, y, z)];
+						if(!Blocks.ZeroOpacityBlockIds.Contains(blockIds[Chunk.ToIndex(x, y, z)])) {
+							heightMapData[x | (z * Chunk.BlockXCount)] = y;
+							break;
+						}
+					}
+				}
+			}
+			MarkDirty();
+		}
+
+		public void UpdateLighting() {
+			var lighting = new Lighting();
+			lighting.LightChunk(blockIds, heightMapData, LightingOptions.None, lightingData);
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -182,17 +197,17 @@ namespace Sediment.Core {
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool IsAtLeftYZPlane(int blockIndex) { return (blockIndex & 0x000F) == 0; }
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool IsAtRightYZPlane(int blockIndex) { return (blockIndex & 0x000F) != 15; }
+		public static bool IsAtRightYZPlane(int blockIndex) { return (blockIndex & 0x000F) == 15; }
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool IsAtBackYXPlane(int blockIndex) { return (blockIndex & 0x00F0) == 0; }
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool IsAtFrontYXPlane(int blockIndex) { return (blockIndex & 0x00F0) != 15; }
+		public static bool IsAtFrontYXPlane(int blockIndex) { return (blockIndex & 0x00F0) == 15 << 4; }
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool IsAtBottomXZPlane(int blockIndex) { return (blockIndex & 0xFF00) == 0; }
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static bool IsAtTopXZPlane(int blockIndex) { return (blockIndex & 0xFF00) != 255; }
+		public static bool IsAtTopXZPlane(int blockIndex) { return (blockIndex & 0xFF00) == 255 << 8; }
 
 	}
 }
