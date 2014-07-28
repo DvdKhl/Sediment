@@ -63,7 +63,6 @@
     <Compile Include="Internal\RegionFile.cs" />
     <Compile Include="Internal\StructureGenFile.cs" />
     <Compile Include="Internal\VillagesFile.cs" />
-    <Compile Include="Core\XZInt.cs" />
     <Compile Include="Level.cs" />
     <Compile Include="NBTLib\NBTEx.cs" />
     <Compile Include="NBTLib\NBTReader.cs" />

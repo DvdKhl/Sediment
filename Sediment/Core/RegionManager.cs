@@ -9,26 +9,23 @@ namespace Sediment.Core {
 	public class RegionManager {
 		private World world;
 
-		private Dictionary<XZInt, Region> regions;
+		private Dictionary<ulong, Region> regions;
 
 		public RegionManager(World world) {
 			this.world = world;
 
-			regions = new Dictionary<XZInt, Region>();
+			regions = new Dictionary<ulong, Region>();
 		}
 
 		public Region this[int x, int z] {
 			get {
 				Region region;
-				var pos = new XZInt(x, z);
-				if(!regions.TryGetValue(pos, out region)) {
+				if(!regions.TryGetValue((uint)x | (ulong)z << 32, out region)) {
 					region = new Region(world, x, z);
-					regions.Add(pos, region);
+					regions.Add((uint)x | (ulong)z << 32, region);
 				}
 				return region;
 			}
-
-			set { throw new NotImplementedException(); }
 		}
 	}
 }

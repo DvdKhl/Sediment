@@ -22,5 +22,11 @@ namespace Sediment.Core {
 			ChunkManager = new ChunkManager(this);
 			BlockManager = new BlockManager(this);
 		}
+
+		public void Save() {
+			foreach(var dirtyChunk in Info.ChunkCache.DirtyChunks) {
+				dirtyChunk.Region.SaveChunk(dirtyChunk);
+			}
+		}
 	}
 }

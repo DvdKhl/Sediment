@@ -1,5 +1,6 @@
 ﻿using Ionic.Zlib;
 using NBTLib;
+using Sediment.Core;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -116,8 +117,16 @@ namespace Sediment.Internal {
 		}
 
 
-		public void StoreChunk(int localChunkX, int localChunkZ, byte[] data) { StoreChunk(localChunkX, localChunkZ, data, 0, data.Length, DateTime.UtcNow); }
-		public void StoreChunk(int localChunkX, int localChunkZ, byte[] data, DateTime timestamp) { StoreChunk(localChunkX, localChunkZ, data, 0, data.Length, timestamp); }
+		public void StoreChunk(Chunk chunk) {
+			byte[] data;
+			using(var memStream = new MemoryStream(32 * 1024))
+			using(var dataStream = new ZlibStream(memStream, CompressionMode.Compress)) {
+				chunk.WriteTo(dataStream);
+				data = memStream.ToArray();
+			}
+
+			StoreChunk(chunk.X & 0x1F, chunk.Z & 0x1F, data, 0, data.Length, chunk.LastEditOn);
+		}
 		public void StoreChunk(int localChunkX, int localChunkZ, byte[] data, int offset, int length) { StoreChunk(localChunkX, localChunkZ, data, offset, length, DateTime.UtcNow); }
 		public void StoreChunk(int localChunkX, int localChunkZ, byte[] data, int offset, int length, DateTime timestamp) {
 			var entry = table[localChunkX + localChunkZ * ChunkXCount];

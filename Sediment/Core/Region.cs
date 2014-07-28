@@ -44,5 +44,10 @@ namespace Sediment.Core {
 
 		public static int ToChunkIndex(int x, int z) { return x | (z << 5); }
 
+
+		internal void SaveChunk(Chunk dirtyChunk) {
+			if(dirtyChunk.X >> 5 != X || dirtyChunk.Z >> 5 != Z) throw new InvalidOperationException("Chunk is not in this region instance");
+			regionFile.StoreChunk(dirtyChunk);
+		}
 	}
 }
