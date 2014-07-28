@@ -146,6 +146,14 @@ namespace NBTLib {
 				BaseStream.WriteByte(0);
 			}
 		}
+		public void Write<T>(string name, T[] items, Action<NBTWriter, T> onCompound) {
+			WriteListHeader(name, 10, items.Length);
+			for(int i = 0; i < items.Length; i++) {
+				onCompound(this, items[i]);
+				BaseStream.WriteByte(0);
+			}
+		}
+
 		public void WriteCompound(string name, Action<NBTWriter> onCompound) {
 			BaseStream.WriteByte(10);
 			WriteValue(name);

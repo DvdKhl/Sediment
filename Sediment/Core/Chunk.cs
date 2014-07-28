@@ -2,6 +2,7 @@
 using Sediment.Internal;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -23,13 +24,14 @@ namespace Sediment.Core {
 		public static readonly int XMask = 0xF;
 		public static readonly int ZMask = 0xF;
 
+		public Region Region { get; private set; }
 
 		public int X { get; private set; }
 		public int Z { get; private set; }
 
 		public DateTime LastSaveOn { get; private set; }
 
-		public DateTime lastEditOn;
+		private DateTime lastEditOn;
 		public DateTime LastEditOn {
 			get { return lastEditOn; }
 			set { lastEditOn = value.ToUniversalTime(); MarkDirty(); }
@@ -37,25 +39,25 @@ namespace Sediment.Core {
 
 		public bool IsDirty { get; private set; }
 
-		public bool isTerrainPopulated;
+		private bool isTerrainPopulated;
 		public bool IsTerrainPopulated {
 			get { return isTerrainPopulated; }
 			set { isTerrainPopulated = value; MarkDirty(); }
 		}
 
-		public bool isLightPopulated;
+		private bool isLightPopulated;
 		public bool IsLightPopulated {
 			get { return isLightPopulated; }
 			set { isLightPopulated = value; MarkDirty(); }
 		}
 
-		public long inhabitedTime;
+		private long inhabitedTime;
 		public long InhabitedTime {
 			get { return inhabitedTime; }
 			set { inhabitedTime = value; MarkDirty(); }
 		}
 
-		public byte version;
+		private byte version;
 		public byte Version {
 			get { return version; }
 			set { version = value; MarkDirty(); }
@@ -68,7 +70,72 @@ namespace Sediment.Core {
 		private bool[] hasSection;
 		private List<NBTNode> unknownChunkTags, unknownSectionTags;
 
-		internal Chunk(NBTLib.NBTReader reader) {
+
+		public void WriteTo(Stream stream) {
+			var writer = new NBTWriter(stream);
+
+			writer.WriteCompound("", w => {
+				w.WriteCompound("Level", WriteChunk);
+			});
+		}
+		private void WriteChunk(NBTWriter writer) {
+			writer.Write("xPos", X);
+			writer.Write("zPos", X);
+			writer.Write("LastUpdate", (long)(LastEditOn - DateTimeEx.UnixTime).TotalSeconds);
+			writer.Write("LightPopulated", IsLightPopulated ? 1 : 0);
+			writer.Write("TerrainPopulated", IsTerrainPopulated ? 1 : 0);
+			writer.Write("V", Version);
+			writer.Write("InhabitedTime", InhabitedTime);
+			writer.Write("Biomes", biomeIds);
+			writer.Write("HeightMap", heightMapData);
+			writer.Write("Sections", 16, WriteSections); //TODO: Write only non-empty sections
+
+			foreach(var unknownTag in unknownChunkTags) writer.Write(unknownTag);
+		}
+		private void WriteSections(NBTWriter writer, int y) {
+			
+			writer.Write("Y", y);
+
+			var secBlocks = new byte[SectionBlockCount];
+			for(int i = 0; i < secBlocks.Length; i++) secBlocks[i] = (byte)blockIds[(y << 12) | i];
+			writer.Write("Blocks", secBlocks);
+
+			var secAdd = new byte[SectionBlockCount / 2];
+			for(int i = 0; i < secAdd.Length; i++) {
+				secAdd[i] = (byte)((blockIds[(y << 12) | (i * 2 + 0)] >> 8) & 0x0F);
+				secAdd[i] |= (byte)((blockIds[(y << 12) | (i * 2 + 1)] >> 4) & 0xF0);
+			}
+			writer.Write("Add", secAdd);
+
+			var secData = new byte[SectionBlockCount / 2];
+			for(int i = 0; i < secAdd.Length; i++) {
+				secData[i] = (byte)((blockIds[(y << 12) | (i * 2 + 0)] >> 12) & 0x0F);
+				secData[i] |= (byte)((blockIds[(y << 12) | (i * 2 + 1)] >> 8) & 0xF0);
+			}
+			writer.Write("Data", secData);
+
+			if(IsLightPopulated) {
+				var secSkyLight = new byte[SectionBlockCount / 2];
+				for(int i = 0; i < secAdd.Length; i++) {
+					secSkyLight[i] = (byte)(lightingData[(y << 12) | (i * 2 + 0)] & 0x0F);
+					secSkyLight[i] |= (byte)(lightingData[(y << 12) | (i * 2 + 1)] << 4);
+				}
+				writer.Write("BlockLight", secSkyLight);
+
+				var secBlockLight = new byte[SectionBlockCount / 2];
+				for(int i = 0; i < secAdd.Length; i++) {
+					secBlockLight[i] = (byte)(lightingData[(y << 12) | (i * 2 + 0)] >> 4);
+					secBlockLight[i] |= (byte)(lightingData[(y << 12) | (i * 2 + 1)] & 0xF0);
+				}
+				writer.Write("SkyLight", secBlockLight);
+			}
+
+			foreach(var unknownTag in unknownSectionTags) writer.Write(unknownTag);
+		}
+
+		internal Chunk(NBTReader reader, Region region) {
+			this.Region = region;
+
 			blockIds = new ushort[BlockCount];
 			lightingData = new byte[BlockCount];
 			hasSection = new bool[SectionCount];
@@ -138,20 +205,26 @@ namespace Sediment.Core {
 				}
 				if(add[y] != null) {
 					for(int i = 0; i < add.Length; i++) {
-						blockIds[(y << 12) | (i + 0)] |= (ushort)((add[y][i] & 0x0F) << 16);
-						blockIds[(y << 12) | (i + 1)] |= (ushort)((add[y][i] & 0xF0) << 12);
+						blockIds[(y << 12) | (i * 2 + 0)] |= (ushort)((add[y][i] & 0x0F) << 8);
+						blockIds[(y << 12) | (i * 2 + 1)] |= (ushort)((add[y][i] & 0xF0) << 4);
+					}
+				}
+				if(add[y] != null) {
+					for(int i = 0; i < add.Length; i++) {
+						blockIds[(y << 12) | (i * 2 + 0)] |= (ushort)((add[y][i] & 0x0F) << 12);
+						blockIds[(y << 12) | (i * 2 + 1)] |= (ushort)((add[y][i] & 0xF0) << 8);
 					}
 				}
 				if(skyLight[y] != null) {
 					for(int i = 0; i < skyLight.Length; i++) {
-						lightingData[(y << 12) | (i + 0)] = (byte)(skyLight[y][i] & 0x0F);
-						lightingData[(y << 12) | (i + 1)] = (byte)((skyLight[y][i] & 0xF0) >> 4);
+						lightingData[(y << 12) | (i * 2 + 0)] = (byte)(skyLight[y][i] & 0x0F);
+						lightingData[(y << 12) | (i * 2 + 1)] = (byte)((skyLight[y][i] & 0xF0) >> 4);
 					}
 				}
 				if(blockLight[y] != null) {
 					for(int i = 0; i < blockLight.Length; i++) {
-						lightingData[(y << 12) | (i + 0)] |= (byte)((blockLight[y][i] & 0x0F) << 4);
-						lightingData[(y << 12) | (i + 1)] |= (byte)(blockLight[y][i] & 0xF0);
+						lightingData[(y << 12) | (i * 2 + 0)] |= (byte)((blockLight[y][i] & 0x0F) << 4);
+						lightingData[(y << 12) | (i * 2 + 1)] |= (byte)(blockLight[y][i] & 0xF0);
 					}
 				}
 			}
@@ -170,10 +243,11 @@ namespace Sediment.Core {
 			set { blockIds[ToIndex(x, y, z)] = value; MarkDirty(); }
 		}
 
-		public void Reload() { throw new NotImplementedException(); }
-		public void Discard() { throw new NotImplementedException(); }
-		public void Save() { throw new NotImplementedException(); }
+		//public void Reload() { throw new NotImplementedException(); }
+		//public void Discard() { throw new NotImplementedException(); }
+		//public void Save() { throw new NotImplementedException(); }
 		public void MarkDirty() { IsDirty = true; lastEditOn = DateTime.UtcNow; }
+		internal void MarkPristine() { IsDirty = false; LastSaveOn = lastEditOn; }
 
 
 		public void UpdateHeightMap() {
