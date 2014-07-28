@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sediment.Internal {
-	internal class XZInt {
+namespace Sediment.Core {
+	public class XZInt {
 		public int X { get; private set; }
 		public int Z { get; private set; }
 

@@ -32,19 +32,24 @@ namespace Sediment.Core {
 
 
 	public class WorldInfo {
-		public static readonly WorldInfo Overworld = new WorldInfo("region", "r.{0}.{1}.mca", "data/villages.dat");
-		public static readonly WorldInfo Netherworld = new WorldInfo("DIM-1/region", "r.{0}.{1}.mca", "data/villages_nether.dat");
-		public static readonly WorldInfo TheEnd = new WorldInfo("DIM1/region", "r.{0}.{1}.mca", "data/villages_end.dat");
+		public static readonly WorldInfo Overworld = new WorldInfo("region", "r.{0}.{1}.mca", "data/villages.dat", new ChunkCache());
+		public static readonly WorldInfo Netherworld = new WorldInfo("DIM-1/region", "r.{0}.{1}.mca", "data/villages_nether.dat", new ChunkCache());
+		public static readonly WorldInfo TheEnd = new WorldInfo("DIM1/region", "r.{0}.{1}.mca", "data/villages_end.dat", new ChunkCache());
 
 		public string RegionPath { get; private set; }
 		public string VillagesDataPath { get; private set; }
-		public string RegionFilePathFormat { get; set; }
+		public string RegionFilePathFormat { get; private set; }
+		public ChunkCache ChunkCache { get; private set; }
 
-		public WorldInfo(string regionPath, string regionFilePathFormat, string villagesDataPath) {
+		public WorldInfo WithChunkCache(ChunkCache chunkCache) {
+			return new WorldInfo(RegionPath, RegionFilePathFormat, VillagesDataPath, chunkCache);
+		}
+
+		public WorldInfo(string regionPath, string regionFilePathFormat, string villagesDataPath, ChunkCache chunkCache) {
 			this.RegionPath = regionPath;
 			this.RegionFilePathFormat = regionFilePathFormat;
 			this.VillagesDataPath = villagesDataPath;
+			this.ChunkCache = chunkCache;
 		}
-
 	}
 }

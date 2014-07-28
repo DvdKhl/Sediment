@@ -3,11 +3,24 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Sediment.Core {
 	public class Region {
+		public static readonly int ChunkXCount = 32;
+		public static readonly int ChunkYCount = 1;
+		public static readonly int ChunkZCount = 32;
+		public static readonly int ChunkXZCount = ChunkXCount * ChunkZCount;
+		public static readonly int ChunkCount = ChunkXCount * ChunkYCount * ChunkZCount;
+
+		public static readonly int BlockXCount = ChunkXCount * 16;
+		public static readonly int BlockYCount = ChunkYCount * 256;
+		public static readonly int BlockZCount = ChunkZCount * 16;
+		public static readonly int BlockXZCount = BlockXCount * BlockZCount;
+		public static readonly int BlockCount = BlockXCount * BlockYCount * BlockZCount;
+
 		private World world;
 		private RegionFile regionFile;
 
@@ -28,6 +41,8 @@ namespace Sediment.Core {
 		internal NBTLib.NBTReader CreateChunkReader(int localChunkX, int localChunkZ) {
 			return regionFile.CreateChunkReader(localChunkX, localChunkZ);
 		}
+
+		public static int ToChunkIndex(int x, int z) { return x | (z << 5); }
 
 	}
 }

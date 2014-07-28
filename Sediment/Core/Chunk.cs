@@ -20,6 +20,10 @@ namespace Sediment.Core {
 		public static readonly int SectionBlockZCount = 16;
 		public static readonly int SectionBlockCount = SectionBlockXCount * SectionBlockYCount * SectionBlockZCount;
 
+		public static readonly int XMask = 0xF;
+		public static readonly int ZMask = 0xF;
+
+
 		public int X { get; private set; }
 		public int Z { get; private set; }
 
@@ -63,11 +67,6 @@ namespace Sediment.Core {
 		private int[] heightMapData;
 		private bool[] hasSection;
 		private List<NBTNode> unknownChunkTags, unknownSectionTags;
-
-		public void Reload() { throw new NotImplementedException(); }
-		public void Discard() { throw new NotImplementedException(); }
-		public void Save() { throw new NotImplementedException(); }
-		public void MarkDirty() { IsDirty = true; lastEditOn = DateTime.UtcNow; }
 
 		internal Chunk(NBTLib.NBTReader reader) {
 			blockIds = new ushort[BlockCount];
@@ -157,6 +156,25 @@ namespace Sediment.Core {
 				}
 			}
 		}
+
+		public ushort this[int blockIndex] {
+			get { return blockIds[blockIndex]; }
+			set { blockIds[blockIndex] = value; MarkDirty(); }
+		}
+		public ushort this[int y, int blockPlaneIndex] {
+			get { return blockIds[y << 8 | blockPlaneIndex]; }
+			set { blockIds[y << 8 | blockPlaneIndex] = value; MarkDirty(); }
+		}
+		public ushort this[int x, int y, int z] {
+			get { return blockIds[ToIndex(x, y, z)]; }
+			set { blockIds[ToIndex(x, y, z)] = value; MarkDirty(); }
+		}
+
+		public void Reload() { throw new NotImplementedException(); }
+		public void Discard() { throw new NotImplementedException(); }
+		public void Save() { throw new NotImplementedException(); }
+		public void MarkDirty() { IsDirty = true; lastEditOn = DateTime.UtcNow; }
+
 
 		public void UpdateHeightMap() {
 			for(int x = 0; x < Chunk.BlockXCount; x++) {

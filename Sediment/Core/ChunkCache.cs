@@ -5,11 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sediment.Internal {
-	internal class ChunkCache { //TODO
+namespace Sediment.Core {
+	public class ChunkCache { //TODO
 		public event EventHandler EvictRequest;
 
 		private Dictionary<XZInt, Chunk> items;
+
 
 		public ChunkCache() {
 			items = new Dictionary<XZInt, Chunk>();
@@ -22,5 +23,9 @@ namespace Sediment.Internal {
 		public void Add(XZInt pos, Chunk chunk) {
 			items.Add(pos, chunk);
 		}
+
+
+		public static ChunkCache Instance { get; private set; }
+		static ChunkCache() { Instance = new ChunkCache(); }
 	}
 }
