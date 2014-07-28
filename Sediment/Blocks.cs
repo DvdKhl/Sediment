@@ -1163,8 +1163,8 @@ namespace Sediment {
 			public string Note { get; internal set; }
 
 			public bool UsesEntityData { get; internal set; }
-			public int Luminance { get; internal set; }
-			public int Opacity { get; internal set; }
+			public byte Luminance { get; internal set; }
+			public byte Opacity { get; internal set; }
 			public float Hardness { get; internal set; }
 			public float BlastResistance { get; internal set; }
 
