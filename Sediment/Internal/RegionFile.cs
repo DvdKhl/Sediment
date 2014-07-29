@@ -119,9 +119,10 @@ namespace Sediment.Internal {
 
 		public void StoreChunk(Chunk chunk) {
 			byte[] data;
-			using(var memStream = new MemoryStream(32 * 1024))
-			using(var dataStream = new ZlibStream(memStream, CompressionMode.Compress)) {
-				chunk.WriteTo(dataStream);
+			using(var memStream = new MemoryStream(32 * 1024)) {
+				using(var dataStream = new ZlibStream(memStream, CompressionMode.Compress, true)) {
+					chunk.WriteTo(dataStream);
+				}
 				data = memStream.ToArray();
 			}
 
@@ -163,7 +164,7 @@ namespace Sediment.Internal {
 			entry.Length = length;
 		}
 		private void StoreChunk(byte[] data, int offset, int length, DateTime timestamp, int sectorOffset) {
-			var lengthBin = BitConverter.GetBytes(length);
+			var lengthBin = BitConverter.GetBytes(length + 1);
 			if(BitConverter.IsLittleEndian) Array.Reverse(lengthBin);
 
 			using(var fileStream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite)) {

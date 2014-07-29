@@ -80,10 +80,10 @@ namespace Sediment.Core {
 		}
 		private void WriteChunk(NBTWriter writer) {
 			writer.Write("xPos", X);
-			writer.Write("zPos", X);
+			writer.Write("zPos", Z);
 			writer.Write("LastUpdate", (long)(LastEditOn - DateTimeEx.UnixTime).TotalSeconds);
-			writer.Write("LightPopulated", IsLightPopulated ? 1 : 0);
-			writer.Write("TerrainPopulated", IsTerrainPopulated ? 1 : 0);
+			writer.Write("LightPopulated", (byte)(IsLightPopulated ? 1 : 0));
+			writer.Write("TerrainPopulated", (byte)(IsTerrainPopulated ? 1 : 0));
 			writer.Write("V", Version);
 			writer.Write("InhabitedTime", InhabitedTime);
 			writer.Write("Biomes", biomeIds);
@@ -94,7 +94,7 @@ namespace Sediment.Core {
 		}
 		private void WriteSections(NBTWriter writer, int y) {
 			
-			writer.Write("Y", y);
+			writer.Write("Y", (byte)y);
 
 			var secBlocks = new byte[SectionBlockCount];
 			for(int i = 0; i < secBlocks.Length; i++) secBlocks[i] = (byte)blockIds[(y << 12) | i];

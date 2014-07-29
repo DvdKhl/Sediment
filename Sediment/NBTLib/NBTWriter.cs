@@ -108,6 +108,11 @@ namespace NBTLib {
 		public void Write(string name, byte[] value) {
 			BaseStream.WriteByte(7);
 			WriteValue(name);
+
+			byte[] b = BitConverter.GetBytes(value.Length);
+			if(BitConverter.IsLittleEndian) Array.Reverse(b);
+			BaseStream.Write(b, 0, 4);
+
 			BaseStream.Write(value, 0, value.Length);
 		}
 		public void Write(string name, string value) {
@@ -120,7 +125,13 @@ namespace NBTLib {
 			foreach(var value in values) WriteValue(value);
 		}
 		public void Write(string name, int[] values) {
-			WriteListHeader(name, 3, values.Length);
+			BaseStream.WriteByte(11);
+			WriteValue(name);
+
+			byte[] b = BitConverter.GetBytes(values.Length);
+			if(BitConverter.IsLittleEndian) Array.Reverse(b);
+			BaseStream.Write(b, 0, 4);
+
 			foreach(var value in values) WriteValue(value);
 		}
 		public void Write(string name, long[] values) {
