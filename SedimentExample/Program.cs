@@ -11,7 +11,6 @@ namespace SedimentExample {
 	class Program {
 		static void Main(string[] args) {
 			var level = Level.Load(@"C:\Users\Arokh\AppData\Roaming\.minecraft\saves\Test");
-			var world = level.WorldManager[WorldInfo.Overworld];
 
 			//FillChunk(level);
 			FillChunkAndSaveTest(level, Blocks.Stone.Diorite.Id);
@@ -25,7 +24,10 @@ namespace SedimentExample {
 				chunk[j] = fillBlockId;
 			}
 
-			world.Save();
+			level.Name = "TestRename";
+			level.Gameplay.AllowCommands = false;
+
+			level.Save();
 		}
 
 		private static void FillChunkSpeedTest(Level level) {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Sediment.Core.Entities {
-	public class Player : Living {
+namespace Sediment.Core.Entities.Base {
+	class Fireball : Entity {
 	}
 }

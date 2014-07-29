@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Sediment.Core.Entities.Base;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Sediment.Core.Entities {
-	public class Player : Living {
+	class ItemFrame : Hanging {
 	}
 }

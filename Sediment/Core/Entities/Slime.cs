@@ -5,6 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Sediment.Core.Entities {
-	public class Player : Living {
+	class Slime : LivingNPC {
 	}
 }
