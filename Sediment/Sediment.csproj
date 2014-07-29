@@ -56,7 +56,6 @@
     <Compile Include="Core\ChunkCache.cs" />
     <Compile Include="Internal\DateTimeEx.cs" />
     <Compile Include="Internal\IdCountsFile.cs" />
-    <Compile Include="Internal\LevelFile.cs" />
     <Compile Include="Internal\Lighting.cs" />
     <Compile Include="Internal\MapFile.cs" />
     <Compile Include="Internal\PlayerFile.cs" />

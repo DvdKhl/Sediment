@@ -28,6 +28,10 @@ namespace Sediment.Core {
 
 			openWorlds = new Dictionary<WorldInfo, World>();
 		}
+
+		public void Save() {
+			foreach(var world in openWorlds.Values) world.Save();
+		}
 	}
 
 

@@ -5,6 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Sediment {
-	class Player {
+	public class Player {
 	}
 }

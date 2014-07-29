@@ -11,5 +11,9 @@ namespace Sediment.Core {
 		public PlayerManager(Level level) {
 			this.level = level;
 		}
+
+		public void Save() {
+			throw new NotImplementedException();
+		}
 	}
 }
