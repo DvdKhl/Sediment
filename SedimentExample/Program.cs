@@ -18,14 +18,20 @@ namespace SedimentExample {
 
 		private static void FillChunkAndSaveTest(Level level, ushort fillBlockId) {
 			var world = level.WorldManager[WorldInfo.Overworld];
-			var chunk = world.ChunkManager[0, 0];
 
-			for(int j = 0; j < Chunk.BlockCount; j++) {
-				chunk[j] = fillBlockId;
+
+
+			for(int z = 0; z < 32; z++) {
+				for(int x = 0; x < 32; x++) {
+					var chunk = world.ChunkManager[x, z];
+
+					for(int j = 0; j < Chunk.BlockCount; j++) {
+						var oldId = chunk[j];
+						chunk[j] = fillBlockId;
+					}
+
+				}
 			}
-
-			level.Name = "TestRename";
-			level.Gameplay.AllowCommands = false;
 
 			level.Save();
 		}

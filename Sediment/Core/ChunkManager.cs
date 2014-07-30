@@ -18,9 +18,14 @@ namespace Sediment.Core {
 				Chunk chunk;
 				if(!world.Info.ChunkCache.TryGetValue(x, z, out chunk)) {
 					var region = world.RegionManager[x >> 5, z >> 5];
-					using(var reader = region.CreateChunkReader(x & 0x1F, z & 0x1F)) {
-						chunk = new Chunk(reader, region);
+
+					var reader = region.CreateChunkReader(x & 0x1F, z & 0x1F);
+					if(reader != null) {
+						using(reader) chunk = new Chunk(reader, region);
+					} else {
+						chunk = new Chunk(x, z, region);
 					}
+
 					world.Info.ChunkCache.Add(chunk);
 				}
 				return chunk;

@@ -1,5 +1,6 @@
 ﻿using NBTLib;
 using Sediment.Core;
+using Sediment.Core.Entities;
 using Sediment.Internal;
 using System;
 using System.Collections.Generic;
@@ -48,7 +49,7 @@ namespace Sediment {
 						case "generatorOptions": Generation.Options = (string)reader.Value; break;
 						case "RandomSeed": Generation.Seed = (long)reader.Value; break;
 						case "MapFeatures": Generation.AllowMapFeatures = (byte)reader.Value != 0 ? true : false; break;
-						case "LastPlayed": LastPlayed = DateTimeEx.UnixTime.AddSeconds((long)reader.Value); break;
+						case "LastPlayed": LastPlayed = DateTimeEx.UnixTime.AddMilliseconds((long)reader.Value); break;
 						case "SizeOnDisk": break;
 						case "allowCommands": Gameplay.AllowCommands = (byte)reader.Value != 0 ? true : false; break;
 						case "hardcore": Gameplay.IsHardcore = (byte)reader.Value != 0 ? true : false; break;
@@ -121,7 +122,7 @@ namespace Sediment {
 			writer.Write("generatorOptions", Generation.Options);
 			writer.Write("RandomSeed", Generation.Seed);
 			writer.Write("MapFeatures", Generation.AllowMapFeatures ? (byte)1 : (byte)0);
-			writer.Write("LastPlayed", (long)(LastPlayed - DateTimeEx.UnixTime).TotalSeconds);
+			writer.Write("LastPlayed", (long)(LastPlayed - DateTimeEx.UnixTime).TotalMilliseconds);
 			writer.Write("allowCommands", Gameplay.AllowCommands ? (byte)1 : (byte)0);
 			writer.Write("hardcore", Gameplay.IsHardcore ? (byte)1 : (byte)0);
 			writer.Write("GameType", Gameplay.GameType);

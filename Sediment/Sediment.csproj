@@ -122,6 +122,7 @@
     <Compile Include="Core\Map.cs" />
     <Compile Include="Core\MapManager.cs" />
     <Compile Include="Core\ChunkCache.cs" />
+    <Compile Include="Core\TileEntity.cs" />
     <Compile Include="Internal\DateTimeEx.cs" />
     <Compile Include="Internal\IdCountsFile.cs" />
     <Compile Include="Internal\Lighting.cs" />

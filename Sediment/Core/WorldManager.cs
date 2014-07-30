@@ -36,9 +36,9 @@ namespace Sediment.Core {
 
 
 	public class WorldInfo {
-		public static readonly WorldInfo Overworld = new WorldInfo("region", "r.{0}.{1}.mca", "data/villages.dat", new ChunkCache(512));
-		public static readonly WorldInfo Netherworld = new WorldInfo("DIM-1/region", "r.{0}.{1}.mca", "data/villages_nether.dat", new ChunkCache(512));
-		public static readonly WorldInfo TheEnd = new WorldInfo("DIM1/region", "r.{0}.{1}.mca", "data/villages_end.dat", new ChunkCache(512));
+		public static readonly WorldInfo Overworld = new WorldInfo("region", "r.{0}.{1}.mca", "data/villages.dat", new ChunkCache(1024));
+		public static readonly WorldInfo Netherworld = new WorldInfo("DIM-1/region", "r.{0}.{1}.mca", "data/villages_nether.dat", new ChunkCache(1024));
+		public static readonly WorldInfo TheEnd = new WorldInfo("DIM1/region", "r.{0}.{1}.mca", "data/villages_end.dat", new ChunkCache(1024));
 
 		public string RegionPath { get; private set; }
 		public string VillagesDataPath { get; private set; }

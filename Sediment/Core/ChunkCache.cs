@@ -35,12 +35,13 @@ namespace Sediment.Core {
 
 		public void Add(Chunk chunk) {
 			if(list.Count >= Capacity) {
+				throw new NotImplementedException();
 				var removeChunk = list.Last.Value;
 				//removeChunk.Save();
 				index.Remove((uint)removeChunk.X | (ulong)removeChunk.Z << 32);
 			}
 
-			var node = list.AddFirst(chunk);
+			var node = list.AddLast(chunk);
 			index.Add((uint)chunk.X | (ulong)chunk.Z << 32, node);
 		}
 
