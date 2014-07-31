@@ -81,7 +81,7 @@ namespace SedimentExample {
 		}
 
 		private static void HeightFun1() {
-			var level = Level.Load(@"C:\Users\Arokh\AppData\Roaming\.minecraft\saves\HeightFun1");
+			var level = Level.Create(@"C:\Users\Arokh\AppData\Roaming\.minecraft\saves\HeightFun4");
 			var world = level.WorldManager[WorldInfo.Overworld];
 
 			world.SavingChunk += (s, c) => {
@@ -92,6 +92,8 @@ namespace SedimentExample {
 				c.IsLightPopulated = true;
 			};
 
+			var sw = new Stopwatch();
+			sw.Start();
 
 			var blockMan = world.BlockManager;
 
@@ -110,6 +112,7 @@ namespace SedimentExample {
 			}
 
 			level.Save();
+			Console.WriteLine(sw.ElapsedMilliseconds);
 		}
 	}
 }

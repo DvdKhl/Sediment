@@ -108,17 +108,6 @@ namespace Sediment.Internal {
 		}
 
 
-		public void StoreChunk(Chunk chunk) {
-			byte[] data;
-			using(var memStream = new MemoryStream(32 * 1024)) {
-				using(var dataStream = new ZlibStream(memStream, CompressionMode.Compress, true)) {
-					chunk.WriteTo(dataStream);
-				}
-				data = memStream.ToArray();
-			}
-
-			StoreChunk(chunk.X & 0x1F, chunk.Z & 0x1F, data, 0, data.Length, DateTime.UtcNow);
-		}
 		public void StoreChunk(int localChunkX, int localChunkZ, byte[] data, int offset, int length) { StoreChunk(localChunkX, localChunkZ, data, offset, length, DateTime.UtcNow); }
 		public void StoreChunk(int localChunkX, int localChunkZ, byte[] data, int offset, int length, DateTime timestamp) {
 			var entry = table[localChunkX + localChunkZ * ChunkXCount];
@@ -212,7 +201,7 @@ namespace Sediment.Internal {
 			if(entry.SectorOffset < 2) return null;
 
 			var fileStream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-			fileStream.Position = (entry.SectorOffset << 12) + 5;
+			fileStream.Position = (entry.SectorOffset << 12) + ChunkHeaderLength;
 
 			Stream dataStream;
 			switch(entry.CompressionType) {

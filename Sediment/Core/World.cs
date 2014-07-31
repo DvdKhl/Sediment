@@ -1,6 +1,7 @@
 ﻿using Sediment.Core;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,10 +27,12 @@ namespace Sediment.Core {
 		}
 
 		public void Save() {
-			foreach(var dirtyChunk in Info.ChunkCache.DirtyChunks) {
-				SavingChunk(this, dirtyChunk);
-				dirtyChunk.Region.SaveChunk(dirtyChunk);
+			foreach(var regionChunks in Info.ChunkCache.DirtyChunks.GroupBy(c => c.Region)) {
+				regionChunks.Key.SaveChunks(regionChunks);
 			}
 		}
+
+
+		internal void OnSavingChunk(Chunk chunk) { SavingChunk(this, chunk); }
 	}
 }
