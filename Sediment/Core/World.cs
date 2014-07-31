@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace Sediment.Core {
 	public class World {
+		public event EventHandler<Chunk> SavingChunk = delegate { };
+
 		public Level Level { get; private set; }
 		public WorldInfo Info { get; private set; }
 
@@ -25,6 +27,7 @@ namespace Sediment.Core {
 
 		public void Save() {
 			foreach(var dirtyChunk in Info.ChunkCache.DirtyChunks) {
+				SavingChunk(this, dirtyChunk);
 				dirtyChunk.Region.SaveChunk(dirtyChunk);
 			}
 		}

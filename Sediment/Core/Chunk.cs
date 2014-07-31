@@ -74,8 +74,6 @@ namespace Sediment.Core {
 		public void WriteTo(Stream stream) {
 			var writer = new NBTWriter(stream);
 
-			UpdateHeightMap();
-
 			writer.WriteCompound("", w => {
 				w.WriteCompound("Level", WriteChunk);
 			});

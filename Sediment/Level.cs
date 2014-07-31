@@ -32,7 +32,9 @@ namespace Sediment {
 			Weather = new WeatherSection();
 			Generation = new GenerationSection();
 			Border = new BorderSection();
+		}
 
+		private void Read(string rootPath) {
 			using(var fileStream = File.OpenRead(Path.Combine(rootPath, Info.LevelPath)))
 			using(var dataStream = new Ionic.Zlib.GZipStream(fileStream, Ionic.Zlib.CompressionMode.Decompress))
 			using(var reader = new NBTReader(dataStream)) {
@@ -68,7 +70,7 @@ namespace Sediment {
 						case "BorderWarningBlocks": Border.WarningBlocks = (double)reader.Value; break;
 						case "BorderWarningTime": Border.WarningTime = (double)reader.Value; break;
 						case "BorderSizeLerpTarget": Border.SizeLerpTarget = (double)reader.Value; break;
-						case "BorderSizeLerpTime": Border.SizeLerpTime = (int)reader.Value; break;
+						case "BorderSizeLerpTime": Border.SizeLerpTime = (long)reader.Value; break;
 						case "BorderDamagePerBlock": Border.DamagePerBlock = (double)reader.Value; break;
 						case "raining": Weather.IsRaining = (byte)reader.Value != 0 ? true : false; break;
 						case "rainTime": Weather.RainTime = (int)reader.Value; break;
@@ -82,6 +84,52 @@ namespace Sediment {
 				}
 				reader.MoveNext();
 			}
+		}
+		private void SetDefaults() {
+			var rng = new Random();
+
+			Name = "";
+			Version = 19133; //TODO make static readonly constant
+			Time = DayTime = 0;
+			LastPlayed = DateTimeEx.UnixTime;
+			Generation.IsInitialized = true;
+			Generation.Name = "default";
+			Generation.Options = "";
+			Generation.Seed = BitConverter.DoubleToInt64Bits(rng.NextDouble());
+			Generation.AllowMapFeatures = true;
+			Gameplay.AllowCommands = false;
+			Gameplay.IsHardcore = false;
+			Gameplay.GameType = 0;
+			Gameplay.Difficulty = 0;
+			Gameplay.IsDifficultyLocked = false;
+			Gameplay.SpawnX = Gameplay.SpawnZ = 0;
+			Gameplay.SpawnY = 64;
+			Border.Size = 60000000;
+			Border.CenterX = 0;
+			Border.CenterZ = 0;
+			Border.SafeZone = 5;
+			Border.WarningBlocks = 5;
+			Border.WarningTime = 15;
+			Border.SizeLerpTarget = 60000000;
+			Border.SizeLerpTime = 0;
+			Border.DamagePerBlock = 0.2;
+			Weather.IsRaining = Weather.IsThundering = false;
+			Weather.RainTime = rng.Next(20 * 60 * 1, 20 * 60 * 120);
+			Weather.ThunderTime = rng.Next(20 * 60 * 60, 20 * 60 * 240);
+			Weather.ClearTime = rng.Next(20 * 60 * 120, 20 * 60 * 480);
+			Gamerules.CommandBlockOutput = "true";
+			Gamerules.DoDaylightCycle = "true";
+			Gamerules.DoFireTick = "true";
+			Gamerules.DoMobLoot = "true";
+			Gamerules.DoMobSpawning= "true";
+			Gamerules.DoTileDrops= "true";
+			Gamerules.KeepInventory= "false";
+			Gamerules.LogAdminCommands= "true";
+			Gamerules.MobGriefing= "true";
+			Gamerules.NaturalRegeneration= "true";
+			Gamerules.RandomTickSpeed = "3";
+			Gamerules.SendCommandFeedback= "true";
+			Gamerules.ShowDeathMessages= "true";
 		}
 
 		public int Version { get; set; }
@@ -152,6 +200,8 @@ namespace Sediment {
 			foreach(var nodes in unknownTags) writer.Write(nodes);
 		}
 
+
+
 		#region Sections
 		public class GameplaySection {
 			public bool AllowCommands { get; set; }
@@ -181,7 +231,7 @@ namespace Sediment {
 			public int Version { get; set; }
 		}
 		public class BorderSection {
-			public int SizeLerpTime { get; set; }
+			public long SizeLerpTime { get; set; }
 			public double CenterX { get; set; }
 			public double CenterZ { get; set; }
 			public double DamagePerBlock { get; set; }
@@ -260,6 +310,7 @@ namespace Sediment {
 			}
 
 			var level = new Level(rootPath, LevelInfo.Default);
+			level.Read(rootPath);
 
 			levels.Add(level.RootPath, level);
 
@@ -267,9 +318,17 @@ namespace Sediment {
 		}
 
 		public static Level Create(string rootPath) {
-			using(var memStream = new MemoryStream()) {
-				var writer = new NBTWriter(memStream);
+			if(levels.ContainsKey(Path.GetFullPath(rootPath))) {
+				throw new InvalidOperationException("Already loaded");
+			}
 
+			var level = new Level(rootPath, LevelInfo.Default);
+			level.SetDefaults();
+
+			Directory.CreateDirectory(rootPath);
+
+			using(var memStream = new MemoryStream()) {
+				level.WriteTo(memStream);
 
 				using(var fileStream = File.OpenWrite(Path.Combine(rootPath, LevelInfo.Default.LevelPath)))
 				using(var dataStream = new Ionic.Zlib.GZipStream(fileStream, Ionic.Zlib.CompressionMode.Compress)) {
@@ -277,7 +336,7 @@ namespace Sediment {
 				}
 			}
 
-			return null;
+			return level;
 		}
 	}
 

@@ -47,6 +47,8 @@ namespace Sediment.Internal {
 			this.path = regionPath;
 			list = new LinkedList<TableEntry>();
 
+			Directory.CreateDirectory(Path.GetDirectoryName(regionPath));
+
 			using(var fileStream = new FileStream(regionPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite)) {
 				table = new TableEntry[ChunkXCount * ChunkZCount];
 

@@ -132,12 +132,12 @@ namespace Sediment.Internal {
 				}
 			}
 
-			for(int z = 0; z < 16; z++) {
-				for(int x = 0; x < 16; x++) {
-					Console.Write(lighting[Chunk.ToIndex(x, 0xfb, z)].ToString("X"));
-				}
-				Console.WriteLine();
-			}
+			//for(int z = 0; z < 16; z++) {
+			//	for(int x = 0; x < 16; x++) {
+			//		Console.Write(lighting[Chunk.ToIndex(x, 0xfb, z)].ToString("X"));
+			//	}
+			//	Console.WriteLine();
+			//}
 
 			//Process remaining blocklights
 			for(int i = pendingPriorityBlocks.Length - 1; i >= 0; i--) {
@@ -179,7 +179,7 @@ namespace Sediment.Internal {
 				LightChunkPrevZ(neighborBlockIndex, neighborLuminance);
 				LightChunkNextZ(neighborBlockIndex, neighborLuminance);
 
-				if(IsGreater(opacity[neighborBlockIndex], 0x11) && neighborLuminance != 0) LightChunk(neighborBlockIndex, neighborLuminance);
+				//if(IsGreater(opacity[neighborBlockIndex], 0x11) && neighborLuminance != 0) LightChunk(neighborBlockIndex, neighborLuminance);
 			}
 
 		}
@@ -199,7 +199,7 @@ namespace Sediment.Internal {
 				LightChunkPrevZ(neighborBlockIndex, neighborLuminance);
 				LightChunkNextZ(neighborBlockIndex, neighborLuminance);
 
-				if(IsGreater(opacity[neighborBlockIndex], 0x11) && neighborLuminance != 0) LightChunk(neighborBlockIndex, neighborLuminance);
+				//if(IsGreater(opacity[neighborBlockIndex], 0x11) && neighborLuminance != 0) LightChunk(neighborBlockIndex, neighborLuminance);
 			}
 
 		}
@@ -217,7 +217,7 @@ namespace Sediment.Internal {
 				LightChunkPrevZ(neighborBlockIndex, neighborLuminance);
 				LightChunkNextZ(neighborBlockIndex, neighborLuminance);
 
-				if(IsGreater(opacity[neighborBlockIndex], 0x11) && neighborLuminance != 0) LightChunk(neighborBlockIndex, neighborLuminance);
+				//if(IsGreater(opacity[neighborBlockIndex], 0x11) && neighborLuminance != 0) LightChunk(neighborBlockIndex, neighborLuminance);
 			}
 		}
 
@@ -234,7 +234,7 @@ namespace Sediment.Internal {
 				LightChunkPrevZ(neighborBlockIndex, neighborLuminance);
 				LightChunkNextZ(neighborBlockIndex, neighborLuminance);
 
-				if(IsGreater(opacity[neighborBlockIndex], 0x11) && neighborLuminance != 0) LightChunk(neighborBlockIndex, neighborLuminance);
+				//if(IsGreater(opacity[neighborBlockIndex], 0x11) && neighborLuminance != 0) LightChunk(neighborBlockIndex, neighborLuminance);
 			}
 		}
 
@@ -248,7 +248,7 @@ namespace Sediment.Internal {
 
 				lighting[neighborBlockIndex] = Max(neighborLuminance, lighting[neighborBlockIndex]);
 
-				if(IsGreater(opacity[neighborBlockIndex], 0x11) && neighborLuminance != 0) LightChunk(neighborBlockIndex, neighborLuminance);
+				//if(IsGreater(opacity[neighborBlockIndex], 0x11) && neighborLuminance != 0) LightChunk(neighborBlockIndex, neighborLuminance);
 			}
 		}
 
@@ -262,7 +262,7 @@ namespace Sediment.Internal {
 
 				lighting[neighborBlockIndex] = Max(neighborLuminance, lighting[neighborBlockIndex]);
 
-				if(IsGreater(opacity[neighborBlockIndex], 0x11) && neighborLuminance != 0) LightChunk(neighborBlockIndex, neighborLuminance);
+				//if(IsGreater(opacity[neighborBlockIndex], 0x11) && neighborLuminance != 0) LightChunk(neighborBlockIndex, neighborLuminance);
 			}
 		}
 	}
