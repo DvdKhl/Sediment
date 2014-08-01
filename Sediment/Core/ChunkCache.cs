@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace Sediment.Core {
 	public class ChunkCache {
+		public event EventHandler<Chunk> EvictingChunk = delegate { };
+
 		private Dictionary<ulong, LinkedListNode<Chunk>> index;
 		private LinkedList<Chunk> list;
 
@@ -35,13 +37,12 @@ namespace Sediment.Core {
 
 		public void Add(Chunk chunk) {
 			if(list.Count >= Capacity) {
-				throw new NotImplementedException();
-				var removeChunk = list.Last.Value;
-				//removeChunk.Save();
-				index.Remove((uint)removeChunk.X | (ulong)removeChunk.Z << 32);
+				var toRemove = list.Last.Value;
+				EvictingChunk(this, toRemove);
+				index.Remove((uint)toRemove.X | (ulong)toRemove.Z << 32);
 			}
 
-			var node = list.AddLast(chunk);
+			var node = list.AddFirst(chunk);
 			index.Add((uint)chunk.X | (ulong)chunk.Z << 32, node);
 		}
 

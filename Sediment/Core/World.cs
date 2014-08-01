@@ -24,7 +24,11 @@ namespace Sediment.Core {
 			RegionManager = new RegionManager(this);
 			ChunkManager = new ChunkManager(this);
 			BlockManager = new BlockManager(this);
+
+			Info.ChunkCache.EvictingChunk += EvictingChunkHandler;
 		}
+
+		private void EvictingChunkHandler(object sender, Chunk chunk) { if(chunk.IsDirty) Save(); }
 
 		public void Save() {
 			foreach(var regionChunks in Info.ChunkCache.DirtyChunks.GroupBy(c => c.Region)) {
