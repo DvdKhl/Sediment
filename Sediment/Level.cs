@@ -12,15 +12,13 @@ using System.Threading.Tasks;
 namespace Sediment {
 	public class Level {
 		public LevelInfo Info { get; private set; }
-		public string RootPath { get; private set; }
 
 		public WorldManager WorldManager { get; private set; }
 		public PlayerManager PlayerManager { get; private set; }
 
 		private List<NBTNode> unknownTags = new List<NBTNode>();
 
-		private Level(string rootPath, LevelInfo info) {
-			this.RootPath = rootPath;
+		private Level(LevelInfo info) {
 			this.Info = info;
 
 			WorldManager = new WorldManager(this);
@@ -121,15 +119,15 @@ namespace Sediment {
 			Gamerules.DoDaylightCycle = "true";
 			Gamerules.DoFireTick = "true";
 			Gamerules.DoMobLoot = "true";
-			Gamerules.DoMobSpawning= "true";
-			Gamerules.DoTileDrops= "true";
-			Gamerules.KeepInventory= "false";
-			Gamerules.LogAdminCommands= "true";
-			Gamerules.MobGriefing= "true";
-			Gamerules.NaturalRegeneration= "true";
+			Gamerules.DoMobSpawning = "true";
+			Gamerules.DoTileDrops = "true";
+			Gamerules.KeepInventory = "false";
+			Gamerules.LogAdminCommands = "true";
+			Gamerules.MobGriefing = "true";
+			Gamerules.NaturalRegeneration = "true";
 			Gamerules.RandomTickSpeed = "3";
-			Gamerules.SendCommandFeedback= "true";
-			Gamerules.ShowDeathMessages= "true";
+			Gamerules.SendCommandFeedback = "true";
+			Gamerules.ShowDeathMessages = "true";
 		}
 
 		public int Version { get; set; }
@@ -148,7 +146,7 @@ namespace Sediment {
 			WorldManager.Save();
 			//PlayerManager.Save();
 
-			using(var fileStream = File.OpenWrite(Path.Combine(RootPath, Info.LevelPath)))
+			using(var fileStream = File.OpenWrite(Path.Combine(Info.RootPath, Info.LevelPath)))
 			using(var dataStream = new Ionic.Zlib.GZipStream(fileStream, Ionic.Zlib.CompressionMode.Compress)) {
 				WriteTo(dataStream);
 			}
@@ -305,14 +303,17 @@ namespace Sediment {
 		private static Dictionary<string, Level> levels = new Dictionary<string, Level>();
 
 		public static Level Load(string rootPath) {
-			if(levels.ContainsKey(Path.GetFullPath(rootPath))) {
+			rootPath = Path.GetFullPath(rootPath);
+
+			if(levels.ContainsKey(rootPath)) {
 				throw new InvalidOperationException("Already loaded");
 			}
 
-			var level = new Level(rootPath, LevelInfo.Default);
+
+			var level = new Level(LevelInfo.Create(rootPath, false));
 			level.Read(rootPath);
 
-			levels.Add(level.RootPath, level);
+			levels.Add(level.Info.RootPath, level);
 
 			return level;
 		}
@@ -322,7 +323,8 @@ namespace Sediment {
 				throw new InvalidOperationException("Already loaded");
 			}
 
-			var level = new Level(rootPath, LevelInfo.Default);
+			var info = LevelInfo.Create(rootPath, false);
+			var level = new Level(info);
 			level.SetDefaults();
 
 			Directory.CreateDirectory(rootPath);
@@ -330,7 +332,7 @@ namespace Sediment {
 			using(var memStream = new MemoryStream()) {
 				level.WriteTo(memStream);
 
-				using(var fileStream = File.OpenWrite(Path.Combine(rootPath, LevelInfo.Default.LevelPath)))
+				using(var fileStream = File.OpenWrite(Path.Combine(rootPath, info.LevelPath)))
 				using(var dataStream = new Ionic.Zlib.GZipStream(fileStream, Ionic.Zlib.CompressionMode.Compress)) {
 					memStream.CopyTo(dataStream);
 				}
@@ -341,23 +343,43 @@ namespace Sediment {
 	}
 
 
-	public class LevelInfo {
-		public static readonly LevelInfo Default = new LevelInfo {
-			LevelPath = "level.dat",
-			PlayerDataPath = "playerdata",
-			StatisticsDataPath = "stats",
-			FortressGenerationPath = "data/Fortress.dat",
-			MineshaftGenerationPath = "data/Mineshaft.dat",
-			StrongholdGenerationPath = "data/Stronghold.dat",
-			VillageGenerationPath = "data/Village.dat",
-		};
+	public class LevelInfo : Freezable {
+		public static LevelInfo Create(string roothPath, bool copyOnWrite) {
+			var defLevelInfo = new LevelInfo {
+				LevelPath = "level.dat",
+				PlayerDataPath = "playerdata",
+				StatisticsDataPath = "stats",
+				FortressGenerationPath = "data/Fortress.dat",
+				MineshaftGenerationPath = "data/Mineshaft.dat",
+				StrongholdGenerationPath = "data/Stronghold.dat",
+				VillageGenerationPath = "data/Village.dat",
+			};
 
-		public string LevelPath { get; internal set; }
-		public string PlayerDataPath { get; internal set; }
-		public string StatisticsDataPath { get; internal set; }
-		public string VillageGenerationPath { get; internal set; }
-		public string FortressGenerationPath { get; internal set; }
-		public string MineshaftGenerationPath { get; internal set; }
-		public string StrongholdGenerationPath { get; internal set; }
+			defLevelInfo.RootPath = roothPath;
+			defLevelInfo.CopyOnWrite = copyOnWrite;
+			defLevelInfo.Freeze();
+
+			return defLevelInfo;
+		}
+
+		private bool copyOnWrite;
+		private string rootPath;
+		private string levelPath;
+		private string playerDataPath;
+		private string statisticsDataPath;
+		private string villageGenerationPath;
+		private string fortressGenerationPath;
+		private string mineshaftGenerationPath;
+		private string strongholdGenerationPath;
+
+		public bool CopyOnWrite { get { return copyOnWrite; } set { WritePreamble(); copyOnWrite = value; } }
+		public string RootPath { get { return rootPath; } set { WritePreamble(); rootPath = value; } }
+		public string LevelPath { get { return levelPath; } set { WritePreamble(); levelPath = value; } }
+		public string PlayerDataPath { get { return playerDataPath; } set { WritePreamble(); playerDataPath = value; } }
+		public string StatisticsDataPath { get { return statisticsDataPath; } set { WritePreamble(); statisticsDataPath = value; } }
+		public string VillageGenerationPath { get { return villageGenerationPath; } set { WritePreamble(); villageGenerationPath = value; } }
+		public string FortressGenerationPath { get { return fortressGenerationPath; } set { WritePreamble(); fortressGenerationPath = value; } }
+		public string MineshaftGenerationPath { get { return mineshaftGenerationPath; } set { WritePreamble(); mineshaftGenerationPath = value; } }
+		public string StrongholdGenerationPath { get { return strongholdGenerationPath; } set { WritePreamble(); strongholdGenerationPath = value; } }
 	}
 }

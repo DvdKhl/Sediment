@@ -34,7 +34,7 @@ namespace Sediment.Core {
 			this.Z = regionZ;
 
 			var regionFileName = string.Format(world.Info.RegionFilePathFormat, regionX, regionZ);
-			var regionFilePath = Path.Combine(world.Level.RootPath, world.Info.RegionPath, regionFileName);
+			var regionFilePath = Path.Combine(world.Level.Info.RootPath, world.Info.RegionPath, regionFileName);
 
 			regionFile = new RegionFile(regionFilePath);
 		}
