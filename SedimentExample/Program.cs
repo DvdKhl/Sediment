@@ -81,7 +81,10 @@ namespace SedimentExample {
 		}
 
 		private static void HeightFun1() {
-			var level = Level.Create(@"C:\Users\Arokh\AppData\Roaming\.minecraft\saves\HeightFun4");
+			var level = Level.Create(@"C:\Users\Arokh\AppData\Roaming\.minecraft\saves\HeightFun");
+			level.Gameplay.GameType = 1;
+			level.Generation.IsInitialized = true;
+
 			var world = level.WorldManager[WorldInfo.Overworld];
 
 			world.SavingChunk += (s, c) => {
@@ -97,9 +100,9 @@ namespace SedimentExample {
 
 			var blockMan = world.BlockManager;
 
-			for(int z = 0; z < 32 * Chunk.BlockZCount; z++) {
-				for(int x = 0; x < 32 * Chunk.BlockXCount; x++) {
-					var height = Chunk.BlockYCount - 3 - (int)((Math.Sin((x / (32 * 2 * 16d / 3)) * (Math.PI * 2)) * Math.Cos((z / (32 * 2 * 16d / 3)) * (Math.PI * 2) + Math.PI / 2) + 1) * 127);
+			for(int z = 0; z < 64 * Chunk.BlockZCount; z++) {
+				for(int x = 0; x < 64 * Chunk.BlockXCount; x++) {
+					var height = Chunk.BlockYCount - 3 - (int)((Math.Sin((x / (32 * 2 * 16d / 16)) * (Math.PI * 2)) * Math.Cos((z / (32 * 2 * 16d / 16)) * (Math.PI * 2) + Math.PI / 2) + 1) * 127);
 
 					int y = 0;
 					for(y = 0; y <= height; y++) {
