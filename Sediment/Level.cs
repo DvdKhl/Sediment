@@ -19,6 +19,8 @@ namespace Sediment {
 		private List<NBTNode> unknownTags = new List<NBTNode>();
 
 		private Level(LevelInfo info) {
+			if(!info.IsFrozen) throw new ArgumentException("Not frozen", "info");
+
 			this.Info = info;
 
 			WorldManager = new WorldManager(this);
@@ -319,7 +321,9 @@ namespace Sediment {
 		}
 
 		public static Level Create(string rootPath) {
-			if(levels.ContainsKey(Path.GetFullPath(rootPath))) {
+			rootPath = Path.GetFullPath(rootPath);
+
+			if(levels.ContainsKey(rootPath)) {
 				throw new InvalidOperationException("Already loaded");
 			}
 

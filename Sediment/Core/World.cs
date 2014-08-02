@@ -18,6 +18,8 @@ namespace Sediment.Core {
 		public BlockManager BlockManager { get; private set; }
 
 		public World(Level level, WorldInfo info) {
+			if(!info.IsFrozen) throw new ArgumentException("Not frozen", "info");
+
 			this.Level = level;
 			this.Info = info;
 

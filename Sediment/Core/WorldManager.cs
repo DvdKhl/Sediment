@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sediment.Internal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,25 +36,44 @@ namespace Sediment.Core {
 	}
 
 
-	public class WorldInfo {
-		public static readonly WorldInfo Overworld = new WorldInfo("region", "r.{0}.{1}.mca", "data/villages.dat", new ChunkCache(1024));
-		public static readonly WorldInfo Netherworld = new WorldInfo("DIM-1/region", "r.{0}.{1}.mca", "data/villages_nether.dat", new ChunkCache(1024));
-		public static readonly WorldInfo TheEnd = new WorldInfo("DIM1/region", "r.{0}.{1}.mca", "data/villages_end.dat", new ChunkCache(1024));
+	public class WorldInfo : Freezable {
+		public static readonly WorldInfo Overworld = new WorldInfo {
+			RegionPath = "region",
+			RegionFilePathFormat = "r.{0}.{1}.mca",
+			VillagesDataPath = "data/villages.dat",
+			ChunkCache = new ChunkCache(1024)
+		};
+		public static readonly WorldInfo Netherworld = new WorldInfo {
+			RegionPath = "DIM-1/region",
+			RegionFilePathFormat = "r.{0}.{1}.mca",
+			VillagesDataPath = "data/villages_nether.dat",
+			ChunkCache = new ChunkCache(1024)
+		};
+		public static readonly WorldInfo TheEnd = new WorldInfo {
+			RegionPath = "DIM1/region",
+			RegionFilePathFormat = "r.{0}.{1}.mca",
+			VillagesDataPath = "data/villages_end.dat",
+			ChunkCache = new ChunkCache(1024)
+		};
 
-		public string RegionPath { get; private set; }
-		public string VillagesDataPath { get; private set; }
-		public string RegionFilePathFormat { get; private set; }
-		public ChunkCache ChunkCache { get; private set; }
-
-		public WorldInfo WithChunkCache(ChunkCache chunkCache) {
-			return new WorldInfo(RegionPath, RegionFilePathFormat, VillagesDataPath, chunkCache);
+		static WorldInfo() {
+			Overworld.Freeze();
+			Netherworld.Freeze();
+			TheEnd.Freeze();
 		}
 
-		public WorldInfo(string regionPath, string regionFilePathFormat, string villagesDataPath, ChunkCache chunkCache) {
-			this.RegionPath = regionPath;
-			this.RegionFilePathFormat = regionFilePathFormat;
-			this.VillagesDataPath = villagesDataPath;
-			this.ChunkCache = chunkCache;
+		public string RegionPath { get { return regionPath; } set { WritePreamble(); regionPath = value; } } private string regionPath;
+		public string VillagesDataPath { get { return villagesDataPath; } set { WritePreamble(); villagesDataPath = value; } } private string villagesDataPath;
+		public string RegionFilePathFormat { get { return regionFilePathFormat; } set { WritePreamble(); regionFilePathFormat = value; } } private string regionFilePathFormat;
+		public ChunkCache ChunkCache { get { return chunkCache; } set { WritePreamble(); chunkCache = value; } } private ChunkCache chunkCache;
+
+		public override WorldInfo UnfrozenCopy() {
+			return new WorldInfo { 
+				RegionPath = RegionPath,
+				RegionFilePathFormat = RegionFilePathFormat,
+				VillagesDataPath = VillagesDataPath, 
+				ChunkCache = ChunkCache 
+			};
 		}
 	}
 }
