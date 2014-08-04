@@ -152,8 +152,12 @@ namespace Sediment {
 			using(var dataStream = new Ionic.Zlib.GZipStream(fileStream, Ionic.Zlib.CompressionMode.Compress)) {
 				WriteTo(dataStream);
 			}
-
 		}
+		public void Commit() {
+			throw new NotImplementedException();
+		}
+
+
 		public void WriteTo(Stream stream) {
 			var writer = new NBTWriter(stream);
 

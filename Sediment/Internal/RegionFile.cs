@@ -41,10 +41,10 @@ namespace Sediment.Internal {
 			}
 		}
 
-		private string path;
+		public string FilePath { get; internal set; }
 
 		public RegionFile(string regionPath) {
-			this.path = regionPath;
+			this.FilePath = regionPath;
 			list = new LinkedList<TableEntry>();
 
 			Directory.CreateDirectory(Path.GetDirectoryName(regionPath));
@@ -166,7 +166,7 @@ namespace Sediment.Internal {
 			var lengthBin = BitConverter.GetBytes(length + 1);
 			if(BitConverter.IsLittleEndian) Array.Reverse(lengthBin);
 
-			using(var fileStream = new FileStream(path, FileMode.Open, FileAccess.Write, FileShare.ReadWrite)) {
+			using(var fileStream = new FileStream(FilePath, FileMode.Open, FileAccess.Write, FileShare.ReadWrite)) {
 				WriteMeta(entry, fileStream);
 
 				fileStream.Position = entry.SectorOffset << 12;
@@ -191,7 +191,7 @@ namespace Sediment.Internal {
 			list.Remove(entry.Node);
 			entry.Reset();
 
-			using(var fileStream = new FileStream(path, FileMode.Open, FileAccess.Write, FileShare.ReadWrite)) {
+			using(var fileStream = new FileStream(FilePath, FileMode.Open, FileAccess.Write, FileShare.ReadWrite)) {
 				WriteMeta(entry, fileStream);
 			}
 		}
@@ -200,7 +200,7 @@ namespace Sediment.Internal {
 			var entry = table[localChunkX + localChunkZ * ChunkXCount];
 			if(entry.SectorOffset < 2) return null;
 
-			var fileStream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+			var fileStream = new FileStream(FilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
 			fileStream.Position = (entry.SectorOffset << 12) + ChunkHeaderLength;
 
 			Stream dataStream;
