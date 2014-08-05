@@ -16,6 +16,8 @@ namespace Sediment {
 		public WorldManager WorldManager { get; private set; }
 		public PlayerManager PlayerManager { get; private set; }
 
+		private bool needsCommit;
+
 		private List<NBTNode> unknownTags = new List<NBTNode>();
 
 		private Level(LevelInfo info) {
@@ -34,104 +36,6 @@ namespace Sediment {
 			Border = new BorderSection();
 		}
 
-		private void Read(string rootPath) {
-			using(var fileStream = File.OpenRead(Path.Combine(rootPath, Info.LevelPath)))
-			using(var dataStream = new Ionic.Zlib.GZipStream(fileStream, Ionic.Zlib.CompressionMode.Decompress))
-			using(var reader = new NBTReader(dataStream)) {
-				reader.MoveNext();
-				reader.MoveNext();
-
-				while(reader.MoveNext() && reader.Type != NBTType.End) {
-					switch(reader.Name) {
-						case "version": Version = (int)reader.Value; break;
-						case "initialized": Generation.IsInitialized = (byte)reader.Value != 0 ? true : false; break;
-						case "LevelName": Name = (string)reader.Value; break;
-						case "generatorName": Generation.Name = (string)reader.Value; break;
-						case "generatorVersion": Generation.Version = (int)reader.Value; break;
-						case "generatorOptions": Generation.Options = (string)reader.Value; break;
-						case "RandomSeed": Generation.Seed = (long)reader.Value; break;
-						case "MapFeatures": Generation.AllowMapFeatures = (byte)reader.Value != 0 ? true : false; break;
-						case "LastPlayed": LastPlayed = DateTimeEx.UnixTime.AddMilliseconds((long)reader.Value); break;
-						case "SizeOnDisk": break;
-						case "allowCommands": Gameplay.AllowCommands = (byte)reader.Value != 0 ? true : false; break;
-						case "hardcore": Gameplay.IsHardcore = (byte)reader.Value != 0 ? true : false; break;
-						case "GameType": Gameplay.GameType = (int)reader.Value; break;
-						case "Difficulty": Gameplay.Difficulty = (byte)reader.Value; break;
-						case "DifficultyLocked": Gameplay.IsDifficultyLocked = (byte)reader.Value != 0 ? true : false; break;
-						case "Time": Time = (long)reader.Value; break;
-						case "DayTime": DayTime = (long)reader.Value; break;
-						case "SpawnX": Gameplay.SpawnX = (int)reader.Value; break;
-						case "SpawnY": Gameplay.SpawnY = (int)reader.Value; break;
-						case "SpawnZ": Gameplay.SpawnZ = (int)reader.Value; break;
-						case "BorderCenterX": Border.CenterX = (double)reader.Value; break;
-						case "BorderCenterZ": Border.CenterZ = (double)reader.Value; break;
-						case "BorderSize": Border.Size = (double)reader.Value; break;
-						case "BorderSafeZone": Border.SafeZone = (double)reader.Value; break;
-						case "BorderWarningBlocks": Border.WarningBlocks = (double)reader.Value; break;
-						case "BorderWarningTime": Border.WarningTime = (double)reader.Value; break;
-						case "BorderSizeLerpTarget": Border.SizeLerpTarget = (double)reader.Value; break;
-						case "BorderSizeLerpTime": Border.SizeLerpTime = (long)reader.Value; break;
-						case "BorderDamagePerBlock": Border.DamagePerBlock = (double)reader.Value; break;
-						case "raining": Weather.IsRaining = (byte)reader.Value != 0 ? true : false; break;
-						case "rainTime": Weather.RainTime = (int)reader.Value; break;
-						case "thundering": Weather.IsThundering = (byte)reader.Value != 0 ? true : false; break;
-						case "thunderTime": Weather.ThunderTime = (int)reader.Value; break;
-						case "clearWeatherTime": Weather.ClearTime = (int)reader.Value; break;
-						case "GameRules": Gamerules.Read(reader); break;
-
-						default: unknownTags.Add(reader.TreeToStructure()); break;
-					}
-				}
-				reader.MoveNext();
-			}
-		}
-		private void SetDefaults() {
-			var rng = new Random();
-
-			Name = "";
-			Version = 19133; //TODO make static readonly constant
-			Time = DayTime = 0;
-			LastPlayed = DateTimeEx.UnixTime;
-			Generation.IsInitialized = true;
-			Generation.Name = "default";
-			Generation.Options = "";
-			Generation.Seed = BitConverter.DoubleToInt64Bits(rng.NextDouble());
-			Generation.AllowMapFeatures = true;
-			Gameplay.AllowCommands = false;
-			Gameplay.IsHardcore = false;
-			Gameplay.GameType = 0;
-			Gameplay.Difficulty = 0;
-			Gameplay.IsDifficultyLocked = false;
-			Gameplay.SpawnX = Gameplay.SpawnZ = 0;
-			Gameplay.SpawnY = 64;
-			Border.Size = 60000000;
-			Border.CenterX = 0;
-			Border.CenterZ = 0;
-			Border.SafeZone = 5;
-			Border.WarningBlocks = 5;
-			Border.WarningTime = 15;
-			Border.SizeLerpTarget = 60000000;
-			Border.SizeLerpTime = 0;
-			Border.DamagePerBlock = 0.2;
-			Weather.IsRaining = Weather.IsThundering = false;
-			Weather.RainTime = rng.Next(20 * 60 * 1, 20 * 60 * 120);
-			Weather.ThunderTime = rng.Next(20 * 60 * 60, 20 * 60 * 240);
-			Weather.ClearTime = rng.Next(20 * 60 * 120, 20 * 60 * 480);
-			Gamerules.CommandBlockOutput = "true";
-			Gamerules.DoDaylightCycle = "true";
-			Gamerules.DoFireTick = "true";
-			Gamerules.DoMobLoot = "true";
-			Gamerules.DoMobSpawning = "true";
-			Gamerules.DoTileDrops = "true";
-			Gamerules.KeepInventory = "false";
-			Gamerules.LogAdminCommands = "true";
-			Gamerules.MobGriefing = "true";
-			Gamerules.NaturalRegeneration = "true";
-			Gamerules.RandomTickSpeed = "3";
-			Gamerules.SendCommandFeedback = "true";
-			Gamerules.ShowDeathMessages = "true";
-		}
-
 		public int Version { get; set; }
 		public long DayTime { get; set; }
 		public long Time { get; set; }
@@ -148,13 +52,24 @@ namespace Sediment {
 			WorldManager.Save();
 			//PlayerManager.Save();
 
-			using(var fileStream = File.OpenWrite(Path.Combine(Info.RootPath, Info.LevelPath)))
+			var levelFilePath = Path.Combine(Info.RootPath, Info.LevelPath);
+
+			if(Info.CopyOnWrite && !needsCommit) {
+				needsCommit = true;
+				levelFilePath += ".sediment";
+			}
+
+			using(var fileStream = File.OpenWrite(levelFilePath))
 			using(var dataStream = new Ionic.Zlib.GZipStream(fileStream, Ionic.Zlib.CompressionMode.Compress)) {
 				WriteTo(dataStream);
 			}
 		}
 		public void Commit() {
-			throw new NotImplementedException();
+			if(!needsCommit) return;
+			needsCommit = false;
+
+			var levelFilePath = Path.Combine(Info.RootPath, Info.LevelPath);
+			File.Replace(levelFilePath + ".sediment", levelFilePath, levelFilePath + "." + DateTime.UtcNow.ToString("s"));
 		}
 
 
@@ -347,6 +262,104 @@ namespace Sediment {
 			}
 
 			return level;
+		}
+
+		private void Read(string rootPath) {
+			using(var fileStream = File.OpenRead(Path.Combine(rootPath, Info.LevelPath)))
+			using(var dataStream = new Ionic.Zlib.GZipStream(fileStream, Ionic.Zlib.CompressionMode.Decompress))
+			using(var reader = new NBTReader(dataStream)) {
+				reader.MoveNext();
+				reader.MoveNext();
+
+				while(reader.MoveNext() && reader.Type != NBTType.End) {
+					switch(reader.Name) {
+						case "version": Version = (int)reader.Value; break;
+						case "initialized": Generation.IsInitialized = (byte)reader.Value != 0 ? true : false; break;
+						case "LevelName": Name = (string)reader.Value; break;
+						case "generatorName": Generation.Name = (string)reader.Value; break;
+						case "generatorVersion": Generation.Version = (int)reader.Value; break;
+						case "generatorOptions": Generation.Options = (string)reader.Value; break;
+						case "RandomSeed": Generation.Seed = (long)reader.Value; break;
+						case "MapFeatures": Generation.AllowMapFeatures = (byte)reader.Value != 0 ? true : false; break;
+						case "LastPlayed": LastPlayed = DateTimeEx.UnixTime.AddMilliseconds((long)reader.Value); break;
+						case "SizeOnDisk": break;
+						case "allowCommands": Gameplay.AllowCommands = (byte)reader.Value != 0 ? true : false; break;
+						case "hardcore": Gameplay.IsHardcore = (byte)reader.Value != 0 ? true : false; break;
+						case "GameType": Gameplay.GameType = (int)reader.Value; break;
+						case "Difficulty": Gameplay.Difficulty = (byte)reader.Value; break;
+						case "DifficultyLocked": Gameplay.IsDifficultyLocked = (byte)reader.Value != 0 ? true : false; break;
+						case "Time": Time = (long)reader.Value; break;
+						case "DayTime": DayTime = (long)reader.Value; break;
+						case "SpawnX": Gameplay.SpawnX = (int)reader.Value; break;
+						case "SpawnY": Gameplay.SpawnY = (int)reader.Value; break;
+						case "SpawnZ": Gameplay.SpawnZ = (int)reader.Value; break;
+						case "BorderCenterX": Border.CenterX = (double)reader.Value; break;
+						case "BorderCenterZ": Border.CenterZ = (double)reader.Value; break;
+						case "BorderSize": Border.Size = (double)reader.Value; break;
+						case "BorderSafeZone": Border.SafeZone = (double)reader.Value; break;
+						case "BorderWarningBlocks": Border.WarningBlocks = (double)reader.Value; break;
+						case "BorderWarningTime": Border.WarningTime = (double)reader.Value; break;
+						case "BorderSizeLerpTarget": Border.SizeLerpTarget = (double)reader.Value; break;
+						case "BorderSizeLerpTime": Border.SizeLerpTime = (long)reader.Value; break;
+						case "BorderDamagePerBlock": Border.DamagePerBlock = (double)reader.Value; break;
+						case "raining": Weather.IsRaining = (byte)reader.Value != 0 ? true : false; break;
+						case "rainTime": Weather.RainTime = (int)reader.Value; break;
+						case "thundering": Weather.IsThundering = (byte)reader.Value != 0 ? true : false; break;
+						case "thunderTime": Weather.ThunderTime = (int)reader.Value; break;
+						case "clearWeatherTime": Weather.ClearTime = (int)reader.Value; break;
+						case "GameRules": Gamerules.Read(reader); break;
+
+						default: unknownTags.Add(reader.TreeToStructure()); break;
+					}
+				}
+				reader.MoveNext();
+			}
+		}
+		private void SetDefaults() {
+			var rng = new Random();
+
+			Name = "";
+			Version = 19133; //TODO make static readonly constant
+			Time = DayTime = 0;
+			LastPlayed = DateTimeEx.UnixTime;
+			Generation.IsInitialized = true;
+			Generation.Name = "default";
+			Generation.Options = "";
+			Generation.Seed = BitConverter.DoubleToInt64Bits(rng.NextDouble());
+			Generation.AllowMapFeatures = true;
+			Gameplay.AllowCommands = false;
+			Gameplay.IsHardcore = false;
+			Gameplay.GameType = 0;
+			Gameplay.Difficulty = 0;
+			Gameplay.IsDifficultyLocked = false;
+			Gameplay.SpawnX = Gameplay.SpawnZ = 0;
+			Gameplay.SpawnY = 64;
+			Border.Size = 60000000;
+			Border.CenterX = 0;
+			Border.CenterZ = 0;
+			Border.SafeZone = 5;
+			Border.WarningBlocks = 5;
+			Border.WarningTime = 15;
+			Border.SizeLerpTarget = 60000000;
+			Border.SizeLerpTime = 0;
+			Border.DamagePerBlock = 0.2;
+			Weather.IsRaining = Weather.IsThundering = false;
+			Weather.RainTime = rng.Next(20 * 60 * 1, 20 * 60 * 120);
+			Weather.ThunderTime = rng.Next(20 * 60 * 60, 20 * 60 * 240);
+			Weather.ClearTime = rng.Next(20 * 60 * 120, 20 * 60 * 480);
+			Gamerules.CommandBlockOutput = "true";
+			Gamerules.DoDaylightCycle = "true";
+			Gamerules.DoFireTick = "true";
+			Gamerules.DoMobLoot = "true";
+			Gamerules.DoMobSpawning = "true";
+			Gamerules.DoTileDrops = "true";
+			Gamerules.KeepInventory = "false";
+			Gamerules.LogAdminCommands = "true";
+			Gamerules.MobGriefing = "true";
+			Gamerules.NaturalRegeneration = "true";
+			Gamerules.RandomTickSpeed = "3";
+			Gamerules.SendCommandFeedback = "true";
+			Gamerules.ShowDeathMessages = "true";
 		}
 	}
 

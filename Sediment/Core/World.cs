@@ -37,6 +37,9 @@ namespace Sediment.Core {
 				regionChunks.Key.SaveChunks(regionChunks);
 			}
 		}
+		public void Commit() {
+			throw new NotImplementedException();
+		}
 
 
 		internal void OnSavingChunk(Chunk chunk) { SavingChunk(this, chunk); }
