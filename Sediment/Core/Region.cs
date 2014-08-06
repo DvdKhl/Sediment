@@ -25,6 +25,8 @@ namespace Sediment.Core {
 		private World world;
 		private RegionFile regionFile;
 
+		private bool needsCommit;
+
 		public int X { get; private set; }
 		public int Z { get; private set; }
 
@@ -53,7 +55,9 @@ namespace Sediment.Core {
 		internal void SaveChunks(IEnumerable<Chunk> dirtyChunks) {
 			if(dirtyChunks.Any(c => c.X >> 5 != X || c.Z >> 5 != Z)) throw new InvalidOperationException("Chunk is not in this region instance");
 
-			if(world.Level.Info.CopyOnWrite && !regionFile.FilePath.EndsWith(".sediment")) {
+			if(world.Level.Info.CopyOnWrite && !needsCommit) {
+				needsCommit = true;
+
 				File.Copy(regionFile.FilePath, regionFile.FilePath + ".sediment");
 				regionFile.FilePath += ".sediment";
 			}
@@ -69,6 +73,16 @@ namespace Sediment.Core {
 				chunkInfo.Chunk.MarkPristine();
 			}
 		}
+		internal void Commit() {
+			if(!needsCommit) return;
+			needsCommit = false;
+
+			var regionFileName = string.Format(world.Info.RegionFilePathFormat, X, Z);
+			var regionFilePath = Path.Combine(world.Level.Info.RootPath, world.Info.RegionPath, regionFileName);
+			File.Replace(regionFile.FilePath, regionFilePath, regionFilePath + "." + DateTime.UtcNow.ToString("s"));
+
+		}
+
 		private byte[] SerializeChunk(Chunk chunk) {
 			world.OnSavingChunk(chunk);
 

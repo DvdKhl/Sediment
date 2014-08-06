@@ -70,6 +70,8 @@ namespace Sediment {
 
 			var levelFilePath = Path.Combine(Info.RootPath, Info.LevelPath);
 			File.Replace(levelFilePath + ".sediment", levelFilePath, levelFilePath + "." + DateTime.UtcNow.ToString("s"));
+
+			WorldManager.Commit();
 		}
 
 

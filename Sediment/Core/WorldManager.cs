@@ -34,7 +34,7 @@ namespace Sediment.Core {
 			foreach(var world in openWorlds.Values) world.Save();
 		}
 		public void Commit() {
-			throw new NotImplementedException();
+			foreach(var world in openWorlds.Values) world.Commit();
 		}
 	}
 

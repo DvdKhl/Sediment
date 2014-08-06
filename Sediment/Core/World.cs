@@ -38,7 +38,7 @@ namespace Sediment.Core {
 			}
 		}
 		public void Commit() {
-			throw new NotImplementedException();
+			RegionManager.Commit();
 		}
 
 
