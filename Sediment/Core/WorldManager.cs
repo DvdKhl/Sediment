@@ -70,7 +70,7 @@ namespace Sediment.Core {
 		public string RegionFilePathFormat { get { return regionFilePathFormat; } set { WritePreamble(); regionFilePathFormat = value; } } private string regionFilePathFormat;
 		public ChunkCache ChunkCache { get { return chunkCache; } set { WritePreamble(); chunkCache = value; } } private ChunkCache chunkCache;
 
-		public override WorldInfo UnfrozenCopy() {
+		public WorldInfo UnfrozenCopy() {
 			return new WorldInfo { 
 				RegionPath = RegionPath,
 				RegionFilePathFormat = RegionFilePathFormat,
