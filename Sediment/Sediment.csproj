@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Ionic.Zlib">
-      <HintPath>C:\Users\Arokh\Projects\Visual Studio 2013\Projects\Sediment\Libs\Ionic.Zlib\Ionic.Zlib.dll</HintPath>
+      <HintPath>..\Libs\Ionic.Zlib\Ionic.Zlib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
