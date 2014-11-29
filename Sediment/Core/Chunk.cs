@@ -20,9 +20,13 @@ namespace Sediment.Core {
 		public static readonly int SectionBlockYCount = 16;
 		public static readonly int SectionBlockZCount = 16;
 		public static readonly int SectionBlockCount = SectionBlockXCount * SectionBlockYCount * SectionBlockZCount;
+		public static readonly int SectionBlockHalfCount = SectionBlockCount >> 1;
 
 		public static readonly int XMask = 0xF;
 		public static readonly int ZMask = 0xF;
+
+		public static readonly int XBits = 4;
+		public static readonly int ZBits = 4;
 
 		public Region Region { get; private set; }
 
@@ -70,6 +74,23 @@ namespace Sediment.Core {
 		private bool[] hasSection;
 		private List<NBTNode> unknownChunkTags, unknownSectionTags;
 
+		private XZData<byte> biomeIndexer;
+		public XZData<byte> Biome {
+			[MethodImpl(MethodImplOptions.AggressiveInlining)]
+			get { return biomeIndexer ?? (biomeIndexer = new XZData<byte>(biomeIds, BlockXCount)); }
+		}
+
+		private XZData<int> heightMapIndexer;
+		public XZData<int> HeightMap {
+			[MethodImpl(MethodImplOptions.AggressiveInlining)]
+			get { return heightMapIndexer ?? (heightMapIndexer = new XZData<int>(heightMapData, BlockXCount)); }
+		}
+
+		private XYZData<byte> lightingIndexer;
+		public XYZData<byte> Lighting {
+			[MethodImpl(MethodImplOptions.AggressiveInlining)]
+			get { return lightingIndexer ?? (lightingIndexer = new XYZData<byte>(lightingData, BlockXCount, BlockZCount)); }
+		}
 
 		public void WriteTo(Stream stream) {
 			var writer = new NBTWriter(stream);
@@ -79,18 +100,21 @@ namespace Sediment.Core {
 			});
 		}
 		private void WriteChunk(NBTWriter writer) {
+			writer.Write("V", Version);
 			writer.Write("xPos", X);
 			writer.Write("zPos", Z);
 			writer.Write("LastUpdate", LastUpdate);
-			writer.Write("LightPopulated", (byte)(IsLightPopulated ? 1 : 0));
-			writer.Write("TerrainPopulated", (byte)(IsTerrainPopulated ? 1 : 0));
-			writer.Write("V", Version);
 			writer.Write("InhabitedTime", InhabitedTime);
-			writer.Write("Biomes", biomeIds);
+
+			writer.Write("TerrainPopulated", (byte)(IsTerrainPopulated ? 1 : 0));
+			writer.Write("LightPopulated", (byte)(IsLightPopulated ? 1 : 0));
+
+			writer.Write("Sections", hasSection, WriteSections); //TODO: Write only non-empty sections
 			writer.Write("HeightMap", heightMapData);
-			writer.Write("Entities", entities.Count, WriteEntities); //TODO: Write only non-empty sections
+			writer.Write("Biomes", biomeIds);
+
 			writer.Write("TileEntities", tileEntities.Count, WriteTileEntities); //TODO: Write only non-empty sections
-			writer.Write("Sections", 16, WriteSections); //TODO: Write only non-empty sections
+			writer.Write("Entities", entities.Count, WriteEntities); //TODO: Write only non-empty sections
 
 			foreach(var unknownTag in unknownChunkTags) writer.Write(unknownTag);
 		}
@@ -242,25 +266,25 @@ namespace Sediment.Core {
 					}
 				}
 				if(add[y] != null) {
-					for(int i = 0; i < add.Length; i++) {
+					for(int i = 0; i < SectionBlockHalfCount; i++) {
 						blockIds[(y << 12) | (i * 2 + 0)] |= (ushort)((add[y][i] & 0x0F) << 8);
 						blockIds[(y << 12) | (i * 2 + 1)] |= (ushort)((add[y][i] & 0xF0) << 4);
 					}
 				}
 				if(data[y] != null) {
-					for(int i = 0; i < add.Length; i++) {
+					for(int i = 0; i < SectionBlockHalfCount; i++) {
 						blockIds[(y << 12) | (i * 2 + 0)] |= (ushort)((data[y][i] & 0x0F) << 12);
 						blockIds[(y << 12) | (i * 2 + 1)] |= (ushort)((data[y][i] & 0xF0) << 8);
 					}
 				}
 				if(skyLight[y] != null) {
-					for(int i = 0; i < skyLight.Length; i++) {
+					for(int i = 0; i < SectionBlockHalfCount; i++) {
 						lightingData[(y << 12) | (i * 2 + 0)] = (byte)(skyLight[y][i] & 0x0F);
 						lightingData[(y << 12) | (i * 2 + 1)] = (byte)((skyLight[y][i] & 0xF0) >> 4);
 					}
 				}
 				if(blockLight[y] != null) {
-					for(int i = 0; i < blockLight.Length; i++) {
+					for(int i = 0; i < SectionBlockHalfCount; i++) {
 						lightingData[(y << 12) | (i * 2 + 0)] |= (byte)((blockLight[y][i] & 0x0F) << 4);
 						lightingData[(y << 12) | (i * 2 + 1)] |= (byte)(blockLight[y][i] & 0xF0);
 					}
@@ -310,6 +334,17 @@ namespace Sediment.Core {
 			lighting.LightChunk(blockIds, heightMapData, LightingOptions.Fastest, lightingData);
 		}
 
+		public void UpdateHasSections() {
+			for(int y = 0; y < SectionCount; y++) {
+				var hasSection = false;
+				for(int i = 0; i < SectionBlockCount && !hasSection; i++) {
+					hasSection |= blockIds[(y << 12) | i] == 0;
+				}
+
+				this.hasSection[y] = hasSection;
+			}
+		}
+
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static int ToIndex(int x, int y, int z) { return x | (z << 4) | (y << 8); }
 
@@ -344,5 +379,44 @@ namespace Sediment.Core {
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static bool IsAtTopXZPlane(int blockIndex) { return (blockIndex & 0xFF00) == 0xFF00; }
 
+		public class XZData<T> {
+			private T[] data;
+			private int xLength;
+
+			public T this[int index] {
+				[MethodImpl(MethodImplOptions.AggressiveInlining)]
+				get { return data[index]; }
+			}
+
+			public T this[int x, int z] {
+				[MethodImpl(MethodImplOptions.AggressiveInlining)]
+				get { return data[x + z * xLength]; }
+			}
+
+			public XZData(T[] data, int xLength) {
+				this.data = data;
+				this.xLength = xLength;
+			}
+		}
+		public class XYZData<T> {
+			private T[] data;
+			private int xLength, xzLength;
+
+			public T this[int index] {
+				[MethodImpl(MethodImplOptions.AggressiveInlining)]
+				get { return data[index]; }
+			}
+
+			public T this[int x, int y, int z] {
+				[MethodImpl(MethodImplOptions.AggressiveInlining)]
+				get { return data[x + z * xLength + y * xzLength]; }
+			}
+
+			public XYZData(T[] data, int xLength, int zLength) {
+				this.data = data;
+				this.xLength = xLength;
+				this.xzLength = zLength * xLength;
+			}
+		}
 	}
 }
