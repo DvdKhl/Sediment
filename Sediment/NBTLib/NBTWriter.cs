@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace NBTLib {
 	public class NBTWriter {
+		private static readonly byte[] FIVEZEROS = new byte[5];
+
 		public Stream BaseStream { get; private set; }
 
 		byte[] temp = new byte[8];
@@ -53,14 +55,22 @@ namespace NBTLib {
 			BaseStream.Write(temp, 0, 8);
 		}
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		private void WriteListHeader(string name, byte type, int length) {
+		private bool WriteListHeader(string name, byte type, int length) {
 			BaseStream.WriteByte(9);
 			WriteValue(name);
-			BaseStream.WriteByte(type);
 
-			byte[] b = BitConverter.GetBytes(length);
-			if(BitConverter.IsLittleEndian) Array.Reverse(b);
-			BaseStream.Write(b, 0, 4);
+			if(length != 0) {
+				BaseStream.WriteByte(type);
+
+				byte[] b = BitConverter.GetBytes(length);
+				if(BitConverter.IsLittleEndian) Array.Reverse(b);
+				BaseStream.Write(b, 0, 4);
+				return true;
+
+			} else {
+				BaseStream.Write(FIVEZEROS, 0, 5);
+				return false;
+			}
 		}
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		private void WriteValue(float value) {
@@ -121,7 +131,7 @@ namespace NBTLib {
 			WriteValue(value);
 		}
 		public void Write(string name, short[] values) {
-			WriteListHeader(name, 2, values.Length);
+			if(!WriteListHeader(name, 2, values.Length)) return;
 			foreach(var value in values) WriteValue(value);
 		}
 		public void Write(string name, int[] values) {
@@ -135,30 +145,39 @@ namespace NBTLib {
 			foreach(var value in values) WriteValue(value);
 		}
 		public void Write(string name, long[] values) {
-			WriteListHeader(name, 4, values.Length);
+			if(!WriteListHeader(name, 4, values.Length)) return;
 			foreach(var value in values) WriteValue(value);
 		}
 		public void Write(string name, float[] values) {
-			WriteListHeader(name, 5, values.Length);
+			if(!WriteListHeader(name, 5, values.Length)) return;
 			foreach(var value in values) WriteValue(value);
 		}
 		public void Write(string name, double[] values) {
-			WriteListHeader(name, 6, values.Length);
+			if(!WriteListHeader(name, 6, values.Length)) return;
 			foreach(var value in values) WriteValue(value);
 		}
 		public void Write(string name, string[] values) {
-			WriteListHeader(name, 8, values.Length);
+			if(!WriteListHeader(name, 8, values.Length)) return;
 			foreach(var value in values) WriteValue(value);
 		}
 		public void Write(string name, int length, Action<NBTWriter, int> onCompound) {
-			WriteListHeader(name, 10, length);
+			if(!WriteListHeader(name, 10, length)) return;
 			for(int i = 0; i < length; i++) {
 				onCompound(this, i);
 				BaseStream.WriteByte(0);
 			}
 		}
+		public void Write(string name, bool[] indeces, Action<NBTWriter, int> onCompound) {
+			if(!WriteListHeader(name, 10, indeces.Count(x => x))) return;
+			for(int i = 0; i < indeces.Length; i++) {
+				if(!indeces[i]) continue;
+
+				onCompound(this, i);
+				BaseStream.WriteByte(0);
+			}
+		}
 		public void Write<T>(string name, T[] items, Action<NBTWriter, T> onCompound) {
-			WriteListHeader(name, 10, items.Length);
+			if(!WriteListHeader(name, 10, items.Length)) return;
 			for(int i = 0; i < items.Length; i++) {
 				onCompound(this, items[i]);
 				BaseStream.WriteByte(0);
